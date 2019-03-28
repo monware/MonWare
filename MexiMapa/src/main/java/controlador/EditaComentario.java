@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package controlador;
-
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author jorge
  */
-public class CalificarComentario {
+public class EditaComentario {
     
 }
