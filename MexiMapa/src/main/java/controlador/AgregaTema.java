@@ -6,13 +6,29 @@
 package controlador;
 import modelo.Tema;
 import modelo.TemaDAO;
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author jorge
  */
+@ManagedBean
 public class AgregaTema {
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
+    
+    public void agregraTema(){
+        Tema u = new Tema();
+        u.setNombre(nombre);
+        TemaDAO udao = new TemaDAO();
+        udao.save(u);
+    }
 }

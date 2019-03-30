@@ -46,9 +46,9 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/meximapa</property>
     <property name="hibernate.connection.username">monware</property>
     <property name="hibernate.connection.password">monware</property>
-    <mapping resource="modelo/Tema.hbm.xml"/>
-    <mapping resource="modelo/Comentario.hbm.xml"/>
-    <mapping resource="modelo/Marcador.hbm.xml"/>
     <mapping resource="modelo/Usuario.hbm.xml"/>
+    <mapping resource="modelo/Tema.hbm.xml"/>
+    <mapping resource="modelo/Marcador.hbm.xml"/>
+    <mapping resource="modelo/Comentario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

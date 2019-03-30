@@ -1,5 +1,5 @@
 package modelo;
-// Generated 26/03/2019 05:09:40 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2019 12:03:50 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,32 +11,30 @@ import java.util.Set;
 public class Tema  implements java.io.Serializable {
 
 
-     private int idTema;
-     private Usuario usuario;
      private String nombre;
+     private Usuario usuario;
      private Set marcadors = new HashSet(0);
 
     public Tema() {
     }
 
 	
-    public Tema(int idTema, Usuario usuario) {
-        this.idTema = idTema;
+    public Tema(String nombre, Usuario usuario) {
+        this.nombre = nombre;
         this.usuario = usuario;
     }
-    public Tema(int idTema, Usuario usuario, String nombre, Set marcadors) {
-       this.idTema = idTema;
-       this.usuario = usuario;
+    public Tema(String nombre, Usuario usuario, Set marcadors) {
        this.nombre = nombre;
+       this.usuario = usuario;
        this.marcadors = marcadors;
     }
    
-    public int getIdTema() {
-        return this.idTema;
+    public String getNombre() {
+        return this.nombre;
     }
     
-    public void setIdTema(int idTema) {
-        this.idTema = idTema;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     public Usuario getUsuario() {
         return this.usuario;
@@ -44,13 +42,6 @@ public class Tema  implements java.io.Serializable {
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-    public String getNombre() {
-        return this.nombre;
-    }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
     public Set getMarcadors() {
         return this.marcadors;

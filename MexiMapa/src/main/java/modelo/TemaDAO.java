@@ -5,10 +5,60 @@
  */
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author jorge
  */
-public class TemaDAO {
+public class TemaDAO extends AbstractDAO<Tema>{
     
+    public TemaDAO(){
+        super();
+    }
+    
+    
+    /**
+     * 
+     * @param marcador 
+     */
+    @Override
+    public void save(Tema tema){
+        super.save(tema);
+    }
+    
+    /**
+     * 
+     * @param marcador 
+     */
+    @Override
+    public void update(Tema tema){
+        super.save(tema);
+    }
+    
+    /**
+     * 
+     * @param marcador 
+     */
+    @Override
+    public void delete(Tema tema){
+        super.delete(tema);
+    }
+       
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public Tema find(int id){
+        return super.find(Tema.class, id);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public List<Tema> findAll(){
+        return super.findAll(Tema.class);
+    }
 }
