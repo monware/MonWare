@@ -26,7 +26,8 @@ SET default_with_oids = false;
 CREATE TABLE public.comentario (
     id_comentario integer NOT NULL,
     id_marcador integer NOT NULL,
-    id_usuario integer NOT NULL,
+    correo character varying(255) NOT NULL,
+    comentario character varying(255),
     calificacion real NOT NULL
 );
 
@@ -76,34 +77,13 @@ ALTER SEQUENCE public.comentario_id_marcador_seq OWNED BY public.comentario.id_m
 
 
 --
--- Name: comentario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.comentario_id_usuario_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.comentario_id_usuario_seq OWNER TO postgres;
-
---
--- Name: comentario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.comentario_id_usuario_seq OWNED BY public.comentario.id_usuario;
-
-
---
 -- Name: marcador; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.marcador (
     id_marcador integer NOT NULL,
-    id_tema integer NOT NULL,
-    id_usuario integer NOT NULL,
+    nombre character varying(255) NOT NULL,
+    correo character varying(255) NOT NULL,
     latitud double precision,
     longitud double precision,
     descripcion character varying(255),
@@ -135,109 +115,25 @@ ALTER SEQUENCE public.marcador_id_marcador_seq OWNED BY public.marcador.id_marca
 
 
 --
--- Name: marcador_id_tema_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.marcador_id_tema_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.marcador_id_tema_seq OWNER TO postgres;
-
---
--- Name: marcador_id_tema_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.marcador_id_tema_seq OWNED BY public.marcador.id_tema;
-
-
---
--- Name: marcador_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.marcador_id_usuario_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.marcador_id_usuario_seq OWNER TO postgres;
-
---
--- Name: marcador_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.marcador_id_usuario_seq OWNED BY public.marcador.id_usuario;
-
-
---
 -- Name: tema; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.tema (
-    id_tema integer NOT NULL,
-    id_usuario integer NOT NULL,
-    nombre character varying(255)
+    nombre character varying(255) NOT NULL,
+    correo character varying(255) NOT NULL
 );
 
 
 ALTER TABLE public.tema OWNER TO postgres;
 
 --
--- Name: tema_id_tema_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.tema_id_tema_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tema_id_tema_seq OWNER TO postgres;
-
---
--- Name: tema_id_tema_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.tema_id_tema_seq OWNED BY public.tema.id_tema;
-
-
---
--- Name: tema_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.tema_id_usuario_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tema_id_usuario_seq OWNER TO postgres;
-
---
--- Name: tema_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.tema_id_usuario_seq OWNED BY public.tema.id_usuario;
-
-
---
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.usuario (
-    id_usuario integer NOT NULL,
-    nombre character varying(255),
+    nombre character varying(255) NOT NULL,
+    apaterno character varying(255),
+    amaterno character varying(255),
     contrasenia character varying(255) NOT NULL,
     correo character varying(255) NOT NULL,
     rol character varying(255) NOT NULL
@@ -245,27 +141,6 @@ CREATE TABLE public.usuario (
 
 
 ALTER TABLE public.usuario OWNER TO postgres;
-
---
--- Name: usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.usuario_id_usuario_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.usuario_id_usuario_seq OWNER TO postgres;
-
---
--- Name: usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.usuario_id_usuario_seq OWNED BY public.usuario.id_usuario;
-
 
 --
 -- Name: comentario id_comentario; Type: DEFAULT; Schema: public; Owner: postgres
@@ -282,13 +157,6 @@ ALTER TABLE ONLY public.comentario ALTER COLUMN id_marcador SET DEFAULT nextval(
 
 
 --
--- Name: comentario id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.comentario ALTER COLUMN id_usuario SET DEFAULT nextval('public.comentario_id_usuario_seq'::regclass);
-
-
---
 -- Name: marcador id_marcador; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -296,45 +164,10 @@ ALTER TABLE ONLY public.marcador ALTER COLUMN id_marcador SET DEFAULT nextval('p
 
 
 --
--- Name: marcador id_tema; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.marcador ALTER COLUMN id_tema SET DEFAULT nextval('public.marcador_id_tema_seq'::regclass);
-
-
---
--- Name: marcador id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.marcador ALTER COLUMN id_usuario SET DEFAULT nextval('public.marcador_id_usuario_seq'::regclass);
-
-
---
--- Name: tema id_tema; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tema ALTER COLUMN id_tema SET DEFAULT nextval('public.tema_id_tema_seq'::regclass);
-
-
---
--- Name: tema id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tema ALTER COLUMN id_usuario SET DEFAULT nextval('public.tema_id_usuario_seq'::regclass);
-
-
---
--- Name: usuario id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.usuario ALTER COLUMN id_usuario SET DEFAULT nextval('public.usuario_id_usuario_seq'::regclass);
-
-
---
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.comentario (id_comentario, id_marcador, id_usuario, calificacion) FROM stdin;
+COPY public.comentario (id_comentario, id_marcador, correo, comentario, calificacion) FROM stdin;
 \.
 
 
@@ -342,7 +175,7 @@ COPY public.comentario (id_comentario, id_marcador, id_usuario, calificacion) FR
 -- Data for Name: marcador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.marcador (id_marcador, id_tema, id_usuario, latitud, longitud, descripcion, datos) FROM stdin;
+COPY public.marcador (id_marcador, nombre, correo, latitud, longitud, descripcion, datos) FROM stdin;
 \.
 
 
@@ -350,7 +183,7 @@ COPY public.marcador (id_marcador, id_tema, id_usuario, latitud, longitud, descr
 -- Data for Name: tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.tema (id_tema, id_usuario, nombre) FROM stdin;
+COPY public.tema (nombre, correo) FROM stdin;
 \.
 
 
@@ -358,7 +191,7 @@ COPY public.tema (id_tema, id_usuario, nombre) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (id_usuario, nombre, contrasenia, correo, rol) FROM stdin;
+COPY public.usuario (nombre, apaterno, amaterno, contrasenia, correo, rol) FROM stdin;
 \.
 
 
@@ -377,52 +210,10 @@ SELECT pg_catalog.setval('public.comentario_id_marcador_seq', 1, false);
 
 
 --
--- Name: comentario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.comentario_id_usuario_seq', 1, false);
-
-
---
 -- Name: marcador_id_marcador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.marcador_id_marcador_seq', 1, false);
-
-
---
--- Name: marcador_id_tema_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.marcador_id_tema_seq', 1, false);
-
-
---
--- Name: marcador_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.marcador_id_usuario_seq', 1, false);
-
-
---
--- Name: tema_id_tema_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.tema_id_tema_seq', 1, false);
-
-
---
--- Name: tema_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.tema_id_usuario_seq', 1, false);
-
-
---
--- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 1, false);
 
 
 --
@@ -446,7 +237,7 @@ ALTER TABLE ONLY public.marcador
 --
 
 ALTER TABLE ONLY public.tema
-    ADD CONSTRAINT tema_pkey PRIMARY KEY (id_tema);
+    ADD CONSTRAINT tema_pkey PRIMARY KEY (nombre);
 
 
 --
@@ -454,7 +245,15 @@ ALTER TABLE ONLY public.tema
 --
 
 ALTER TABLE ONLY public.usuario
-    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (correo);
+
+
+--
+-- Name: comentario comentario_correo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comentario
+    ADD CONSTRAINT comentario_correo_fkey FOREIGN KEY (correo) REFERENCES public.usuario(correo);
 
 
 --
@@ -466,35 +265,27 @@ ALTER TABLE ONLY public.comentario
 
 
 --
--- Name: comentario comentario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.comentario
-    ADD CONSTRAINT comentario_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
-
-
---
--- Name: marcador marcador_id_tema_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: marcador marcador_correo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.marcador
-    ADD CONSTRAINT marcador_id_tema_fkey FOREIGN KEY (id_tema) REFERENCES public.tema(id_tema);
+    ADD CONSTRAINT marcador_correo_fkey FOREIGN KEY (correo) REFERENCES public.usuario(correo);
 
 
 --
--- Name: marcador marcador_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: marcador marcador_nombre_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.marcador
-    ADD CONSTRAINT marcador_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+    ADD CONSTRAINT marcador_nombre_fkey FOREIGN KEY (nombre) REFERENCES public.tema(nombre);
 
 
 --
--- Name: tema tema_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: tema tema_correo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tema
-    ADD CONSTRAINT tema_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+    ADD CONSTRAINT tema_correo_fkey FOREIGN KEY (correo) REFERENCES public.usuario(correo);
 
 
 --

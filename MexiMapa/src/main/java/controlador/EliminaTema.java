@@ -11,6 +11,24 @@ import javax.faces.bean.ManagedBean;
  *
  * @author jorge
  */
+@ManagedBean
 public class EliminaTema {
+    private int idTema;
     
+    public int getIdTema() {
+        return idTema;
+    }
+
+    public void setIdmarcador(int idTema) {
+        this.idTema = idTema;
+    }
+    
+    public void eliminaMarcador(){
+        //Usuario u = new Usuario();
+        TemaDAO udao = new TemaDAO();
+        Tema u = udao.find(idTema);
+        if(u!=null){
+            udao.delete(u);
+        } 
+    }
 }

@@ -6,12 +6,12 @@
 package controlador;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 /**
  *
  * @author jorge
  */
+@ManagedBean
 public class AgregaComentario {
     
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/03/2019 05:09:41 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/03/2019 12:03:51 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Comentario" table="comentario" schema="public" optimistic-lock="version">
         <id name="idComentario" type="int">
@@ -12,8 +12,11 @@
             <column name="id_marcador" not-null="true" />
         </many-to-one>
         <many-to-one name="usuario" class="modelo.Usuario" fetch="select">
-            <column name="id_usuario" not-null="true" />
+            <column name="correo" not-null="true" />
         </many-to-one>
+        <property name="comentario" type="string">
+            <column name="comentario" />
+        </property>
         <property name="calificacion" type="float">
             <column name="calificacion" precision="8" scale="8" not-null="true" />
         </property>
