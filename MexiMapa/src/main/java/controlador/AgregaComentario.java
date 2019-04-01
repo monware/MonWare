@@ -61,16 +61,14 @@ public class AgregaComentario {
         this.calificacion = calificacion;
     }
     
-    public void agregaCalificacion(){
+    public void agregaComentario(){
         Comentario c = new Comentario();
         ComentarioDAO cdao = new ComentarioDAO();
-        if(c != null){
-            c.setMarcador(marcador);
-            c.setUsuario(usuario);
-            c.setComentario(comentario);
-            c.setCalificacion(calificacion);
-            cdao.save(c);
-        }
+        c.setMarcador(marcador);
+        c.setUsuario(usuario);
+        c.setComentario(comentario);
+        c.setCalificacion(calificacion);
+        cdao.save(c);
         
     }
     
