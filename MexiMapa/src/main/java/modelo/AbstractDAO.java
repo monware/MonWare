@@ -117,6 +117,27 @@ public abstract class AbstractDAO<T> {
         return obj;
         
     }
+    
+    protected T find(Class clazz, String id){
+        T obj =null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            obj =(T)session.get(clazz, id);
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+        }finally{
+            session.close();
+        
+        }
+        return obj;
+        
+    }
     /**
      * 
      * @param clazz
