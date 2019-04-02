@@ -56,6 +56,15 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
      * @param id
      * @return 
      */
+    public Usuario find(String id){
+        return super.find(Usuario.class, id);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Usuario find(int id){
         return super.find(Usuario.class, id);
     }
