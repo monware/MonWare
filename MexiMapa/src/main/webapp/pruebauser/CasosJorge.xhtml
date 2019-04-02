@@ -7,62 +7,33 @@
       xmlns:p="http://primefaces.org/ui">
     <f:view>
         <h:head>
-            <title>iohdweiohfiewfhweifj</title>
+            <title>Controlador Jorge</title>
             <h:outputStylesheet name="CSS/estilos.css"/>
         </h:head>
         <h:body>
 
             <h:form>
-                <br><p:inputNumber id="id" value="#{eliminaUsuario.idusuario}" placeholder="oihddiwehdi"/></br>
-                <br><p:commandButton action="#{eliminaUsuario.eliminaUsuario()}" value="nuewhdoiewdj" ajax="false"/></br>
+                <br><p:inputNumber id="id" value="#{eliminaComentario.idComentario}" placeholder="Elimina Comentario"/></br>
+                <br><p:commandButton action="#{eliminaComentario.eliminaComentario()}" value="Elimina Comen" ajax="false"/></br>
             </h:form>
-            <h:form id="busqueda">
-                        <p:inputText type="search " value="#{buscarPorCorreo.correo}"/>
-                        <p:inputText type="search " value="#{buscarPorCorreo.contrasenia}"/>
-                        <p:commandButton action="#{buscarPorCorreo.buscaPorCorreo()}" value="BuscaPorNombre"/>
-                    </h:form>
+            <h:form>
+                <br><p:inputText id="nombre" value="#{eliminaTema.nombre}" placeholder="comentario"/> </br>
+                <br><p:commandButton action="#{eliminaTema.eliminaTema()}" value="Elimina Tema" ajax="false"/></br>
+            </h:form>
             
-
-            <header>
-                    <h1>Mapita</h1>
-                    <h:form id="busquedaC">
-                        <p:inputText type="search " value="#{buscaPorNombre.nombre}"/>
-                        <p:commandButton action="#{buscaPorNombre.buscaPorNombre()}" value="BuscaPorNombre"/>
-                    </h:form>
-                </header>
-                <main>
-                    <section>
-                        <div id="colores">
-                            <div id="rojo" class="color"></div>
-                            <div id="naranja" class="color"></div>
-                            <div id="amarillo" class="color"></div>
-                            <div id="verde" class="color"></div>
-                            <div id="azul" class="color"></div>
-                            <div id="anil" class="color"></div>
-                            <div id="violeta" class="color"></div>
-
-                        </div>
-                        <div id="mapa"></div>
-                    </section>
-                    <aside>
-                        <h2>
-                            Registrate
-                        </h2>
-                        <h:form>
-                            <p:inputText id="nombre" value="#{agregaUsuario.nombre}" placeholder="Nombre"/> <br/>
-                            <p:inputText id="correo" value="#{agregaUsuario.correo}" placeholder="Correo"/> <br/>
-                            <p:password id="constrasenia" value="#{agregaUsuario.contrasenia}" placeholder="Contrasenia"/> <br/>
-                            <p:calendar id="fechanacimiento" value="#{agregaUsuario.fechanacimiento}" placeholder="Fecha de nacimiento"/> <br/>
-                            <p:commandButton action="#{agregaUsuario.agregraUsuario()}" value="Registrame" ajax="false" />
-                        </h:form>
-                        <h:form>
-                            <p:inputText id="correo" value="#{controladorSesion.correo}" placeholder="Correo"/> <br/>
-                            <p:password id="constrasenia" value="#{controladorSesion.contrasenia}" placeholder="Contrasenia"/> <br/>
-                            <p:commandButton action="#{controladorSesion.login()}" value="Inicia Sesión" ajax="false" />
-                        </h:form>
-                    </aside>
-                    
-                </main>
+            <h:form>
+                <br><p:inputNumber id="id" value="#{editaComentario.idComentario}" placeholder="Edita Comentario"/></br>
+                <br><p:inputText id="nombre" value="#{editaComentario.comentario}" placeholder="comentario"/> </br>
+                <br><p:commandButton action="#{editaComentario.editaComentario()}" value="Edita comentario" ajax="false" /></br>
+            </h:form>
+            
+            <h:form>
+                <br><p:inputNumber id="id" value="#{calificaComentario.idComentario}" placeholder="idComentario"/></br>
+                <br><p:inputNumber id="nombre" value="#{calificaComentario.calificacion}" placeholder="Calificacion"/></br>
+                <br><p:commandButton action="#{calificaComentario.calificaComentario()}" value="Calificar" ajax="false"/></br>
+            </h:form>
+            
+            
                 <footer>
                     <h3>
                         Lorem ipsum dolor sit amet.

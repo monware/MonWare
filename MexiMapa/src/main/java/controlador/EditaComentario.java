@@ -13,7 +13,6 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class EditaComentario {
-    private String comentario;
     private int idComentario;
 
     public int getIdComentario() {
@@ -31,7 +30,10 @@ public class EditaComentario {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+    private String comentario;
     
+
+
     public void editaComentario(){
         ComentarioDAO cdao = new ComentarioDAO();
         Comentario u = cdao.find(idComentario);
