@@ -7,10 +7,12 @@ package controlador;
 
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import javax.faces.bean.ManagedBean;
 /**
  *
  * @author ALEX
  */
+@ManagedBean
 public class RegistrarUsuario {
     
     private String nombre;
