@@ -26,23 +26,23 @@
             <main>
                 <h:form  id="funcionAgregarInformador">
                         
-                        <br><p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/> </br>
-                        <br><p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
-                        <br><p:inputText  id="amaterno" value="#{registrarUsuario.amaterno}" required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
-                        <br><p:inputText  id="correo" value="#{registrarUsuario.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"/></br>
-                        <br><p:commandButton action="#{agregaUsuario.agregaUsuario()}" value="Crear Informador" ajax="false" /> </br>
+                        <p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/> 
+                        <p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> 
+                        <p:inputText  id="amaterno" value="#{registrarUsuario.amaterno}" required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> 
+                        <p:inputText  id="correo" value="#{registrarUsuario.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"/>
+                        <p:commandButton action="#{agregaUsuario.agregaUsuario()}" value="Crear Informador" ajax="false" /> 
                     </h:form>
                 
                 <h:form id="funcionEliminarInformador">
                     
-                    <br><p:inputText  id="nombre" value="#{registrarUsuario.correo}" required="true" placeholder="correo"  validatorMessage="Por favor ingresa el correo" requiredMessage="Por favor ingresa el nombre"/> </br>
-                <br><p:commandButton action="#{registrarUsuario.registrarUsuario()}" value="Eliminar Informador" ajax="false" /> </br>
+                    <p:inputText  id="nombre" value="#{registrarUsuario.correo}" required="true" placeholder="correo"  validatorMessage="Por favor ingresa el correo" requiredMessage="Por favor ingresa el nombre"/>
+                <p:commandButton action="#{registrarUsuario.registrarUsuario()}" value="Eliminar Informador" ajax="false" /> 
                 </h:form>
                 
                 <h:form id="funcionEliminarComentarista">
                     
-                    <br><p:inputText  id="nombre" value="#{eliminarComentarista.correo}" required="correo" placeholder="Nombre"  validatorMessage="Por favor ingresa el correo" requiredMessage="Por favor ingresa el nombre"/> </br>
-                <br><p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Eliminar Comentarista" ajax="false" /> </br>
+                    <p:inputText  id="nombre" value="#{eliminarComentarista.correo}" required="correo" placeholder="Nombre"  validatorMessage="Por favor ingresa el correo" requiredMessage="Por favor ingresa el nombre"/> 
+                <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Eliminar Comentarista" ajax="false" /> 
                 </h:form>
                 
                 
