@@ -13,20 +13,20 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class EliminaTema {
-    private int idTema;
-    
-    public int getIdTema() {
-        return idTema;
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIdmarcador(int idTema) {
-        this.idTema = idTema;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
-    public void eliminaMarcador(){
+    public void eliminaTema(){
         //Usuario u = new Usuario();
         TemaDAO udao = new TemaDAO();
-        Tema u = udao.find(idTema);
+        Tema u = udao.find(nombre);
         if(u!=null){
             udao.delete(u);
         } 

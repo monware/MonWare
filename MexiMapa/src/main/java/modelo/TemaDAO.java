@@ -20,7 +20,7 @@ public class TemaDAO extends AbstractDAO<Tema>{
     
     /**
      * 
-     * @param marcador 
+     * @param  
      */
     @Override
     public void save(Tema tema){
@@ -51,6 +51,10 @@ public class TemaDAO extends AbstractDAO<Tema>{
      * @return 
      */
     public Tema find(int id){
+        return super.find(Tema.class, id);
+    }
+    
+    public Tema find(String id){
         return super.find(Tema.class, id);
     }
     
