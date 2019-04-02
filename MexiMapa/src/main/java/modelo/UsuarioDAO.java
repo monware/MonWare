@@ -72,4 +72,49 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         return super.findAll(Usuario.class);
     
     }
+
+       public Usuario buscaPorCorreo(String email){
+        Usuario usuario = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "From Usuario  u where u.correo = :email";
+            Query query = session.createQuery(hql);
+            query.setParameter("email", email);
+            usuario = (Usuario)query.uniqueResult();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return usuario;
+    }
+     
+       public Usuario buscaPorCorreoContrasenia(String correo,String contrasenia){
+        Usuario u =null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx =null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Usuario where correo = :correo and contrasenia = :contrasenia";
+            Query query = session.createQuery(hql);
+            query.setParameter("correo", correo);
+            query.setParameter("contrasenia",contrasenia);
+            u = (Usuario)query.uniqueResult();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return u;
+    }
 }
