@@ -1,12 +1,53 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      
+    <f:view>
+        <h:head>
+            <title>Registrar</title>
+            <h:outputStylesheet name="css/estilos.css"/>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
+            </script>
+             
+        </h:head>
+        <h:body>
+            <header>
+                <h1>Meximapa</h1>
+                
+            </header>
+            
+            <center>
+                Registrar
+            </center>
+             
+            <main>
+                <h:form  id="formulario">
+                        
+                        <br><p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/> </br>
+                        <br><p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
+                        <br><p:inputText  id="amaterno" value="#{registrarUsuario.amaterno}" required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
+                        <br><p:inputText  id="correo" value="#{registrarUsuario.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        </p:inputText> </br>
+                        <br><p:password  id="contrasenia" value="#{agregaUsuario.contrasenia}" placeholder="Contrasenia"  required="true" validatorMessage="Introduce contrasenia"/> </br>
+                        <br><p:commandButton action="#{agregaUsuario.agregaUsuario()}" value="Registrame" ajax="false" /> </br>
+                    </h:form>
+            </main>      
+                
+            <footer>
+                <h3>
+                   MonWare 
+                </h3>
+            </footer>   
+            
+        </h:body>
+    </f:view>
 </html>
+
 

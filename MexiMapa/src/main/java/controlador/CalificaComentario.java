@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author jorge
  */
+@ManagedBean
 public class CalificaComentario {
     
 }

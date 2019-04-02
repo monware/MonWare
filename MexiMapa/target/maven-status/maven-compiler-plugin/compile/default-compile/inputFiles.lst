@@ -1,8 +1,19 @@
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/HibernateUtil.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/Marcador.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/Tema.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/Usuario.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/MarcadorDAO.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/UsuarioDAO.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/Comentario.java
-/home/jorge/Escritorio/Ing de Software/meximapa/MonWare/Proyecto/MexiMapa/src/main/java/modelo/AbstractDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\TemaDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\HibernateUtil.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\Tema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\AgregaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\CalificaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\Marcador.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\EditaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\AgregaTema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\ComentarioDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\Mensajes.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\RegistrarUsuario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\AbstractDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\MarcadorDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\UsuarioDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\EliminaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\ControladorSesion.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\Comentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\controlador\EliminaTema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare1\MexiMapa\src\main\java\modelo\Usuario.java

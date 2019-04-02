@@ -1,5 +1,5 @@
 package modelo;
-// Generated 26/03/2019 05:09:40 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2019 12:03:50 PM by Hibernate Tools 4.3.1
 
 
 
@@ -12,15 +12,24 @@ public class Comentario  implements java.io.Serializable {
      private int idComentario;
      private Marcador marcador;
      private Usuario usuario;
+     private String comentario;
      private float calificacion;
 
     public Comentario() {
     }
 
+	
     public Comentario(int idComentario, Marcador marcador, Usuario usuario, float calificacion) {
+        this.idComentario = idComentario;
+        this.marcador = marcador;
+        this.usuario = usuario;
+        this.calificacion = calificacion;
+    }
+    public Comentario(int idComentario, Marcador marcador, Usuario usuario, String comentario, float calificacion) {
        this.idComentario = idComentario;
        this.marcador = marcador;
        this.usuario = usuario;
+       this.comentario = comentario;
        this.calificacion = calificacion;
     }
    
@@ -44,6 +53,13 @@ public class Comentario  implements java.io.Serializable {
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    public String getComentario() {
+        return this.comentario;
+    }
+    
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     public float getCalificacion() {
         return this.calificacion;
