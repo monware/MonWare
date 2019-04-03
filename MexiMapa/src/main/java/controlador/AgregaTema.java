@@ -7,6 +7,7 @@ package controlador;
 import modelo.Tema;
 import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
+import modelo.Usuario;
 
 /**
  *
@@ -15,6 +16,16 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class AgregaTema {
     private String nombre;
+  
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public String getNombre() {
         return nombre;
@@ -27,8 +38,12 @@ public class AgregaTema {
     
     public void agregraTema(){
         Tema u = new Tema();
-        u.setNombre(nombre);
+
         TemaDAO udao = new TemaDAO();
-        udao.save(u);
+        u.setNombre(nombre);
+        u.setUsuario(usuario);
+        if(udao.find(nombre) == null){
+            udao.save(u);
+        }
     }
 }

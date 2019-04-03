@@ -5,22 +5,31 @@
  */
 package controlador;
 
+
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
- * @author jonathan
+ * @author jorge
  */
 @ManagedBean
 @SessionScoped
-public class ControladorSesion {
-
+//@RequestScoped
+public class BuscarPorCorreo {
     private String correo;
     private String contrasenia;
+
+    private Usuario resultado;
+
+    public Usuario getResultado() {
+        return resultado;
+    }
+
 
     public String getCorreo() {
         return correo;
@@ -37,22 +46,14 @@ public class ControladorSesion {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-
-    public String login(){
-        UsuarioDAO udb = new UsuarioDAO();
-        Usuario user = udb.buscaPorCorreoContrasenia(correo, contrasenia);
-        FacesContext context = FacesContext.getCurrentInstance();
-        if(user !=null){
-            context.getExternalContext().getSessionMap().put("user", user);
-            return "/user/perfil?faces-redirect=true";
-        }
-
-        return "";
-    }
     
-    public String logout(){
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/index?faces-redirect=true";
-    }
 
+
+    public Usuario buscaPorCorreo(){
+        if(correo.equals("") && contrasenia.equals(""))
+            return null;
+        UsuarioDAO ubd = new UsuarioDAO();
+        resultado =  ubd.buscaPorCorreoContrasenia(correo,contrasenia);
+        return resultado;
+    }
 }

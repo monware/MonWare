@@ -4,31 +4,29 @@
  * and open the template in the editor.
  */
 package controlador;
-import modelo.Tema;
-import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
  */
 @ManagedBean
-public class EliminaTema {
-    private String nombre;
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+public class EliminarInformador {
+    private String correo;
     
-    public void eliminaTema(){
+    public String getIdInformador() {
+        return correo;
+    }
+
+    
+    public void eliminaComentario(){
         //Usuario u = new Usuario();
-        TemaDAO udao = new TemaDAO();
-        Tema u = udao.find(nombre);
+        UsuarioDAO udb = new UsuarioDAO();
+        Usuario u = udb.find(correo);
         if(u!=null){
-            udao.delete(u);
+            if(u.getRol() == "Informador")
+            udb.delete(u);
         } 
     }
 }

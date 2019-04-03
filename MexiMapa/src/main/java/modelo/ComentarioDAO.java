@@ -27,7 +27,7 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
     
     /**
      * 
-     * @param usuario 
+     * @param comentario
      */
     @Override
     public  void update(Comentario comentario){
@@ -36,7 +36,7 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
     
     /**
      * 
-     * @param usuario 
+     * @param comentario
      */
     @Override
     public void delete(Comentario comentario){
@@ -60,6 +60,5 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
         return super.findAll(Comentario.class);
     
     }
-
 
 }

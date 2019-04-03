@@ -13,5 +13,32 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class CalificaComentario {
+    private int idComentario;
+    private float calificacion;
+
+    public int getIdComentario() {
+        return idComentario;
+    }
+
+    public float getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(float calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public void setIdComentario(int idComentario) {
+        this.idComentario = idComentario;
+    }
     
+    public void calificaComentario(){
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario u = cdao.find(idComentario);
+        if(u != null){
+            u.setCalificacion(calificacion);
+            cdao.update(u);
+        }
+        
+    }
 }

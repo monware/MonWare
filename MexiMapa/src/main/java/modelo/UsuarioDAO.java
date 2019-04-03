@@ -55,12 +55,22 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
      * @param id
      * @return 
      */
+    public Usuario find(String id){
+        return super.find(Usuario.class, id);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Usuario find(int id){
         return super.find(Usuario.class, id);
     }
     
     public Usuario find(String id){
-    return super.find(Usuario.class, id);
+
+        return super.find(Usuario.class, id);
     }
     
     /**
@@ -71,17 +81,19 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         return super.findAll(Usuario.class);
     
     }
-    @SuppressWarnings("CallToPrintStackTrace")
-    public Usuario buscaPorCorreo(String correo){
-        Usuario u =null;
+
+
+       public Usuario buscaPorCorreo(String email){
+        Usuario usuario = null;
         Session session = this.sessionFactory.openSession();
-        Transaction tx =null;
+        Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "from Usuario where correo = :correo";
+            String hql = "From Usuario  u where u.correo = :email";
             Query query = session.createQuery(hql);
-            query.setParameter("correo", correo);
-            u = (Usuario)query.uniqueResult();
+            query.setParameter("email", email);
+            usuario = (Usuario)query.uniqueResult();
+
             tx.commit();
         }catch(HibernateException e){
             if(tx!=null){
@@ -91,10 +103,11 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         }finally{
             session.close();
         }
-        return u;
+
+        return usuario;
     }
-    @SuppressWarnings("CallToPrintStackTrace")
-    public Usuario buscaPorCorreoContrasenia(String correo,String contrasenia){
+     
+       public Usuario buscaPorCorreoContrasenia(String correo,String contrasenia){
         Usuario u =null;
         Session session = this.sessionFactory.openSession();
         Transaction tx =null;

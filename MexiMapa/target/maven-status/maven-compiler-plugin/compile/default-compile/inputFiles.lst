@@ -1,3 +1,4 @@
+
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\TemaDAO.java
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\CalificaComentario.java
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Usuario.java
@@ -18,3 +19,22 @@ C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\El
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\AbstractDAO.java
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Tema.java
 C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\MarcadorDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregarInformador.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminarInformador.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaComentario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Tema.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/PaginaPrincipal.java
+/home/yisus/Documentos/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
