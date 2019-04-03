@@ -2,7 +2,8 @@ controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
 modelo/TemaDAO.class
-controlador/EliminaTema.class
+controlador/Elimina
+
 controlador/PaginaPrincipal.class
 modelo/Tema.class
 modelo/Comentario.class
