@@ -7,12 +7,14 @@ package controlador;
 
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author ALEX
  */
-public class EliminarComenatarista {
+@ManagedBean
+public class EliminarComentarista {
     
     private String correo;
 
@@ -28,6 +30,7 @@ public class EliminarComenatarista {
     
         UsuarioDAO udao = new UsuarioDAO();
         Usuario u = udao.find(correo);
+        
         if(u!=null){
         udao.delete(u);
         }

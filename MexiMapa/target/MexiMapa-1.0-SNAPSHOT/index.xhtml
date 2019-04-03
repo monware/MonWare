@@ -1,53 +1,105 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-      
-    <f:view>
-        <h:head>
-            <title>Registrar</title>
-            <h:outputStylesheet name="css/estilos.css"/>
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
-            </script>
-             
-        </h:head>
-        <h:body>
-            <header>
-                <h1>Meximapa</h1>
-                
-            </header>
-            
-            <center>
-                Registrar
-            </center>
-             
-            <main>
-                <h:form  id="formulario">
-                        
-                        <br><p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/> </br>
-                        <br><p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
-                        <br><p:inputText  id="amaterno" value="#{registrarUsuario.amaterno}" required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/> </br>
-                        <br><p:inputText  id="correo" value="#{registrarUsuario.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
-                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                        </p:inputText> </br>
-                        <br><p:password  id="contrasenia" value="#{agregaUsuario.contrasenia}" placeholder="Contrasenia"  required="true" validatorMessage="Introduce contrasenia"/> </br>
-                        <br><p:commandButton action="#{agregaUsuario.agregaUsuario()}" value="Registrame" ajax="false" /> </br>
-                    </h:form>
-            </main>      
-                
-            <footer>
-                <h3>
-                   MonWare 
-                </h3>
-            </footer>   
-            
-        </h:body>
-    </f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+	
+	<title>Cabecera fija</title>
+ 
+        <link rel="stylesheet" href="resources/css/style.css">
+            </link>
+</head>
+ 
+<body>
+	
+	<header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+		</a> 
+ 
+		<nav>
+			<ul>
+				<li><a href="#">Principal</a></li>
+				<li><a href="#">Registrarse</a></li>
+				<li><a href="#">Iniciar Sesion</a></li>
+			</ul>
+		</nav>
+ 
+	</header>
+ 
+	
+	<section id="main-content">
+	
+		<article>
+			<header>
+				<h1>Esta es una página con cabecera fija</h1>
+			</header>
+			
+			<img src="http://placekitten.com/800/250" alt="Gatito" />
+			
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+ 
+			</div>
+			
+		</article> 
+	
+	</section> 
+ 
+	<h:form id="form">
+    <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+        <p:messages id="messages" />
+        <h:panelGrid columns="3" cellpadding="5">
+            <p:outputLabel for="text1" value="Text 1:" />
+            <p:inputText id="text1" value="#{resetInputView.text1}" required="true" label="Firstname">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="text1" />
+ 
+            <p:outputLabel for="text2" value="Text 2:" />
+            <p:inputText id="text2" value="#{resetInputView.text2}" required="true" label="Surname"/>
+            <p:message for="text2" />
+        </h:panelGrid>
+    </p:panel>
+ 
+    <p:toolbar>
+        <f:facet name="left">
+            <p:commandButton value="Submit" update="panel" action="#{resetInputView.save}" style="margin-right:20px;" />
+        </f:facet>
+         
+        <f:facet name="right">
+            <p:commandButton value="Reset Fail" update="panel" process="@this" action="#{resetInputView.resetFail}" style="margin-right:20px;" />
+ 
+            <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
+                <p:resetInput target="panel" />
+            </p:commandButton>
+ 
+            <p:commandButton value="Reset Code" update="panel" process="@this" action="#{resetInputView.reset}"  style="margin-right:20px;" />
+ 
+            <p:commandButton value="Reset Non-Ajax" action="#{resetInputView.reset}" immediate="true" ajax="false" style="margin-right:20px;">
+                <p:resetInput target="panel" />
+            </p:commandButton>
+ 
+            <h:commandButton value="Reset p:ajax" style="margin-right:20px;" >
+                <p:ajax update="panel" resetValues="true" />
+            </h:commandButton>
+        </f:facet>
+    </p:toolbar>
+</h:form>
+	
+	<footer id="main-footer">
+		<p> 2019 MonWare</p>
+	</footer> 
+  </body>
 </html>
 
 
