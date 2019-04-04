@@ -53,6 +53,7 @@ public class TemaDAO extends AbstractDAO<Tema>{
     public Tema find(int id){
         return super.find(Tema.class, id);
     }
+
     
     public Tema find(String id){
         return super.find(Tema.class, id);

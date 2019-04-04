@@ -1,3 +1,4 @@
+
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
@@ -24,3 +25,47 @@
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
 /home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaCuenta.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/BuscarPorCorreo.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSession.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Tema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaMarcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
+
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\TemaDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\CalificaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Usuario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\RegistrarUsuario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Marcador.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\EditaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\AgregaTema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\UsuarioDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\EliminaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\ComentarioDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\HibernateUtil.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Mensajes.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\EliminarComentarista.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Comentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\ControladorSesion.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\AgregaComentario.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\EliminaTema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\AbstractDAO.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\Tema.java
+C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\modelo\MarcadorDAO.java
