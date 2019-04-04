@@ -4,6 +4,8 @@ modelo/Usuario.class
 modelo/TemaDAO.class
 is/lab/mapita/controlador/FilterSession.class
 controlador/EliminaTema.class
+
+controlador/EliminaMarcador.class
 controlador/Elimina
 controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
