@@ -9,12 +9,17 @@ modelo/Tema.class
 modelo/Comentario.class
 controlador/EliminaComentario.class
 modelo/Marcador.class
+
 modelo/HibernateUtil.class
 modelo/UsuarioDAO.class
 controlador/AgregarInformador.class
+
 controlador/AgregaComentario.class
+controlador/EditaDatos.class
 modelo/MarcadorDAO.class
 modelo/AbstractDAO.class
 controlador/EditaComentario.class
 modelo/ComentarioDAO.class
+
 controlador/AgregaTema.class
+controlador/EliminaCuenta.class

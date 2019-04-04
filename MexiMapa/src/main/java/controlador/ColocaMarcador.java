@@ -10,7 +10,9 @@
 package controlador;
 import modelo.Marcador;
 import modelo.MarcadorDAO;
+import modelo.UsuarioDAO;
 import modelo.Tema;
+import modelo.TemaDAO;
 import modelo.Usuario;
 import javax.faces.bean.ManagedBean;
 
@@ -74,8 +76,12 @@ public class ColocaMarcador{
     
     public void colocaMarcador(){
         Marcador m = new Marcador();
-	m.setTema(tema);
+        UsuarioDAO u= new UsuarioDAO();                
+        TemaDAO t = new TemaDAO();        
+        u.find("Algo@al.com");
+	t.find("Chilaquiles");        
         m.setUsuario(usuario);
+        m.setTema(tema);
 	m.setLatitud(latitud);
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
