@@ -69,10 +69,6 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         return super.find(Usuario.class, id);
     }
     
-    public Usuario find(String id){
-        return super.find(Usuario.class, id);
-    }
-    
     /**
      * 
      * @return 
