@@ -5,7 +5,6 @@
  */
 package modelo;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -56,11 +55,21 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
      * @param id
      * @return 
      */
+    public Usuario find(String id){
+        return super.find(Usuario.class, id);
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Usuario find(int id){
         return super.find(Usuario.class, id);
     }
     
     public Usuario find(String id){
+
         return super.find(Usuario.class, id);
     }
     
@@ -73,6 +82,7 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
     
     }
 
+
        public Usuario buscaPorCorreo(String email){
         Usuario usuario = null;
         Session session = this.sessionFactory.openSession();
@@ -83,6 +93,7 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
             Query query = session.createQuery(hql);
             query.setParameter("email", email);
             usuario = (Usuario)query.uniqueResult();
+
             tx.commit();
         }catch(HibernateException e){
             if(tx!=null){
@@ -92,6 +103,7 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         }finally{
             session.close();
         }
+
         return usuario;
     }
      

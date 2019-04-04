@@ -16,6 +16,7 @@ import modelo.Usuario;
 @ManagedBean
 public class AgregaTema {
     private String nombre;
+  
     private Usuario usuario;
 
     public Usuario getUsuario() {
@@ -37,6 +38,7 @@ public class AgregaTema {
     
     public void agregraTema(){
         Tema u = new Tema();
+
         TemaDAO udao = new TemaDAO();
         u.setNombre(nombre);
         u.setUsuario(usuario);

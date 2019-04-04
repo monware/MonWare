@@ -4,4 +4,14 @@
  * and open the template in the editor.
  */
 
-
+$(document).ready(function(){
+   var colores = $('#colores').children();
+   colores.each(function(){
+       $(this).mouseover(function(){
+           var color = $(this).css("background-color");
+           console.log(color);
+           $('#main').css({'background':color});
+       });
+   });
+//   initMap();
+});
