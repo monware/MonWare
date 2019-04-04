@@ -34,7 +34,7 @@ public class EliminarComentarista {
     
         UsuarioDAO udao = new UsuarioDAO();
         Usuario u = udao.find(correo);
-        Set comentarios = u.getComentarios();
+        Set comentarios = new HashSet(u.getComentarios());
         comentarios.clear();
 
         if(u!=null){
