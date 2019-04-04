@@ -15,17 +15,22 @@ import modelo.UsuarioDAO;
 public class EliminarInformador {
     private String correo;
     
-    public String getIdInformador() {
+    public String getCorreo() {
         return correo;
     }
 
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
     
-    public void eliminaComentario(){
+
+    
+    public void eliminaInformador(){
         //Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
         Usuario u = udb.find(correo);
         if(u!=null){
-            if(u.getRol() == "Informador")
+            if(u.getRol() == "INFORMADOR")
             udb.delete(u);
         } 
     }

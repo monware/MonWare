@@ -141,3 +141,19 @@ margin-top: 40px;
 
 
 }
+/*
+*AgregarInformadorIH
+*/
+ #cuerpo-AgregarInformador{
+    background-color:chartreuse;
+    color:darkgoldenrod;
+}
+
+#formulario-AgregarInformador{
+    top:40%;
+    left:50%;
+}
+
+#submitButton{
+    left:150;
+}

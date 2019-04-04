@@ -23,32 +23,106 @@ import java.math.BigInteger;
 @ManagedBean
 @RequestScoped
 public class AgregarInformador {
-    private String correo;
+ private String correo;
     private String nombre;
-    private String apaterno;  
+    private String apaterno;
     private String amaterno;
     private String contrasenia;
     private String rol;
+    private String apellido;
+    private Set temas = new HashSet(0);
+    private Set marcadors = new HashSet(0);
+    private Set comentarios = new HashSet(0);
+
     
-     private Set temas = new HashSet(0);
-     private Set marcadors = new HashSet(0);
-     private Set comentarios = new HashSet(0);
+    public String getApellido() {
+        return apellido;
+    }
+    public String getCorreo() {
+        return correo;
+    }
 
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    public AgregarInformador(String correo, String nombre, String apaterno, String amaterno, String contrasenia, String rol, Set temas, Set marcadors, Set comentarios) {
-       this.correo = correo;
-       this.nombre = nombre;
-       this.apaterno = apaterno;
-       this.amaterno = amaterno;
-       this.contrasenia = contrasenia;
-       this.rol = rol;
-       this.temas = temas;
-       this.marcadors = marcadors;
-       this.comentarios = comentarios;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
     
-    public void agregarInformador(String correo, String nombre, String apaterno, String amaterno){
+    public void setApaterno(String apaterno) {
+        this.apaterno = apaterno;
+    }
+
+    public void setAmaterno(String amaterno) {
+        this.amaterno = amaterno;
+    }
+
+    public String getApaterno() {
+        return apaterno;
+    }
+
+    public String getAmaterno() {
+        return amaterno;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Set getTemas() {
+        return temas;
+    }
+
+    public void setTemas(Set temas) {
+        this.temas = temas;
+    }
+
+    public Set getMarcadors() {
+        return marcadors;
+    }
+
+    public void setMarcadors(Set marcadors) {
+        this.marcadors = marcadors;
+    }
+
+    public Set getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(Set comentarios) {
+        this.comentarios = comentarios;
+    }
+   
+    
+    public void separaApellido(String apellido){
+       String[] apellidos = apellido.split(" ");
+       setApaterno(apellidos[0]);
+       setAmaterno(apellidos[1]);
+    }
+    
+    public void agregarInformador(){
+        separaApellido(apellido);
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);

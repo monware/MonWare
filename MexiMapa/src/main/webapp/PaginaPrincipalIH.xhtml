@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
+<h:head>
 	
 	<title>Pagina Principal</title>
  
@@ -34,7 +34,7 @@ and open the template in the editor.
 	</header><!-- / #main-header -->
  
 	
-</head>
+</h:head>
  
 <body>
 	
@@ -46,22 +46,22 @@ and open the template in the editor.
 </section> <!-- / #main-content -->
 
 <section id = "formulario">
-    <h:form>
+<h:form>
     <p:growl id="msgs" showDetail="true" />
  
     <p:panel header="Select a Location" style="margin-bottom:10px;">
         <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="tema" value="Tema: " />
-            <p:selectOneMenu id="tema" value="#{dropdownView.country}" style="width:150px">
-                <p:ajax listener="#{dropdownView.onCountryChange}" update="ciudad" />
-                <f:selectItem  itemLabel="Tema" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.countries}" />
+            <p:outputLabel for="tema" value="Tema" />
+            <p:selectOneMenu id="tema" value="#{paginaPrincipal.tema}" style="width:150px">
+                <p:ajax listener="#{paginaPrincipal.allTemas}" update="tema" />
+                <f:selectItem itemLabel="Selecciona Tema" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{paginaPrincipal.tema}" />
             </p:selectOneMenu>
  
-            <p:outputLabel for="ciudad" value="Ciudad: " />
-            <p:selectOneMenu id="ciudad" value="#{dropdownView.city}" style="width:150px">
-                <f:selectItem itemLabel="Ciudad" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.cities}" />
+            <p:outputLabel for="estado" value="Estado: " />
+            <p:selectOneMenu id="city" value="#{paginaPrincipal.estado}" style="width:150px">
+                <f:selectItem itemLabel="Select Estado" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{paginaPrincipal.estado}" />
             </p:selectOneMenu>
         </h:panelGrid>
  
@@ -69,7 +69,7 @@ and open the template in the editor.
  
         <p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
     </p:panel>
-</h:form>
+</h:form> 
 </section>>       
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
