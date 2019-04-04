@@ -5,22 +5,65 @@
  */
 package controlador;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import modelo.Marcador;
 import modelo.Tema;
+import modelo.TemaDAO;
 
 /**
  *
  * @author yisus
  */
+
+@ManagedBean
+@RequestScoped
 public class PaginaPrincipal {
+     Tema tema;
+     String estado;
+     Set<Marcador> marcadores;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+     
+     
+     public Set<Marcador> getMarcadores(){
+         return tema.getMarcadors();
+     }
+     
+    public List<Tema> getAllTemas(){
+        TemaDAO tdb = new TemaDAO();
+        return tdb.findAll();
+        
+    }
+
+     public void onCountryChange() {
+        if(tema !=null && !tema.equals(""))
+            marcadores = tema.getMarcadors();
+        else
+            marcadores = new HashSet(0);
+    }
+     
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
 
     public Tema getTema() {
         return tema;
     }
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
+    public void setMarcadores(Set<Marcador> marcadores) {
+        this.marcadores = marcadores;
     }
-    Tema tema;
+    
     
     
 }

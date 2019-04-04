@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package controlador;
-import javax.faces.bean.ManagedBean;
+
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import javax.faces.bean.ManagedBean;
+
 /**
  *
- * @author jorge
+ * @author ALEX
  */
 @ManagedBean
-public class EliminarInformador {
-    private String correo;
+public class EliminarComentarista {
     
+    private String correo;
+
     public String getCorreo() {
         return correo;
     }
@@ -23,15 +26,13 @@ public class EliminarInformador {
         this.correo = correo;
     }
     
-
+    public void eliminaComentarista(){
     
-    public void eliminaInformador(){
-        //Usuario u = new Usuario();
-        UsuarioDAO udb = new UsuarioDAO();
-        Usuario u = udb.find(correo);
+        UsuarioDAO udao = new UsuarioDAO();
+        Usuario u = udao.find(correo);
+        
         if(u!=null){
-            if(u.getRol() == "INFORMADOR")
-            udb.delete(u);
-        } 
+        udao.delete(u);
+        }
     }
 }

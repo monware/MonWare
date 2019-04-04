@@ -12,8 +12,10 @@ and open the template in the editor.
 	margin: 0;
 	padding: 0;
 	font-family: Helvetica, Arial, sans-serif;
+
 	color: #666;
 	background: #f2f2f2;
+
         background-color: whitesmoke;
 	font-size: 1em;
 	line-height: 1.5em;
@@ -140,4 +142,20 @@ margin-top: 40px;
 	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
 
 
+}
+/*
+*AgregarInformadorIH
+*/
+ #cuerpo-AgregarInformador{
+    background-color:chartreuse;
+    color:darkgoldenrod;
+}
+
+#formulario-AgregarInformador{
+    top:40%;
+    left:50%;
+}
+
+#submitButton{
+    left:150;
 }
