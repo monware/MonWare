@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view>
+        <h:head>
+          <title>Eliminar marcadores</title>
+ <h:outputStylesheet name="css/estilos.css"/>	  
+        </h:head>
+        <h:body>
+          <header>
+            <h1>
+              Eliminar marcador
+            </h1>
+              </header>
+            <h2>
+              ¡Hola!
+              Estás aquí para eliminar el marcador. Si crees que no es útil en MexiMapa o ya no existe da click en Aceptar, en otro caso da click en
+              Cancelar.            
+              Ten en cuenta que al eliminarlo, se eliminarán todos los datos relacionados a él(comentarios y calificaciones).
+            </h2>            
+            <h:form>
+              <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Aceptar" ajax="false" />
+              <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Cancelar" ajax="false" />
+            </h:form>
+          
+        </h:body>	    
+    </f:view>
+</html>
+
+

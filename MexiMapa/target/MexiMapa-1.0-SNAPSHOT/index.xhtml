@@ -4,72 +4,21 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <f:view>
-        <h:head>
-            <title>Inicio</title>
-            <h:outputStylesheet name="CSS/estilos.css"/>
-        </h:head>
-        <h:body>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<head>
+  <title>MexiMapa</title>
+<body>
 
-            <h:form>
-                <br><p:inputNumber id="id" value="#{eliminaUsuario.idusuario}" placeholder="Usuario a eliminar"/></br>
-                <br><p:commandButton action="#{eliminaUsuario.eliminaUsuario()}" value="Eliminalo" ajax="false"/></br>
-            </h:form>
-            <h:form id="busqueda">
-                        <p:inputText type="search " value="#{buscarPorCorreo.correo}"/>
-                        <p:inputText type="search " value="#{buscarPorCorreo.contrasenia}"/>
-                        <p:commandButton action="#{buscarPorCorreo.buscaPorCorreo()}" value="BuscaPorNombre"/>
-                    </h:form>
-            
-
-            <header>
-                    <h1>Mapita</h1>
-                    <h:form id="busquedaC">
-                        <p:inputText type="search " value="#{buscaPorNombre.nombre}"/>
-                        <p:commandButton action="#{buscaPorNombre.buscaPorNombre()}" value="BuscaPorNombre"/>
-                    </h:form>
-                </header>
-                <main>
-                    <section>
-                        <div id="colores">
-                            <div id="rojo" class="color"></div>
-                            <div id="naranja" class="color"></div>
-                            <div id="amarillo" class="color"></div>
-                            <div id="verde" class="color"></div>
-                            <div id="azul" class="color"></div>
-                            <div id="anil" class="color"></div>
-                            <div id="violeta" class="color"></div>
-
-                        </div>
-                        <div id="mapa"></div>
-                    </section>
-                    <aside>
-                        <h2>
-                            Registrate
-                        </h2>
-                        <h:form>
-                            <p:inputText id="nombre" value="#{agregaUsuario.nombre}" placeholder="Nombre"/> <br/>
-                            <p:inputText id="correo" value="#{agregaUsuario.correo}" placeholder="Correo"/> <br/>
-                            <p:password id="constrasenia" value="#{agregaUsuario.contrasenia}" placeholder="Contrasenia"/> <br/>
-                            <p:calendar id="fechanacimiento" value="#{agregaUsuario.fechanacimiento}" placeholder="Fecha de nacimiento"/> <br/>
-                            <p:commandButton action="#{agregaUsuario.agregraUsuario()}" value="Registrame" ajax="false" />
-                        </h:form>
-                        <h:form>
-                            <p:inputText id="correo" value="#{controladorSesion.correo}" placeholder="Correo"/> <br/>
-                            <p:password id="constrasenia" value="#{controladorSesion.contrasenia}" placeholder="Contrasenia"/> <br/>
-                            <p:commandButton action="#{controladorSesion.login()}" value="Inicia Sesión" ajax="false" />
-                        </h:form>
-                    </aside>
-                    
-                </main>
-                <footer>
-                    <h3>
-                        Lorem ipsum dolor sit amet.
-                    </h3>
-                </footer>
-        </h:body>
-        </f:view>
+<!-- Menú de navegación del sitio -->
+<ul class="navbar">
+    <li><a href="eliminacuenta.xhtml">Eliminar Cuenta</a></li>
+  <li><a href="editardatos.xhtml">Editar Datos</a></li>
+  <li><a href="iniciarsesion.xhtml">Iniciar sesión</a></li>
+  <li><a href="cerrarsesion.xhtml">Cerrar sesión</a></li>
+  <li><a href="colocarmarcador.xhtml">Colocar marcador</a></li>
+  <li><a href="eliminamarcador.xhtml">Eliminar marcador</a> </li>
+</ul>
+</body>
+  </head>
 </html>
-
-

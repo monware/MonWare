@@ -8,3 +8,41 @@ and open the template in the editor.
     Author     : jorge
 */
 
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    height: 15%;
+    background-color:  #d5dee8;
+       
+}
+
+header>h1{  
+    padding: 10px;     
+    p{
+    font-family: serif;
+    font-size: 16px;
+    }
+    
+}
+
+h2{
+    width: 50%;
+    height: 50%;    
+    padding: 20px;
+    border: 5px solid white;            
+    background-color: #c7d0d8;
+    text-align:center;
+}
+
+h2{
+    float: left;
+}
