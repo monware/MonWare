@@ -13,6 +13,7 @@ public class Marcador  implements java.io.Serializable {
 
      private int idMarcador;
      private Tema tema;
+     private String correo;
      private Usuario usuario;
      private Double latitud;
      private Double longitud;
@@ -59,8 +60,9 @@ public class Marcador  implements java.io.Serializable {
     }
     
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario;  
     }
+
     public Double getLatitud() {
         return this.latitud;
     }
@@ -95,6 +97,10 @@ public class Marcador  implements java.io.Serializable {
     
     public void setComentarios(Set comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public void setUsuario(String a) {
+        this.correo=a;
     }
 
 
