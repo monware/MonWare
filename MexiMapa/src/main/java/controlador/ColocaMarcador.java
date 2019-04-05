@@ -26,6 +26,7 @@ public class ColocaMarcador{
     private int idMarcador;
     private Tema tema;
     private Usuario usuario;
+    private String correo;
     private Double latitud;
     private Double longitud;
     private String descripcion;
@@ -38,8 +39,8 @@ public class ColocaMarcador{
 	this.tema = tema;
     }
     
-    public void setUsuario(Usuario usuario){
-	this.usuario = usuario;
+    public void setUsuario(String correo){
+	this.correo = correo;
     }
     
     public void setLatitud(Double latitud){
@@ -76,12 +77,15 @@ public class ColocaMarcador{
     
     public void colocaMarcador(){
         Marcador m = new Marcador();
-        UsuarioDAO u= new UsuarioDAO();                
+        Usuario u= new Usuario();  
+        UsuarioDAO udao = new UsuarioDAO();
         TemaDAO t = new TemaDAO();        
-        u.find("Algo@al.com");
-	t.find("Chilaquiles");        
-        m.setUsuario(usuario);
-        m.setTema(tema);
+        //u.getCorreo();
+        //Usuario prueba= udao.find("Algo@al.com");
+        //String a = prueba.getCorreo();
+	//t.find("Chilaquiles");        
+        m.setUsuario("Algo@al.com");
+        m.setTema("Chilaquiles");
 	m.setLatitud(latitud);
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);

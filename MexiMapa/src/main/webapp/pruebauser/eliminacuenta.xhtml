@@ -8,24 +8,24 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view>
         <h:head>
-          <title>Eliminar marcadores</title>
+          <title>Eliminar cuenta</title>
  <h:outputStylesheet name="css/estilos.css"/>	  
         </h:head>
         <h:body>
           <header>
             <h1>
-              Eliminar marcador
+              Elimina tu cuenta
             </h1>
               </header>
             <h2>
               ¡Hola!
-              Estás aquí para eliminar el marcador. Si crees que no es útil en MexiMapa o ya no existe da click en Aceptar, en otro caso da click en
+              Estás aquí para eliminar tu cuenta. Si crees que no volverás a usar tu cuenta en MexiMapa da click en Aceptar, en otro caso da click en
               Cancelar.            
-              Ten en cuenta que al eliminarlo, se eliminarán todos los datos relacionados a él(comentarios y calificaciones).
+              Ten en cuenta que al eliminar tu cuenta, se eliminará todos los datos relacionados a ella (comentarios y calificaciones).
             </h2>            
             <h:form>
-              <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Aceptar" ajax="false" />
-              <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Cancelar" ajax="false" />
+              <p:commandButton action="#{eliminaCuenta.eliminaCuenta()}" value="Aceptar" ajax="false" />
+              <p:commandButton action="#{eliminaCuenta.eliminaCuenta()}" value="Cancelar" ajax="false" />
             </h:form>
           
         </h:body>	    

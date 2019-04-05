@@ -8,21 +8,21 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view>
         <h:head>
-          <title>Editar datos</title>
+          <title>Coloca Marcador</title>
    
         </h:head>
  <h:body>
           <header>
             <h1>
-             Editar datos
+             Añade un marcador
             </h1>
               </header>        
                         <h:form>
-                            <p:inputText id="nombre" value="#{editaDatos.nombre}" placeholder="Nombre(s)"/> <br/>
-                            <p:inputText id="apellidos" value="#{editaDatos.apellidos}" placeholder="Apellidos"/> <br/>
-                            <p:inputText id="correo" value="#{editaDatos.correo}" placeholder="Correo electrónico"/> <br/>
-                            <p:inputText id="contrasenia" value="#{editaDatos.contrasenia}" placeholder="Contraseña nueva"/> <br/>                           
-                            <p:commandButton action="#{editaDatos.editaDatos()}" value="Aceptar" ajax="false" />
+                           <p:inputText id="descripcion" value="#{colocaMarcador.descripcion}" placeholder="Descripcion"/> <br/>                           
+                            <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud"/> <br/>
+                            <p:inputText id="longitud" value="#{colocaMarcador.longitud}" placeholder="Longitud"/> <br/>
+                            <p:inputText id="datos" value="#{colocaMarcador.datos}" placeholder="Datos"/> <br/>
+                            <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
                         </h:form>
           
         </h:body>	    
