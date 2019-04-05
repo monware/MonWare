@@ -30,7 +30,7 @@ public class EditaDatos {
     }
     public void editaDatos(Usuario u){
     UsuarioDAO udb = new UsuarioDAO();
-    u=udb.buscaPorCorreo(u.getCorreo());
+    u=udb.buscaPorCorreo("Algo@alg.com");
     if(u!=null){
     u.setNombre(nombre);
     u.setCorreo(correo);

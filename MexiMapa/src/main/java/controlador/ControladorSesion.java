@@ -44,7 +44,7 @@ public class ControladorSesion {
         FacesContext context = FacesContext.getCurrentInstance();
         if(user !=null){
             context.getExternalContext().getSessionMap().put("user", user);
-            return "/user/perfil?faces-redirect=true";
+            return "/pruebauser/colocarmarcador?faces-redirect=true";
         }
 
         return "";
