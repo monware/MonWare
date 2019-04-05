@@ -38,7 +38,8 @@ public class EliminarComentarista {
         Set comentarios = new HashSet(u.getComentarios());
         Iterator iterador = comentarios.next();
         while(comentarios.hasNext()){
-            //llamar e elimina comentario
+            //llamar a elimina comentario
+           } 
 
         if(u!=null){
         udao.delete(u);
