@@ -75,17 +75,20 @@ public class ColocaMarcador{
         return latitud;
     }
     
+    public String getDatos(){
+        return datos;
+    }
+    
     public void colocaMarcador(){
-        Marcador m = new Marcador();
-        Usuario u= new Usuario();  
+        Marcador m = new Marcador(); 
         UsuarioDAO udao = new UsuarioDAO();
         TemaDAO t = new TemaDAO();        
         //u.getCorreo();
-        //Usuario prueba= udao.find("Algo@al.com");
+        Usuario prueba= udao.find("Algo@al.com");
         //String a = prueba.getCorreo();
-	//t.find("Chilaquiles");        
-        m.setUsuario("Algo@al.com");
-        m.setTema("Chilaquiles");
+	Tema tema = t.find("Chilaquiles");        
+        m.setUsuario(prueba);
+        m.setTema(tema);
 	m.setLatitud(latitud);
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
