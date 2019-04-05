@@ -27,7 +27,7 @@ and open the template in the editor.
  
 		<nav>
 			<ul>
-				<li><a href="#">Principal</a></li>
+				<li><a href="../PaginaPrincipalIH.xhtml">Principal</a></li>
 				<li><a href="#">Registrarse</a></li>
 				<li><a href="#">Iniciar Sesion</a></li>
 			</ul>
@@ -49,7 +49,7 @@ and open the template in the editor.
 	</section> <!-- / #main-content -->
         
  <h:form>
-     <br><p:inputNumber id="id" value="#{eliminarInformador.correo}" placeholder="Elimina Informador"/></br>
+     <br><p:inputText id="id" value="#{eliminarInformador.correo}" placeholder="Elimina Informador"/></br>
      <br><p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/></br>
  </h:form>
    	

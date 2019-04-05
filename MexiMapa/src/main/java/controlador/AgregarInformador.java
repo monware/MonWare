@@ -117,8 +117,18 @@ public class AgregarInformador {
     
     public void separaApellido(String apellido){
        String[] apellidos = apellido.split(" ");
-       setApaterno(apellidos[0]);
+       if(apellidos[0]== null){
+           setApaterno(" ");
+       }
+       else{
+           setApaterno(apellidos[0]);
+       }
+       if(apellidos[1]== null){
+           setApaterno(" ");
+       }
+       else{       
        setAmaterno(apellidos[1]);
+       }
     }
     
     public void agregarInformador(){
@@ -129,7 +139,7 @@ public class AgregarInformador {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(generaContrasenia(10));  
-        u.setRol("Informador");
+        u.setRol("INFORMADOR");
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);
