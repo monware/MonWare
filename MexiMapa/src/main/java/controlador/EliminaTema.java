@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controlador;
+import java.util.List;
 import modelo.Tema;
 import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
@@ -44,23 +45,34 @@ public class EliminaTema {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+    //comentario, marcadores, tema 
     public void eliminaTema(){
-        //Usuario u = new Usuario();
-        Comentario comentario = new Comentario();
-        ComentarioDAO daoComentario = new ComentarioDAO();
+        Tema tema = new Tema();
+        TemaDAO daoTema = new TemaDAO();
         Marcador marcador = new Marcador();
         MarcadorDAO daoMarcador = new MarcadorDAO();
-        TemaDAO daoTema = new TemaDAO();
-        Marcador marc = new Marcador();
-        //comentario, marcadores, tema 
-        Tema u = daoTema.find(nombre);
-        comentario = daoComentario.find(idComentario);
-        marcador = daoMarcador.find(idMarcador);
-        if(u!=null){
-            daoComentario.delete(comentario);
-            daoMarcador.delete(marcador);
-            daoTema.delete(u);
-        } 
+        Comentario comentario = new Comentario();
+        ComentarioDAO daoComentario = new ComentarioDAO();
+        tema = daoTema.find(nombre);
+        List<Marcador> lst = daoMarcador.encuentraMarcadores(nombre);
+        for(Marcador mar:lst){
+            int aux = mar.getIdMarcador();
+            List<Comentario> lsta = daoComentario.encuentraComentario(aux);
+            for(Comentario com:lsta){
+                comentario = daoComentario.find(com.getIdComentario());
+                if(comentario!= null){
+                daoComentario.delete(comentario);
+                }   
+            }
+            marcador = daoMarcador.find(aux);
+            if(marcador!= null){
+                daoMarcador.delete(marcador);
+            }
+        }
+        if(tema != null){
+            daoTema.delete(tema);
+        }
+        
     }
+
 }
