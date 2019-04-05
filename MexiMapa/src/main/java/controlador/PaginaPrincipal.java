@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,6 +45,12 @@ public class PaginaPrincipal {
         return tdb.findAll();
         
     }
+    
+    public List<String> getAllEstados(){
+        List<String> estados = Arrays.asList("Aguascalientes","Guanajuato","Zacatecas","Ciudad de Mexico","Chihuhua");
+        return estados;
+        
+    }
 
      public void onCountryChange() {
         if(tema !=null && !tema.equals(""))
@@ -63,7 +70,5 @@ public class PaginaPrincipal {
     public void setMarcadores(Set<Marcador> marcadores) {
         this.marcadores = marcadores;
     }
-    
-    
     
 }
