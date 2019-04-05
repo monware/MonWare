@@ -5,6 +5,10 @@
  */
 package modelo;
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -61,5 +65,28 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
      */
     public List<Marcador> findAll(){
         return super.findAll(Marcador.class);
+    }
+    
+    public List<Marcador> encuentraMarcadores(String nombre){
+        List<Marcador> obj =null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "From marcador where nombre = :nombre";
+            Query query = session.createQuery(hql);
+            //query.setParameter("nombre", nombre);
+            obj = (List<Marcador>)query.list();
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+        }finally{
+            session.close();
+        
+        }
+        return obj;
     }
 }
