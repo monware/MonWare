@@ -6,6 +6,9 @@
 package modelo;
 
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -53,6 +56,7 @@ public class TemaDAO extends AbstractDAO<Tema>{
     public Tema find(int id){
         return super.find(Tema.class, id);
     }
+
     
     public Tema find(String id){
         return super.find(Tema.class, id);

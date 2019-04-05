@@ -18,6 +18,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class ControladorSesion {
+
     private String correo;
     private String contrasenia;
 
@@ -37,16 +38,15 @@ public class ControladorSesion {
         this.contrasenia = contrasenia;
     }
 
-   
-
     public String login(){
         UsuarioDAO udb = new UsuarioDAO();
         Usuario user = udb.buscaPorCorreoContrasenia(correo, contrasenia);
         FacesContext context = FacesContext.getCurrentInstance();
         if(user !=null){
             context.getExternalContext().getSessionMap().put("user", user);
-            return "/user/perfil?faces-redirect=true";
+            return "/pruebauser/colocarmarcador?faces-redirect=true";
         }
+
         return "";
     }
     
@@ -54,5 +54,5 @@ public class ControladorSesion {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
     }
-   
+
 }

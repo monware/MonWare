@@ -118,7 +118,6 @@ public abstract class AbstractDAO<T> {
         return obj;
         
     }
-    
     /**
      *
      * @param clazz
