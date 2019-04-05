@@ -8,22 +8,27 @@ and open the template in the editor.
     Author     : yisus
 */
 
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
  body {
-	margin: 0;
-	padding: 0;
 	font-family: Helvetica, Arial, sans-serif;
 	color: #666;
 	background: #f2f2f2;
         background-color: whitesmoke;
 	font-size: 1em;
-	line-height: 1.5em;
 	
-	padding-top: 80px; /* Relleno superior igual a la altura de la cabecera*/
+         width: 100%;
+        height: 100%;
 }
 h1 {
 	font-size: 2.3em;
-	line-height: 1.3em;
-	margin: 15px 0;
+	
 	text-align: center;
 	font-weight: 300;
 }
@@ -33,10 +38,21 @@ p {
 }
  
 img {
-	max-width: 100%;
-	height: auto;
+	width: 80%;
+	height: 80%;
+        
 }
 
+.AgregaTema{
+    text-align: right;
+}
+
+img.img_logo{
+    
+	width: 10%;
+	height: 10%;
+        
+}
 #main-header {
 	background: #333;
 	color: white;
@@ -156,4 +172,9 @@ margin-top: 40px;
 
 #submitButton{
     left:150;
+}
+
+img.img_logo{
+    width: 250px;
+    height: 50px;
 }
