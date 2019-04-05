@@ -80,12 +80,12 @@ public class ColocaMarcador{
         Usuario u= new Usuario();  
         UsuarioDAO udao = new UsuarioDAO();
         TemaDAO t = new TemaDAO();        
-        u.getCorreo();
-        Usuario prueba= udao.find("Algo@al.com");
-        String a = prueba.getCorreo();
-	t.find("Chilaquiles");        
-        m.setUsuario(a);
-        m.setTema(tema);
+        //u.getCorreo();
+        //Usuario prueba= udao.find("Algo@al.com");
+        //String a = prueba.getCorreo();
+	//t.find("Chilaquiles");        
+        m.setUsuario("Algo@al.com");
+        m.setTema("Chilaquiles");
 	m.setLatitud(latitud);
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
