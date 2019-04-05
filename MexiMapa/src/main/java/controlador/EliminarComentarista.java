@@ -6,11 +6,12 @@
 package controlador;
 
 import modelo.Usuario;
-import modelo.UsuarioDAO:
+import modelo.UsuarioDAO;
 import modelo.Comentario;
-import modelo.ComentaeioDAO;
+import modelo.ComentarioDAO;
 import java.util.Set;
-import Java.util.HashSet;
+import java.util.HashSet;
+import Java.util.Iterator;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -35,7 +36,9 @@ public class EliminarComentarista {
         UsuarioDAO udao = new UsuarioDAO();
         Usuario u = udao.find(correo);
         Set comentarios = new HashSet(u.getComentarios());
-        comentarios.clear();
+        Iterator iterador = comentarios.next();
+        while(comentarios.hasNext()){
+            //llamar e elimina comentario
 
         if(u!=null){
         udao.delete(u);
