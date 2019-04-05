@@ -64,27 +64,4 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
         return super.findAll(Comentario.class);
     
     }
-    public List<Comentario> encuentraComentario(int id_marcador){
-        List<Comentario> obj =null;
-        Session session = this.sessionFactory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            String hql = "From comentario where id_marcador = :id_marcador";
-            Query query = session.createQuery(hql);
-            //query.setParameter("id_marcador", id_marcador);
-            obj = (List<Comentario>)query.list();
-            tx.commit();
-            
-        }catch(HibernateException e){
-            if(tx!=null){
-                tx.rollback();
-            }
-        }finally{
-            session.close();
-        
-        }
-        return obj;
-    }
-
 }

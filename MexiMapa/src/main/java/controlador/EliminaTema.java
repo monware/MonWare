@@ -46,6 +46,28 @@ public class EliminaTema {
         this.nombre = nombre;
     }
     //comentario, marcadores, tema 
+    
+    public void eliminaTema(){
+        TemaDAO daoTema = new TemaDAO();
+        Tema tema = daoTema.find(nombre);
+        //System.out.println(tema);
+        for(Object m:tema.getMarcadors()){
+            MarcadorDAO daoMarcador = new MarcadorDAO();
+            Marcador marcador = (Marcador) m;
+            //System.out.println(marcador);
+            if(marcador.getComentarios() != null){
+                for(Object c : marcador.getComentarios()){
+                    ComentarioDAO daoComentario = new ComentarioDAO();
+                    Comentario comentario = (Comentario)c;
+                    daoComentario.delete(comentario);
+                //System.out.println(comentario);
+                }
+            }
+        daoMarcador.delete(marcador);
+        }
+        daoTema.delete(tema);
+    }
+    /*
     public void eliminaTema(){
         Tema tema = new Tema();
         TemaDAO daoTema = new TemaDAO();
@@ -73,6 +95,6 @@ public class EliminaTema {
             daoTema.delete(tema);
         }
         
-    }
+    }*/
 
 }
