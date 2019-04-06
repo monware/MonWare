@@ -9,9 +9,7 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
-import java.util.Set;
-import java.util.HashSet;
-import Java.util.Iterator;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -23,23 +21,31 @@ public class EliminarComentarista {
     
     private String correo;
 
+    /**
+     * 
+     * @return 
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * 
+     * @param correo 
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
     
+    /**
+     * 
+     */
     public void eliminaComentarista(){
     
         UsuarioDAO udao = new UsuarioDAO();
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario comentario = new Comentario();
         Usuario u = udao.find(correo);
-        Set comentarios = new HashSet(u.getComentarios());
-        Iterator iterador = comentarios.next();
-        while(comentarios.hasNext()){
-            //llamar a elimina comentario
-           } 
 
         if(u!=null){
         udao.delete(u);
