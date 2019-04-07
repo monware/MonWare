@@ -1,10 +1,11 @@
 modelo/Mensajes.class
+controlador/FilterSession.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
 controlador/RegistrarUsuario.class
+controlador/Validaciones.class
 modelo/TemaDAO.class
-is/lab/mapita/controlador/FilterSession.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class

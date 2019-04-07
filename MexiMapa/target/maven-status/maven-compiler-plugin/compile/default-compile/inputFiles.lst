@@ -1,34 +1,3 @@
-
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/BuscarPorCorreo.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/Validaciones.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminarComentarista.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregarInformador.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/PaginaPrincipal.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/FilterSession.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaCuenta.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaMarcador.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Tema.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminarInformador.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaComentario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
-/home/yisus/Documentos/Escuela/6to Semestre/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
@@ -43,6 +12,7 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaCuenta.java
+/home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/Validaciones.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/FilterSession.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Tema.java
@@ -58,34 +28,3 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
-C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\RegistrarUsuario.java
-C:\Users\ALEX\Documents\ingenieria\MonWare\MexiMapa\src\main\java\controlador\EliminarComentarista.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminarInformador.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminaComentario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminaMarcador.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/AgregarInformador.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/BuscarPorCorreo.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminaCuenta.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/FilterSession.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/PaginaPrincipal.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/modelo/Tema.java
-/home/liz/Documentos/MonWare/MexiMapa/src/main/java/controlador/EliminarComentarista.java
