@@ -11,6 +11,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head id="main-header">
+        
 	<title>Agregar Informador</title>
  
         <link rel="stylesheet" href="../resources/css/style.css">
@@ -34,16 +35,16 @@ and open the template in the editor.
 </h:head>
  
 <h:body>  
- <h:form id="formulario-AgregarInformador">
-    <p:panel id="panel" header="Menú Administrador">
+ <h:form>
+    <p:panel id="panel" header="Menú Administrador" >
  
         <p:focus context="panel"/>
  
         <p:messages />
  
-        <h:panelGrid columns="3">
-            <p:outputLabel for="username" value="Username" />
-            <p:inputText id="username" value="#{agregarInformador.nombre}" required="true" label="Firstname">
+        <h:panelGrid  columns="3" >
+            <p:outputLabel for="username" value="Nombre" />
+            <p:inputText id="username" value="#{agregarInformador.nombre}" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
                 <f:validateLength minimum="2" />
             </p:inputText>
             <p:message for="username" />
@@ -55,11 +56,12 @@ and open the template in the editor.
             <p:message for="apellido" />
  
             <p:outputLabel for="email" value="Email" />
-            <p:inputText id="email" value="#{agregarInformador.correo}" required="true" label="Surname"/>
+            <p:inputText id="email" value="#{agregarInformador.correo}" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
+            </p:inputText>
             <p:message for="email" />
         </h:panelGrid>
  
-        <p:commandButton id="submitButton" value="Save" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
+        <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
     </p:panel>
 </h:form>
 
