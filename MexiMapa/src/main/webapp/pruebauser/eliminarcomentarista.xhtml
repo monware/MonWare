@@ -25,7 +25,9 @@
                  
             <main>
                 <h:form  id="funcionAgregarInformador">
-                        
+                         <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                        </p:messages>
                     <br><p:inputText  id="nombre" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/></br> 
                     <br><p:inputText  id="apaterno"  required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/></br> 
                     <br><p:inputText  id="amaterno"  required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/></br> 
