@@ -9,8 +9,8 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 
 import java.util.Properties;
-//import javax.mail.*;
-//import javax.mail.internet.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -144,7 +144,7 @@ public class RegistrarUsuario {
         //cuerpo del correo
         String mensaje = "Se ha completado tu registro\n";
         //método que manda el correo
-       // mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
+        mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
     }
     
 
@@ -157,7 +157,6 @@ public class RegistrarUsuario {
      * @return true si envía el correo, false en otro caso
      */
     //va así para evitar problemas
-    /*
     private boolean mandaCorreo(String a, String asunto, String msg, final String usr) {
         boolean enviado = true;
         // Get system properties
@@ -190,5 +189,5 @@ public class RegistrarUsuario {
             enviado = false;
         }
         return enviado;
-    }*/
+    }
 }
