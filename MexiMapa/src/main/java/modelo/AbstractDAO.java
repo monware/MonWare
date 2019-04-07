@@ -125,6 +125,7 @@ public abstract class AbstractDAO<T> {
      * @return
      */
     protected T find(Class clazz, String id){
+
         T obj =null;
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -144,6 +145,7 @@ public abstract class AbstractDAO<T> {
         return obj;
         
     }
+
     /**
      * 
      * @param clazz

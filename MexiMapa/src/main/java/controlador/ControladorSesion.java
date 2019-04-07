@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.io.Serializable;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
@@ -17,7 +18,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class ControladorSesion {
+public class ControladorSesion implements Serializable{
 
     private String correo;
     private String contrasenia;
@@ -53,6 +54,43 @@ public class ControladorSesion {
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
+    }
+    public class UserLogged implements Serializable{
+        private String nombre;
+        private String correo;
+        private String rol;
+
+        public UserLogged(String nombre, String correo, String rol) {
+            this.nombre = nombre;
+            this.correo = correo;
+            this.rol = rol;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getCorreo() {
+            return correo;
+        }
+
+        public void setCorreo(String correo) {
+            this.correo = correo;
+        }
+
+        public String getRol() {
+            return rol;
+        }
+
+        public void setRol(String rol) {
+            this.rol = rol;
+        }
+        
+        
     }
 
 }

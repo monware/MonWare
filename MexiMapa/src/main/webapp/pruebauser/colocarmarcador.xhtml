@@ -17,10 +17,10 @@
              Añade un marcador
             </h1>
               </header>        
-                        <h:form>
-                           <p:inputText id="descripcion" value="#{colocaMarcador.descripcion}" placeholder="Descripcion"/> <br/>                           
+                        <h:form>                                       
                             <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud"/> <br/>
                             <p:inputText id="longitud" value="#{colocaMarcador.longitud}" placeholder="Longitud"/> <br/>
+                            <p:inputText id="descripcion" value="#{colocaMarcador.descripcion}" placeholder="Descripcion"/> <br/>  
                             <p:inputText id="datos" value="#{colocaMarcador.datos}" placeholder="Datos"/> <br/>
                             <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
                         </h:form>

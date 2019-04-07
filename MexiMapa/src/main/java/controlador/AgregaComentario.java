@@ -7,8 +7,11 @@ package controlador;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import modelo.Marcador;
+import modelo.MarcadorDAO;
 import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -62,13 +65,19 @@ public class AgregaComentario {
     }
     
     public void agregaComentario(){
-        Comentario c = new Comentario();
-        ComentarioDAO cdao = new ComentarioDAO();
-        c.setMarcador(marcador);
-        c.setUsuario(usuario);
-        c.setComentario(comentario);
-        c.setCalificacion(calificacion);
-        cdao.save(c);
+        Comentario comentar = new Comentario();
+        ComentarioDAO daoComentario = new ComentarioDAO();
+        Marcador marcador = new Marcador();
+        MarcadorDAO daoMarcador = new MarcadorDAO();
+        Usuario usuario = new Usuario();
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        usuario = daoUsuario.buscaPorCorreo(us.getCorreo());
+        comentar.setMarcador(marcador);
+        comentar.setUsuario(usuario);
+        comentar.setComentario(comentario);
+        comentar.setCalificacion(calificacion);
+        daoComentario.save(comentar);
         
     }
     

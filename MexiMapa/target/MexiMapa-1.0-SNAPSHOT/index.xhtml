@@ -2,13 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-<<<<<<< HEAD
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-=======
->>>>>>> 7d834285213046ab4212e9f26ed14c9c80a61473
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
       
     <f:view>
         <h:head>
@@ -125,42 +121,9 @@
                     Lorem ipsum dolor sit amet.
                 </h3>
             </footer>
-            
-             
-           
-         
-<<<<<<< HEAD
+
             
         </h:body>
     </f:view>
 </html>
-=======
-        <f:facet name="right">
-            <p:commandButton value="Reset Fail" update="panel" process="@this" action="#{resetInputView.resetFail}" style="margin-right:20px;" />
- 
-            <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
-                <p:resetInput target="panel" />
-            </p:commandButton>
- 
-            <p:commandButton value="Reset Code" update="panel" process="@this" action="#{resetInputView.reset}"  style="margin-right:20px;" />
- 
-            <p:commandButton value="Reset Non-Ajax" action="#{resetInputView.reset}" immediate="true" ajax="false" style="margin-right:20px;">
-                <p:resetInput target="panel" />
-            </p:commandButton>
- 
-            <h:commandButton value="Reset p:ajax" style="margin-right:20px;" >
-                <p:ajax update="panel" resetValues="true" />
-            </h:commandButton>
-        </f:facet>
-    </p:toolbar>
-</h:form>
-	
-	<footer id="main-footer">
-		<p> 2019 MonWare</p>
-	</footer> <!-- / #main-footer -->
- 
-	
-  </body>
-</html>
 
->>>>>>> 7d834285213046ab4212e9f26ed14c9c80a61473

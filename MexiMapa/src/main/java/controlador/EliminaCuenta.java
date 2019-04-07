@@ -24,9 +24,9 @@ public class EliminaCuenta{
         this.idusuario = idusuario;
     }
     
-    public void eliminaUsuario(){     
+    public void eliminaCuenta(){     
         UsuarioDAO udao = new UsuarioDAO();
-        Usuario u = udao.find(idusuario);
+        Usuario u = udao.find("Algo@alg.com");
         if(u!=null){
             udao.delete(u);
         }
