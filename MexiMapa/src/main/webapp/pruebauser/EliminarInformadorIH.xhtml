@@ -34,23 +34,16 @@ and open the template in the editor.
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
- 
-	
-	<section id="main-content">
-	
-		<article>
-			<header>
-				<h1>Menu Administrador</h1>
-			</header>
-			
-			
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
-        
+
  <h:form>
-     <br><p:inputText id="id" value="#{eliminarInformador.correo}" placeholder="Elimina Informador"/></br>
-     <br><p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/></br>
+     <h:panelGrid  columns="3" >
+     <p:outputLabel for="email" value="Email" />
+     <br><p:inputText id="email" value="#{eliminarInformador.correo}" placeholder="Correo Informador" required="true" validator="#{validaciones.validacionEmailEliminarInformador}"/></br>
+     <p:message for="email" />
+            
+     <br><p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" update="@parent" ajax="false"/></br>
+     </h:panelGrid>
+ 
  </h:form>
    	
 	<footer id="main-footer">

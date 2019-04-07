@@ -3,13 +3,13 @@ controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
 controlador/RegistrarUsuario.class
+controlador/Validaciones.class
 modelo/TemaDAO.class
 is/lab/mapita/controlador/FilterSession.class
 controlador/EliminarComentarista.class
 controlador/EliminaTema.class
-controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
 controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/EliminaComentario.class
