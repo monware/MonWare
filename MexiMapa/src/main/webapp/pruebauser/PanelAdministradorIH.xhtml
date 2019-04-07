@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head id="main-header">
+        
+	<title>Panel Administrador</title>
+ 
+        <link rel="stylesheet" href="../resources/css/style.css">
+            </link>
+        <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+		</a> <!-- / #logo-header -->
+ 
+		<nav>
+			<ul>
+				<li><a href="../PaginaPrincipalIH.xhtml">Principal</a></li>
+				<li><a href="PanelAdministradorIH">PanelAdministrador</a></li>
+				
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+ 
+</h:head>
+ 
+<h:body>  
+ <h:form>
+    <p:panel id="panel" header="Menú Administrador: Agregar Informador" >
+ 
+        <p:focus context="panel"/>
+ 
+        <p:messages />
+ 
+        <h:panelGrid  columns="3" >
+            <p:outputLabel for="username" value="Nombre" />
+            <p:inputText id="username" value="#{agregarInformador.nombre}" placeholder="Nombre" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="username" />
+            
+            <p:outputLabel for="apellido" value="Apellidos" />
+            <p:inputText id="apellido" value="#{agregarInformador.apellido}" placeholder="Apellidos" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellido" />
+ 
+            <p:outputLabel for="email" value="Email" />
+            <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
+            </p:inputText>
+            <p:message for="email" />
+        </h:panelGrid>
+ 
+        <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
+    </p:panel>
+
+</h:form>
+
+    
+ <h:form>
+    <p:panel id="panel" header="Menú Administrador: Eliminar Informador" >
+ 
+        <p:focus context="panel"/>
+ 
+        <p:messages />
+ 
+        <h:panelGrid  columns="3" >
+            <p:outputLabel for="email" value="Email" />
+            <p:inputText id="email" value="#{eliminarInformador.correo}" placeholder="Correo Informador" required="true" validator="#{validaciones.validacionEmailEliminarInformador}">
+            </p:inputText>
+     <p:message for="email" />
+        </h:panelGrid>
+ 
+        <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Eliminar Informador" update="@parent" ajax="false"/>
+    </p:panel>
+
+</h:form>
+
+    <h:form id="funcionEliminarComentarista">
+    <p:panel id="panel" header="Menú Administrador: Eliminar Comentarista" >
+                 
+                        <p:inputText  id="correo" value="#{eliminarComentarista.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
+                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        </p:inputText>  
+                    <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Eliminar Comentarista" ajax="false" />
+     </p:panel>           
+    </h:form>
+             
+    
+            <h:form>
+                 <p:panel id="panel" header="Menú Administrador: Eliminar Tema" >
+                <br><p:inputText id="nombre" value="#{eliminaTema.nombre}" placeholder="Tema"/> </br>
+                <br><p:commandButton action="#{eliminaTema.eliminaTema()}" value="Elimina Tema" ajax="false"/></br>
+                </p:panel>  
+            </h:form>
+    
+    
+            <h:form>
+              <p:panel id="panel" header="Menú Administrador: Eliminar Marcador" >
+              <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Aceptar" ajax="false" />
+              <p:commandButton action="reset" value="Cancelar" ajax="false" />
+              </p:panel>
+            </h:form>
+</h:body>
+        
+	
+  
+    
+	<footer id="main-footer">
+		<p> 2019 MonWare</p>
+	</footer> <!-- / #main-footer -->
+ 
+</html>
