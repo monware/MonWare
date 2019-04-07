@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 $(document).ready(function(){
    var colores = $('#colores').children();
    colores.each(function(){
@@ -14,7 +12,4 @@ $(document).ready(function(){
            $('#main').css({'background':color});
        });
    });
-//   initMap();
-
 });
-

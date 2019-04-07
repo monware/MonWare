@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package is.lab.mapita.controlador;
+package controlador;
 
 
 import java.io.IOException;

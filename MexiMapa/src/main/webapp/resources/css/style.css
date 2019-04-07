@@ -58,13 +58,13 @@ img.img_logo{
 #main-header {
 	background: #333;
 	color: white;
-	height: 80px;
+	height: 12%;
         top: 0;
 }	
 #main-header a {
   color: white;
   top : 0%;
-	}
+	}d
  
 /*
  * Logo
@@ -122,17 +122,17 @@ nav ul li a:hover {
 	
 #main-footer {
 	background: #333;
-	color: white;
+	color: withe;
 	text-align: center;
-	padding: 20px;
-margin-top: 40px;
+	padding: 5%;
+        margin-top: 100%;
 }
 #main-footer p {
 	margin: 0;
 }
 	
 #main-footer a {
-	color: white;
+	color:white;
 }
         	
 #main-content {
@@ -167,16 +167,12 @@ margin-top: 40px;
     color:darkgoldenrod;
 }
 
-#formulario-AgregarInformador{
-    top:40%;
-    left:50%;
-}
-
-#submitButton{
-    left:150;
-}
 
 img.img_logo{
     width: 250px;
     height: 50px;
+}
+
+#apellido{
+    padding-left: 50%;
 }
