@@ -69,6 +69,7 @@ public class AgregaComentario {
         ComentarioDAO daoComentario = new ComentarioDAO();
         Marcador marcador = new Marcador();
         MarcadorDAO daoMarcador = new MarcadorDAO();
+        marcador = daoMarcador.find(1);
         Usuario usuario = new Usuario();
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
