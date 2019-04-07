@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controlador;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import modelo.UsuarioDAO;
 import modelo.Usuario;
 
@@ -11,14 +13,46 @@ import modelo.Usuario;
  *
  * @author lizbethac
  */
-public class EditaDatos {
+@ManagedBean
+public class EditaDatos{
  
-    private String nombre;  
+    private String nombre;
+    private String apaterno;
+    private String amaterno;
     private String correo;
-    private String contrasenia;    
+    private String contrasenia;  
+
+    public String getApaterno() {
+        return apaterno;
+    }
+
+    public void setApaterno(String apaterno) {
+        this.apaterno = apaterno;
+    }
+
+    public String getAmaterno() {
+        return amaterno;
+    }
+
+    public void setAmaterno(String amaterno) {
+        this.amaterno = amaterno;
+    }
+      
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
     }
 
     public void setCorreo(String correo) {
@@ -33,7 +67,9 @@ public class EditaDatos {
     Usuario u = udb.find("Algo@alg.com");
     if(u!=null){
     u.setNombre(nombre);
-    u.setCorreo(correo);
+    u.setApaterno(apaterno);
+    u.setAmaterno(amaterno);
+    //u.setCorreo(correo);
     u.setContrasenia(contrasenia);    
     udb.update(u);
       }
