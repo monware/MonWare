@@ -5,10 +5,10 @@ modelo/Usuario.class
 controlador/RegistrarUsuario.class
 modelo/TemaDAO.class
 is/lab/mapita/controlador/FilterSession.class
-controlador/EliminarComentarista.class
 controlador/EliminaTema.class
-controlador/PaginaPrincipal.class
+controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/EliminaComentario.class

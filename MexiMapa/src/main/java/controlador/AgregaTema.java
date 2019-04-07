@@ -7,7 +7,9 @@ package controlador;
 import modelo.Tema;
 import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 /**
  *
@@ -37,13 +39,13 @@ public class AgregaTema {
     
     
     public void agregraTema(){
-        Tema u = new Tema();
-
-        TemaDAO udao = new TemaDAO();
-        u.setNombre(nombre);
-        u.setUsuario(usuario);
-        if(udao.find(nombre) == null){
-            udao.save(u);
-        }
+        Tema tema = new Tema();
+        TemaDAO daoTema = new TemaDAO();
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        tema.setNombre(nombre);
+        tema.setUsuario(usuarioA);
+        daoTema.save(tema);
     }
 }
