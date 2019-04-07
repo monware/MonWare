@@ -1,105 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
-	
-	<title>Cabecera fija</title>
+      
+    <f:view>
+        <h:head>
+            <title>Inicio</title>
+            <h:outputStylesheet name="resources/css/style.css"/>
+            <h:outputScript name="resources/js/estilos.js"/>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
+            </script>
+            
+            
+        </h:head>
+        <h:body>
+            <header>
+                <h1>Mapita</h1>
+                <h:form id="busqueda">
+                    <p:message for="search"/>
+                    <p:inputText type="search" id="search" value="#{buscaPorNombre.nombre}" required="true" requiredMessage="No hay personas sin nombre"/>
+                    <p:commandButton action="#{buscaPorNombre.buscaPorNombre()}" value="BuscaPorNombre" update="busqueda"/>
+                </h:form>
+                <h:form id="logout" rendered="#{not empty user}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="logout"/>
+                </h:form>
+                
+            </header>
+            <main>
+                
+                    
+                <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
  
-        <link rel="stylesheet" href="resources/css/style.css">
-            </link>
-</head>
- 
-<body>
-	
-	<header id="main-header">
-		
-		<a id="logo-header" href="#">
-			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header -->
- 
-		<nav>
-			<ul>
-				<li><a href="#">Principal</a></li>
-				<li><a href="#">Registrarse</a></li>
-				<li><a href="#">Iniciar Sesion</a></li>
-			</ul>
-		</nav><!-- / nav -->
- 
-	</header><!-- / #main-header -->
- 
-	
-	<section id="main-content">
-	
-		<article>
-			<header>
-				<h1>Esta es una página con cabecera fija</h1>
-			</header>
-			
-			<img src="http://placekitten.com/800/250" alt="Gatito" />
-			
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
- 
-			</div>
-			
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
- 
-	<h:form id="form">
-    <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-        <p:messages id="messages" />
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="text1" value="Text 1:" />
-            <p:inputText id="text1" value="#{resetInputView.text1}" required="true" label="Firstname">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="text1" />
- 
-            <p:outputLabel for="text2" value="Text 2:" />
-            <p:inputText id="text2" value="#{resetInputView.text2}" required="true" label="Surname"/>
-            <p:message for="text2" />
-        </h:panelGrid>
-    </p:panel>
- 
-    <p:toolbar>
-        <f:facet name="left">
-            <p:commandButton value="Submit" update="panel" action="#{resetInputView.save}" style="margin-right:20px;" />
-        </f:facet>
-         
-        <f:facet name="right">
-            <p:commandButton value="Reset Fail" update="panel" process="@this" action="#{resetInputView.resetFail}" style="margin-right:20px;" />
- 
-            <p:commandButton value="Reset Tag" update="panel" process="@this" style="margin-right:20px;" >
-                <p:resetInput target="panel" />
-            </p:commandButton>
- 
-            <p:commandButton value="Reset Code" update="panel" process="@this" action="#{resetInputView.reset}"  style="margin-right:20px;" />
- 
-            <p:commandButton value="Reset Non-Ajax" action="#{resetInputView.reset}" immediate="true" ajax="false" style="margin-right:20px;">
-                <p:resetInput target="panel" />
-            </p:commandButton>
- 
-            <h:commandButton value="Reset p:ajax" style="margin-right:20px;" >
-                <p:ajax update="panel" resetValues="true" />
-            </h:commandButton>
-        </f:facet>
-    </p:toolbar>
-</h:form>
-	
-	<footer id="main-footer">
-		<p> 2019 MonWare</p>
-	</footer> <!-- / #main-footer -->
- 
-	
-  </body>
+                                    <!--<p:graphicImage name="/demo/images/antalya/{infoWindowView.marker.data}" height="150" />-->
+                                    <!--<br />-->
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
+                    </p:gmap>
+                
+            </main>
+            <div id="main">
+                <section>
+                    <div id="colores">
+                        <div id="rojo" class="color"></div>
+                        <div id="naranja" class="color"></div>
+                        <div id="amarillo" class="color"></div>
+                        <div id="verde" class="color"></div>
+                        <div id="azul" class="color"></div>
+                        <div id="anil" class="color"></div>
+                        <div id="violeta" class="color"></div>
+                    </div>
+                    
+                    <h2>
+                        <c:if test="#{ empty user}">
+                            Registrate
+                        </c:if>
+                        <c:if test="#{not empty user}">
+                            #{user.nombre}
+                        </c:if>
+                    </h2>
+                    
+                    <h:form rendered="#{empty user}" id="formulario">
+                        <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                        </p:messages>
+                        <p:inputText class="texto" id="nombre" value="#{agregaUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/> <br/>
+                        <p:inputText class="texto" id="correo" value="#{agregaUsuario.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        </p:inputText> <br/>
+                        <p:selectOneMenu id="rol" value="#{agregaUsuario.rol}" style="width: 100%">
+                            <f:selectItem itemLabel="User" itemValue="user" />
+                            <f:selectItem itemLabel="SuperUser" itemValue="superuser" />
+                        </p:selectOneMenu>
+                        <p:password class="texto" id="contrasenia" value="#{agregaUsuario.contrasenia}" placeholder="Contrasenia" match="contr" required="true" validatorMessage="No coinciden las contrasenias"/> <br/>
+                        <p:password class="texto" id="contr" value="#{agregaUsuario.contrasenia}" placeholder="Confirma" required="true"/> <br/>
+                        <p:calendar class="texto" id="fechanacimiento" value="#{agregaUsuario.fechanacimiento}" required="true" placeholder="Fecha de nacimiento" requiredMessage="Por favor ingresa tu nombre"  /> <br/>
+                        <p:commandButton class="texto" action="#{agregaUsuario.agregaUsuario()}" value="Registrame" ajax="false" />
+                    </h:form>
+                </section>
+               
+                <aside>
+                    
+                    
+                    
+                    
+                    <br/>
+                    <p:separator />
+                    <br/>
+                    
+                    <c:if test="#{ empty user}">
+                    <h:form id="login">
+
+                        <p:inputText class="texto" id="email" value="#{controladorSesion.correo}" placeholder="Correo" required="true" requiredMessage="Por favor ingresa tu correo" validatorMessage="Debe ser un correo valido">
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        </p:inputText> <br/>
+                        <p:message for="email"/>
+                        <p:password class="texto" id="password" value="#{controladorSesion.contrasenia}" placeholder="Contrasenia"  required="true" requiredMessage="Por favor ingresa tu contrasenia"/> <br/>
+                        <p:message for="password"/>
+                        <p:commandButton class="texto" action="#{controladorSesion.login()}" value="login" update="login" />
+                        
+                    </h:form>
+                    </c:if>
+                    <p:link outcome="/user/perfiluser" value="Ver Perfil" rendered="#{not empty user and user.rol eq 'USER'}"/> <br/>
+                    <p:link outcome="/superuser/perfilsuperuser" value="Ver Perfil" rendered="#{not empty user and user.rol eq 'SUPERUSER'}"/><br/>
+                    <p:link outcome="/superuser/eliminaMarcadores" value="Elimina Marcadores" rendered="#{not empty user and user.rol eq 'SUPERUSER'}"/>
+                </aside>
+            </div>
+            <footer>
+                <h3>
+                    Lorem ipsum dolor sit amet.
+                </h3>
+            </footer>
+
+            
+        </h:body>
+    </f:view>
 </html>
 

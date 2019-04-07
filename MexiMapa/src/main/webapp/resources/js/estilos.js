@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 $(document).ready(function(){
    var colores = $('#colores').children();
    colores.each(function(){
@@ -14,4 +15,6 @@ $(document).ready(function(){
        });
    });
 //   initMap();
+
 });
+

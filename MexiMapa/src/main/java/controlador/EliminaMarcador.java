@@ -30,7 +30,7 @@ public class EliminaMarcador{
 
     public void eliminaMarcador(){
 	MarcadorDAO mdao = new MarcadorDAO();
-	Marcador m = mdao.find(idMarcador);
+	Marcador m = mdao.find(1);
 	if(m!=null){
 	    mdao.delete(m);
 	}

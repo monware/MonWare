@@ -9,17 +9,13 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
-	
+
+    <h:head id="main-header">
 	<title>Agregar Informador</title>
  
         <link rel="stylesheet" href="../resources/css/style.css">
             </link>
-</head>
- 
-<body>
-	
-	<header id="main-header">
+        <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
@@ -27,57 +23,53 @@ and open the template in the editor.
  
 		<nav>
 			<ul>
-				<li><a href="#">Principal</a></li>
-				<li><a href="#">Registrarse</a></li>
-				<li><a href="#">Iniciar Sesion</a></li>
+				<li><a href="../PaginaPrincipalIH.xhtml">Principal</a></li>
+				<li><a href="#">Manejo de Sesión</a></li>
+				
 			</ul>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
  
-	
-	<section id="titulo-pag">
-	
-		<article>
-			<header>
-				<h1>Menu Administrador</h1>
-			</header>
-		
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
- <h:form id="form">
-    <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-        <p:messages id="messages" />
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="nombre" value="Nombre" />
-            <p:inputText id="nombre" value="#{resetInputView.text1}" required="true" label="Nombre">
+</h:head>
+ 
+<h:body>  
+ <h:form id="formulario-AgregarInformador">
+    <p:panel id="panel" header="Menú Administrador">
+ 
+        <p:focus context="panel"/>
+ 
+        <p:messages />
+ 
+        <h:panelGrid columns="3">
+            <p:outputLabel for="username" value="Username" />
+            <p:inputText id="username" value="#{agregarInformador.nombre}" required="true" label="Firstname">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="nombre" />
- 
-            <p:outputLabel for="apellidos" value="Apellidos" />
-            <p:inputText id="apellidos" value="#{resetInputView.text2}" required="true" label="Apellidos"/>
-            <p:message for="apellidos" />
-          
+            <p:message for="username" />
             
+            <p:outputLabel for="apellido" value="Apellidos" />
+            <p:inputText id="apellido" value="#{agregarInformador.apellido}" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellido" />
+ 
             <p:outputLabel for="email" value="Email" />
-            <p:inputText id="email" value="#{resetInputView.text3}" required="true" label="Email"/>
+            <p:inputText id="email" value="#{agregarInformador.correo}" required="true" label="Surname"/>
             <p:message for="email" />
         </h:panelGrid>
-    </p:panel>
  
-    <p:toolbar>
-        <f:facet name="crearInformador">
-            <p:commandButton value="Crear Informador" update="panel" action="#{resetInputView.save}" style="margin-right:20px;" />
-        </f:facet>
-    </p:toolbar>
+        <p:commandButton id="submitButton" value="Save" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
+    </p:panel>
 </h:form>
+
+</h:body>
+        
 	
+  
+    
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
  
-	
-  </body>
 </html>

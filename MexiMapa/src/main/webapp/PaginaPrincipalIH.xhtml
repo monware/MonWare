@@ -9,23 +9,26 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
+<h:head>
 	
 	<title>Pagina Principal</title>
  
         <link rel="stylesheet" href="resources/css/style.css">
-            </link>
-        <header id="main-header">
+            </link>	
+</h:head>
+ 
+<h:body>
+
+    <header id="main-header">
 		
 		<a id="logo-header" href="#">
-                        <img src="resources/media/logo.jpeg">
-                            </img>
 			<span class="site-name">MexiMapa</span>
+                      
 		</a> <!-- / #logo-header -->
- 
+   
 		<nav>
 			<ul>
-				<li><a href="#">Principal</a></li>
+				<li><a href="../PaginaPrincipalIH.xhtml">Principal</a></li>
 				<li><a href="#">Registrarse</a></li>
 				<li><a href="#">Iniciar Sesion</a></li>
 			</ul>
@@ -34,47 +37,38 @@ and open the template in the editor.
 	</header><!-- / #main-header -->
  
 	
-</head>
- 
-<body>
-	
-<section id="main-content">
-	
-    <article>
-    <img src="http://www.mexicofirstclass.com/map-images/mapa-mexico-estados.gif"/>
-    </article> <!-- /article -->
-</section> <!-- / #main-content -->
-
 <section id = "formulario">
-    <h:form>
+<h:form>
     <p:growl id="msgs" showDetail="true" />
  
-    <p:panel header="Select a Location" style="margin-bottom:10px;">
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="tema" value="Tema: " />
-            <p:selectOneMenu id="tema" value="#{dropdownView.country}" style="width:150px">
-                <p:ajax listener="#{dropdownView.onCountryChange}" update="ciudad" />
-                <f:selectItem  itemLabel="Tema" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.countries}" />
+    <p:panel header="Select a Location" style="margin-bottom:10px;" >
+        <h:panelGrid  columns="2" cellpadding="5" >
+            <p:outputLabel for="tema" value="Tema" />
+            <p:selectOneMenu id="tema" value="#{paginaPrincipal.tema}" style="width:150px">
+                <p:ajax listener="#{paginaPrincipal.allTemas}" update="tema" />
+                <f:selectItem itemLabel="Selecciona Tema" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{paginaPrincipal.tema}" />
             </p:selectOneMenu>
- 
-            <p:outputLabel for="ciudad" value="Ciudad: " />
-            <p:selectOneMenu id="ciudad" value="#{dropdownView.city}" style="width:150px">
-                <f:selectItem itemLabel="Ciudad" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.cities}" />
+        
+            <p:outputLabel for="estado" value="Estado" />
+            <p:selectOneMenu id="estado" value="#{paginaPrincipal.estado}" style="width:150px">
+                <p:ajax listener="#{paginaPrincipal.allEstados}" update="tema" />
+                <f:selectItem itemLabel="Selecciona Tema" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{paginaPrincipal.tema}" />
             </p:selectOneMenu>
+            
         </h:panelGrid>
  
         <p:separator />
  
         <p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
     </p:panel>
-</h:form>
+</h:form> 
 </section>>       
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
  
 	
-  </body>
+  </h:body>
 </html>

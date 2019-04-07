@@ -28,9 +28,9 @@ public class EditaDatos {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    public void editaDatos(Usuario u){
+    public void editaDatos(){
     UsuarioDAO udb = new UsuarioDAO();
-    u=udb.buscaPorCorreo(u.getCorreo());
+    Usuario u = udb.find("Algo@alg.com");
     if(u!=null){
     u.setNombre(nombre);
     u.setCorreo(correo);
