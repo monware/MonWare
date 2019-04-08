@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 modelo/Mensajes.class
 controlador/FilterSession.class
 controlador/EliminarInformador.class
@@ -36,3 +37,6 @@ controlador/AgregaTema.class
 controlador/EliminaCuenta.class
 =======
 >>>>>>> 03d8cb3fea755005f4cb53e56baf6895d00e12bf
+=======
+
+>>>>>>> adbacf602217e1eb00f8c3d87a9f8eee68d15138
