@@ -8,18 +8,33 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view>
         <h:head>
-   <title>Editar Datos</title>
-            
+          <title>Editar datos</title>
+   
+            <h:outputStylesheet name="css/style.css"/>
         </h:head>
  <h:body>
-      
-           
+     <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+                      
+		</a> <!-- / #logo-header -->
+   
+		<nav>
+			<ul>
+				<li><a href="PaginaPrincipalIH.xhtml">Principal</a></li>
+				<li><a href="EditarDatos.xhtml">EditarDatos</a></li>
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+    
           <header>
             <h1>
              Editar tus datos
             </h1>
               </header>        
-                        <h:form>
+                        <h:form >
                             <p:inputText id="nombre" value="#{editaDatos.nombre}" placeholder="Nombre(s)"/> <br/>
                             <p:inputText id="apaterno" value="#{editaDatos.apaterno}" placeholder="Apellido Paterno"/> <br/>
                             <p:inputText id="amaterno" value="#{editaDatos.amaterno}" placeholder="Apellido Materno"/> <br/>
