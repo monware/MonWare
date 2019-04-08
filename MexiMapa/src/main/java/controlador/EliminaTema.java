@@ -51,21 +51,26 @@ public class EliminaTema {
         TemaDAO daoTema = new TemaDAO();
         Tema tema = daoTema.find(nombre);
         //System.out.println(tema);
-        for(Object m:tema.getMarcadors()){
-            MarcadorDAO daoMarcador = new MarcadorDAO();
-            Marcador marcador = (Marcador) m;
-            //System.out.println(marcador);
-            if(marcador.getComentarios() != null){
-                for(Object c : marcador.getComentarios()){
-                    ComentarioDAO daoComentario = new ComentarioDAO();
-                    Comentario comentario = (Comentario)c;
-                    daoComentario.delete(comentario);
-                //System.out.println(comentario);
+        if(tema != null){
+            for(Object m:tema.getMarcadors()){
+                MarcadorDAO daoMarcador = new MarcadorDAO();
+                Marcador marcador = (Marcador) m;
+                //System.out.println(marcador);
+                if(marcador.getComentarios() != null){
+                    for(Object c : marcador.getComentarios()){
+                        ComentarioDAO daoComentario = new ComentarioDAO();
+                        Comentario comentario = (Comentario)c;
+                        daoComentario.delete(comentario);
+                    //System.out.println(comentario);
+                    }
                 }
+            daoMarcador.delete(marcador);
             }
-        daoMarcador.delete(marcador);
+            daoTema.delete(tema);
+        }else{
+            System.out.println("No existe el tema");
         }
-        daoTema.delete(tema);
+        
     }
     /*
     public void eliminaTema(){
