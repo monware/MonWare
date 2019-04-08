@@ -13,3 +13,15 @@ $(document).ready(function(){
        });
    });
 });
+
+function alerta()
+    {
+    var mensaje;
+    var opcion = confirm("¿Deseas Eliminar El Tema?");
+    if (opcion === true) {
+        mensaje = "Ha sido eliminado";
+	} else {
+	    mensaje = "Operacion Cancelada";
+	}
+	document.getElementById("ejemplo").innerHTML = mensaje;
+}
