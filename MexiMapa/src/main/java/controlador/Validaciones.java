@@ -30,7 +30,7 @@ public class Validaciones {
               System.out.println("Si");
            throw new ValidatorException(new FacesMessage("Cadena corta"));}
       
-   }
+        }
       
         public void validacionEmailAgregarInformador(FacesContext arg0, UIComponent arg1, Object arg2)
          throws ValidatorException {
@@ -44,7 +44,7 @@ public class Validaciones {
             //if(udb.find((String)arg2)!=null){
             //throw new ValidatorException(new FacesMessage("El correo ya existe, intente con otro"));}
             
-    }
+        }
         public void validacionEmailEliminarInformador(FacesContext arg0, UIComponent arg1, Object arg2)
          throws ValidatorException {
             
@@ -57,7 +57,10 @@ public class Validaciones {
             //if(udb.find((String)arg2)==null){
             //throw new ValidatorException(new FacesMessage("El correo no existe, intente con otro"));}
             
-    }  
+        }
+        public static void error(String error) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", error));
+        }
    }
       
 
