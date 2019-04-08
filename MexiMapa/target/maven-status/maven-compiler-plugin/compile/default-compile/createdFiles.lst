@@ -6,10 +6,10 @@ modelo/Usuario.class
 controlador/RegistrarUsuario.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
+controlador/EliminaTema.class
 controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/EliminaComentario.class
@@ -20,6 +20,7 @@ modelo/UsuarioDAO.class
 controlador/ControladorSesion.class
 controlador/AgregarInformador.class
 controlador/RegistrarUsuario$1.class
+modelo/Rol.class
 controlador/ControladorSesion$UserLogged.class
 controlador/AgregaComentario.class
 modelo/MarcadorDAO.class
