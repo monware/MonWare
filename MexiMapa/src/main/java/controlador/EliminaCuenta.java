@@ -8,11 +8,13 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 /**
  *
  * @author lizbethac
  */
 @ManagedBean
+@SessionScoped
 public class EliminaCuenta{
     private int idusuario;
 
@@ -32,4 +34,9 @@ public class EliminaCuenta{
         }
         
     }
+    
+    public String cancelar(){ 
+        return "/index?faces-redirect=true";
+    }
+            
 }
