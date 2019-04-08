@@ -12,7 +12,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import modelo.Mensajes;
-import modelo.Rol;
 
 /**
  *
@@ -49,17 +48,17 @@ public class ControladorSesion implements Serializable{
             UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
             
             if("ADMINISTRADOR".equals(user.getRol())){
-                 context.getExternalContext().getSessionMap().put("ADMINISTRADOR", u);
-                return "/user/administrador?faces-redirect=true";
+                 context.getExternalContext().getSessionMap().put("user", u);
+                return "/user/administrador/administrador?faces-redirect=true";
             }else if("INFORMADOR".equals(user.getRol())){
-                 context.getExternalContext().getSessionMap().put("INFORMADOR", u);
-                return "/user/informador?faces-redirect=true";
+                 context.getExternalContext().getSessionMap().put("user", u);
+                return "/user/informador/informador?faces-redirect=true";
             }else{
-                 context.getExternalContext().getSessionMap().put("COMENTARISTA", u);
-                return "/user/comentarista?faces-redirect=true";
+                 context.getExternalContext().getSessionMap().put("user", u);
+                return "/user/comentarista/comentarista?faces-redirect=true";
             }
         }
-        Mensajes.error("NO hay usuarios con este correo"+this.correo);
+        Validaciones.error("NO hay usuarios con este correo"+this.correo);
         return "";
     }
     

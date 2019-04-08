@@ -2,6 +2,7 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
+/home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Rol.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaMarcador.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
