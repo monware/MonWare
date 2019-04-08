@@ -8,6 +8,7 @@
  */
 
 package controlador;
+import javax.annotation.PostConstruct;
 import modelo.Marcador;
 import modelo.MarcadorDAO;
 import modelo.UsuarioDAO;
@@ -15,6 +16,14 @@ import modelo.Tema;
 import modelo.TemaDAO;
 import modelo.Usuario;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import modelo.Mensajes;
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.event.map.PointSelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 /**
  *
@@ -31,6 +40,8 @@ public class ColocaMarcador{
     private Double longitud;
     private String descripcion;
     private String datos;
+    private Marker marcador;
+    private MapModel simpleModel;
 
     public void setIdMarcador(int idMarcador){
 	this.idMarcador = idMarcador;
@@ -79,21 +90,67 @@ public class ColocaMarcador{
         return datos;
     }
     
-    public void colocaMarcador(){
-        Marcador m = new Marcador(); 
+    public String colocaMarcador(){
+        //Marcador m = new Marcador(); 
         UsuarioDAO udao = new UsuarioDAO();
+        MarcadorDAO mdao = new MarcadorDAO();
         TemaDAO t = new TemaDAO();        
         //u.getCorreo();
-        Usuario prueba= udao.find("Algo@al.com");
+        //Usuario prueba= udao.find("Algo@al.com");
         //String a = prueba.getCorreo();
-	Tema tema = t.find("Chilaquiles");        
-        m.setUsuario(prueba);
+	//Tema tema = t.find("Chilaquiles");        
+        
+        Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
+        if(m!= null){
+            this.descripcion ="";
+            Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
+            return "";
+        }
+        m = new Marcador();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
+        Usuario u = udao.buscaPorCorreo(us.getCorreo());
+        m.setUsuario(u);
         m.setTema(tema);
 	m.setLatitud(latitud);
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
         m.setDatos(datos);        
-        MarcadorDAO mdao = new MarcadorDAO();
         mdao.save(m);
+        Mensajes.info("Se guardo el marcador");
+        return "";
     }
+    
+     @PostConstruct
+    public void init(){
+        simpleModel = new DefaultMapModel();
+        marcador = new Marker(new LatLng(23.382390, -102.291477),"Arrastrame");
+        marcador.setDraggable(true);
+//        marcador.setClickable(true);
+        simpleModel.addOverlay(marcador);
+        this.latitud = marcador.getLatlng().getLat();
+        this.longitud = marcador.getLatlng().getLng();
+    }
+        public Marker getMarcador() {
+        return marcador;
+    }
+
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+    
+    public void onMarkerDrag(MarkerDragEvent event){
+        marcador = event.getMarker();
+        this.latitud = marcador.getLatlng().getLat();
+        this.longitud = marcador.getLatlng().getLng();
+    }
+
+    public void onPointSelect(PointSelectEvent event) {
+        LatLng latlng = event.getLatLng();
+        marcador = simpleModel.getMarkers().get(0);
+        marcador.setLatlng(latlng);
+        this.latitud = latlng.getLat();
+        this.longitud = latlng.getLng();
+        
+    }
+    
 }
