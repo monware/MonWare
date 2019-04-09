@@ -43,7 +43,40 @@ public class ColocaMarcador{
     private String datos;
     private Marker marcador;
     private MapModel simpleModel;
+    private String color;
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Marker getMarcador() {
+        return marcador;
+    }
+
+    public void setMarcador(Marker marcador) {
+        this.marcador = marcador;
+    }
+
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+
+    public void setSimpleModel(MapModel simpleModel) {
+        this.simpleModel = simpleModel;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
     public String getNombreTema() {
         return nombreTema;
     }
@@ -106,24 +139,23 @@ public class ColocaMarcador{
     public String colocaMarcador(){
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
-        Marcador m = new Marcador();
+        Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
         Usuario u = new Usuario();
-        TemaDAO t = new TemaDAO();
-        
-        tema = t.find(this.getNombreTema());
-        m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
+        TemaDAO tdao = new TemaDAO();
+        setTema(tdao.find(this.getNombreTema()));
         if(m!= null){
             this.descripcion ="";
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
+        
         if(tema==null){
             this.descripcion ="";
             Mensajes.fatal("El tema no existe");
             return "";
         }
-            
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
+        m = new Marcador();    
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
         m.setTema(tema);
@@ -135,7 +167,7 @@ public class ColocaMarcador{
         Mensajes.info("Se guardo el marcador");
         return "";
     }
-    /*
+    
      @PostConstruct
     public void init(){
         simpleModel = new DefaultMapModel();
@@ -145,13 +177,6 @@ public class ColocaMarcador{
         simpleModel.addOverlay(marcador);
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
-    }
-        public Marker getMarcador() {
-        return marcador;
-    }
-
-    public MapModel getSimpleModel() {
-        return simpleModel;
     }
     
     public void onMarkerDrag(MarkerDragEvent event){
@@ -169,6 +194,8 @@ public class ColocaMarcador{
      
         
            
-    }
-   */
+    
+}
+    
+    
 }
