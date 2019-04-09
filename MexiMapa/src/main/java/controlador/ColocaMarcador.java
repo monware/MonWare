@@ -104,11 +104,15 @@ public class ColocaMarcador{
     }
     
     public String colocaMarcador(){
-        Marcador m = new Marcador(); 
-        Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
+<<<<<<< HEAD
 
+=======
+        Marcador m = new Marcador();
+        Usuario u = new Usuario();
+/*
+>>>>>>> 641f6ee991216adf70dca0155f892daffa79f1f6
         TemaDAO t = new TemaDAO();        
         u.getCorreo();
         Usuario prueba= udao.find("Algo@al.com");
