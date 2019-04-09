@@ -134,7 +134,7 @@ public class RegistrarUsuario {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(contrasenia);
-        u.setRol("Comentarista");
+        u.setRol("COMENTARISTA");
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);

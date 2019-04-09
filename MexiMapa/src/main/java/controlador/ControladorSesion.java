@@ -44,6 +44,10 @@ public class ControladorSesion implements Serializable{
         UsuarioDAO udb = new UsuarioDAO();
         Usuario user = udb.buscaPorCorreoContrasenia(correo, contrasenia);
         FacesContext context = FacesContext.getCurrentInstance();
+        System.out.println("Hola Entras2?");
+        System.out.println("Hola" + user.getContrasenia());
+        System.out.println("hola3" + user.getNombre());
+        System.out.println("hbdei"+user.getRol());
         if(user !=null){
             UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
             
@@ -51,8 +55,9 @@ public class ControladorSesion implements Serializable{
                  context.getExternalContext().getSessionMap().put("user", u);
                 return "/user/administrador/administrador?faces-redirect=true";
             }else if("INFORMADOR".equals(user.getRol())){
-                 context.getExternalContext().getSessionMap().put("user", u);
-                return "/user/informador/informador?faces-redirect=true";
+                System.out.println("Hola Entras?");
+                 context.getExternalContext().getSessionMap().put("INFORMADOR", u);
+                return "/user/informador/?faces-redirect=true";
             }else{
                  context.getExternalContext().getSessionMap().put("user", u);
                 return "/user/comentarista/comentarista?faces-redirect=true";
