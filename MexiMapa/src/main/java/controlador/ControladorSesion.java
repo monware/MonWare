@@ -6,11 +6,11 @@
 package controlador;
 
 import java.io.Serializable;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 /**
  *
@@ -45,7 +45,8 @@ public class ControladorSesion implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         if(user !=null){
             //UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(), user.getRol());
-            UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
+            UserLogged u;
+            u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
             
             if(user.getRol()== 1){
                  context.getExternalContext().getSessionMap().put("administrador", u);
@@ -73,9 +74,9 @@ public class ControladorSesion implements Serializable{
     public class UserLogged implements Serializable{
         private String nombre;
         private String correo;
-        private String rol;
+        private Integer rol;
 
-        public UserLogged(String nombre, String correo, String rol) {
+        public UserLogged(String nombre, String correo, Integer rol) {
             this.nombre = nombre;
             this.correo = correo;
             this.rol = rol;
@@ -97,11 +98,11 @@ public class ControladorSesion implements Serializable{
             this.correo = correo;
         }
 
-        public String getRol() {
+        public Integer getRol() {
             return rol;
         }
 
-        public void setRol(String rol) {
+        public void setRol(Integer rol) {
             this.rol = rol;
         }
         

@@ -1,1 +1,39 @@
+<<<<<<< HEAD
+modelo/Mensajes.class
+controlador/FilterSession.class
+controlador/EliminarInformador.class
+controlador/CalificaComentario.class
+modelo/Usuario.class
+controlador/RegistrarUsuario.class
+controlador/Validaciones.class
+modelo/TemaDAO.class
+controlador/EliminaTema.class
+controlador/EliminarComentarista.class
+controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
+modelo/Tema.class
+modelo/Comentario.class
+controlador/FilterSessionAdministrador.class
+controlador/FilterSessionComentarista.class
+controlador/EliminaComentario.class
+modelo/Marcador.class
+controlador/BuscarPorCorreo.class
+modelo/HibernateUtil.class
+modelo/UsuarioDAO.class
+controlador/ControladorSesion.class
+controlador/AgregarInformador.class
+controlador/RegistrarUsuario$1.class
+controlador/ControladorSesion$UserLogged.class
+controlador/AgregaComentario.class
+modelo/MarcadorDAO.class
+controlador/EditaDatos.class
+modelo/AbstractDAO.class
+controlador/EditaComentario.class
+controlador/FilterSessionInformador.class
+modelo/ComentarioDAO.class
+controlador/ColocaMarcador.class
+controlador/AgregaTema.class
+controlador/EliminaCuenta.class
+=======
 
+>>>>>>> dfdc05dc0019188845e76e45cf6b8de1bcad40fc
