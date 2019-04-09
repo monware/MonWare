@@ -7,6 +7,7 @@ package modelo;
 
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -68,5 +69,29 @@ public class TemaDAO extends AbstractDAO<Tema>{
      */
     public List<Tema> findAll(){
         return super.findAll(Tema.class);
+    }
+    
+    public List<Tema> ObtenTemasPorUsuario(String correo){
+        List<Tema> m = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Tema m where m.usuario.correo = :correo";
+            Query query = session.createQuery(hql);
+            query.setParameter("correo", correo);
+            m = (List<Tema>)query.list();
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+
+        }finally{
+            session.close();
+        }
+        return m;
     }
 }

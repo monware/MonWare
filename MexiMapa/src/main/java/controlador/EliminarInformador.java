@@ -33,6 +33,7 @@ public class EliminarInformador {
         if(u!=null){
             if(u.getRol() == 3)
             udb.delete(u);
+            }
         } 
     }
-}
+
