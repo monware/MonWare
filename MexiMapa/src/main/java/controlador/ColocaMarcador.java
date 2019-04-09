@@ -43,7 +43,40 @@ public class ColocaMarcador{
     private String datos;
     private Marker marcador;
     private MapModel simpleModel;
+    private String color;
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Marker getMarcador() {
+        return marcador;
+    }
+
+    public void setMarcador(Marker marcador) {
+        this.marcador = marcador;
+    }
+
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+
+    public void setSimpleModel(MapModel simpleModel) {
+        this.simpleModel = simpleModel;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
     public String getNombreTema() {
         return nombreTema;
     }
@@ -106,41 +139,23 @@ public class ColocaMarcador{
     public String colocaMarcador(){
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
-<<<<<<< HEAD
-
-=======
-        Marcador m = new Marcador();
+        Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
         Usuario u = new Usuario();
-/*
->>>>>>> 641f6ee991216adf70dca0155f892daffa79f1f6
-        TemaDAO t = new TemaDAO();        
-        u.getCorreo();
-        Usuario prueba= udao.find("Algo@al.com");
-        String a = prueba.getCorreo();
-        /*
-	Tema tema = t.find("Chilaquiles");  
-        m.setUsuario(prueba);
-        m.setTema(tema);
-	m.setLatitud(latitud);
-	m.setLongitud(longitud);
-        m.setDescripcion(descripcion);
-        */
-        
-        tema = t.find(this.getNombreTema());
-        m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
+        TemaDAO tdao = new TemaDAO();
+        setTema(tdao.find(this.getNombreTema()));
         if(m!= null){
             this.descripcion ="";
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
+        
         if(tema==null){
             this.descripcion ="";
             Mensajes.fatal("El tema no existe");
             return "";
         }
-            
-        m = new Marcador();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
+        m = new Marcador();    
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
         m.setTema(tema);
@@ -163,13 +178,6 @@ public class ColocaMarcador{
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
     }
-        public Marker getMarcador() {
-        return marcador;
-    }
-
-    public MapModel getSimpleModel() {
-        return simpleModel;
-    }
     
     public void onMarkerDrag(MarkerDragEvent event){
         marcador = event.getMarker();
@@ -186,6 +194,8 @@ public class ColocaMarcador{
      
         
            
-    }
-   
+    
+}
+    
+    
 }

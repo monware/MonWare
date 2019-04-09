@@ -54,6 +54,7 @@ and open the template in the editor.
         <p:commandButton id="submitButton" value="Agregar Tema" update="@parent" action="#{agregaTema.agregraTema()}"/>
     </p:panel>
 </h:form>
+        <p:panel>
         <h:form>                                       
             
             <p:inputText id="tema" value="#{colocaMarcador.nombreTema}" placeholder="Tema" required="true"/> <br/>
@@ -63,5 +64,6 @@ and open the template in the editor.
                             <p:inputText id="datos" value="#{colocaMarcador.datos}" placeholder="Datos" required="true"/> <br/>
                             <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
                         </h:form>
+        </p:panel>
     </h:body>
 </html>
