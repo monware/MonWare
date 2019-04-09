@@ -12,7 +12,6 @@ modelo/Tema.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class
 modelo/Mensajes.class
-controlador/FilterSession.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
@@ -49,5 +48,6 @@ controlador/EliminaCuenta.class
 controlador/FilterSessionInformador.class
 modelo/ComentarioDAO.class
 controlador/ColocaMarcador.class
+controlador/AgregarInformador$1.class
 controlador/AgregaTema.class
 controlador/EliminaCuenta.class

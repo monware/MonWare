@@ -49,14 +49,13 @@ public class ControladorSesion implements Serializable{
             
             if(user.getRol()== 1){
                  context.getExternalContext().getSessionMap().put("administrador", u);
-                return "/user/administrador/?faces-redirect=true";
+                return "/user/administrador/PaginaPrincipalAdministradorIH?faces-redirect=true";
             }else if(user.getRol()== 2){
-                System.out.println("Hola Entras?");
                  context.getExternalContext().getSessionMap().put("comentarista", u);
-                return "/user/comentarista/?faces-redirect=true";
+                return "/user/comentarista/PaginaPrincipalComentaristaIH?faces-redirect=true";
             }else if(user.getRol()== 3){
                  context.getExternalContext().getSessionMap().put("informador", u);
-                return "/user/informador/?faces-redirect=true";
+                return "/user/informador/PaginaPrincipalInformadorIH?faces-redirect=true";
             }else{
                 Validaciones.error("Usuario Desconocido"+this.correo);
 

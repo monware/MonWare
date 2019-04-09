@@ -25,13 +25,13 @@ public class RegistrarUsuario {
     private String amaterno;
     private String correo;
     private String contrasenia;
-    private int rol;
+    private Integer rol;
 
     public int getRol() {
         return rol;
     }
 
-    public void setRol(int rol) {
+    public void setRol(Integer rol) {
         this.rol = rol;
     }
 
