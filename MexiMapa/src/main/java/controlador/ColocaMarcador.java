@@ -90,16 +90,24 @@ public class ColocaMarcador{
         return datos;
     }
     
-    public String colocaMarcador(){
-        //Marcador m = new Marcador(); 
+    public void colocaMarcador(){
+        Marcador m = new Marcador(); 
+        Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
+/*
         TemaDAO t = new TemaDAO();        
-        //u.getCorreo();
-        //Usuario prueba= udao.find("Algo@al.com");
-        //String a = prueba.getCorreo();
-	//Tema tema = t.find("Chilaquiles");        
-        
+        u.getCorreo();
+        Usuario prueba= udao.find("Algo@al.com");
+        String a = prueba.getCorreo();
+
+	Tema tema = t.find("Chilaquiles");  
+        m.setUsuario(prueba);
+        m.setTema(tema);
+	m.setLatitud(latitud);
+	m.setLongitud(longitud);
+        m.setDescripcion(descripcion);
+        */
         Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
         if(m!= null){
             this.descripcion ="";
@@ -150,7 +158,9 @@ public class ColocaMarcador{
         marcador.setLatlng(latlng);
         this.latitud = latlng.getLat();
         this.longitud = latlng.getLng();
+     
         
+           
     }
-    
+   
 }
