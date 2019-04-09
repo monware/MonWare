@@ -90,9 +90,9 @@ public class ColocaMarcador{
         return datos;
     }
     
-    public void colocaMarcador(){
-        Marcador m = new Marcador(); 
-        Usuario u = new Usuario();
+    public String colocaMarcador(){
+        //Marcador m = new Marcador(); 
+        //Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
 /*

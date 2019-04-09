@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controlador;
-
 import java.io.Serializable;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
@@ -104,8 +103,6 @@ public class ControladorSesion implements Serializable{
         public void setRol(String rol) {
             this.rol = rol;
         }
-        
-        
     }
 
 }

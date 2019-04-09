@@ -1,4 +1,3 @@
-
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
@@ -27,9 +26,9 @@
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/VerTema.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSessionComentarista.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSessionInformador.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
-
