@@ -45,8 +45,8 @@ public class EliminarComentarista {
         UsuarioDAO udao = new UsuarioDAO();
         ComentarioDAO cdao = new ComentarioDAO();
         Comentario comentario = new Comentario();
-        Usuario u = udao.find(correo);
-
+        Usuario u = udao.buscaPorCorreo(correo);
+        
         if(u!=null){
         udao.delete(u);
         }
