@@ -31,8 +31,11 @@ public class EliminarInformador {
         Usuario u = udb.find(correo);
         
         if(u!=null){
-            if("INFORMADOR".equals(u.getRol()))
+            if("INFORMADOR".equals(u.getRol())){
+                
+            
             udb.delete(u);
+            }
         } 
     }
 }
