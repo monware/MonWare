@@ -65,16 +65,18 @@ public class EditaDatos{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    public void editaDatos(Usuario u){
-    UsuarioDAO udb = new UsuarioDAO();
-        u = udb.buscaPorCorreo(this.getCorreo());
-    if(u!=null){
-    u.setNombre(nombre);
-    u.setApaterno(apaterno);
-    u.setAmaterno(amaterno);
-    //u.setCorreo(correo);
-    u.setContrasenia(contrasenia);    
-    udb.update(u);
-      }
-    }
+
+    public void editaDatos(){
+        Usuario u = new Usuario();
+        UsuarioDAO udb = new UsuarioDAO();
+        u = udb.find(u.getCorreo());
+        if(u!=null){
+            u.setNombre(nombre);
+            u.setApaterno(apaterno);
+            u.setAmaterno(amaterno);
+            //u.setCorreo(correo);
+            u.setContrasenia(contrasenia);    
+            udb.update(u);
+        }
+
 }
