@@ -65,9 +65,9 @@ public class EditaDatos{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    public void editaDatos(){
+    public void editaDatos(Usuario u){
     UsuarioDAO udb = new UsuarioDAO();
-    Usuario u = udb.find("Algo@alg.com");
+    u = udb.find(u.getCorreo());
     if(u!=null){
     u.setNombre(nombre);
     u.setApaterno(apaterno);
