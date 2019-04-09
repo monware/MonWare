@@ -7,8 +7,8 @@ controlador/Validaciones.class
 modelo/TemaDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class

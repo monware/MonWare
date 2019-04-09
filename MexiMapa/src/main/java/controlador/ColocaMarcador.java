@@ -106,25 +106,9 @@ public class ColocaMarcador{
     public String colocaMarcador(){
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
-<<<<<<< HEAD
-
-=======
         Marcador m = new Marcador();
         Usuario u = new Usuario();
-/*
->>>>>>> 641f6ee991216adf70dca0155f892daffa79f1f6
-        TemaDAO t = new TemaDAO();        
-        u.getCorreo();
-        Usuario prueba= udao.find("Algo@al.com");
-        String a = prueba.getCorreo();
-        /*
-	Tema tema = t.find("Chilaquiles");  
-        m.setUsuario(prueba);
-        m.setTema(tema);
-	m.setLatitud(latitud);
-	m.setLongitud(longitud);
-        m.setDescripcion(descripcion);
-        */
+        TemaDAO t = new TemaDAO();
         
         tema = t.find(this.getNombreTema());
         m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
@@ -139,7 +123,6 @@ public class ColocaMarcador{
             return "";
         }
             
-        m = new Marcador();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
         u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
@@ -152,7 +135,7 @@ public class ColocaMarcador{
         Mensajes.info("Se guardo el marcador");
         return "";
     }
-    
+    /*
      @PostConstruct
     public void init(){
         simpleModel = new DefaultMapModel();
@@ -187,5 +170,5 @@ public class ColocaMarcador{
         
            
     }
-   
+   */
 }

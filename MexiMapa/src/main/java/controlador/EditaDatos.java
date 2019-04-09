@@ -67,11 +67,7 @@ public class EditaDatos{
     }
     public void editaDatos(Usuario u){
     UsuarioDAO udb = new UsuarioDAO();
-<<<<<<< HEAD
-    Usuario u = udb.find(correo);
-=======
-    u = udb.find(u.getCorreo());
->>>>>>> 641f6ee991216adf70dca0155f892daffa79f1f6
+        u = udb.buscaPorCorreo(this.getCorreo());
     if(u!=null){
     u.setNombre(nombre);
     u.setApaterno(apaterno);
