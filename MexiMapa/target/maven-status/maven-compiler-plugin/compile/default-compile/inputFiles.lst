@@ -1,3 +1,4 @@
+
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
@@ -31,3 +32,4 @@
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
 /home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
+
