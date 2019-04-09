@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/03/2019 12:03:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 8/04/2019 09:44:46 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Tema" table="tema" schema="public" optimistic-lock="version">
         <id name="nombre" type="string">
@@ -9,8 +9,11 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="usuario" class="modelo.Usuario" fetch="select">
-            <column name="correo" not-null="true" />
+            <column name="idusuario" not-null="true" />
         </many-to-one>
+        <property name="color" type="string">
+            <column name="color" unique="true" />
+        </property>
         <set name="marcadors" table="marcador" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="nombre" not-null="true" />

@@ -33,12 +33,12 @@ public class FilterSessionInformador implements Filter{
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(true);
-         if (session.getAttribute("user") == null) {
+         if (session.getAttribute("informador") == null) {
             res.sendRedirect(req.getContextPath() + "/index.xhtml"); // Si no se encuentra el usuario redire al index.
         }
         else {
-            ControladorSesion.UserLogged u = (ControladorSesion.UserLogged) session.getAttribute("user");
-            if("INFORMADOR".equals(u.getRol())){
+            ControladorSesion.UserLogged u = (ControladorSesion.UserLogged) session.getAttribute("informador");
+            if(u.getRol() == 3){
                 chain.doFilter(req, res); // esta logueado se continua con lo que se solicito.
             }else{
                 res.sendRedirect(req.getContextPath() + "/index.xhtml");

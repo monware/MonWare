@@ -1,5 +1,5 @@
 package modelo;
-// Generated 30/03/2019 12:03:50 PM by Hibernate Tools 4.3.1
+// Generated 8/04/2019 09:44:45 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,44 +11,46 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
-     private String correo;
+     private int idusuario;
      private String nombre;
      private String apaterno;
      private String amaterno;
      private String contrasenia;
-     private String rol;
-     private Set temas = new HashSet(0);
-     private Set marcadors = new HashSet(0);
+     private String correo;
+     private Integer rol;
      private Set comentarios = new HashSet(0);
+     private Set marcadors = new HashSet(0);
+     private Set temas = new HashSet(0);
 
     public Usuario() {
     }
 
 	
-    public Usuario(String correo, String nombre, String contrasenia, String rol) {
-        this.correo = correo;
+    public Usuario(int idusuario, String nombre, String contrasenia, String correo) {
+        this.idusuario = idusuario;
         this.nombre = nombre;
         this.contrasenia = contrasenia;
-        this.rol = rol;
+        this.correo = correo;
     }
-    public Usuario(String correo, String nombre, String apaterno, String amaterno, String contrasenia, String rol, Set temas, Set marcadors, Set comentarios) {
-       this.correo = correo;
+    public Usuario(int idusuario, String nombre, String apaterno, String amaterno, String contrasenia, String correo, Integer rol, Set comentarios, Set marcadors, Set temas) {
+       this.idusuario = idusuario;
        this.nombre = nombre;
        this.apaterno = apaterno;
        this.amaterno = amaterno;
        this.contrasenia = contrasenia;
+       this.correo = correo;
        this.rol = rol;
-       this.temas = temas;
-       this.marcadors = marcadors;
        this.comentarios = comentarios;
+       this.marcadors = marcadors;
+       this.temas = temas;
     }
    
-    public String getCorreo() {
-        return this.correo;
+    public int getIdusuario() {
+        return this.idusuario;
     }
     
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
     public String getNombre() {
         return this.nombre;
@@ -78,26 +80,19 @@ public class Usuario  implements java.io.Serializable {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    public String getRol() {
+    public String getCorreo() {
+        return this.correo;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    public Integer getRol() {
         return this.rol;
     }
     
-    public void setRol(String rol) {
+    public void setRol(Integer rol) {
         this.rol = rol;
-    }
-    public Set getTemas() {
-        return this.temas;
-    }
-    
-    public void setTemas(Set temas) {
-        this.temas = temas;
-    }
-    public Set getMarcadors() {
-        return this.marcadors;
-    }
-    
-    public void setMarcadors(Set marcadors) {
-        this.marcadors = marcadors;
     }
     public Set getComentarios() {
         return this.comentarios;
@@ -106,7 +101,20 @@ public class Usuario  implements java.io.Serializable {
     public void setComentarios(Set comentarios) {
         this.comentarios = comentarios;
     }
-
+    public Set getMarcadors() {
+        return this.marcadors;
+    }
+    
+    public void setMarcadors(Set marcadors) {
+        this.marcadors = marcadors;
+    }
+    public Set getTemas() {
+        return this.temas;
+    }
+    
+    public void setTemas(Set temas) {
+        this.temas = temas;
+    }
 
 
 

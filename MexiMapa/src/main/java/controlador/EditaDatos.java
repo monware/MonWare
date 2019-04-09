@@ -7,6 +7,7 @@ package controlador;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import modelo.UsuarioDAO;
 import modelo.Usuario;
 
@@ -15,7 +16,7 @@ import modelo.Usuario;
  * @author lizbethac
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class EditaDatos{
  
     private String nombre;
@@ -64,16 +65,19 @@ public class EditaDatos{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
     public void editaDatos(){
-    UsuarioDAO udb = new UsuarioDAO();
-    Usuario u = udb.find("Algo@alg.com");
-    if(u!=null){
-    u.setNombre(nombre);
-    u.setApaterno(apaterno);
-    u.setAmaterno(amaterno);
-    //u.setCorreo(correo);
-    u.setContrasenia(contrasenia);    
-    udb.update(u);
-      }
-    }
+        Usuario u = new Usuario();
+        UsuarioDAO udb = new UsuarioDAO();
+        u = udb.find(u.getCorreo());
+        if(u!=null){
+            u.setNombre(nombre);
+            u.setApaterno(apaterno);
+            u.setAmaterno(amaterno);
+            //u.setCorreo(correo);
+            u.setContrasenia(contrasenia);    
+            udb.update(u);
+        }
+
+}
 }

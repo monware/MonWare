@@ -1,5 +1,4 @@
 modelo/Mensajes.class
-controlador/FilterSession.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
@@ -7,10 +6,10 @@ controlador/RegistrarUsuario.class
 controlador/DataScrollerView.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminarComentarista.class
 controlador/EliminaTema.class
-controlador/PaginaPrincipal.class
+controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class

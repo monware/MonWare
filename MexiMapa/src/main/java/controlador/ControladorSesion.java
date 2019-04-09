@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 package controlador;
-
 import java.io.Serializable;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import modelo.Mensajes;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 /**
  *
@@ -45,17 +43,22 @@ public class ControladorSesion implements Serializable{
         Usuario user = udb.buscaPorCorreoContrasenia(correo, contrasenia);
         FacesContext context = FacesContext.getCurrentInstance();
         if(user !=null){
-            UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
+            //UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(), user.getRol());
+            UserLogged u;
+            u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
             
-            if("ADMINISTRADOR".equals(user.getRol())){
-                 context.getExternalContext().getSessionMap().put("user", u);
-                return "/user/administrador/administrador?faces-redirect=true";
-            }else if("INFORMADOR".equals(user.getRol())){
-                 context.getExternalContext().getSessionMap().put("user", u);
-                return "/user/informador/informador?faces-redirect=true";
+            if(user.getRol()== 1){
+                 context.getExternalContext().getSessionMap().put("administrador", u);
+                return "/user/administrador/PaginaPrincipalAdministradorIH?faces-redirect=true";
+            }else if(user.getRol()== 2){
+                 context.getExternalContext().getSessionMap().put("comentarista", u);
+                return "/user/comentarista/PaginaPrincipalComentaristaIH?faces-redirect=true";
+            }else if(user.getRol()== 3){
+                 context.getExternalContext().getSessionMap().put("informador", u);
+                return "/user/informador/PaginaPrincipalInformadorIH?faces-redirect=true";
             }else{
-                 context.getExternalContext().getSessionMap().put("user", u);
-                return "/user/comentarista/comentarista?faces-redirect=true";
+                Validaciones.error("Usuario Desconocido"+this.correo);
+
             }
         }
         Validaciones.error("NO hay usuarios con este correo"+this.correo);
@@ -64,14 +67,14 @@ public class ControladorSesion implements Serializable{
     
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/index?faces-redirect=true";
+        return "/PaginaPrincipalIH?faces-redirect=true";
     }
     public class UserLogged implements Serializable{
         private String nombre;
         private String correo;
-        private String rol;
+        private Integer rol;
 
-        public UserLogged(String nombre, String correo, String rol) {
+        public UserLogged(String nombre, String correo, Integer rol) {
             this.nombre = nombre;
             this.correo = correo;
             this.rol = rol;
@@ -93,15 +96,13 @@ public class ControladorSesion implements Serializable{
             this.correo = correo;
         }
 
-        public String getRol() {
+        public Integer getRol() {
             return rol;
         }
 
-        public void setRol(String rol) {
+        public void setRol(Integer rol) {
             this.rol = rol;
         }
-        
-        
     }
 
 }
