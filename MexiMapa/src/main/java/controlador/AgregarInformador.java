@@ -16,6 +16,8 @@ import javax.faces.bean.RequestScoped;
 import java.security.SecureRandom;
 import java.math.BigInteger;
 import java.util.Properties;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -158,6 +160,9 @@ public class AgregarInformador {
         //método que manda el correo
         mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
         
+        
+        FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     private String generaContrasenia(int i) {

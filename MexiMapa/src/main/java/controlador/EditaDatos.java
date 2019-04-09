@@ -65,6 +65,7 @@ public class EditaDatos{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
     public void editaDatos(){
         Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
@@ -77,5 +78,4 @@ public class EditaDatos{
             u.setContrasenia(contrasenia);    
             udb.update(u);
         }
-    }
 }
