@@ -34,6 +34,7 @@ public class ColocaMarcador{
 
     private int idMarcador;
     private Tema tema;
+    private String nombreTema;
     private Usuario usuario;
     private String correo;
     private Double latitud;
@@ -42,6 +43,14 @@ public class ColocaMarcador{
     private String datos;
     private Marker marcador;
     private MapModel simpleModel;
+
+    public String getNombreTema() {
+        return nombreTema;
+    }
+
+    public void setNombreTema(String nombreTema) {
+        this.nombreTema = nombreTema;
+    }
 
     public void setIdMarcador(int idMarcador){
 	this.idMarcador = idMarcador;
@@ -89,18 +98,22 @@ public class ColocaMarcador{
     public String getDatos(){
         return datos;
     }
+
+    public Tema getTema() {
+        return tema;
+    }
     
     public String colocaMarcador(){
         Marcador m = new Marcador(); 
         Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
-/*
+
         TemaDAO t = new TemaDAO();        
         u.getCorreo();
         Usuario prueba= udao.find("Algo@al.com");
         String a = prueba.getCorreo();
-
+        /*
 	Tema tema = t.find("Chilaquiles");  
         m.setUsuario(prueba);
         m.setTema(tema);
@@ -108,12 +121,20 @@ public class ColocaMarcador{
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
         */
+        
+        tema = t.find(this.getNombreTema());
         m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
         if(m!= null){
             this.descripcion ="";
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
+        if(tema==null){
+            this.descripcion ="";
+            Mensajes.fatal("El tema no existe");
+            return "";
+        }
+            
         m = new Marcador();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
         u = udao.buscaPorCorreo(us.getCorreo());

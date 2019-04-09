@@ -66,7 +66,7 @@ public class EditaDatos{
     }
     public void editaDatos(){
     UsuarioDAO udb = new UsuarioDAO();
-    Usuario u = udb.find("Algo@alg.com");
+    Usuario u = udb.find(correo);
     if(u!=null){
     u.setNombre(nombre);
     u.setApaterno(apaterno);
