@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view>
+        <h:head>
+          <title>Editar datos</title>
+   
+            <h:outputStylesheet name="css/style.css"/>
+        </h:head>
+ <h:body>
+     <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+                      
+		</a> <!-- / #logo-header -->
+   
+		<nav>
+			<ul>
+				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
+				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
+				<li><a href="CerrarSesionComentarista.xhtml">Cerrar Sesion</a></li>
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+    
+          <header>
+            <h1>
+             Editar tus datos
+            </h1>
+              </header>        
+                        <h:form >
+                            <p:inputText id="nombre" value="#{editaDatos.nombre}" placeholder="Nombre(s)"/> <br/>
+                            <p:inputText id="apaterno" value="#{editaDatos.apaterno}" placeholder="Apellido Paterno"/> <br/>
+                            <p:inputText id="amaterno" value="#{editaDatos.amaterno}" placeholder="Apellido Materno"/> <br/>
+                            
+                            <p:inputText id="contrasenia" value="#{editaDatos.contrasenia}" placeholder="Contraseña nueva"/> <br/>                           
+                            <p:commandButton action="#{editaDatos.editaDatos()}" value="Aceptar" ajax="false" />
+                        </h:form>
+          
+        </h:body>	    
+    </f:view>
+</html>
+
+

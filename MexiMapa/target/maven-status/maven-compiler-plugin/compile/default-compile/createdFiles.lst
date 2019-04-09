@@ -6,10 +6,10 @@ modelo/Usuario.class
 controlador/RegistrarUsuario.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
+controlador/EliminaTema.class
 controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class
