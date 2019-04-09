@@ -29,8 +29,9 @@ public class EliminarInformador {
         //Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
         Usuario u = udb.find(correo);
+        
         if(u!=null){
-            if(u.getRol() == "INFORMADOR")
+            if("INFORMADOR".equals(u.getRol()))
             udb.delete(u);
         } 
     }

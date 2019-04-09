@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 modelo/Mensajes.class
 controlador/FilterSession.class
 controlador/EliminarInformador.class
@@ -8,10 +6,10 @@ modelo/Usuario.class
 controlador/RegistrarUsuario.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
+controlador/EliminaTema.class
 controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 modelo/Tema.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class
@@ -35,8 +33,3 @@ modelo/ComentarioDAO.class
 controlador/ColocaMarcador.class
 controlador/AgregaTema.class
 controlador/EliminaCuenta.class
-=======
->>>>>>> 03d8cb3fea755005f4cb53e56baf6895d00e12bf
-=======
-
->>>>>>> adbacf602217e1eb00f8c3d87a9f8eee68d15138
