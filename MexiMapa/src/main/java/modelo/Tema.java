@@ -1,5 +1,5 @@
 package modelo;
-// Generated 30/03/2019 12:03:50 PM by Hibernate Tools 4.3.1
+// Generated 8/04/2019 09:44:45 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public class Tema  implements java.io.Serializable {
 
      private String nombre;
      private Usuario usuario;
+     private String color;
      private Set marcadors = new HashSet(0);
 
     public Tema() {
@@ -23,9 +24,10 @@ public class Tema  implements java.io.Serializable {
         this.nombre = nombre;
         this.usuario = usuario;
     }
-    public Tema(String nombre, Usuario usuario, Set marcadors) {
+    public Tema(String nombre, Usuario usuario, String color, Set marcadors) {
        this.nombre = nombre;
        this.usuario = usuario;
+       this.color = color;
        this.marcadors = marcadors;
     }
    
@@ -42,6 +44,13 @@ public class Tema  implements java.io.Serializable {
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    public String getColor() {
+        return this.color;
+    }
+    
+    public void setColor(String color) {
+        this.color = color;
     }
     public Set getMarcadors() {
         return this.marcadors;

@@ -25,7 +25,15 @@ public class RegistrarUsuario {
     private String amaterno;
     private String correo;
     private String contrasenia;
-    private String rol;
+    private int rol;
+
+    public int getRol() {
+        return rol;
+    }
+
+    public void setRol(int rol) {
+        this.rol = rol;
+    }
 
     /**
      * 
@@ -58,22 +66,6 @@ public class RegistrarUsuario {
      */
     public void setAmaterno(String amaterno) {
         this.amaterno = amaterno;
-    }
-
-    /**
-     * 
-     * @return 
-     */
-    public String getRol() {
-        return rol;
-    }
-
-    /**
-     * 
-     * @param rol 
-     */
-    public void setRol(String rol) {
-        this.rol = rol;
     }
 
     /**
@@ -134,7 +126,7 @@ public class RegistrarUsuario {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(contrasenia);
-        u.setRol("COMENTARISTA");
+        u.setRol(2);
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);

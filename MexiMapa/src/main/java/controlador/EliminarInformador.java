@@ -30,11 +30,11 @@ public class EliminarInformador {
         UsuarioDAO udb = new UsuarioDAO();
         Usuario u = udb.find(correo);
         System.out.println("pruebdsdsd1");
-        String prueba = u.getRol();
+        int prueba = u.getRol();
         System.out.println("pruebdsdsd");
         System.out.println("Pruebas" + prueba);
         if(u!=null){
-            if(u.getRol() == "INFORMADOR")
+            if(u.getRol() == 3)
             udb.delete(u);
         } 
     }
