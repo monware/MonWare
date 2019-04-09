@@ -71,7 +71,8 @@ public class EditaDatos{
         UsuarioDAO udb = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         u = udb.buscaPorCorreo(us.getCorreo());
-        if(u!=null){
+        if(u!=null){ 
+            //awas
             u.setNombre(nombre);
             u.setApaterno(apaterno);
             u.setAmaterno(amaterno);
