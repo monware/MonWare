@@ -36,7 +36,7 @@ public class AgregarInformador {
     private String apaterno;
     private String amaterno;
     private String contrasenia;
-    private String rol;
+    private int rol;
     private String apellido;
     private Set temas = new HashSet(0);
     private Set marcadors = new HashSet(0);
@@ -90,11 +90,11 @@ public class AgregarInformador {
         this.contrasenia = contrasenia;
     }
 
-    public String getRol() {
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 
@@ -147,7 +147,7 @@ public class AgregarInformador {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(generaContrasenia(10));  
-        u.setRol("INFORMADOR");
+        u.setRol(3);
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);
