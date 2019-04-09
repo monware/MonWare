@@ -91,8 +91,6 @@ public class ColocaMarcador{
     }
     
     public String colocaMarcador(){
-        Marcador m = new Marcador(); 
-        Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
         MarcadorDAO mdao = new MarcadorDAO();
 /*

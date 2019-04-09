@@ -1,3 +1,16 @@
+
+modelo/Mensajes.class
+controlador/FilterSession.class
+controlador/EliminarInformador.class
+modelo/Usuario.class
+controlador/Validaciones.class
+controlador/EliminaTema.class
+controlador/EliminarComentarista.class
+controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
+modelo/Tema.class
+modelo/Comentario.class
+controlador/FilterSessionAdministrador.class
 modelo/Mensajes.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
@@ -17,6 +30,7 @@ controlador/EliminaComentario.class
 modelo/Marcador.class
 controlador/BuscarPorCorreo.class
 modelo/HibernateUtil.class
+controlador/AgregarInformador.class
 modelo/UsuarioDAO.class
 controlador/ControladorSesion.class
 controlador/AgregarInformador.class
@@ -27,6 +41,10 @@ modelo/MarcadorDAO.class
 controlador/EditaDatos.class
 modelo/AbstractDAO.class
 controlador/EditaComentario.class
+modelo/ComentarioDAO.class
+controlador/AgregarInformador$1.class
+controlador/AgregaTema.class
+controlador/EliminaCuenta.class
 controlador/FilterSessionInformador.class
 modelo/ComentarioDAO.class
 controlador/ColocaMarcador.class

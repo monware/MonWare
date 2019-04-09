@@ -7,6 +7,7 @@ package controlador;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import modelo.UsuarioDAO;
 import modelo.Usuario;
 
@@ -15,7 +16,7 @@ import modelo.Usuario;
  * @author lizbethac
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class EditaDatos{
  
     private String nombre;

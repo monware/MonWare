@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controlador;
-
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -104,8 +103,6 @@ public class ControladorSesion implements Serializable{
         public void setRol(Integer rol) {
             this.rol = rol;
         }
-        
-        
     }
 
 }
