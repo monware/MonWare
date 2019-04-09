@@ -90,7 +90,7 @@ public class ColocaMarcador{
         return datos;
     }
     
-    public void colocaMarcador(){
+    public String colocaMarcador(){
         Marcador m = new Marcador(); 
         Usuario u = new Usuario();
         UsuarioDAO udao = new UsuarioDAO();
@@ -108,7 +108,7 @@ public class ColocaMarcador{
 	m.setLongitud(longitud);
         m.setDescripcion(descripcion);
         */
-        Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
+        m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
         if(m!= null){
             this.descripcion ="";
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
@@ -116,7 +116,7 @@ public class ColocaMarcador{
         }
         m = new Marcador();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("INFORMADOR");
-        Usuario u = udao.buscaPorCorreo(us.getCorreo());
+        u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
         m.setTema(tema);
 	m.setLatitud(latitud);
