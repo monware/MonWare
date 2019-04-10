@@ -7,6 +7,9 @@ package controlador;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -35,13 +38,16 @@ public class EditaComentario {
 
 
     public void editaComentario(){
-        ComentarioDAO cdao = new ComentarioDAO();
-        Comentario u = cdao.find(idComentario);
-        if(u != null){
-            u.setComentario(comentario);
-            cdao.update(u);
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        for(Object ecomen:usuarioA.getComentarios()){
+            ComentarioDAO comentariodao = (ComentarioDAO) ecomen;
+            Comentario comentario1 =comentariodao.find(idComentario);
+            if(comentario1 != null){
+                comentario1.setComentario(comentario);
+            }
         }
-        
     }
     
 }

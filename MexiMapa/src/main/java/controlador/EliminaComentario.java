@@ -7,6 +7,13 @@ package controlador;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Tema;
+import modelo.TemaDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -22,13 +29,37 @@ public class EliminaComentario {
     public void setIdComentario(int idComentario) {
         this.idComentario = idComentario;
     }
-    
-    public void eliminaComentario(){
-        //Usuario u = new Usuario();
-        ComentarioDAO udao = new ComentarioDAO();
-        Comentario u = udao.find(idComentario);
-        if(u!=null){
-            udao.delete(u);
-        } 
+    //Idea: Como el comentarista puede eliminar sus comentarios solo buscamos en su lista de comentarios asociados y elimine el que guste.
+    public void eliminaComentarioComentarista(){
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        for(Object comen:usuarioA.getComentarios()){
+            ComentarioDAO comendao = (ComentarioDAO) comen;
+            Comentario comentario = comendao.find(idComentario);
+            if(comentario !=null){
+                comendao.delete(comentario);
+            }
+        }
+    }
+    //Idea: Como el Inofrmador puede Eliminar de los Temas los que quiera Obtenemos lo siguiente.
+    public void eliminaComentarioInformador(){
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        for(Object marca:usuarioA.getMarcadors()){
+            MarcadorDAO marcadordao = (MarcadorDAO) marca;
+            //pensar como modificar para recibir el marcador deseado puedo pasarle el id de los marcadores
+            //y ahi buscar los comentarios que quiera :/
+            Marcador marcador = marcadordao.find(idComentario); //id Marcador
+            //if(marcador!= null) si es que sigo con esa idea
+            for(Object coment:marcador.getComentarios()){
+                ComentarioDAO comentariodao = (ComentarioDAO)coment;
+                Comentario comentario = comentariodao.find(idComentario);
+                if(comentario != null){
+                    comentariodao.delete(comentario);
+                }
+            }
+        }
     }
 }
