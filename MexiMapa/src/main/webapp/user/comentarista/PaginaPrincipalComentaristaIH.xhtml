@@ -26,6 +26,7 @@ and open the template in the editor.
 <h:body>
 
     <header id="main-header">
+       
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
@@ -36,8 +37,12 @@ and open the template in the editor.
 			<ul>
 				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
 				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
-				<li><a href="CerrarSesionComentarista.xhtml">Cerrar Sesion</a></li>
+				<!-- / <li><a href="CerrarSesionComentarista.xhtml">Cerrar Sesion</a></li>-->
 			</ul>
+                    
+                     <h:form >
+            <p:commandButton action="#{controladorsesion.logout()}" value="Cerrar sesión" ajax="false" />
+        </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->

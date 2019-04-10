@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import modelo.UsuarioDAO;
 import modelo.Usuario;
 
@@ -69,14 +70,16 @@ public class EditaDatos{
     public void editaDatos(){
         Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
-        u = udb.find(u.getCorreo());
-        if(u!=null){
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        u = udb.buscaPorCorreo(us.getCorreo());
+        if(u!=null){ 
             u.setNombre(nombre);
             u.setApaterno(apaterno);
             u.setAmaterno(amaterno);
             //u.setCorreo(correo);
-            u.setContrasenia(contrasenia);    
+            u.setContrasenia(contrasenia); 
             udb.update(u);
         }
 
+}
 }
