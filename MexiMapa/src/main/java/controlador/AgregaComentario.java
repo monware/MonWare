@@ -72,7 +72,7 @@ public class AgregaComentario {
         marcador = daoMarcador.find(1);
         Usuario usuario = new Usuario();
         UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         usuario = daoUsuario.buscaPorCorreo(us.getCorreo());
         comentar.setMarcador(marcador);
         comentar.setUsuario(usuario);
