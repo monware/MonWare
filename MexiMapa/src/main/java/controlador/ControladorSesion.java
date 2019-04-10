@@ -67,7 +67,7 @@ public class ControladorSesion implements Serializable{
     
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/index?faces-redirect=true";
+        return "/PaginaPrincipalIH?faces-redirect=true";
     }
     public class UserLogged implements Serializable{
         private String nombre;
