@@ -29,6 +29,16 @@ public class EliminaComentario {
     public void setIdComentario(int idComentario) {
         this.idComentario = idComentario;
     }
+    //Falta otro para administrador
+    
+    public void eliminaComentarioAdministrador(){
+        ComentarioDAO udao = new ComentarioDAO();
+        Comentario u = udao.find(idComentario);
+        if(u!=null){
+            udao.delete(u);
+        }
+    }
+    
     //Idea: Como el comentarista puede eliminar sus comentarios solo buscamos en su lista de comentarios asociados y elimine el que guste.
     public void eliminaComentarioComentarista(){
         UsuarioDAO daoUsuario = new UsuarioDAO();
