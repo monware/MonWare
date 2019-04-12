@@ -148,7 +148,6 @@ public class ColocaMarcador{
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
-        
         if(tema==null){
             this.descripcion ="";
             Mensajes.fatal("El tema no existe");
@@ -159,8 +158,8 @@ public class ColocaMarcador{
         u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
         m.setTema(tema);
-	m.setLatitud(latitud);
-	m.setLongitud(longitud);
+        m.setLatitud(latitud);
+        m.setLongitud(longitud);
         m.setDescripcion(descripcion);
         m.setDatos(datos);        
         mdao.save(m);
