@@ -11,6 +11,7 @@ controlador/EliminaTema.class
 controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
 modelo/Tema.class
+controlador/VerMarcadores.class
 modelo/Comentario.class
 controlador/FilterSessionAdministrador.class
 controlador/FilterSessionComentarista.class
