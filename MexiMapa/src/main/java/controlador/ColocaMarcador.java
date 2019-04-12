@@ -155,7 +155,7 @@ public class ColocaMarcador{
             return "";
         }
         m = new Marcador();    
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("administrador");
         u = udao.buscaPorCorreo(us.getCorreo());
         m.setUsuario(u);
         m.setTema(tema);

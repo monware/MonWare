@@ -24,8 +24,8 @@ controlador/ControladorSesion.class
 controlador/AgregarInformador.class
 controlador/RegistrarUsuario$1.class
 controlador/ControladorSesion$UserLogged.class
-controlador/ObtenerComentarios.class
 controlador/AgregaComentario.class
+controlador/ObtenerComentarios.class
 modelo/MarcadorDAO.class
 controlador/EditaDatos.class
 modelo/AbstractDAO.class
