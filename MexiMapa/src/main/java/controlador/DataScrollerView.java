@@ -18,7 +18,7 @@ import modelo.Usuario;
  *
  * @author yisus tomada plantilla de java prime faces
  */
-@ManagedBean
+    @ManagedBean
 @ViewScoped
 public class DataScrollerView implements Serializable {
      

@@ -42,51 +42,12 @@ and open the template in the editor.
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-        <main>
-                        <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
-                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
-                        <p:gmapInfoWindow id="ventanaInfo">
-                             <p:outputPanel style="text-align: left; display: block; margin: auto">
- 
-                                    <!--<p:graphicImage name="/demo/images/antalya/{infoWindowView.marker.data}" height="150" />-->
-                                    <!--<br />-->
-                                    <h:outputText value="#{verMarcadores.marker.title}" />
-                                    <br/>
-                                    <h:outputText value="#{verMarcadores.marker.data}"/>
-                            </p:outputPanel>
-                        </p:gmapInfoWindow>
-                    </p:gmap>  
-        </main>
+      
+        
         
         <style type="text/css">
     
 </style>
- 
- 
-<h:form> 
-    <p:dataScroller value="#{dataScrollerView.usuario}" var="usuario" chunkSize="10">
-        <f:facet name="header">
-            Desliza para ver mas comentarios
-        </f:facet>
- 
-        <h:panelGrid columns="2" style="width:100%" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"  styleClass="ui-panelgrid-blank ui-fluid">
-           
-            <p:outputPanel>
-                <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputText value="Id:" />
-                    <h:outputText value="#{usuario.nombre}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Year:" />
-                    <h:outputText value="#{comentario.comentario}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Color:" />
-                    <h:outputText value="#{comentario.id}" style="font-weight: bold"/>
-                </h:panelGrid>
-            </p:outputPanel>
-        </h:panelGrid>
-    </p:dataScroller>
-</h:form>
-        
          <div id="main">
                 <section>
                     <div id="colores">
