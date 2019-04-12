@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package controlador;
-import java.util.List;
 import modelo.Tema;
 import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import modelo.Marcador;
 import modelo.MarcadorDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -47,21 +49,18 @@ public class EliminaTema {
     }
     //comentario, marcadores, tema 
     
-    public void eliminaTema(){
+    public void eliminaTemaAdministrador(){
         TemaDAO daoTema = new TemaDAO();
         Tema tema = daoTema.find(nombre);
-        //System.out.println(tema);
         if(tema != null){
             for(Object m:tema.getMarcadors()){
                 MarcadorDAO daoMarcador = new MarcadorDAO();
                 Marcador marcador = (Marcador) m;
-                //System.out.println(marcador);
                 if(marcador.getComentarios() != null){
                     for(Object c : marcador.getComentarios()){
                         ComentarioDAO daoComentario = new ComentarioDAO();
                         Comentario comentario = (Comentario)c;
                         daoComentario.delete(comentario);
-                    //System.out.println(comentario);
                     }
                 }
             daoMarcador.delete(marcador);
@@ -69,37 +68,32 @@ public class EliminaTema {
             daoTema.delete(tema);
         }else{
             System.out.println("No existe el tema");
-        }
-        
+        } 
     }
-    /*
-    public void eliminaTema(){
-        Tema tema = new Tema();
-        TemaDAO daoTema = new TemaDAO();
-        Marcador marcador = new Marcador();
-        MarcadorDAO daoMarcador = new MarcadorDAO();
-        Comentario comentario = new Comentario();
-        ComentarioDAO daoComentario = new ComentarioDAO();
-        tema = daoTema.find(nombre);
-        List<Marcador> lst = daoMarcador.encuentraMarcadores(nombre);
-        for(Marcador mar:lst){
-            int aux = mar.getIdMarcador();
-            List<Comentario> lsta = daoComentario.encuentraComentario(aux);
-            for(Comentario com:lsta){
-                comentario = daoComentario.find(com.getIdComentario());
-                if(comentario!= null){
-                daoComentario.delete(comentario);
-                }   
-            }
-            marcador = daoMarcador.find(aux);
-            if(marcador!= null){
-                daoMarcador.delete(marcador);
-            }
-        }
-        if(tema != null){
-            daoTema.delete(tema);
-        }
+    
+    public void eliminaTemaInformador(){
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         
-    }*/
-
+        for(Object prueba: usuarioA.getTemas()){
+            TemaDAO temadao = (TemaDAO) prueba;
+            Tema tema = temadao.find(nombre);
+            if(tema != null){
+                for(Object m: tema.getMarcadors()){
+                    MarcadorDAO daoMarcador = new MarcadorDAO();
+                    Marcador marcador = (Marcador) m;
+                    if(marcador.getComentarios() != null){
+                        for(Object c : marcador.getComentarios()){
+                            ComentarioDAO daoComentario = new ComentarioDAO();
+                            Comentario comentario = (Comentario)c;
+                            daoComentario.delete(comentario);
+                        }
+                    }
+                    daoMarcador.delete(marcador);
+                }
+                temadao.delete(tema);
+            }
+        }
+    }
 }

@@ -7,6 +7,9 @@ package controlador;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -33,12 +36,17 @@ public class CalificaComentario {
     }
     
     public void calificaComentario(){
-        ComentarioDAO cdao = new ComentarioDAO();
-        Comentario u = cdao.find(idComentario);
-        if(u != null){
-            u.setCalificacion(calificacion);
-            cdao.update(u);
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        for(Object coment:usuarioA.getComentarios()){
+            ComentarioDAO cdao = new ComentarioDAO();
+            Comentario comentario = (Comentario) coment;
+            comentario = cdao.find(idComentario);
+            if(comentario != null){
+                comentario.setCalificacion(calificacion);
+                cdao.update(comentario);
+            }
         }
-        
     }
 }

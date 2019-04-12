@@ -37,12 +37,12 @@ public class AgregaTema {
         this.nombre = nombre;
     }
     
-    
+    //Falta Agregarle a que marcador pertenece.
     public void agregraTema(){
         Tema tema = new Tema();
         TemaDAO daoTema = new TemaDAO();
         UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         tema.setNombre(nombre);
         tema.setUsuario(usuarioA);

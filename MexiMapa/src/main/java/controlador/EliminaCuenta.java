@@ -32,7 +32,6 @@ public class EliminaCuenta{
         if(u!=null){
             udao.delete(u);
         }
-        
     }
     
     public String cancelar(){ 
