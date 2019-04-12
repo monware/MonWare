@@ -22,9 +22,7 @@ public class EliminarInformador {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
-
-    
+   
     public void eliminaInformador(){
         //Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
