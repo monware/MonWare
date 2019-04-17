@@ -28,7 +28,7 @@ CREATE TABLE public.comentario (
     idmarcador integer NOT NULL,
     idusuario integer NOT NULL,
     comentario character varying(255),
-    calificacion real NOT NULL,
+    calificacion integer,
     fecha date DEFAULT ('now'::text)::timestamp(2) with time zone NOT NULL
 );
 
@@ -283,7 +283,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN idusuario SET DEFAULT nextval('publ
 --
 
 COPY public.comentario (idcomentario, idmarcador, idusuario, comentario, calificacion, fecha) FROM stdin;
-1	1	3	los mejores de la zona	5	2019-04-08
+1	1	3	los mejores de la zona	5	2019-04-17
 \.
 
 
@@ -293,9 +293,6 @@ COPY public.comentario (idcomentario, idmarcador, idusuario, comentario, calific
 
 COPY public.marcador (idmarcador, nombre, idusuario, latitud, longitud, descripcion, datos) FROM stdin;
 1	Chilaquiles	3	19.3365580000000001	-99.1660729999999973	Los mejor del rumbo	avenida siempre viva
-33	El acuario en CDMX	2	19.4399289999999993	-99.2051869999999951	Un bonito lugar	un bonito lugar para coner la variedad de peces en el mar
-34	Un Parque Estilo Japones	2	19.3527790000000017	-99.1423379999999952	Un lugar con tu pareja	bonito lugar estilo japones para tomarte fotos con tu pareja o para presumir entre tus conocidos
-35	Un nuevo frape	2	19.367246999999999	-99.166324000000003	Un buen rato para pasar juntos	Buenisimos frapes de diferentes sabores "estilo oriental" para disfrutar solo ó acompañado
 2	Batallas de Rap	0	16.590876999999999	-96.4719050000000067	Batallas Gratis	Ven a demostrar y practicar tus habilidades, sin costo, todos los sabados de 8 AM a 2 PM
 3	Batallas de Rap	0	18.5463239999999985	-96.0642320000000041	Torneos mensuales	Torneos con proyeccion internacional, primer fin de semana de mes, de 8 de la mañana a 8 de la tarde
 4	Batallas de Rap	0	19.9682020000000016	-97.8531839999999988	Los mejores raperos de la zona	Ven a las batallas con la mejor banda del barrio, todos los viernes a las 6pm
@@ -326,6 +323,10 @@ COPY public.marcador (idmarcador, nombre, idusuario, latitud, longitud, descripc
 29	Puestos Callejeros	0	24.6043149999999997	-102.738319000000004	Matehuala season food	Comida de temporada en matehuala
 30	Puestos Callejeros	0	25.1502410000000012	-99.8304729999999978	Tortas Tacos monte monte	La garnacha por excelencia en montemorelos
 31	Puestos Callejeros	0	16.8498769999999993	-99.8956859999999978	Tacos la bahia	Los mejores tacos nocturnos con vista a puerto marques
+32	Los mejores tacos del rumbo	6	19.3222370000000012	-99.1638130000000046	Los mejor del rumbo	Buenos tacos buena actitud un buen lugar para pasar el tiempo
+33	El acuario en CDMX	6	19.4399289999999993	-99.2051869999999951	Un bonito lugar	un bonito lugar para coner la variedad de peces en el mar
+34	Un Parque Estilo Japones	6	19.3527790000000017	-99.1423379999999952	Un lugar con tu pareja	bonito lugar estilo japones para tomarte fotos con tu pareja o para presumir entre tus conocidos
+35	Un nuevo frape	6	19.367246999999999	-99.166324000000003	Un buen rato para pasar juntos	Buenisimos frapes de diferentes sabores "estilo oriental" para disfrutar solo ó acompañado
 \.
 
 
@@ -335,16 +336,16 @@ COPY public.marcador (idmarcador, nombre, idusuario, latitud, longitud, descripc
 
 COPY public.tema (nombre, idusuario, color) FROM stdin;
 Chilaquiles	3	#041D56
-Batallas de Rap	5	#1A3AE2
-Intercambio de Libros	5	#F7F917
-Puestos Callejeros	5	#F99517
-Intercambios de estampas	5	#17F9F4
-Venta de Juguetes Coleccionables	5	#C917F9
-Vulcanizadoras	5	#5F3D02
-Los mejores tacos del rumbo	2	#1A5AE2
-El acuario en CDMX	2	#F7F913
-Un Parque Estilo Japones	2	#F34517
-Un nuevo frape	2	#57F9F6
+Batallas de Rap	0	#1A3AE2
+Intercambio de Libros	0	#F7F917
+Puestos Callejeros	0	#F99517
+Intercambios de estampas	0	#17F9F4
+Venta de Juguetes Coleccionables	0	#C917F9
+Vulcanizadoras	0	#5F3D02
+Los mejores tacos del rumbo	6	#1A5AE2
+El acuario en CDMX	6	#F7F913
+Un Parque Estilo Japones	6	#F34517
+Un nuevo frape	6	#57F9F6
 \.
 
 
@@ -354,11 +355,12 @@ Un nuevo frape	2	#57F9F6
 
 COPY public.usuario (idusuario, nombre, apaterno, amaterno, contrasenia, correo, rol) FROM stdin;
 1	admin	ad	add	qwerty	Algo@algo.com	1
+2	comen	ad	add	qwerty	Algo@alg.com	2
 3	infor	ad	add	qwerty	Algo@al.com	3
-0	Jesus	Barajas	Figueroa	226i1ecmg3	brainb29@gmail.com	3
-4	liz	arguello	L	dasl1gvlt4	no_reply@algo.com	3
-5	Alexia	M	R	3u48lubksd	alex@gmail.com	3
-2	Jorge	Argenis	Hernandez	qwerty	jorge@gmail.com	3
+0	Jesus	Barajas	Figueroa	qwerty	brainb29@gmail.com	3
+4	Liz	Arguello	L	qwerty	no_reply@algo.com	3
+5	Alexia	M	R	qwerty	alex@gmail.com	3
+6	Jorge	Argenis	Hernandez	qwerty	jorge@gmail.com	3
 \.
 
 
@@ -408,7 +410,7 @@ SELECT pg_catalog.setval('public.tema_idusuario_seq', 1, false);
 -- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_idusuario_seq', 7, true);
+SELECT pg_catalog.setval('public.usuario_idusuario_seq', 1, false);
 
 
 --
