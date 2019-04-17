@@ -6,10 +6,8 @@ controlador/RegistrarUsuario.class
 controlador/DataScrollerView.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminarComentarista.class
-
 controlador/EliminaTema.class
-
+controlador/EliminarComentarista.class
 controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
 modelo/Tema.class
