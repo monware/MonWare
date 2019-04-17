@@ -1,5 +1,5 @@
 package modelo;
-// Generated 8/04/2019 09:44:45 PM by Hibernate Tools 4.3.1
+// Generated 17/04/2019 01:19:18 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,21 +14,20 @@ public class Comentario  implements java.io.Serializable {
      private Marcador marcador;
      private Usuario usuario;
      private String comentario;
-     private float calificacion;
+     private Integer calificacion;
      private Date fecha;
 
     public Comentario() {
     }
 
 	
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, float calificacion, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, Date fecha) {
         this.idcomentario = idcomentario;
         this.marcador = marcador;
         this.usuario = usuario;
-        this.calificacion = calificacion;
         this.fecha = fecha;
     }
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, float calificacion, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion, Date fecha) {
        this.idcomentario = idcomentario;
        this.marcador = marcador;
        this.usuario = usuario;
@@ -65,11 +64,11 @@ public class Comentario  implements java.io.Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    public float getCalificacion() {
+    public Integer getCalificacion() {
         return this.calificacion;
     }
     
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
     public Date getFecha() {
