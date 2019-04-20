@@ -204,12 +204,20 @@ img.img_logo{
 .texto{
     width: 100%;
 }
-#mapa{
+#mapa1{
     position: absolute;
     width: 60%;
     height: 50%;
     margin-top: 50px;
     margin-left: 50px;
+}
+#mapa{
+    position: relative;
+    height: 500px;  
+    width: 50%; 
+    margin-top: 200px;
+    margin-right: -410px;
+    float: right;
 }
 #formulario-reg{
     padding-left:37%;
