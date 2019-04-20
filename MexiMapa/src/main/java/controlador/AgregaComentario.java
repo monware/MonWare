@@ -22,7 +22,7 @@ public class AgregaComentario {
     private Marcador marcador;
     private Usuario usuario;
     private String comentario;
-    private float calificacion;
+    private int calificacion;
 
     public int getIdComentario() {
         return idComentario;
@@ -60,7 +60,7 @@ public class AgregaComentario {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
     

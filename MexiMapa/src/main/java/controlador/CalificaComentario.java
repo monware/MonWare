@@ -17,7 +17,7 @@ import modelo.UsuarioDAO;
 @ManagedBean
 public class CalificaComentario {
     private int idComentario;
-    private float calificacion;
+    private int calificacion;
 
     public int getIdComentario() {
         return idComentario;
@@ -27,7 +27,7 @@ public class CalificaComentario {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
 
