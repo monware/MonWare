@@ -33,19 +33,19 @@ public class VerMarcadores implements Serializable{
     
     private Marker marker;
     
-    private Marcador marcador;
+    private String marcadors;
     
     @PostConstruct
     public void verMarcadores(){
         simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.findAll();
+        if(marcadores != null){
         for(Marcador m :marcadores){
             LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
             Marker marcador = new Marker(cord,m.getDescripcion());
-            //marcador.setIcon(m.getIcon());
-            //System.out.println(m.getIcon());
             simpleModel.addOverlay(marcador);
+        }
         }
         
     }
@@ -56,19 +56,18 @@ public class VerMarcadores implements Serializable{
     
     public void onMarkerSelect(OverlaySelectEvent event) {
        marker =(Marker) event.getOverlay();
-       MarcadorDAO mdb = new MarcadorDAO();
-       
-       this.marcador = mdb.buscaMarcadorPorLatLng(marker.getLatlng().getLat(),marker.getLatlng().getLng());
-       PrimeFaces current = PrimeFaces.current();
-       current.executeScript("PF('dlg').show();");
     }
 
     public Marker getMarker() {
         return marker;
     }
 
-    public Marcador getMarcador() {
-        return marcador;
+    public String getMarcadors() {
+        return marcadors;
+    }
+
+    public void setMarcadors(String marcadors) {
+        this.marcadors = marcadors;
     }
     
     
