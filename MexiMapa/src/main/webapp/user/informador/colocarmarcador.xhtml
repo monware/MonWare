@@ -7,16 +7,32 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view>
-        <h:head>
-          <title>Coloca Marcador</title>
-   
-        </h:head>
+         <h:head id="main-header">
+        
+	<title>Coloca Marcador</title>
+ 
+        <h:outputStylesheet name="css/style.css"/>
+        <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+		</a> <!-- / #logo-header -->
+ 
+		<nav>
+			<ul>
+                            
+                            <li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
+				<li><a href="AgregarTema.xhtml">Agregar Tema</a></li>
+                                <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
+			</ul>
+		</nav><!-- / nav -->
+                 </header>   
+         <h:form id="logout" rendered="#{not empty informador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                </h:form>
+         </h:head>
  <h:body>
-          <header>
-            <h1>
-             Añade un marcador
-            </h1>
-              </header>        
+            
                         <h:form>     
                             <p:inputText id="tema" value="#{colocaMarcador.nombreTema}" placeholder="Tema" required="true"/> <br/>
                             <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud" required="true"/> <br/>
