@@ -37,12 +37,11 @@ and open the template in the editor.
 			<ul>
 				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
 				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
-				<!-- / <li><a href="CerrarSesionComentarista.xhtml">Cerrar Sesion</a></li>-->
 			</ul>
                     
-                     <h:form >
-            <p:commandButton action="#{controladorsesion.logout()}" value="Cerrar sesión" ajax="false" />
-        </h:form>
+                      <h:form id="logout" rendered="#{not empty comentarista}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
