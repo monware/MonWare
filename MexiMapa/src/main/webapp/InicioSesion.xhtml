@@ -48,10 +48,7 @@
                         <p:commandButton class="texto" action="#{controladorSesion.login()}" value="login" update="login" />
                         
                     </h:form>
-            
-            <h:form id="logout" rendered="#{not empty user}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="logout"/>
-                </h:form>
+           
           
         </h:body>	    
     </f:view>
