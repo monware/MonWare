@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package controlador;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
+import modelo.Tema;
+import modelo.TemaDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 /**
@@ -24,14 +27,20 @@ public class EliminarInformador {
     }
    
     public void eliminaInformador(){
-        //Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
+        TemaDAO tdb = new TemaDAO();
         Usuario u = udb.buscaPorCorreo(correo);
-        
+        EliminaTema tema = new EliminaTema();
         if(u!=null){
-            if(u.getRol() == 3)
+            if(u.getRol() == 3){
+            List<Tema> listaTemas = tdb.ObtenTemasPorUsuario(u.getNombre());
+            for(int i=0;i<listaTemas.size();i++){
+                tema.setNombre(listaTemas.get(i).getNombre());
+                tema.eliminaTemaAdministrador();
+            }
             udb.delete(u);
             }
+        }
         } 
     }
 
