@@ -70,7 +70,7 @@ public class EditaDatos{
     public void editaDatos(){
         Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         u = udb.buscaPorCorreo(us.getCorreo());
         if(u!=null){ 
             u.setNombre(nombre);
