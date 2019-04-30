@@ -53,30 +53,7 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap> 
  
-<h:form id="comboBox-index">
-    <p:growl id="msgs" showDetail="true" />
- 
-    <p:panel header="Buscador" style="margin-bottom:10px;">
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="estado" value="Estado" />
-            <p:selectOneMenu id="estado" value="#{TemaConMarcador.estado}" style="width:150px">
-                <p:ajax listener="#{temaConMarcador.onCountryChange}" update="city" />
-                <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{temaConMarcador.estados}" />
-            </p:selectOneMenu>
- 
-            <p:outputLabel for="city" value="City: " />
-            <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{dropdownView.cities}" />
-            </p:selectOneMenu>
-        </h:panelGrid>
- 
-        <p:separator />
- 
-        <p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
-    </p:panel>
-</h:form>
+        
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
