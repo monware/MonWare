@@ -6,7 +6,7 @@
     <class name="modelo.Marcador" table="marcador" schema="public" optimistic-lock="version">
         <id name="idmarcador" type="int">
             <column name="idmarcador" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <many-to-one name="tema" class="modelo.Tema" fetch="select">
             <column name="nombre" not-null="true" />
