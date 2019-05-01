@@ -8,8 +8,8 @@ controlador/Validaciones.class
 modelo/TemaDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 modelo/Tema.class
 controlador/VerMarcadores.class
 modelo/Comentario.class
