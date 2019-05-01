@@ -4,6 +4,7 @@ controlador/CalificaComentario.class
 modelo/Usuario.class
 controlador/TemaConMarcador.class
 controlador/RegistrarUsuario.class
+controlador/TemaConMarcador.class
 controlador/DataScrollerView.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
