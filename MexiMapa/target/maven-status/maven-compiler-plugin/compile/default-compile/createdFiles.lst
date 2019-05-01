@@ -2,14 +2,15 @@ modelo/Mensajes.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
+controlador/TemaConMarcador.class
 controlador/RegistrarUsuario.class
 controlador/DataScrollerView.class
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminarComentarista.class
 controlador/EliminaTema.class
-controlador/PaginaPrincipal.class
+controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 modelo/Tema.class
 controlador/VerMarcadores.class
 modelo/Comentario.class
@@ -24,8 +25,8 @@ controlador/ControladorSesion.class
 controlador/AgregarInformador.class
 controlador/RegistrarUsuario$1.class
 controlador/ControladorSesion$UserLogged.class
-controlador/ObtenerComentarios.class
 controlador/AgregaComentario.class
+controlador/ObtenerComentarios.class
 modelo/MarcadorDAO.class
 controlador/EditaDatos.class
 modelo/AbstractDAO.class
