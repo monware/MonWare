@@ -17,7 +17,7 @@
         <property name="comentario" type="string">
             <column name="comentario" />
         </property>
-        <property name="calificacion" type="java.lang.Integer">
+        <property name="calificacion" type="float">
             <column name="calificacion" />
         </property>
         <property name="fecha" type="date">

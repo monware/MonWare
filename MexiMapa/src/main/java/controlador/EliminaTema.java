@@ -56,10 +56,12 @@ public class EliminaTema {
             for(Object m:tema.getMarcadors()){
                 MarcadorDAO daoMarcador = new MarcadorDAO();
                 Marcador marcador = (Marcador) m;
+                System.out.println(marcador);
                 if(marcador.getComentarios() != null){
                     for(Object c : marcador.getComentarios()){
                         ComentarioDAO daoComentario = new ComentarioDAO();
-                        Comentario comentario = (Comentario)c;
+                        Comentario comentario = (Comentario) c;
+                        System.out.println(comentario);
                         daoComentario.delete(comentario);
                     }
                 }

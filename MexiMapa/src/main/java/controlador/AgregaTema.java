@@ -18,6 +18,7 @@ import modelo.UsuarioDAO;
 @ManagedBean
 public class AgregaTema {
     private String nombre;
+    private String color;
   
     private Usuario usuario;
 
@@ -36,15 +37,25 @@ public class AgregaTema {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
     
     //Falta Agregarle a que marcador pertenece.
     public void agregraTema(){
         Tema tema = new Tema();
         TemaDAO daoTema = new TemaDAO();
         UsuarioDAO daoUsuario = new UsuarioDAO();
+        //Usuario aux = daoUsuario.find(3);
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         tema.setNombre(nombre);
+        tema.setColor(color);
         tema.setUsuario(usuarioA);
         daoTema.save(tema);
     }

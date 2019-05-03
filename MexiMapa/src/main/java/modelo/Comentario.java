@@ -14,7 +14,7 @@ public class Comentario  implements java.io.Serializable {
      private Marcador marcador;
      private Usuario usuario;
      private String comentario;
-     private float calificacion;
+     private Integer calificacion;
      private Date fecha;
 
     public Comentario() {
@@ -27,7 +27,7 @@ public class Comentario  implements java.io.Serializable {
         this.usuario = usuario;
         this.fecha = fecha;
     }
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, float calificacion, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion, Date fecha) {
        this.idcomentario = idcomentario;
        this.marcador = marcador;
        this.usuario = usuario;
@@ -68,7 +68,7 @@ public class Comentario  implements java.io.Serializable {
         return this.calificacion;
     }
     
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
     public Date getFecha() {

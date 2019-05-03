@@ -66,5 +66,14 @@ and open the template in the editor.
                             <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
                         </h:form>
         </p:panel>
+        
+                    <h:form>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputText id="nom" value="#{agregaTema.nombre}" required="true" placeholder="nombre del tema" requiredMessage="Campo Vacio"/> </br>
+                <br><p:inputText id="color" value="#{agregaTema.color}" required="true" placeholder="color que deseas asignar" requiredMessage="Campo Vacio"/> </br>
+                <br><p:commandButton action="#{agregaTema.agregraTema()}" value="agrega" ajax="false"/></br>
+            </h:form>
     </h:body>
 </html>
