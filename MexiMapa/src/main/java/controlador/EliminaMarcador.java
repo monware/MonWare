@@ -11,6 +11,11 @@ package controlador;
 import modelo.Marcador;
 import modelo.MarcadorDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 /**
  *
@@ -29,10 +34,21 @@ public class EliminaMarcador{
     }   
 
     public void eliminaMarcador(){
-	MarcadorDAO mdao = new MarcadorDAO();
-	Marcador m = mdao.find(1);
-	if(m!=null){
-	    mdao.delete(m);
-	}
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+         
+        for(Object prueba: usuarioA.getMarcadors()){
+            MarcadorDAO daoMarcador = new MarcadorDAO();
+            Marcador marcador = new Marcador();
+            for(Object c : marcador.getComentarios()){
+                ComentarioDAO daoComentario = new ComentarioDAO();
+                Comentario comentario = (Comentario)c;
+                daoComentario.delete(comentario);
+            }            
+            daoMarcador.delete(marcador);
+        }
     }
-}
+        
+    }
+    

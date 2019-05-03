@@ -1,3 +1,40 @@
+
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/TemaConMarcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/HibernateUtil.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/AgregaTema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSessionAdministrador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/Validaciones.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminarInformador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaMarcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminarComentarista.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Usuario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EliminaCuenta.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/DataScrollerView.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/BuscarPorCorreo.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/AgregarInformador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/PaginaPrincipal.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/TemaDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/AbstractDAO.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Tema.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSessionComentarista.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ObtenerComentarios.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/FilterSessionInformador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/VerMarcadores.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/controlador/ColocaMarcador.java
+/home/lizbethac/MonWare/MexiMapa/src/main/java/modelo/UsuarioDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaDatos.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/ComentarioDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/CalificaComentario.java
@@ -34,3 +71,4 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java
+
