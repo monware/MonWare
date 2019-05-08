@@ -5,8 +5,7 @@ controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 controlador/TemaConMarcador.class
 controlador/RegistrarUsuario.class
-controlador/TemaConMarcador.class
-MexiMapa/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+com/mycompany/prueba/Tema.class
 controlador/DataScrollerView.class
 controlador/Validaciones.class
 com/mycompany/prueba/MarcadorDAO.class

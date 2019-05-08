@@ -12,10 +12,10 @@ import com.mycompany.prueba.Marcador;
 import com.mycompany.prueba.MarcadorDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import modelo.Comentario;
-import modelo.ComentarioDAO;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 
 /**
  *
