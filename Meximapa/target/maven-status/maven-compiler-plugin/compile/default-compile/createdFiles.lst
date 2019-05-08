@@ -3,7 +3,10 @@ com/mycompany/prueba/Marcador.class
 com/mycompany/prueba/UsuarioDAO.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
+Meximapa/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 controlador/TemaConMarcador.class
+modelo/Usuario.class
+MexiMapa/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 controlador/RegistrarUsuario.class
 com/mycompany/prueba/Tema.class
 controlador/DataScrollerView.class
@@ -11,8 +14,11 @@ controlador/Validaciones.class
 com/mycompany/prueba/MarcadorDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
 controlador/PaginaPrincipal.class
+Meximapa/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+controlador/EliminaMarcador.class
+modelo/Tema.class
+MexiMapa/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 controlador/VerMarcadores.class
 com/mycompany/prueba/HibernateUtil.class
 controlador/FilterSessionAdministrador.class
