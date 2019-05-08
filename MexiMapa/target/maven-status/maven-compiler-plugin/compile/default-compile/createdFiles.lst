@@ -2,7 +2,6 @@ modelo/Mensajes.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 modelo/Usuario.class
-controlador/TemaConMarcador.class
 controlador/RegistrarUsuario.class
 controlador/TemaConMarcador.class
 controlador/DataScrollerView.class
@@ -10,8 +9,8 @@ controlador/Validaciones.class
 modelo/TemaDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/EliminaMarcador.class
 controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 modelo/Tema.class
 controlador/VerMarcadores.class
 modelo/Comentario.class
