@@ -268,3 +268,12 @@ img.img_logo{
     background: linear-gradient(top,#00FFFF , #e2eef1  );
     
 }*/
+
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+    
+form#comboBox-index {
+    margin-left: 67%;
+    margin-top: 9%;
+}
+
