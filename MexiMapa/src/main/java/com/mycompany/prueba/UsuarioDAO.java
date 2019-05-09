@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package com.mycompany.prueba;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -14,106 +14,116 @@ import org.hibernate.Transaction;
  *
  * @author jorge
  */
-public class MarcadorDAO extends AbstractDAO<Marcador>{
+public class UsuarioDAO extends AbstractDAO<Usuario> {
+    
     /**
      * 
      */
-    public MarcadorDAO(){
+    public UsuarioDAO(){
         super();
     }
     
-    
     /**
      * 
-     * @param marcador 
+     * @param usuario 
      */
     @Override
-    public void save(Marcador marcador){
-        super.save(marcador);
+    public void save(Usuario usuario){
+        super.save(usuario);
     }
     
     /**
      * 
-     * @param marcador 
+     * @param usuario 
      */
     @Override
-    public void update(Marcador marcador){
-        super.save(marcador);
+    public  void update(Usuario usuario){
+        super.update(usuario);
     }
     
     /**
      * 
-     * @param marcador 
+     * @param usuario 
      */
     @Override
-    public void delete(Marcador marcador){
-        super.delete(marcador);
+    public void delete(Usuario usuario){
+        super.delete(usuario);
     }
-       
+    
     /**
      * 
      * @param id
      * @return 
      */
-    public Marcador find(int id){
-        return super.find(Marcador.class, id);
+    public Usuario find(String id){
+        return super.find(Usuario.class, id);
     }
     
     /**
      * 
+     * @param id
      * @return 
      */
-    public List<Marcador> findAll(){
-        return super.findAll(Marcador.class);
+    public Usuario find(int id){
+        return super.find(Usuario.class, id);
+    }  
+
+    /**
+     * 
+     * @return 
+     */
+    public List<Usuario> findAll(){
+        return super.findAll(Usuario.class);
+    
     }
 
-    public Marcador buscaMarcadorPorLatLng(double lat,double lng) {
-        Marcador m = null;
+
+       public Usuario buscaPorCorreo(String email){
+        Usuario usuario = null;
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            String hql = "from Marcador where longitud = :lng and latitud = :lat";
+            String hql = "From Usuario  u where u.correo = :email";
             Query query = session.createQuery(hql);
-            query.setParameter("lng", lng);
-            query.setParameter("lat", lat);
-            m = (Marcador)query.uniqueResult();
+            query.setParameter("email", email);
+            usuario = (Usuario)query.uniqueResult();
+
             tx.commit();
-            
         }catch(HibernateException e){
             if(tx!=null){
                 tx.rollback();
             }
             e.printStackTrace();
-
         }finally{
             session.close();
         }
-        return m;
-    
+
+        return usuario;
     }
-    
-    public List<Marcador> ObtenMarcadoresPorUsuario(String correo){
-        List<Marcador> m = null;
+     
+       public Usuario buscaPorCorreoContrasenia(String correo,String contrasenia){
+        Usuario u =null;
         Session session = this.sessionFactory.openSession();
-        Transaction tx = null;
+        Transaction tx =null;
         try{
             tx = session.beginTransaction();
-            String hql = "from Marcador m where m.usuario.correo = :correo";
+            String hql = "from Usuario where correo = :correo and contrasenia = :contrasenia";
             Query query = session.createQuery(hql);
             query.setParameter("correo", correo);
-            m = (List<Marcador>)query.list();
+            query.setParameter("contrasenia",contrasenia);
+            u = (Usuario)query.uniqueResult();
             tx.commit();
-            
         }catch(HibernateException e){
             if(tx!=null){
                 tx.rollback();
             }
             e.printStackTrace();
-
         }finally{
             session.close();
         }
-        return m;
+        return u;
     }
+    
+
 }

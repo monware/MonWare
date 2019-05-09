@@ -6,8 +6,8 @@
 package controlador;
 
 import java.util.List;
-import modelo.Marcador;
-import modelo.Tema;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.Tema;
 
 /**
  *

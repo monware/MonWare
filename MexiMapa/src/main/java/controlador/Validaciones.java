@@ -12,9 +12,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import modelo.TemaDAO;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 
 /**
  *

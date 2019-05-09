@@ -60,19 +60,42 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap>  
         </main>
-         <div id="main">
-                <section>
-                    <div id="colores">
-                        <div id="rojo" class="color"></div>
-                        <div id="naranja" class="color"></div>
-                        <div id="amarillo" class="color"></div>
-                        <div id="verde" class="color"></div>
-                        <div id="azul" class="color"></div>
-                        <div id="anil" class="color"></div>
-                        <div id="violeta" class="color"></div>
-                    </div>
-                    </section>
-         </div>
+        <aside>
+                 
+                 <h:form id="agrega_comentario">
+                 
+                     <p:panelGrid columns="2" id="form_agrecoment" >
+                     
+                        <h:inputText value="Nombre marcador:" disabled="True"/>
+                        <h:inputText id="nombre" value="#{verMarcadorC.select.descripcion}" disabled="True" maxlength="60"/>
+                     
+                        <h:outputText value="Latitud:" />
+                        <h:outputText id="latitud" value="#{verMarcadorC.latitud}"/> 
+                        
+                        <h:outputText value="Longitud:" />
+                        <h:outputText id="longitud" value="#{verMarcadorC.longitud}"/>
+                     
+                     </p:panelGrid>
+                     
+                     <p:inputTextarea rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="#{verMarcadorC.select.descripcion}" />
+                     
+                 </h:form>
+                    
+                 <p:commandButton value="Agergar" id="boton_agregar_coment"  action="#{verMarcadorC.agregarComentario()}" update="agrega_comentario muestra_comentarios"/>
+                 
+                 <h:form id="muestra_comentarios">
+                     <p:dataTable id="lista_comentarios" value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="150">
+                         <p:column headerText="Descripcion" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                             <p:outputLabel value="#{comentario.comentario}"/>
+                         </p:column>
+                     
+                     </p:dataTable>
+                     
+                 </h:form>
+                 
+                 
+                 
+            </aside>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

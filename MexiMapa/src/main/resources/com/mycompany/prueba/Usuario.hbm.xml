@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17/04/2019 01:19:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 7/05/2019 01:45:18 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
+    <class name="com.mycompany.prueba.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="idusuario" type="int">
             <column name="idusuario" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
             <column name="nombre" not-null="true" />
@@ -30,19 +30,19 @@
             <key>
                 <column name="idusuario" not-null="true" />
             </key>
-            <one-to-many class="modelo.Comentario" />
+            <one-to-many class="com.mycompany.prueba.Comentario" />
         </set>
         <set name="marcadors" table="marcador" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idusuario" not-null="true" />
             </key>
-            <one-to-many class="modelo.Marcador" />
+            <one-to-many class="com.mycompany.prueba.Marcador" />
         </set>
         <set name="temas" table="tema" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idusuario" not-null="true" />
             </key>
-            <one-to-many class="modelo.Tema" />
+            <one-to-many class="com.mycompany.prueba.Tema" />
         </set>
     </class>
 </hibernate-mapping>

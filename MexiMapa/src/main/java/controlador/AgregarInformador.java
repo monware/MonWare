@@ -5,9 +5,9 @@
  */
 package controlador;
 
-//import modelo.Rol;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+//import com.mycompany.prueba.Rol;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;

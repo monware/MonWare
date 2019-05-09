@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package controlador;
-import modelo.Comentario;
-import modelo.ComentarioDAO;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.Tema;
-import modelo.TemaDAO;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 /**
  *
  * @author jorge

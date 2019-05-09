@@ -6,8 +6,8 @@
 package controlador;
 
 
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

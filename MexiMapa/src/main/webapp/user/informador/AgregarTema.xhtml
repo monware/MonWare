@@ -142,5 +142,23 @@ and open the template in the editor.
             </h:form>
             </main>
             
+
+            <p:inputText id="tema" value="#{colocaMarcador.nombreTema}" placeholder="Tema" required="true"/> <br/>
+                            <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud" required="true"/> <br/>
+                            <p:inputText id="longitud" value="#{colocaMarcador.longitud}" placeholder="Longitud" required="true"/> <br/>
+                            <p:inputText id="descripcion" value="#{colocaMarcador.descripcion}" placeholder="Descripcion" required="true"/> <br/>  
+                            <p:inputText id="datos" value="#{colocaMarcador.datos}" placeholder="Datos" required="true"/> <br/>
+                            <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
+                        </h:form>
+        </p:panel>
+        
+                    <h:form>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputText id="nom" value="#{agregaTema.nombre}" required="true" placeholder="nombre del tema" requiredMessage="Campo Vacio"/> </br>
+                <br><p:inputText id="color" value="#{agregaTema.color}" required="true" placeholder="color que deseas asignar" requiredMessage="Campo Vacio"/> </br>
+                <br><p:commandButton action="#{agregaTema.agregraTema()}" value="agrega" ajax="false"/></br>
+            </h:form>
     </h:body>
 </html>

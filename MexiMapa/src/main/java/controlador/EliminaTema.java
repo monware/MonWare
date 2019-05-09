@@ -4,21 +4,17 @@
  * and open the template in the editor.
  */
 package controlador;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import modelo.Tema;
-import modelo.TemaDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
-import modelo.Comentario;
-import modelo.ComentarioDAO;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 /**
  *
  * @author jorge, Barajas
@@ -51,10 +47,12 @@ public class EliminaTema implements Serializable{
             for(Object m:tema.getMarcadors()){
                 MarcadorDAO daoMarcador = new MarcadorDAO();
                 Marcador marcador = (Marcador) m;
+                System.out.println(marcador);
                 if(marcador.getComentarios() != null){
                     for(Object c : marcador.getComentarios()){
                         ComentarioDAO daoComentario = new ComentarioDAO();
-                        Comentario comentario = (Comentario)c;
+                        Comentario comentario = (Comentario) c;
+                        System.out.println(comentario);
                         daoComentario.delete(comentario);
                     }
                 }

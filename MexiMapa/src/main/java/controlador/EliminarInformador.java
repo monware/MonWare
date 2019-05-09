@@ -5,8 +5,8 @@
  */
 package controlador;
 import javax.faces.bean.ManagedBean;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 /**
  *
  * @author jorge

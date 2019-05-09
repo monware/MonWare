@@ -1,5 +1,5 @@
-package modelo;
-// Generated 17/04/2019 01:19:18 PM by Hibernate Tools 4.3.1
+package com.mycompany.prueba;
+// Generated 7/05/2019 01:45:17 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

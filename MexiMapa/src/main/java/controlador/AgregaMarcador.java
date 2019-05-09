@@ -1,17 +1,21 @@
 /* * To change this license header, choose License Headers in Project 
  Properties. * To change this template file, choose Tools | Templates * and 
  open the template in the editor. */
+
 package controlador;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package controlador;
 
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 import java.io.BufferedWriter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -34,7 +38,8 @@ import java.io.Serializable;
 import javax.servlet.ServletContext;
 /**
  *
- * @author jonathan
+ * @author jorge
+
  */
 @ManagedBean
 @ViewScoped
@@ -43,8 +48,9 @@ public class AgregaMarcador implements Serializable {
     private MapModel simpleModel;
     private double longitud;
     private double latitud;
+    private Tema tema;
     private String descripcion;
-    private String color;
+    private String datos;
     private LatLng centro;    
     
     @PostConstruct
@@ -57,14 +63,6 @@ public class AgregaMarcador implements Serializable {
         simpleModel.addOverlay(marcador);
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public LatLng getCentro() {
@@ -112,6 +110,22 @@ public class AgregaMarcador implements Serializable {
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+
+    public String getDatos() {
+        return datos;
+    }
+
+    public void setDatos(String datos) {
+        this.datos = datos;
+    }
+    
     
     public String agregaMarcador(){
         MarcadorDAO mdb =new MarcadorDAO();
@@ -123,14 +137,17 @@ public class AgregaMarcador implements Serializable {
             return "";
         }
         m = new Marcador();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informadores");
         Usuario u = udb.buscaPorCorreo(us.getCorreo());
+        TemaDAO daoTema = new TemaDAO();
+        Tema tem = daoTema.find(1);
         m.setDescripcion(descripcion);
         m.setLatitud(latitud);
         m.setLongitud(longitud);
-        
-        this.creaIcono(color,50,50);
-        System.out.println(color);
+        m.setDatos(datos);
+        m.setTema(tem);
+        //this.creaIcono(color,50,50);
+        //System.out.println(color);
         //m.setIcon("resources/images/"+color+".svg");
         m.setUsuario(u);
         mdb.save(m);
@@ -145,54 +162,6 @@ public class AgregaMarcador implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-    
-    private void creaIcono(String color,int largo,int ancho){
-        String s = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-        s+="<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-			s+="<svg width=\""+largo+"\" height=\""+ancho+"\" version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\">\n<g>\n";
-        int x =largo/2;
-        int y = (ancho/3);
-        int radio = ((largo+ancho)/2)/4;
-
-        int[] p ={x-radio,y,x+radio,y,x,(y*3)};
-        s+= creaPoligono(p,"#"+color);
-        s+=creaCirculo(x,y,radio,"#"+color,true);
-        s+=creaCirculo(x,y,radio/2,"black",true);
-
-        s+="</g>\n"+"</svg>";
-        
-        try {
-             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-            String destino = (servletContext.getRealPath("/"))+"resources/images/";
-            System.out.println(destino);
-            FileOutputStream fileOut = new FileOutputStream(new File(destino + color+".svg"));
-            OutputStreamWriter osOut = new OutputStreamWriter(fileOut);
-            BufferedWriter out = new BufferedWriter(osOut);
-            out.write(s);
-            out.close();
-        } catch (IOException ioe) {
-            System.out.println("No pude guardar en el archivo" );
-//            System.exit(1);
-        }
-
-
-    }
-
-    private String creaCirculo(int x ,int y , int r,String color,boolean stroke){
-        String s = stroke ? "<circle cx=\""+x+"\" cy=\"" +y+"\"  r=\"" + r + "\" stroke=\"white\" stroke-width=\"1\"  fill=\"" + color + "\" />\n" : "<circle cx=\""+x+"\" cy=\"" +y+"\"  r=\"" + r + "\" stroke=\"black\" stroke-width=\"0\"  fill=\"" + color + "\" />\n";
-        return  s;
-
-    }
-
-    private String creaPoligono(int[] puntos,String color){
-        String p = "";
-        if(puntos.length%2 != 0)
-          return "Los puntos estan mal";
-        for(int i=0;i<puntos.length;i+=2){
-          p+=puntos[i]+","+puntos[i+1]+" ";
-        }
-        return "<polygon points=\""+p+"\" \n style=\" fill:" +color+";stroke:black;stroke-width:1;\" /> \n";
     }
     
 }

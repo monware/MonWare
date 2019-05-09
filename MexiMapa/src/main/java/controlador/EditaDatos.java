@@ -9,8 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import modelo.UsuarioDAO;
-import modelo.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
 
 /**
  *

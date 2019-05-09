@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 
 import java.util.Properties;
 import javax.mail.*;

@@ -1,27 +1,16 @@
 
-65;5403;1c/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package controlador;
-import javax.annotation.PostConstruct;
-import modelo.Tema;
-import modelo.TemaDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.Mensajes;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
-import org.primefaces.event.map.MarkerDragEvent;
-import org.primefaces.event.map.PointSelectEvent;
-import org.primefaces.model.map.DefaultMapModel;
-import org.primefaces.model.map.LatLng;
-import org.primefaces.model.map.MapModel;
-import org.primefaces.model.map.Marker;
-
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -29,6 +18,7 @@ import org.primefaces.model.map.Marker;
 @ManagedBean
 public class AgregaTema {
     private String nombre;
+    private String color;
     private Usuario usuario;
     private Double latitud;
     private Double longitud;
@@ -142,6 +132,14 @@ public class AgregaTema {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
     
     public void onMarkerDrag(MarkerDragEvent event){
         marcador = event.getMarker();
@@ -163,9 +161,11 @@ public class AgregaTema {
         Tema tema = new Tema();
         TemaDAO daoTema = new TemaDAO();
         UsuarioDAO daoUsuario = new UsuarioDAO();
+        //Usuario aux = daoUsuario.find(3);
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         tema.setNombre(nombre);
+        tema.setColor(color);
         tema.setUsuario(usuarioA);
         daoTema.save(tema);
     }

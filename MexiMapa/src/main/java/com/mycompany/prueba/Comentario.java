@@ -1,5 +1,5 @@
-package modelo;
-// Generated 17/04/2019 01:19:18 PM by Hibernate Tools 4.3.1
+package com.mycompany.prueba;
+// Generated 7/05/2019 01:45:17 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class Comentario  implements java.io.Serializable {
      private Marcador marcador;
      private Usuario usuario;
      private String comentario;
-     private int calificacion;
+     private Integer calificacion;
      private Date fecha;
 
     public Comentario() {
@@ -27,7 +27,15 @@ public class Comentario  implements java.io.Serializable {
         this.usuario = usuario;
         this.fecha = fecha;
     }
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, int calificacion, Date fecha) {
+    
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario,String comentario, Date fecha) {
+        this.idcomentario = idcomentario;
+        this.marcador = marcador;
+        this.usuario = usuario;
+        this.fecha = fecha;
+    }
+    
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion, Date fecha) {
        this.idcomentario = idcomentario;
        this.marcador = marcador;
        this.usuario = usuario;
@@ -64,12 +72,13 @@ public class Comentario  implements java.io.Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    public float getCalificacion() {
+    public Integer getCalificacion() {
         return this.calificacion;
     }
     
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
+
+    public void setCalificacion(Integer calificacion) {
+    this.calificacion = calificacion;
     }
     public Date getFecha() {
         return this.fecha;
@@ -78,6 +87,7 @@ public class Comentario  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
 
 }
 

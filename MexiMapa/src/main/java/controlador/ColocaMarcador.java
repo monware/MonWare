@@ -9,15 +9,15 @@
 
 package controlador;
 import javax.annotation.PostConstruct;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.UsuarioDAO;
-import modelo.Tema;
-import modelo.TemaDAO;
-import modelo.Usuario;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.UsuarioDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
+import com.mycompany.prueba.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import modelo.Mensajes;
+import com.mycompany.prueba.Mensajes;
 import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.map.DefaultMapModel;

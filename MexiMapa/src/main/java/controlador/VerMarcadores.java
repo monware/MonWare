@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import modelo.Marcador;
-import modelo.MarcadorDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
