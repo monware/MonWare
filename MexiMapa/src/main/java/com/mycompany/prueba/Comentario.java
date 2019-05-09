@@ -76,8 +76,9 @@ public class Comentario  implements java.io.Serializable {
         return this.calificacion;
     }
     
+
     public void setCalificacion(Integer calificacion) {
-        this.calificacion = calificacion;
+    this.calificacion = calificacion;
     }
     public Date getFecha() {
         return this.fecha;
@@ -86,8 +87,6 @@ public class Comentario  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-
 
 
 }

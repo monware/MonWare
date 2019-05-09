@@ -1,3 +1,8 @@
+/* * To change this license header, choose License Headers in Project 
+ Properties. * To change this template file, choose Tools | Templates * and 
+ open the template in the editor. */
+
+package controlador;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,6 +39,7 @@ import javax.servlet.ServletContext;
 /**
  *
  * @author jorge
+
  */
 @ManagedBean
 @ViewScoped
@@ -104,7 +110,6 @@ public class AgregaMarcador implements Serializable {
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
-
     public Tema getTema() {
         return tema;
     }

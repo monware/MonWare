@@ -53,9 +53,19 @@ public class Validaciones {
             {
             throw new ValidatorException(new FacesMessage("El correo no cuenta con el formato requerido, revise el correo"));
             }
-            //UsuarioDAO udb = new UsuarioDAO();
-            //if(udb.find((String)arg2)==null){
-            //throw new ValidatorException(new FacesMessage("El correo no existe, intente con otro"));}
+            UsuarioDAO udb = new UsuarioDAO();
+            if(udb.find((String)arg2)==null){
+            throw new ValidatorException(new FacesMessage("El correo no existe, intente con otro"));
+            }
+            
+        }
+        public void validacionNombreEliminarTema(FacesContext arg0, UIComponent arg1, Object arg2)
+         throws ValidatorException {
+            
+            TemaDAO tdb = new TemaDAO();
+            if(tdb.find((String)arg2)==null){
+            throw new ValidatorException(new FacesMessage("El Tema no existe, revise por favor"));
+            }
             
         }
         public static void error(String error) {

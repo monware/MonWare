@@ -14,6 +14,7 @@ import com.mycompany.prueba.UsuarioDAO;
 @ManagedBean
 public class EliminarInformador {
     private String correo;
+     
     
     public String getCorreo() {
         return correo;
@@ -27,9 +28,8 @@ public class EliminarInformador {
         //Usuario u = new Usuario();
         UsuarioDAO udb = new UsuarioDAO();
         Usuario u = udb.buscaPorCorreo(correo);
-        
         if(u!=null){
-            if(u.getRol() == 3)
+            //if(u.getRol() == 3)
             udb.delete(u);
             }
         } 
