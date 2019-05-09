@@ -48,9 +48,6 @@ and open the template in the editor.
                         <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
                         <p:gmapInfoWindow id="ventanaInfo">
                              <p:outputPanel style="text-align: left; display: block; margin: auto">
- 
-                                    <!--<p:graphicImage name="/demo/images/antalya/{infoWindowView.marker.data}" height="150" />-->
-                                    <!--<br />-->
                                     <h:outputText value="#{verMarcadores.marker.title}" />
                                     <br/>
                                     <h:outputText value="#{verMarcadores.marker.data}"/>
