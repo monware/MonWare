@@ -27,6 +27,14 @@ public class Comentario  implements java.io.Serializable {
         this.usuario = usuario;
         this.fecha = fecha;
     }
+    
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario,String comentario, Date fecha) {
+        this.idcomentario = idcomentario;
+        this.marcador = marcador;
+        this.usuario = usuario;
+        this.fecha = fecha;
+    }
+    
     public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion, Date fecha) {
        this.idcomentario = idcomentario;
        this.marcador = marcador;
