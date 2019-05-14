@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import com.mycompany.prueba.TemaDAO;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;

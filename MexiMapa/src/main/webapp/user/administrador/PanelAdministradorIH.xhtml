@@ -71,35 +71,38 @@ and open the template in the editor.
 </h:form>
 
     
- <h:form>
-    <p:panel id="panel" header="Menú Administrador: Eliminar Informador" >
- 
-        <p:focus context="panel"/>
- 
-        <p:messages />
- 
-        <h:panelGrid  columns="3" >
-            <p:outputLabel for="email" value="Email" />
-            <p:inputText id="email" value="#{eliminarInformador.correo}" placeholder="Correo Informador" required="true" validator="#{validaciones.validacionEmailEliminarInformador}">
-            </p:inputText>
-     <p:message for="email" />
-        </h:panelGrid>
- 
-        <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Eliminar Informador" update="@parent" ajax="false"/>
-    </p:panel>
-
-</h:form>
-
-    <h:form id="funcionEliminarComentarista">
-    <p:panel id="panel" header="Menú Administrador: Eliminar Comentarista" >
-                 
-                        <p:inputText  id="correo" value="#{eliminarComentarista.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
-                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                        <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                        </p:inputText>  
-                    <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Eliminar Comentarista" ajax="false" />
-     </p:panel>           
-    </h:form>
+         <h:form id="formGeneralEI">
+                <p:panel header="Menú Administrador: Eliminar Informador" >
+                     <p:outputLabel value="Informador: "/>
+                     <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarInformador.listaInformadores}"/>
+                        <f:ajax execute="Informador" render="iSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>  
+                         <p:outputLabel value="Usuario Seleccionado: "/>
+                         <p:outputLabel id="iSeleccionado" value="#{eliminarInformador.correo}"/>
+                         
+                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/>
+                </p:panel>  
+            </h:form>
+    
+    <h:form id="formGeneralEC">
+                
+                <p:panel header="Menú Administrador: Eliminar Comentarista" >
+                     <p:outputLabel value="Comentarista: "/>
+                     <p:selectOneMenu id="comentarista" value="#{eliminarComentarista.correo}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarComentarista.listaComentaristas}"/>
+                        <f:ajax execute="Comentarista" render="tSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>
+                         <p:outputLabel value="Tema Seleccionado: "/> 
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarComentarista.correo}"/>
+                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false"/>
+                </p:panel>  
+            </h:form>
+   
     <h:form id="formGeneral">
                 
                 <p:panel header="Menú Administrador: Eliminar Tema" >
