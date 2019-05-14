@@ -124,6 +124,46 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         }
         return u;
     }
-    
+       
+    public List<Usuario> listaInformadores(){
+        List<Usuario> listaUser = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx =null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Usuario where rol = 3";
+            Query query = session.createQuery(hql);
+            listaUser = (List<Usuario>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return listaUser;
+    }
 
+    public List<Usuario> listaComentaristas(){
+        List<Usuario> listaUser = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx =null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Usuario where rol = 2";
+            Query query = session.createQuery(hql);
+            listaUser = (List<Usuario>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return listaUser;
+    }
 }
