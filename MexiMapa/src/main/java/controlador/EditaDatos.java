@@ -73,11 +73,19 @@ public class EditaDatos{
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         u = udb.buscaPorCorreo(us.getCorreo());
         if(u!=null){ 
+            if (nombre != ""){          
             u.setNombre(nombre);
+        }
+            if(apaterno!=""){
             u.setApaterno(apaterno);
+            }
+            if(amaterno!=""){
             u.setAmaterno(amaterno);
+            }
             //u.setCorreo(correo);
-            u.setContrasenia(contrasenia); 
+            if(contrasenia != ""){
+                u.setContrasenia(contrasenia); 
+                }
             udb.update(u);
         }
 
