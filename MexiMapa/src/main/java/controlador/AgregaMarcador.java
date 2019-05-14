@@ -54,7 +54,7 @@ public class AgregaMarcador implements Serializable {
         simpleModel = new DefaultMapModel();
         marcador = new Marker(centro,"Arrastrame");
         marcador.setDraggable(true);
-//        marcador.setClickable(true);
+//      marcador.setClickable(true);
         simpleModel.addOverlay(marcador);
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
@@ -63,9 +63,7 @@ public class AgregaMarcador implements Serializable {
     public LatLng getCentro() {
         return centro;
     }
-
-    
-    
+ 
     public Marker getMarcador() {
         return marcador;
     }

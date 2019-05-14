@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
-
+import com.mycompany.prueba.TemaDAO;
 /**
  *
  * @author yisus

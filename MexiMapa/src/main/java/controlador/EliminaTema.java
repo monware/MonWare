@@ -23,6 +23,10 @@ import javax.faces.model.SelectItem;
  *
  * @author jorge, Barajas
  */
+import java.io.Serializable;
+import java.util.List;
+import java.util.ArrayList;
+import javax.faces.model.SelectItem;
 @ManagedBean
 @ViewScoped
 
