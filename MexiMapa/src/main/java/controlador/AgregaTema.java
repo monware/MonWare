@@ -5,12 +5,21 @@
  * and open the template in the editor.
  */
 package controlador;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
 import com.mycompany.prueba.Tema;
 import com.mycompany.prueba.TemaDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import javax.annotation.PostConstruct;
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.event.map.PointSelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 /**
  *
  * @author jorge
@@ -27,7 +36,6 @@ public class AgregaTema {
     private String datos;
     private Marker marcador;
     private MapModel simpleModel;
-    private String color;
     private LatLng centro;  
 
 
@@ -133,14 +141,6 @@ public class AgregaTema {
         this.nombre = nombre;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-    
     public void onMarkerDrag(MarkerDragEvent event){
         marcador = event.getMarker();
         this.latitud = marcador.getLatlng().getLat();
