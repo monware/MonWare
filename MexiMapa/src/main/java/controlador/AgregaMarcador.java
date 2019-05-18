@@ -50,7 +50,7 @@ public class AgregaMarcador implements Serializable {
     private Tema tema;
     private String descripcion;
     private String datos;
-    private LatLng centro;    
+    private LatLng centro;   
     
     @PostConstruct
     public void init(){
@@ -63,7 +63,7 @@ public class AgregaMarcador implements Serializable {
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
     }
-
+    
     public LatLng getCentro() {
         return centro;
     }
@@ -143,7 +143,7 @@ public class AgregaMarcador implements Serializable {
         m.setLongitud(longitud);
         m.setDatos(datos);
         m.setTema(tem);
-        //this.creaIcono(color,50,50);
+        // this.creaIcono(color,50,50);
         //System.out.println(color);
         //m.setIcon("resources/images/"+color+".svg");
         m.setUsuario(u);
@@ -160,5 +160,6 @@ public class AgregaMarcador implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
     
 }

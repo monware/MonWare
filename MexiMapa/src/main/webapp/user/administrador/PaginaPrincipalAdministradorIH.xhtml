@@ -37,12 +37,14 @@ and open the template in the editor.
                             <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
 				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
 			</ul>
+                    
+                        <h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-        <h:form id="logout" rendered="#{not empty administrador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
-                </h:form>
+  
         <main>
                         <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
                         <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
