@@ -37,6 +37,7 @@ public class AgregaTema {
     private Marker marcador;
     private MapModel simpleModel;
     private LatLng centro;  
+    
 
 
     

@@ -15,6 +15,10 @@ import com.mycompany.prueba.Marcador;
 import com.mycompany.prueba.MarcadorDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.model.SelectItem;
 /**
  *
  * @author jorge, Barajas

@@ -64,4 +64,26 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
         return super.findAll(Comentario.class);
     
     }
+    
+    public List<Comentario> ObtenComentarioPorUsuario(String correo){
+        List<Comentario> m = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Comentario m where m.usuario.correo = :correo";
+            Query query = session.createQuery(hql);
+            query.setParameter("correo", correo);
+            m = (List<Comentario>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return m;
+    }
 }
