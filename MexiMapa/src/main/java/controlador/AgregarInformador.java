@@ -5,9 +5,9 @@
  */
 package controlador;
 
-//import modelo.Rol;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+//import com.mycompany.prueba.Rol;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +15,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.security.SecureRandom;
 import java.math.BigInteger;
+import java.util.Properties;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -28,13 +38,16 @@ public class AgregarInformador {
     private String apaterno;
     private String amaterno;
     private String contrasenia;
-    private String rol;
+    private int rol;
     private String apellido;
     private Set temas = new HashSet(0);
     private Set marcadors = new HashSet(0);
     private Set comentarios = new HashSet(0);
 
-    
+    public AgregarInformador(){
+        apaterno="-";
+        amaterno="-";
+    }
     public String getApellido() {
         return apellido;
     }
@@ -82,11 +95,11 @@ public class AgregarInformador {
         this.contrasenia = contrasenia;
     }
 
-    public String getRol() {
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 
@@ -118,13 +131,13 @@ public class AgregarInformador {
     public void separaApellido(String apellido){
        String[] apellidos = apellido.split(" ");
        if(apellidos[0]== null){
-           setApaterno(" ");
+           setApaterno("-");
        }
        else{
            setApaterno(apellidos[0]);
        }
        if(apellidos[1]== null){
-           setApaterno(" ");
+           setApaterno("-");
        }
        else{       
        setAmaterno(apellidos[1]);
@@ -139,11 +152,20 @@ public class AgregarInformador {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(generaContrasenia(10));  
-        u.setRol("INFORMADOR");
+        u.setRol(3);
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);
+        //correo a donde se mandará la confrimación 
+        String receptor = u.getCorreo();
+        //cuerpo del correo
+        String mensaje = "Felicidades, nuevo informador, se ha completado tu registro a MexiMapa\n su password es:\n" + u.getContrasenia();
+        //método que manda el correo
+        mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
         
+        
+        FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     private String generaContrasenia(int i) {
@@ -152,6 +174,46 @@ public class AgregarInformador {
       return contrasenia.substring(0,i);
     }
 
-    
-    
+   /**
+     * 
+     * @param a el destinatario del correo
+     * @param asunto el asunto del correo
+     * @param msg el cuerpo del correo
+     * @param usr el correo emisor del mensaje
+     * @return true si envía el correo, false en otro caso
+     */
+    //va así para evitar problemas
+    private boolean mandaCorreo(String a, String asunto, String msg, final String usr) {
+        boolean enviado = true;
+        // Get system properties
+        Properties properties = new Properties();
+
+        // Setup mail server
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // Get the default Session object.
+        
+        Session session;
+        session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(usr, "monw@re22");
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(usr));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(a));
+            message.setSubject(asunto);
+            message.setText(msg);
+            Transport.send(message);
+        } catch (MessagingException mex) {
+            enviado = false;
+        }
+        return enviado;
+    }
 }

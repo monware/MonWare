@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agregar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/style.css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_CV-ykq13siKc1d-UiPH4vmp0RjlNroA">
+            </script>
+    </h:head>
+    <h:body>
+        <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+                      
+		</a> <!-- / #logo-header -->
+   
+		<nav>
+			<ul>
+				<li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
+				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
+                                <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
+			</ul>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+     <h:form id="logout" rendered="#{not empty informador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                </h:form>
+ 
+<!--       <h:form>
+         <p:panel id="panel" header="Agregar Tema" >
+ 
+        <p:focus context="panel"/>
+ 
+        <p:messages />
+ 
+        <h:panelGrid  columns="3" >
+            <p:outputLabel for="nombre" value="Nombre del Tema" />
+            <p:inputText id="nombre" value="" label="Firstname" required="true" >
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="nombre" />
+            
+            
+            
+             <p:outputLabel for="descripcion" value="Descripcion" />
+             <p:inputText id="descripcion" value="" label="Descripcion" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="descripcion" />
+            
+             <p:outputLabel for="datos" value="Datos" />
+             <p:inputText id="datos" value="" label="datos" required="true">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="datos" />
+            
+        </h:panelGrid>
+ 
+        <p:commandButton id="submitButton" value="Agregar Tema" update="@parent" action=""/>
+    </p:panel>
+        </h:form>-->
+ 
+               <main>
+                <section >
+                   
+                    
+         <p:panel id="panel" header="Agregar Tema" >
+ 
+        <p:focus context="panel"/>
+                    <h:form id="form" >
+                        
+                        <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                        </p:messages>
+                    <h:panelGrid  columns="3" >
+                        <p:outputLabel for="nombre" value="Nombre del Tema" />
+                        <p:inputText id="nombre" value="#{agregaTema.nombre}" label="Firstname" required="true" >
+                        <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="nombre" />
+        
+                        
+                    <p:outputLabel for="descripcion" value="Descripcion" />
+                    <p:inputText id="descripcion" value="#{agregaTema.descripcion}" label="Descripcion" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="descripcion" />
+            
+                    <p:outputLabel for="datos" value="Datos" />
+                    <p:inputText id="datos" value="#{agregaTema.datos}" label="datos" required="true">
+                       <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="datos" />
+                        
+                    <p:inputNumber   decimalPlaces="6" id="longitud" value="#{agregaTema.longitud}" disabled="true"/>
+                    <p:inputNumber   id="latitud" decimalPlaces="6" value="#{agregaTema.latitud}" disabled="true"/>
+                      
+                        <p:colorPicker value="#{agregaTema.color}" mode="inline" styleClass="texto"/>
+                        
+        </h:panelGrid>
+ 
+                        <p:commandButton styleClass="boton"  id="agregaMarcador" value="Agrega Temar" action="#{agregaTema.agregaTemaConMarcador()}"/>
+                        
+                    </h:form>
+           </p:panel>
+ 
+                </section>
+                
+                <p:gmap    mapTypeControl="false" center="#{agregaMarcador.centro.lat},#{agregaMarcador.centro.lng}" zoom="5" type="roadmap" id="mapa" model="#{agregaMarcador.simpleModel}">
+                    <p:ajax event="markerDrag" listener="#{agregaMarcador.onMarkerDrag}" update="form:longitud form:latitud"/>
+                    <p:ajax event="pointSelect" listener="#{agregaMarcador.onPointSelect}" update="form:longitud form:latitud mapa"/>
+                </p:gmap>
+                   
+                   
+    <h:form id="formGeneral">
+                
+                <p:panel header="Eliminar Tema" >
+                     <p:outputLabel value="Tema: "/>
+                     <p:selectOneMenu id="tema" value="#{eliminarTema.tema.nombre}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarTema.listaTemasUsuario}"/>
+                        <f:ajax execute="tema" render="tSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>
+                         <p:outputLabel value="Tema Seleccionado: "/> 
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.tema.nombre}"/>
+                         <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
+                </p:panel>  
+            </h:form>
+            </main>
+            
+
+            <p:inputText id="tema" value="#{colocaMarcador.nombreTema}" placeholder="Tema" required="true"/> <br/>
+                            <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud" required="true"/> <br/>
+                            <p:inputText id="longitud" value="#{colocaMarcador.longitud}" placeholder="Longitud" required="true"/> <br/>
+                            <p:inputText id="descripcion" value="#{colocaMarcador.descripcion}" placeholder="Descripcion" required="true"/> <br/>  
+                            <p:inputText id="datos" value="#{colocaMarcador.datos}" placeholder="Datos" required="true"/> <br/>
+                            <p:commandButton action="#{colocaMarcador.colocaMarcador()}" value="Aceptar" ajax="false" />
+                        </h:form>
+        </p:panel>
+        
+                    <h:form>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputText id="nom" value="#{agregaTema.nombre}" required="true" placeholder="nombre del tema" requiredMessage="Campo Vacio"/> </br>
+                <br><p:inputText id="color" value="#{agregaTema.color}" required="true" placeholder="color que deseas asignar" requiredMessage="Campo Vacio"/> </br>
+                <br><p:commandButton action="#{agregaTema.agregraTema()}" value="agrega" ajax="false"/></br>
+            </h:form>
+    </h:body>
+</html>

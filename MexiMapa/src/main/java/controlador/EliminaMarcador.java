@@ -8,9 +8,14 @@
  */
 
 package controlador;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 
 /**
  *
@@ -29,10 +34,21 @@ public class EliminaMarcador{
     }   
 
     public void eliminaMarcador(){
-	MarcadorDAO mdao = new MarcadorDAO();
-	Marcador m = mdao.find(1);
-	if(m!=null){
-	    mdao.delete(m);
-	}
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+         
+        for(Object prueba: usuarioA.getMarcadors()){
+            MarcadorDAO daoMarcador = new MarcadorDAO();
+            Marcador marcador = new Marcador();
+            for(Object c : marcador.getComentarios()){
+                ComentarioDAO daoComentario = new ComentarioDAO();
+                Comentario comentario = (Comentario)c;
+                daoComentario.delete(comentario);
+            }            
+            daoMarcador.delete(marcador);
+        }
     }
-}
+        
+    }
+    

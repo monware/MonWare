@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package controlador;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 /**
  *
  * @author lizbethac
  */
 @ManagedBean
+@SessionScoped
 public class EliminaCuenta{
     private int idusuario;
 
@@ -30,6 +32,10 @@ public class EliminaCuenta{
         if(u!=null){
             udao.delete(u);
         }
-        
     }
+    
+    public String cancelar(){ 
+        return "/index?faces-redirect=true";
+    }
+            
 }

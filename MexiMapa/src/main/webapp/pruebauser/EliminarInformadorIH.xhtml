@@ -34,25 +34,31 @@ and open the template in the editor.
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
- 
-	
-	<section id="main-content">
-	
-		<article>
-			<header>
-				<h1>Menu Administrador</h1>
-			</header>
-			
-			
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
-        
+
  <h:form>
-     <br><p:inputText id="id" value="#{eliminarInformador.correo}" placeholder="Elimina Informador"/></br>
-     <br><p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/></br>
+     <h:panelGrid  columns="3" >
+     <p:outputLabel for="email" value="Email" />
+     <br><p:inputText id="email" value="#{eliminarInformador.correo}" placeholder="Correo Informador" required="true" validator="#{validaciones.validacionEmailEliminarInformador}"/></br>
+     <p:message for="email" />
+            
+     <br><p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" update="@parent" ajax="false"/></br>
+     </h:panelGrid>
+     
+      
  </h:form>
-   	
+   	<h:form  id="funcionAgregarInformador">
+                         <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                        </p:messages>
+                    <br><p:inputText  id="nombre" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu nombre"/></br> 
+                    <br><p:inputText  id="apaterno"  required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/></br> 
+                    <br><p:inputText  id="amaterno"  required="true" placeholder="materno"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Por favor ingresa tu apellido"/></br> 
+                    <br><p:inputText  id="correo"  required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"/></br>
+                    <br><p:commandButton  value="Crear Informador" ajax="false" /></br> 
+                    </h:form>
+                
+                <h:form id="funcionEliminarInformador">
+ 
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

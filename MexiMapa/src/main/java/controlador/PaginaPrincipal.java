@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import modelo.Marcador;
-import modelo.Tema;
-import modelo.TemaDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
 
 /**
  *

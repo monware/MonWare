@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import modelo.Usuario;
-import modelo.UsuarioDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 
 import java.util.Properties;
 import javax.mail.*;
@@ -25,7 +25,15 @@ public class RegistrarUsuario {
     private String amaterno;
     private String correo;
     private String contrasenia;
-    private String rol;
+    private Integer rol;
+
+    public int getRol() {
+        return rol;
+    }
+
+    public void setRol(Integer rol) {
+        this.rol = rol;
+    }
 
     /**
      * 
@@ -58,22 +66,6 @@ public class RegistrarUsuario {
      */
     public void setAmaterno(String amaterno) {
         this.amaterno = amaterno;
-    }
-
-    /**
-     * 
-     * @return 
-     */
-    public String getRol() {
-        return rol;
-    }
-
-    /**
-     * 
-     * @param rol 
-     */
-    public void setRol(String rol) {
-        this.rol = rol;
     }
 
     /**
@@ -134,7 +126,7 @@ public class RegistrarUsuario {
         u.setApaterno(apaterno);
         u.setAmaterno(amaterno);
         u.setContrasenia(contrasenia);
-        u.setRol("Comentarista");
+        u.setRol(2);
             
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);
@@ -169,6 +161,7 @@ public class RegistrarUsuario {
         properties.put("mail.smtp.starttls.enable", "true");
 
         // Get the default Session object.
+        
         Session session;
         session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override

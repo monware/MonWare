@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 $(document).ready(function(){
    var colores = $('#colores').children();
    colores.each(function(){
@@ -14,7 +12,16 @@ $(document).ready(function(){
            $('#main').css({'background':color});
        });
    });
-//   initMap();
-
 });
 
+function alerta()
+    {
+    var mensaje;
+    var opcion = confirm("¿Deseas Eliminar El Tema?");
+    if (opcion === true) {
+        mensaje = "Ha sido eliminado";
+	} else {
+	    mensaje = "Operacion Cancelada";
+	}
+	document.getElementById("ejemplo").innerHTML = mensaje;
+}

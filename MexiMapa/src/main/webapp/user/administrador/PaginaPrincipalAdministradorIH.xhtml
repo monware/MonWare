@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<f:view>
+    <h:head>
+	
+	<title>Pagina Principal</title>
+ 
+        <h:outputStylesheet name="css/style.css"/>
+        <h:outputScript name="js/colores.js"/> 
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
+            </script>
+         
+    </h:head>
+ 
+<h:body>
+
+    <header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+                      
+		</a> <!-- / #logo-header -->
+   
+		<nav>
+			<ul>
+                            <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
+				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
+			</ul>
+                    
+                        <h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                </h:form>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+  
+        <main>
+                        <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
+                    </p:gmap>  
+        </main>
+         <div id="main">
+                <section>
+                    <div id="colores">
+                        <div id="rojo" class="color"></div>
+                        <div id="naranja" class="color"></div>
+                        <div id="amarillo" class="color"></div>
+                        <div id="verde" class="color"></div>
+                        <div id="azul" class="color"></div>
+                        <div id="anil" class="color"></div>
+                        <div id="violeta" class="color"></div>
+                    </div>
+                    </section>
+         </div>
+	<footer id="main-footer">
+		<p> 2019 MonWare</p>
+	</footer> <!-- / #main-footer -->
+ 
+	
+  </h:body>
+</f:view>   
+</html>

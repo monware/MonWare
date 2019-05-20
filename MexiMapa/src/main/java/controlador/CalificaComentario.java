@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package controlador;
-import modelo.Comentario;
-import modelo.ComentarioDAO;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -14,7 +17,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class CalificaComentario {
     private int idComentario;
-    private float calificacion;
+    private int calificacion;
 
     public int getIdComentario() {
         return idComentario;
@@ -24,7 +27,7 @@ public class CalificaComentario {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -33,12 +36,17 @@ public class CalificaComentario {
     }
     
     public void calificaComentario(){
-        ComentarioDAO cdao = new ComentarioDAO();
-        Comentario u = cdao.find(idComentario);
-        if(u != null){
-            u.setCalificacion(calificacion);
-            cdao.update(u);
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        for(Object coment:usuarioA.getComentarios()){
+            ComentarioDAO cdao = new ComentarioDAO();
+            Comentario comentario = (Comentario) coment;
+            comentario = cdao.find(idComentario);
+            if(comentario != null){
+                comentario.setCalificacion(calificacion);
+                cdao.update(comentario);
+            }
         }
-        
     }
 }

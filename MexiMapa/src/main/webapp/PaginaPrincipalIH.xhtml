@@ -4,18 +4,23 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<f:view>    
+    <h:head>
 	
 	<title>Pagina Principal</title>
  
-        <link rel="stylesheet" href="resources/css/style.css">
-            </link>	
-</h:head>
+        <h:outputStylesheet name="css/style.css"/>
+        <h:outputScript name="js/estilos.js"/> 
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_CV-ykq13siKc1d-UiPH4vmp0RjlNroA"></script>
+         
+    </h:head>
  
 <h:body>
 
@@ -28,47 +33,43 @@ and open the template in the editor.
    
 		<nav>
 			<ul>
-				<li><a href="../PaginaPrincipalIH.xhtml">Principal</a></li>
-				<li><a href="#">Registrarse</a></li>
-				<li><a href="#">Iniciar Sesion</a></li>
+				<li><a href="PaginaPrincipalIH.xhtml">Principal</a></li>
+				<li><a href="Registrarse.xhtml">Registrarse</a></li>
+				<li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
 			</ul>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
- 
-	
-<section id = "formulario">
-<h:form>
-    <p:growl id="msgs" showDetail="true" />
- 
-    <p:panel header="Select a Location" style="margin-bottom:10px;" >
-        <h:panelGrid  columns="2" cellpadding="5" >
-            <p:outputLabel for="tema" value="Tema" />
-            <p:selectOneMenu id="tema" value="#{paginaPrincipal.tema}" style="width:150px">
-                <p:ajax listener="#{paginaPrincipal.allTemas}" update="tema" />
-                <f:selectItem itemLabel="Selecciona Tema" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{paginaPrincipal.tema}" />
-            </p:selectOneMenu>
-        
-            <p:outputLabel for="estado" value="Estado" />
-            <p:selectOneMenu id="estado" value="#{paginaPrincipal.estado}" style="width:150px">
-                <p:ajax listener="#{paginaPrincipal.allEstados}" update="tema" />
-                <f:selectItem itemLabel="Selecciona Tema" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{paginaPrincipal.tema}" />
-            </p:selectOneMenu>
-            
-        </h:panelGrid>
- 
-        <p:separator />
- 
-        <p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
-    </p:panel>
-</h:form> 
-</section>>       
+        <main>
+                        <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa1" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
+                    </p:gmap>  
+        </main>
+         <div id="main">
+                <section>
+                    <div id="colores">
+                        <div id="rojo" class="color"></div>
+                        <div id="naranja" class="color"></div>
+                        <div id="amarillo" class="color"></div>
+                        <div id="verde" class="color"></div>
+                        <div id="azul" class="color"></div>
+                        <div id="anil" class="color"></div>
+                        <div id="violeta" class="color"></div>
+                    </div>
+                    </section>
+         </div>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
  
 	
   </h:body>
+</f:view>   
 </html>

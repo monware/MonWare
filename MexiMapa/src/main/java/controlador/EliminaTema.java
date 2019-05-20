@@ -4,97 +4,112 @@
  * and open the template in the editor.
  */
 package controlador;
-import java.util.List;
-import modelo.Tema;
-import modelo.TemaDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
 import javax.faces.bean.ManagedBean;
-import modelo.Comentario;
-import modelo.ComentarioDAO;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import com.mycompany.prueba.Comentario;
+import com.mycompany.prueba.ComentarioDAO;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.Usuario;
+import com.mycompany.prueba.UsuarioDAO;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.model.SelectItem;
 /**
  *
- * @author jorge
+ * @author jorge, Barajas
  */
+import java.io.Serializable;
+import java.util.List;
+import java.util.ArrayList;
+import javax.faces.model.SelectItem;
 @ManagedBean
-public class EliminaTema {
-    private String nombre;
-    private int idMarcador;
-    private int idComentario;
+@ViewScoped
 
-    public int getIdMarcador() {
-        return idMarcador;
-    }
+public class EliminaTema implements Serializable{
 
-    public void setIdMarcador(int idMarcador) {
-        this.idMarcador = idMarcador;
-    }
+    private List<SelectItem> listaTemas;
+    private Tema tema;
 
-    public int getIdComentario() {
-        return idComentario;
-    }
 
-    public void setIdComentario(int idComentario) {
-        this.idComentario = idComentario;
+    public EliminaTema(){
+        tema = new Tema();
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    //comentario, marcadores, tema 
     
-    public void eliminaTema(){
-        TemaDAO daoTema = new TemaDAO();
-        Tema tema = daoTema.find(nombre);
-        //System.out.println(tema);
-        for(Object m:tema.getMarcadors()){
-            MarcadorDAO daoMarcador = new MarcadorDAO();
-            Marcador marcador = (Marcador) m;
-            //System.out.println(marcador);
-            if(marcador.getComentarios() != null){
-                for(Object c : marcador.getComentarios()){
-                    ComentarioDAO daoComentario = new ComentarioDAO();
-                    Comentario comentario = (Comentario)c;
-                    daoComentario.delete(comentario);
-                //System.out.println(comentario);
-                }
-            }
-        daoMarcador.delete(marcador);
-        }
-        daoTema.delete(tema);
+    public Tema getTema() {
+        return tema;
     }
-    /*
-    public void eliminaTema(){
-        Tema tema = new Tema();
-        TemaDAO daoTema = new TemaDAO();
-        Marcador marcador = new Marcador();
-        MarcadorDAO daoMarcador = new MarcadorDAO();
-        Comentario comentario = new Comentario();
-        ComentarioDAO daoComentario = new ComentarioDAO();
-        tema = daoTema.find(nombre);
-        List<Marcador> lst = daoMarcador.encuentraMarcadores(nombre);
-        for(Marcador mar:lst){
-            int aux = mar.getIdMarcador();
-            List<Comentario> lsta = daoComentario.encuentraComentario(aux);
-            for(Comentario com:lsta){
-                comentario = daoComentario.find(com.getIdComentario());
-                if(comentario!= null){
-                daoComentario.delete(comentario);
-                }   
-            }
-            marcador = daoMarcador.find(aux);
-            if(marcador!= null){
-                daoMarcador.delete(marcador);
-            }
-        }
-        if(tema != null){
-            daoTema.delete(tema);
-        }
-        
-    }*/
 
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+       
+    public void eliminaTemaAdministrador(){
+        TemaDAO daoTema = new TemaDAO();
+        Tema tema = daoTema.find(this.tema.getNombre());
+        if(tema != null){
+            for(Object m:tema.getMarcadors()){
+                MarcadorDAO daoMarcador = new MarcadorDAO();
+                Marcador marcador = (Marcador) m;
+                System.out.println(marcador);
+                if(marcador.getComentarios() != null){
+                    for(Object c : marcador.getComentarios()){
+                        ComentarioDAO daoComentario = new ComentarioDAO();
+                        Comentario comentario = (Comentario) c;
+                        System.out.println(comentario);
+                        daoComentario.delete(comentario);
+                    }
+                }
+            daoMarcador.delete(marcador);
+            }
+            daoTema.delete(tema);
+        }else{
+            System.out.println("No existe el tema");
+        } 
+    }
+    
+    public void eliminaTemaInformador(){
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        
+        for(Object prueba: usuarioA.getTemas()){
+            TemaDAO temadao = (TemaDAO) prueba;
+            Tema tema = temadao.find(this.tema.getNombre());
+            if(tema != null){
+                for(Object m: tema.getMarcadors()){
+                    MarcadorDAO daoMarcador = new MarcadorDAO();
+                    Marcador marcador = (Marcador) m;
+                    if(marcador.getComentarios() != null){
+                        for(Object c : marcador.getComentarios()){
+                            ComentarioDAO daoComentario = new ComentarioDAO();
+                            Comentario comentario = (Comentario)c;
+                            daoComentario.delete(comentario);
+                        }
+                    }
+                    daoMarcador.delete(marcador);
+                }
+                temadao.delete(tema);
+            }
+        }
+    }
+    
+    public List<SelectItem> getListaTemas(){
+        this.listaTemas = new ArrayList<SelectItem>();
+        TemaDAO tdb = new TemaDAO();
+        List<Tema> p = tdb.listaTemas();
+        listaTemas.clear();
+        
+        for(Tema temas : p){
+            SelectItem temaItem = new SelectItem(temas.getNombre(), temas.getNombre()); 
+            this.listaTemas.add(temaItem);
+    }
+        System.out.println(listaTemas);
+        return listaTemas;
+    }
+    
 }

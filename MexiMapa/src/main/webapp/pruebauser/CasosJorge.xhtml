@@ -8,29 +8,49 @@
     <f:view>
         <h:head>
             <title>Controlador Jorge</title>
-            <h:outputStylesheet name="CSS/style.css"/>
+            <h:outputStylesheet name="css/style.css"/>
         </h:head>
         <h:body>
 
             <h:form>
-                <br><p:inputNumber id="id" value="#{eliminaComentario.idComentario}" placeholder="Elimina Comentario"/></br>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputNumber id="id" value="#{eliminaComentario.idComentario}" required="true" placeholder="Elimina Comentario" requiredMessage="Campo Vacio"/></br>
                 <br><p:commandButton action="#{eliminaComentario.eliminaComentario()}" value="Elimina Comen" ajax="false"/></br>
             </h:form>
             <h:form>
-                <br><p:inputText id="nombre" value="#{eliminaTema.nombre}" placeholder="nombre del tema"/> </br>
-                <br><p:commandButton action="#{eliminaTema.eliminaTema()}" value="Elimina Tema" ajax="false"/></br>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputText id="nombre" value="#{eliminaTema.nombre}" required="true" placeholder="nombre del tema" requiredMessage="Campo Vacio"/> </br>
+                <br><p:commandButton action="#{eliminaTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/></br>
             </h:form>
             
             <h:form>
-                <br><p:inputNumber id="id" value="#{editaComentario.idComentario}" placeholder="Edita Comentario"/></br>
-                <br><p:inputText id="nombre" value="#{editaComentario.comentario}" placeholder="comentario"/> </br>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputNumber id="id" value="#{editaComentario.idComentario}" required="true" placeholder="Edita Comentario" requiredMessage="Campo Vacio"/></br>
+                <br><p:inputText id="nombre" value="#{editaComentario.comentario}" required="true" placeholder="comentario" requiredMessage="Campo Vacio"/> </br>
                 <br><p:commandButton action="#{editaComentario.editaComentario()}" value="Edita comentario" ajax="false" /></br>
             </h:form>
             
             <h:form>
-                <br><p:inputNumber id="id" value="#{calificaComentario.idComentario}" placeholder="idComentario"/></br>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputNumber id="id" value="#{calificaComentario.idComentario}" required="true" placeholder="idComentario"/></br>
                 <br><p:inputNumber id="nombre" value="#{calificaComentario.calificacion}" placeholder="Calificacion"/></br>
-                <br><p:commandButton action="#{calificaComentario.calificaComentario()}" value="Calificar" ajax="false"/></br>
+                <br><p:commandButton id="ejemplo" action="#{calificaComentario.calificaComentario()}" value="Calificar" ajax="false" onclick="alerta()"/></br>
+            </h:form>
+            <h:form>
+                <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                </p:messages>
+                <br><p:inputText id="nom" value="#{agregaTema.nombre}" required="true" placeholder="nombre del tema" requiredMessage="Campo Vacio"/> </br>
+                <br><p:inputText id="color" value="#{agregaTema.color}" required="true" placeholder="color que deseas asignar" requiredMessage="Campo Vacio"/> </br>
+                <br><p:commandButton action="#{agregaTema.agregraTema()}" value="agrega" ajax="false"/></br>
             </h:form>
             
             

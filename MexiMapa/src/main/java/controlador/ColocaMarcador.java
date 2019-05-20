@@ -8,13 +8,22 @@
  */
 
 package controlador;
-import modelo.Marcador;
-import modelo.MarcadorDAO;
-import modelo.UsuarioDAO;
-import modelo.Tema;
-import modelo.TemaDAO;
-import modelo.Usuario;
+import javax.annotation.PostConstruct;
+import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.UsuarioDAO;
+import com.mycompany.prueba.Tema;
+import com.mycompany.prueba.TemaDAO;
+import com.mycompany.prueba.Usuario;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import com.mycompany.prueba.Mensajes;
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.event.map.PointSelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 /**
  *
@@ -25,12 +34,56 @@ public class ColocaMarcador{
 
     private int idMarcador;
     private Tema tema;
+    private String nombreTema;
     private Usuario usuario;
     private String correo;
     private Double latitud;
     private Double longitud;
     private String descripcion;
     private String datos;
+    private Marker marcador;
+    private MapModel simpleModel;
+    private String color;
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Marker getMarcador() {
+        return marcador;
+    }
+
+    public void setMarcador(Marker marcador) {
+        this.marcador = marcador;
+    }
+
+    public MapModel getSimpleModel() {
+        return simpleModel;
+    }
+
+    public void setSimpleModel(MapModel simpleModel) {
+        this.simpleModel = simpleModel;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    public String getNombreTema() {
+        return nombreTema;
+    }
+
+    public void setNombreTema(String nombreTema) {
+        this.nombreTema = nombreTema;
+    }
 
     public void setIdMarcador(int idMarcador){
 	this.idMarcador = idMarcador;
@@ -78,22 +131,70 @@ public class ColocaMarcador{
     public String getDatos(){
         return datos;
     }
+
+    public Tema getTema() {
+        return tema;
+    }
     
-    public void colocaMarcador(){
-        Marcador m = new Marcador(); 
+    public String colocaMarcador(){
         UsuarioDAO udao = new UsuarioDAO();
-        TemaDAO t = new TemaDAO();        
-        //u.getCorreo();
-        Usuario prueba= udao.find("Algo@al.com");
-        //String a = prueba.getCorreo();
-	Tema tema = t.find("Chilaquiles");        
-        m.setUsuario(prueba);
+        MarcadorDAO mdao = new MarcadorDAO();
+        Marcador m = mdao.buscaMarcadorPorLatLng(latitud, longitud);
+        Usuario u = new Usuario();
+        TemaDAO tdao = new TemaDAO();
+        setTema(tdao.find(this.getNombreTema()));
+        if(m!= null){
+            this.descripcion ="";
+            Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
+            return "";
+        }
+        if(tema==null){
+            this.descripcion ="";
+            Mensajes.fatal("El tema no existe");
+            return "";
+        }
+        m = new Marcador();    
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        u = udao.buscaPorCorreo(us.getCorreo());
+        m.setUsuario(u);
         m.setTema(tema);
-	m.setLatitud(latitud);
-	m.setLongitud(longitud);
+        m.setLatitud(latitud);
+        m.setLongitud(longitud);
         m.setDescripcion(descripcion);
         m.setDatos(datos);        
-        MarcadorDAO mdao = new MarcadorDAO();
         mdao.save(m);
+        Mensajes.info("Se guardo el marcador");
+        return "";
     }
+    
+     @PostConstruct
+    public void init(){
+        simpleModel = new DefaultMapModel();
+        marcador = new Marker(new LatLng(23.382390, -102.291477),"Arrastrame");
+        marcador.setDraggable(true);
+//        marcador.setClickable(true);
+        simpleModel.addOverlay(marcador);
+        this.latitud = marcador.getLatlng().getLat();
+        this.longitud = marcador.getLatlng().getLng();
+    }
+    
+    public void onMarkerDrag(MarkerDragEvent event){
+        marcador = event.getMarker();
+        this.latitud = marcador.getLatlng().getLat();
+        this.longitud = marcador.getLatlng().getLng();
+    }
+
+    public void onPointSelect(PointSelectEvent event) {
+        LatLng latlng = event.getLatLng();
+        marcador = simpleModel.getMarkers().get(0);
+        marcador.setLatlng(latlng);
+        this.latitud = latlng.getLat();
+        this.longitud = latlng.getLng();
+     
+        
+           
+    
+}
+    
+    
 }

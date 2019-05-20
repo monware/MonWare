@@ -8,10 +8,12 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view>
         <h:head>
-          <title>Editar datos</title>
-   
+   <title>Editar Datos</title>
+            
         </h:head>
  <h:body>
+      
+           
           <header>
             <h1>
              Editar tus datos
@@ -19,8 +21,9 @@
               </header>        
                         <h:form>
                             <p:inputText id="nombre" value="#{editaDatos.nombre}" placeholder="Nombre(s)"/> <br/>
-                            <p:inputText id="apellidos" value="#{editaDatos.apellidos}" placeholder="Apellidos"/> <br/>
-                            <p:inputText id="correo" value="#{editaDatos.correo}" placeholder="Correo electrónico"/> <br/>
+                            <p:inputText id="apaterno" value="#{editaDatos.apaterno}" placeholder="Apellido Paterno"/> <br/>
+                            <p:inputText id="amaterno" value="#{editaDatos.amaterno}" placeholder="Apellido Materno"/> <br/>
+                            
                             <p:inputText id="contrasenia" value="#{editaDatos.contrasenia}" placeholder="Contraseña nueva"/> <br/>                           
                             <p:commandButton action="#{editaDatos.editaDatos()}" value="Aceptar" ajax="false" />
                         </h:form>
