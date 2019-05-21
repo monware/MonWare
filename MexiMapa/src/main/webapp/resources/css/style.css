@@ -224,9 +224,11 @@ img.img_logo{
     margin-left: 50px;
 }
 #mapa{
-    float: left;
-    width: 70%;
-    height: 100%;
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 #formulario-reg{
