@@ -39,7 +39,7 @@ public class Marcador  implements java.io.Serializable {
        this.datos = datos;
        this.comentarios = comentarios;
     }
-   
+  
     public int getIdmarcador() {
         return this.idmarcador;
     }

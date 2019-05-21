@@ -37,12 +37,13 @@ and open the template in the editor.
                             <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
 				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
 			</ul>
+                    
+                        <h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-        <h:form id="logout" rendered="#{not empty administrador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
-                </h:form>
         <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
                      <p:outputLabel value="Tema: "/>
@@ -60,6 +61,7 @@ and open the template in the editor.
             </h:form>
 
                     <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa1" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
+
                         <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
                         <p:gmapInfoWindow id="ventanaInfo">
                              <p:outputPanel style="text-align: left; display: block; margin: auto">

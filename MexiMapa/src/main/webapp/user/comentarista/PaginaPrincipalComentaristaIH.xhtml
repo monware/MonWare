@@ -40,7 +40,7 @@ and open the template in the editor.
 			</ul>
                     
                       <h:form id="logout" rendered="#{not empty comentarista}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
                 </h:form>
 		</nav><!-- / nav -->
  
@@ -81,7 +81,7 @@ and open the template in the editor.
                      
                  </h:form>
                     
-                 <p:commandButton value="Agergar" id="boton_agregar_coment"  action="#{verMarcadorC.agregarComentario()}" update="agrega_comentario muestra_comentarios"/>
+                 <p:commandButton value="Agregar" id="boton_agregar_coment"  action="#{verMarcadorC.agregarComentario()}" update="agrega_comentario muestra_comentarios"/>
                  
                  <h:form id="muestra_comentarios">
                      <p:dataTable id="lista_comentarios" value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="150">
