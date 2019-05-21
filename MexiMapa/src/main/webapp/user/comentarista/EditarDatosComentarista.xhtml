@@ -25,12 +25,13 @@
 				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
 				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
 			</ul>
+                     <h:form id="logout" rendered="#{not empty comentarista}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-     <h:form id="logout" rendered="#{not empty comentarista}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
-                </h:form>
+    
           <header>
             <h1>
              Editar tus datos
