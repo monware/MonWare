@@ -130,20 +130,21 @@ and open the template in the editor.
                 
                 <p:panel header="Eliminar Tema" >
                      <p:outputLabel value="Tema: "/>
-                     <p:selectOneMenu id="tema" value="#{eliminarTema.tema.nombre}"> 
+                     <p:selectOneMenu id="tema" value="#{eliminarTema.nombre_tema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarTema.listaTemasUsuario}"/>
                         <f:ajax execute="tema" render="tSeleccionado"/>
                      </p:selectOneMenu>
                      <hr/>
                          <p:outputLabel value="Tema Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.tema.nombre}"/>
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.nombre_tema}"/>
                          <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
                 </p:panel>  
             </h:form>
             </main>
             
-
+        <p:panel>  
+            <h:form>
             <p:inputText id="tema" value="#{colocaMarcador.nombreTema}" placeholder="Tema" required="true"/> <br/>
                             <p:inputText id="latitud" value="#{colocaMarcador.latitud}" placeholder="Latitud" required="true"/> <br/>
                             <p:inputText id="longitud" value="#{colocaMarcador.longitud}" placeholder="Longitud" required="true"/> <br/>

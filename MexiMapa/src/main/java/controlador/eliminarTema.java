@@ -22,6 +22,7 @@ import com.mycompany.prueba.Tema;
 import com.mycompany.prueba.TemaDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -33,29 +34,29 @@ import com.mycompany.prueba.UsuarioDAO;
 @ViewScoped
 
 public class eliminarTema implements Serializable{
+    private List<Tema> listaTemas;
+    private String nombre_tema;
 
-    /**
-     * Creates a new instance of eliminaTema
-     */
-    
-    private List<SelectItem> listaTemas;
-    private Tema tema;
-
-    public eliminarTema() {
-        tema = new Tema();
-    }
-    
-    public Tema getTema() {
-        return tema;
+    public String getNombre_tema() {
+        return nombre_tema;
     }
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
+    public void setNombre_tema(String nombre_tema) {
+        this.nombre_tema = nombre_tema;
+    }
+    
+    @PostConstruct
+    public void listaTemas() {
+        TemaDAO tdao = new TemaDAO();
+        this.listaTemas = tdao.listaTemas();
+    }
+    public List<Tema> getListaTemas() {
+        return listaTemas;
     }
     
     public void eliminaTemaAdministrador(){
         TemaDAO daoTema = new TemaDAO();
-        Tema tema = daoTema.find(this.tema.getNombre());
+        Tema tema = daoTema.find(this.getNombre_tema());
         if(tema != null){
             for(Object m:tema.getMarcadors()){
                 MarcadorDAO daoMarcador = new MarcadorDAO();
@@ -82,7 +83,7 @@ public class eliminarTema implements Serializable{
         
         for(Object prueba: usuarioA.getTemas()){
             TemaDAO temadao = (TemaDAO) prueba;
-            Tema tema = temadao.find(this.tema.getNombre());
+            Tema tema = temadao.find(this.getNombre_tema());
             if(tema != null){
                 for(Object m: tema.getMarcadors()){
                     MarcadorDAO daoMarcador = new MarcadorDAO();
@@ -101,36 +102,12 @@ public class eliminarTema implements Serializable{
         }
     }
 
-    public List<SelectItem> getListaTemas() {
-        this.listaTemas = new ArrayList<SelectItem>();
-        TemaDAO tdb = new TemaDAO();
-        List<Tema> p = tdb.listaTemas();
-        listaTemas.clear();
-        
-        for(Tema temas : p){
-            SelectItem temaItem = new SelectItem(temas.getNombre(), temas.getNombre()); 
-            this.listaTemas.add(temaItem);
-    }
-        System.out.println(listaTemas);
-        return listaTemas;        
-    }
     
-    
-    public List<SelectItem> getListaTemasUsuario() {
-        
+    public List<Tema> getListaTemasUsuario() {
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
-        
-        this.listaTemas = new ArrayList<SelectItem>();
-        TemaDAO tdb = new TemaDAO();
-        List<Tema> p = tdb.ObtenTemasPorUsuario(us.getCorreo());
-        listaTemas.clear();
-        
-        for(Tema temas : p){
-            SelectItem temaItem = new SelectItem(temas.getNombre(), temas.getNombre()); 
-            this.listaTemas.add(temaItem);
-    }
-        System.out.println(listaTemas);
+        TemaDAO tdao = new TemaDAO();
+        this.listaTemas = tdao.ObtenTemasPorUsuario(us.getCorreo());
         return listaTemas;
     }
 }
