@@ -32,12 +32,13 @@ and open the template in the editor.
 				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
                                 <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
 			</ul>
+                    <h:form id="logout" rendered="#{not empty informador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-     <h:form id="logout" rendered="#{not empty informador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
-                </h:form>
+     
  
 <!--       <h:form>
          <p:panel id="panel" header="Agregar Tema" >
