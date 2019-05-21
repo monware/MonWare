@@ -44,10 +44,10 @@ public class AgregarInformador {
     private Set marcadors = new HashSet(0);
     private Set comentarios = new HashSet(0);
 
-    public AgregarInformador(){
+    /*public AgregarInformador(){
         apaterno="-";
         amaterno="-";
-    }
+    }*/
     public String getApellido() {
         return apellido;
     }
@@ -128,7 +128,7 @@ public class AgregarInformador {
     }
    
     
-    public void separaApellido(String apellido){
+    /*public void separaApellido(String apellido){
        String[] apellidos = apellido.split(" ");
        if(apellidos[0]== null){
            setApaterno("-");
@@ -142,10 +142,10 @@ public class AgregarInformador {
        else{       
        setAmaterno(apellidos[1]);
        }
-    }
+    }*/
     
     public void agregarInformador(){
-        separaApellido(apellido);
+        //separaApellido(apellido);
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);

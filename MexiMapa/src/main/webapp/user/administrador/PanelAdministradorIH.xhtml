@@ -54,11 +54,17 @@ and open the template in the editor.
             </p:inputText>
             <p:message for="username" />
             
-            <p:outputLabel for="apellido" value="Apellidos" />
-            <p:inputText id="apellido" value="#{agregarInformador.apellido}" placeholder="Apellidos" required="true" label="Apellido">
+            <p:outputLabel for="apellidoP" value="Apellido Paterno" />
+            <p:inputText id="apellidoP" value="#{agregarInformador.apaterno}" placeholder="Apellido Paterno" required="true" label="Apellido">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="apellido" />
+            <p:message for="apellidoP" />
+ 
+            <p:outputLabel for="apellidoM" value="Apellido Materno" />
+            <p:inputText id="apellidoM" value="#{agregarInformador.amaterno}" placeholder="Apellidos Materno" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellidoM" />
  
             <p:outputLabel for="email" value="Email" />
             <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
@@ -108,14 +114,14 @@ and open the template in the editor.
                 
                 <p:panel header="Menú Administrador: Eliminar Tema" >
                      <p:outputLabel value="Tema: "/>
-                     <p:selectOneMenu id="tema" value="#{eliminarTema.tema.nombre}"> 
+                     <p:selectOneMenu id="tema" value="#{eliminarTema.nombre_tema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarTema.listaTemas}"/>
                         <f:ajax execute="tema" render="tSeleccionado"/>
                      </p:selectOneMenu>
                      <hr/>
                          <p:outputLabel value="Tema Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.tema.nombre}"/>
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.nombre_tema}"/>
                          <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
                 </p:panel>  
             </h:form>
