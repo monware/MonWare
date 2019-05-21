@@ -49,6 +49,19 @@ public class EliminaMarcador{
             daoMarcador.delete(marcador);
         }
     }
+    public void eliminaMarcadorAdministrador(){
+         
+        MarcadorDAO mdao = new MarcadorDAO();
+        Marcador m = mdao.find(idMarcador);
+        if(m!=null){
+            for(Object c : m.getComentarios()){
+                ComentarioDAO daoComentario = new ComentarioDAO();
+                Comentario comentario = (Comentario)c;
+                daoComentario.delete(comentario);
+            }            
+            mdao.delete(m);
+        }
+    }
         
     }
     

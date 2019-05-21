@@ -21,7 +21,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import javax.inject.Named;
 /**
  *
@@ -50,10 +49,6 @@ public class EliminarInformador implements Serializable{
         this.correo = correo;
     }
     
-
-    
-    
-   
     public void eliminaInformador(){
         UsuarioDAO udao = new UsuarioDAO();
         Usuario u = udao.buscaPorCorreo(this.correo);
@@ -66,27 +61,32 @@ public class EliminarInformador implements Serializable{
         
         if(u!=null){
               List<Tema> temasInformador = tdao.ObtenTemasPorUsuario(u.getCorreo());
+              if(!temasInformador.isEmpty()){
               for(Tema tema : temasInformador){
-                t.setTema(tema);
+                t.setNombre_tema(tema.getNombre());
                 t.eliminaTemaAdministrador(); 
                 }
+              }
               
               List<Marcador> marcadoresInformador = mdao.ObtenMarcadoresPorUsuario(u.getCorreo());
+              if(!marcadoresInformador.isEmpty()){
               for(Marcador marc : marcadoresInformador){
                 m.setIdMarcador(marc.getIdmarcador());
-                m.eliminaMarcador();
+                m.eliminaMarcadorAdministrador();
                 }
+              }
               
-              List<Comentario> comentariosInformador = cdao.ObtenComentarioPorUsuario(correo);
+              List<Comentario> comentariosInformador = cdao.ObtenComentarioPorUsuario(u.getCorreo());
+              if(!comentariosInformador.isEmpty()){
               for(Comentario comen : comentariosInformador){
                 c.setIdComentario(comen.getIdcomentario());
                 c.eliminaComentarioAdministrador();
                 }
+              }
               
-            System.out.println("eliminaInformador JAVA");
             udao.delete(u);
+            listaInformadores.remove(u);
         }
-          System.out.println("no elimino JAVA");
         }
     
     @PostConstruct
