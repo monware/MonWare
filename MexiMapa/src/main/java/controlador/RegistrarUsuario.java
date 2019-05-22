@@ -119,7 +119,7 @@ public class RegistrarUsuario {
     /**
      * 
      */
-    public void agregaUsuario(){
+    public String agregaUsuario(){
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);
@@ -137,6 +137,8 @@ public class RegistrarUsuario {
         String mensaje = "Se ha completado tu registro\n";
         //método que manda el correo
         mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
+        
+        return "/InicioSesion?faces-redirect=true";
     }
     
 
