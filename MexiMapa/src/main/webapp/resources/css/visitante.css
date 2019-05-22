@@ -10,6 +10,5 @@ and open the template in the editor.
 
 
 body {  
-        background: media/               
- 
+        background-image: url(media/"globos.jpg");
 }
