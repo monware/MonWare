@@ -60,7 +60,6 @@
                         <p:inputNumber   decimalPlaces="6" id="longitud" value="#{agregaMarcador.longitud}" disabled="true"/>
                         <p:inputNumber   id="latitud" decimalPlaces="6" value="#{agregaMarcador.latitud}" disabled="true"/>
                         <p:inputTextarea class="texto" id="descripcion" placeholder="Descripcion" value="${agregaMarcador.descripcion}"  required="true"  requiredMessage="Por favor agrega una descripcion"/>
-                       <!p:colorPicker value="{agregaMarcador.color}" mode="inline" styleClass="texto"/>
                         <p:commandButton styleClass="boton"  id="agregaMarcador" value="Agrega Marcador" action="#{agregaMarcador.agregaMarcador()}"/>
                         
                     </h:form>
