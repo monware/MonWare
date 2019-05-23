@@ -7,8 +7,8 @@ package controlador;
 
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
-import java.util.Locale;
 
+import java.util.Locale;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;
 import javax.mail.*;
@@ -130,7 +130,7 @@ public class RegistrarUsuario {
         u.setAmaterno(amaterno);
         u.setContrasenia(contrasenia);
         u.setRol(2);
-        
+
         UsuarioDAO udb = new UsuarioDAO();
         Usuario x = udb.buscaPorCorreo(u.getCorreo());
         if(x!=null){
@@ -153,7 +153,7 @@ public class RegistrarUsuario {
         
         return "/InicioSesion?faces-redirect=true";
         }
-        
+
     }
     
 
