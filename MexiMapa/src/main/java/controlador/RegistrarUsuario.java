@@ -7,11 +7,14 @@ package controlador;
 
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.util.Locale;
 
 import java.util.Properties;
+import javax.faces.application.FacesMessage;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -119,7 +122,7 @@ public class RegistrarUsuario {
     /**
      * 
      */
-    public void agregaUsuario(){
+    public String agregaUsuario(){
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);
@@ -127,16 +130,30 @@ public class RegistrarUsuario {
         u.setAmaterno(amaterno);
         u.setContrasenia(contrasenia);
         u.setRol(2);
-            
-        UsuarioDAO udb = new UsuarioDAO();
-        udb.save(u);
         
-        //correo a donde se mandará la confrimación 
+        UsuarioDAO udb = new UsuarioDAO();
+        Usuario x = udb.buscaPorCorreo(u.getCorreo());
+        if(x!=null){
+        return "/Error?faces-redirect=true";
+        }else{
+        
+            udb.save(u);
+        
+        //correo a donde se mandará la confirmación 
         String receptor = u.getCorreo();
         //cuerpo del correo
         String mensaje = "Se ha completado tu registro\n";
         //método que manda el correo
         mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getViewRoot().setLocale(new Locale("es-Mx"));
+        
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El registro se realizo de manera exitosa", ""));
+        
+        return "/InicioSesion?faces-redirect=true";
+        }
+        
     }
     
 

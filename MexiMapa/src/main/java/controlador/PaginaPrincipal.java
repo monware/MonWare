@@ -12,8 +12,11 @@ import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import com.mycompany.prueba.Marcador;
+import com.mycompany.prueba.MarcadorDAO;
 import com.mycompany.prueba.Tema;
 import com.mycompany.prueba.TemaDAO;
+import com.mycompany.prueba.UsuarioDAO;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -23,42 +26,23 @@ import com.mycompany.prueba.TemaDAO;
 @ManagedBean
 @RequestScoped
 public class PaginaPrincipal {
+
      Tema tema;
-     String estado;
-     Set<Marcador> marcadores;
+     List<Marcador> marcadores;
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
      
      
-     public Set<Marcador> getMarcadores(){
-         return tema.getMarcadors();
+    public List<Marcador> getMarcadores(){
+         return marcadores;
      }
      
     public List<Tema> getAllTemas(){
         TemaDAO tdb = new TemaDAO();
         return tdb.findAll();
-        
     }
     
-    public List<String> getAllEstados(){
-        List<String> estados = Arrays.asList("Aguascalientes","Guanajuato","Zacatecas","Ciudad de Mexico","Chihuhua");
-        return estados;
-        
-    }
-
-     public void onCountryChange() {
-        if(tema !=null && !tema.equals(""))
-            marcadores = tema.getMarcadors();
-        else
-            marcadores = new HashSet(0);
-    }
-     
+    
+    
     public void setTema(Tema tema) {
         this.tema = tema;
     }
@@ -67,7 +51,7 @@ public class PaginaPrincipal {
         return tema;
     }
 
-    public void setMarcadores(Set<Marcador> marcadores) {
+    public void setMarcadores(List<Marcador> marcadores) {
         this.marcadores = marcadores;
     }
     
