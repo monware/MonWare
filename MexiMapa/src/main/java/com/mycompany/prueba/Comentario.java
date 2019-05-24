@@ -15,33 +15,29 @@ public class Comentario  implements java.io.Serializable {
      private Usuario usuario;
      private String comentario;
      private Integer calificacion;
-     private Date fecha;
 
     public Comentario() {
     }
 
 	
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario) {
         this.idcomentario = idcomentario;
         this.marcador = marcador;
         this.usuario = usuario;
-        this.fecha = fecha;
     }
     
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario,String comentario, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario,String comentario) {
         this.idcomentario = idcomentario;
         this.marcador = marcador;
         this.usuario = usuario;
-        this.fecha = fecha;
     }
     
-    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion, Date fecha) {
+    public Comentario(int idcomentario, Marcador marcador, Usuario usuario, String comentario, Integer calificacion) {
        this.idcomentario = idcomentario;
        this.marcador = marcador;
        this.usuario = usuario;
        this.comentario = comentario;
        this.calificacion = calificacion;
-       this.fecha = fecha;
     }
    
     public int getIdcomentario() {
@@ -79,13 +75,6 @@ public class Comentario  implements java.io.Serializable {
 
     public void setCalificacion(Integer calificacion) {
     this.calificacion = calificacion;
-    }
-    public Date getFecha() {
-        return this.fecha;
-    }
-    
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
 

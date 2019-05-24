@@ -44,7 +44,15 @@ public class VerMarcadores implements Serializable{
     List<Tema> listaTemas;
     private String nombre_tema;
 
-    public void verMarcadores(){
+    /**public void verMarcadores(){
+        simpleModel = new DefaultMapModel();
+        MarcadorDAO mdb = new MarcadorDAO();
+        List<Marcador> marcadores = mdb.findAll();
+        for(Marcador m :marcadores){
+            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
+            Marker marcador = new Marker(cord,m.getDescripcion());
+            simpleModel.addOverlay(marcador);
+        /**
         simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.ObtenMarcadoresPorTema(nombre_tema);
@@ -56,8 +64,23 @@ public class VerMarcadores implements Serializable{
         }
         }
         
+        
+        }
     }
-    
+    */
+    @PostConstruct
+    public void verMarcadores(){
+        
+        simpleModel = new DefaultMapModel();
+        MarcadorDAO mdb = new MarcadorDAO();
+        List<Marcador> marcadores = mdb.findAll();
+        for(Marcador m :marcadores){
+            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
+            Marker marcador = new Marker(cord,m.getDescripcion());
+            simpleModel.addOverlay(marcador);
+            TemaDAO tdao = new TemaDAO();
+        }
+    }
 
     public List<Tema> listaTemas() {
         TemaDAO tdao = new TemaDAO();

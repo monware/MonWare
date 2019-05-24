@@ -20,8 +20,5 @@
         <property name="calificacion" type="java.lang.Integer">
             <column name="calificacion" />
         </property>
-        <property name="fecha" type="date">
-            <column name="fecha" length="13" not-null="true" />
-        </property>
     </class>
 </hibernate-mapping>

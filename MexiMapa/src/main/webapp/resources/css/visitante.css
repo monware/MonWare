@@ -13,3 +13,10 @@ body {
     background: url(/sketch.jpg);
 }
 
+#fondo{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    
+}
