@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
@@ -44,8 +45,7 @@ public class EliminarComentarista implements Serializable{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    
+   
     /**
      * 
      */
@@ -53,7 +53,8 @@ public class EliminarComentarista implements Serializable{
     
         UsuarioDAO udao = new UsuarioDAO();
         ComentarioDAO cdao = new ComentarioDAO();
-        EliminaComentario c= new EliminaComentario();
+
+        EliminaComentario c = new EliminaComentario();
         Usuario u = udao.buscaPorCorreo(this.correo);
         if(u!=null){
             List<Comentario> comentarios = cdao.ObtenComentarioPorUsuario(this.correo);
@@ -62,15 +63,20 @@ public class EliminarComentarista implements Serializable{
                 c.eliminaComentarioAdministrador();
             }
         udao.delete(u);
+        
+        FacesMessage msg = new FacesMessage("Se ha eliminado el usuario");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        }else{
+            
+        FacesMessage msg = new FacesMessage("No existe el usuario o algo salió mal");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
        @PostConstruct
     public void listaInformadores() {
         UsuarioDAO uda = new UsuarioDAO();
-        this.listaComentaristas = uda.listaComentaristas();
-        
-        
+        this.listaComentaristas = uda.listaComentaristas();  
     }
 
     public List<Usuario> getListaComentaristas() {

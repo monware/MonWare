@@ -16,14 +16,24 @@ import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.Dependent;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 
 /**
  *
  *@author lizbethac
  */
 @ManagedBean
+@ViewScoped
+@Named(value = "eliminarMarcador")
+@Dependent
 public class EliminaMarcador{
     private int idMarcador;    
+    private List<Integer> listaMarcadores;
 
     public int getIdMarcador(){
 	return idMarcador;
@@ -32,23 +42,40 @@ public class EliminaMarcador{
     public void setIdMarcador(int idMarcador){
 	this.idMarcador = idMarcador;
     }   
+       
+        
+ @PostConstruct
+    public void listaMarcadores() {
+        MarcadorDAO mdao = new MarcadorDAO();
+        this.listaMarcadores = mdao.listaMarcadores();
+    }
 
-    public void eliminaMarcador(){
-        UsuarioDAO daoUsuario = new UsuarioDAO();
+    public List<Integer> getListaMarcadores() {
+        return listaMarcadores;
+    }
+    
+        public void eliminaMarcador(){
+        UsuarioDAO udao = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
-        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-         
-        for(Object prueba: usuarioA.getMarcadors()){
-            MarcadorDAO daoMarcador = new MarcadorDAO();
-            Marcador marcador = new Marcador();
-            for(Object c : marcador.getComentarios()){
+        Usuario u = udao.buscaPorCorreo(us.getCorreo());
+        ComentarioDAO cdao = new ComentarioDAO();
+        MarcadorDAO daoMarcador = new MarcadorDAO();
+        Marcador marcador = new Marcador();
+        
+        if(u!=null){
+              MarcadorDAO mdao = new MarcadorDAO();
+        Marcador m = mdao.find(idMarcador);
+        if(m!=null){
+            for(Object c : m.getComentarios()){
                 ComentarioDAO daoComentario = new ComentarioDAO();
                 Comentario comentario = (Comentario)c;
                 daoComentario.delete(comentario);
             }            
-            daoMarcador.delete(marcador);
+            mdao.delete(m);
         }
-    }
+            listaMarcadores.remove(marcador.getIdmarcador());
+        }
+}
     public void eliminaMarcadorAdministrador(){
          
         MarcadorDAO mdao = new MarcadorDAO();
