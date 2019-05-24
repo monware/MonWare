@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.prueba;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -139,4 +140,34 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }
         return m;
     }
+     
+     public List<Marcador> creaArregloMarcadores(Usuario u) {
+        List<Marcador> list = new ArrayList<Marcador>();
+        Marcador[] marcadores = (Marcador[]) u.getMarcadors().toArray();
+        for(int i = 0 ; i < u.getMarcadors().size() ; i++) {
+            list.add(marcadores[i]);
+        }
+        return list;
 }
+     
+         public List<Integer> listaMarcadores(){
+        List<Integer> listaMarker = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx =null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "select idmarcador from Marcador";
+            Query query = session.createQuery(hql);
+            listaMarker = (List<Integer>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return listaMarker;
+    }
+     }

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view>
+        <h:head>
+          <title>Eliminar marcadores</title>
+ <h:outputStylesheet name="css/style.css"/>	  
+ 
+<header id="main-header">
+		
+		<a id="logo-header" href="#">
+			<span class="site-name">MexiMapa</span>
+                      
+		</a> <!-- / #logo-header -->
+   
+		<nav>
+			<ul>
+				<li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
+				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
+                                                                        <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
+                                                                        <li><a href="eliminamarcador.xhtml">Eliminar Marcador</a></li>
+			</ul>
+                    
+                    <h:form id="logout" rendered="#{not empty informador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
+                </h:form>
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+        </h:head>
+        <h:body>
+                  <h:form id="formGeneralEI">
+                <p:panel header="Eliminar Marcador" >
+                     <p:outputLabel value="Marcador: "/>
+                     <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarMarcador.listaMarcadores}"/>
+                        <f:ajax execute="Marcador" render="iSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>  
+                         <p:outputLabel value="Marcador Seleccionado: "/>
+                         <p:outputLabel id="iSeleccionado" value="#{eliminarMarcador.idMarcador}"/>
+                         
+                         <p:commandButton action="#{eliminarMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
+                </p:panel>  
+            </h:form>
+          
+        </h:body>	    
+    </f:view>
+</html>
+
+
