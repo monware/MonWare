@@ -151,6 +151,7 @@ public class RegistrarUsuario {
         
         return "/InicioSesion?faces-redirect=true";
         }
+
     }
 
     /**
