@@ -4,7 +4,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -15,6 +16,9 @@ and open the template in the editor.
 	<title>Panel Administrador</title>
  
         <h:outputStylesheet name="css/style.css"/>
+        <h:outputStylesheet name="css/visitante.css"/>
+         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_CV-ykq13siKc1d-UiPH4vmp0RjlNroA">
+            </script>
         <header id="main-header">
 		
 		<a id="logo-header" href="#">
@@ -27,12 +31,13 @@ and open the template in the editor.
                             <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
 				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
 			</ul>
+                     <h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-  <h:form id="logout" rendered="#{not empty administrador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"/>
-                </h:form>
+ 
 </h:head>
  
 <h:body>  
@@ -50,69 +55,96 @@ and open the template in the editor.
             </p:inputText>
             <p:message for="username" />
             
-            <p:outputLabel for="apellido" value="Apellidos" />
-            <p:inputText id="apellido" value="#{agregarInformador.apellido}" placeholder="Apellidos" required="true" label="Apellido">
+            <p:outputLabel for="apellidoP" value="Apellido Paterno" />
+            <p:inputText id="apellidoP" value="#{agregarInformador.apaterno}" placeholder="Apellido Paterno" required="true" label="Apellido">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="apellido" />
+            <p:message for="apellidoP" />
+ 
+            <p:outputLabel for="apellidoM" value="Apellido Materno" />
+            <p:inputText id="apellidoM" value="#{agregarInformador.amaterno}" placeholder="Apellidos Materno" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellidoM" />
  
             <p:outputLabel for="email" value="Email" />
             <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
             </p:inputText>
             <p:message for="email" />
         </h:panelGrid>
- 
-        <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
+  <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
+            
     </p:panel>
 
 </h:form>
 
     
- <h:form>
-    <p:panel id="panel" header="Menú Administrador: Eliminar Informador" >
- 
-        <p:focus context="panel"/>
- 
-        <p:messages />
- 
-        <h:panelGrid  columns="3" >
-            <p:outputLabel for="email" value="Email" />
-            <p:inputText id="email" value="#{eliminarInformador.correo}" placeholder="Correo Informador" required="true" validator="#{validaciones.validacionEmailEliminarInformador}">
-            </p:inputText>
-     <p:message for="email" />
-        </h:panelGrid>
- 
-        <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Eliminar Informador" update="@parent" ajax="false"/>
-    </p:panel>
-
-</h:form>
-
-    <h:form id="funcionEliminarComentarista">
-    <p:panel id="panel" header="Menú Administrador: Eliminar Comentarista" >
-                 
-                        <p:inputText  id="correo" value="#{eliminarComentarista.correo}" required="true" placeholder="Correo" validatorMessage="Debe ser un correo valido"> 
-                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                        <p:keyFilter regEx="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                        </p:inputText>  
-                    <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Eliminar Comentarista" ajax="false" />
-     </p:panel>           
-    </h:form>
-             
-    
-            <h:form>
-                 <p:panel id="panel" header="Menú Administrador: Eliminar Tema" >
-                <br><p:inputText id="nombre" value="#{eliminaTema.nombre}" placeholder="Tema"/> </br>
-                <br><p:commandButton action="#{eliminaTema.eliminaTema()}" value="Elimina Tema" ajax="false"/></br>
+         <h:form id="formGeneralEI">
+                <p:panel header="Menú Administrador: Eliminar Informador" >
+                     <p:outputLabel value="Informador: "/>
+                     <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarInformador.listaInformadores}"/>
+                        <f:ajax execute="Informador" render="iSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>  
+                         <p:outputLabel value="Usuario Seleccionado: "/>
+                         <p:outputLabel id="iSeleccionado" value="#{eliminarInformador.correo}"/>
+                         
+                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/>
                 </p:panel>  
             </h:form>
     
-    
+    <h:form id="formGeneralEC">
+                
+                <p:panel header="Menú Administrador: Eliminar Comentarista" >
+                     <p:outputLabel value="Comentarista: "/>
+                     <p:selectOneMenu id="comentarista" value="#{eliminarComentarista.correo}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarComentarista.listaComentaristas}"/>
+                        <f:ajax execute="Comentarista" render="tSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>
+                         <p:outputLabel value="Tema Seleccionado: "/> 
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarComentarista.correo}"/>
+                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false"/>
+                </p:panel>  
+            </h:form>
+   
+    <h:form id="formGeneral">
+                
+                <p:panel header="Menú Administrador: Eliminar Tema" >
+                     <p:outputLabel value="Tema: "/>
+                     <p:selectOneMenu id="tema" value="#{eliminarTema.nombre_tema}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarTema.listaTemas}"/>
+                        <f:ajax execute="tema" render="tSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>
+                         <p:outputLabel value="Tema Seleccionado: "/> 
+                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.nombre_tema}"/>
+                         <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
+                </p:panel>  
+            </h:form>
             <h:form>
               <p:panel id="panel" header="Menú Administrador: Eliminar Marcador" >
               <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Aceptar" ajax="false" />
               <p:commandButton action="reset" value="Cancelar" ajax="false" />
               </p:panel>
-            </h:form>
+             </h:form>
+     <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa1" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                 
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
+                    </p:gmap>
+      
+    
 </h:body>
         
 	

@@ -116,7 +116,9 @@ public class Usuario  implements java.io.Serializable {
         this.temas = temas;
     }
 
-
+    public String toString(){
+        return this.correo;
+    }
 
 
 }

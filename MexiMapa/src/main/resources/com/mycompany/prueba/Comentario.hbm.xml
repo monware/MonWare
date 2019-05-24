@@ -6,7 +6,7 @@
     <class name="com.mycompany.prueba.Comentario" table="comentario" schema="public" optimistic-lock="version">
         <id name="idcomentario" type="int">
             <column name="idcomentario" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="marcador" class="com.mycompany.prueba.Marcador" fetch="select">
             <column name="idmarcador" not-null="true" />
@@ -19,9 +19,6 @@
         </property>
         <property name="calificacion" type="java.lang.Integer">
             <column name="calificacion" />
-        </property>
-        <property name="fecha" type="date">
-            <column name="fecha" length="13" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

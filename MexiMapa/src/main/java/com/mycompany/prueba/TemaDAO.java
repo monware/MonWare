@@ -71,6 +71,29 @@ public class TemaDAO extends AbstractDAO<Tema>{
         return super.findAll(Tema.class);
     }
     
+    
+    public List<Tema> listaTemas(){
+        List<Tema> m = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "FROM Tema";
+        try{
+            m=session.createQuery(hql).list();
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            tx.rollback();
+        }
+     return m;   
+    }
+    /**
+     * 
+     * @param correo
+     * @return 
+     */
+    
     public List<Tema> ObtenTemasPorUsuario(String correo){
         List<Tema> m = null;
         Session session = this.sessionFactory.openSession();

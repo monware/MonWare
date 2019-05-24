@@ -44,7 +44,10 @@ public class AgregarInformador {
     private Set marcadors = new HashSet(0);
     private Set comentarios = new HashSet(0);
 
-    
+    /*public AgregarInformador(){
+        apaterno="-";
+        amaterno="-";
+    }*/
     public String getApellido() {
         return apellido;
     }
@@ -125,24 +128,24 @@ public class AgregarInformador {
     }
    
     
-    public void separaApellido(String apellido){
+    /*public void separaApellido(String apellido){
        String[] apellidos = apellido.split(" ");
        if(apellidos[0]== null){
-           setApaterno(" ");
+           setApaterno("-");
        }
        else{
            setApaterno(apellidos[0]);
        }
        if(apellidos[1]== null){
-           setApaterno(" ");
+           setApaterno("-");
        }
        else{       
        setAmaterno(apellidos[1]);
        }
-    }
+    }*/
     
     public void agregarInformador(){
-        separaApellido(apellido);
+        //separaApellido(apellido);
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);
