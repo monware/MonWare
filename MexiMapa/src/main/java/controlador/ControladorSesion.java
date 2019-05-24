@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.util.List;
 
 /**
  *
@@ -104,5 +105,4 @@ public class ControladorSesion implements Serializable{
             this.rol = rol;
         }
     }
-
 }
