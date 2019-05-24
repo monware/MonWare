@@ -39,7 +39,7 @@
                      <p:outputLabel value="Marcador: "/>
                      <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
-                        <f:selectItems value="#{eliminarMarcador.listaMarcadores}"/>
+                        <f:selectItems value="#{eliminarMarcador.getListaMarcadores}"/>
                         <f:ajax execute="Marcador" render="iSeleccionado"/>
                      </p:selectOneMenu>
                      <hr/>  
