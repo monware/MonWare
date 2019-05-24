@@ -19,6 +19,7 @@ import com.mycompany.prueba.Tema;
 import com.mycompany.prueba.TemaDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import org.primefaces.event.RateEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -42,7 +43,8 @@ public class VerMarcadorC implements Serializable{
     private String comentario;
     private String descripcion;
     private Integer calificacion;
-    private Marcador select;
+    public static Marcador select;
+    private List<Comentario> listacom;
     
      
     @PostConstruct
@@ -55,7 +57,6 @@ public class VerMarcadorC implements Serializable{
             LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
             Marker marcador = new Marker(cord,m.getDescripcion());
             simpleModel.addOverlay(marcador);
-            TemaDAO tdao = new TemaDAO();
         }
     }
 
@@ -69,12 +70,8 @@ public class VerMarcadorC implements Serializable{
        this.longitud = marker.getLatlng().getLng();
        MarcadorDAO marcadorDAO = new MarcadorDAO();
        select = marcadorDAO.buscaMarcadorPorLatLng(latitud, longitud);
+       ComentarioBeam.update();
     }
-    
-    public String muestraVentana(){
-        return "/verMarcadorC?faces-redirect=true";
-    }
-
     public Marker getMarker() {
         return marker;
     }
@@ -139,14 +136,6 @@ public class VerMarcadorC implements Serializable{
         this.calificacion = calificacion;
     }
 
-    public Marcador getSelect() {
-        return select;
-    }
-
-    public void setSelect(Marcador select) {
-        this.select = select;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -154,6 +143,24 @@ public class VerMarcadorC implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public static Marcador getMarca() {
+        return select;
+    }
+
+    public static void setMarca(Marcador marca) {
+        VerMarcadorC.select = marca;
+    }
+
+    public Marcador getSelect() {
+        return select;
+    }
+
+    public void setSelect(Marcador select) {
+        this.select = select;
+    }
+    
+    
     
     
     public void agregarComentario(){
@@ -162,10 +169,13 @@ public class VerMarcadorC implements Serializable{
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         Comentario comen = new Comentario();
         MarcadorDAO marcadorDAO = new MarcadorDAO();
-        comen.setMarcador(marcadorDAO.buscaMarcadorPorLatLng(latitud, longitud));
-        comen.setUsuario(usuarioA);
-        comen.setComentario(comentario);
-        ComentarioDAO udb = new ComentarioDAO();
-        udb.save(comen);
-    }  
+        Marcador ma = marcadorDAO.buscaMarcadorPorLatLng(latitud,longitud);
+        AgregaComentario com = new AgregaComentario();
+        com.agregaComentario(usuarioA,ma,comentario,calificacion);
+        ComentarioBeam.update();
+    }
+    
+    public void incrementaCalificacion(){
+        calificacion++;
+    }
 }

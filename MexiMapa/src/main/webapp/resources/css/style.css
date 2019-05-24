@@ -232,20 +232,21 @@ img.img_logo{
 .texto{
     width: 100%;
 }
-#mapa1{
-    position: absolute;
-    width: 60%;
-    height: 50%;
-    margin-top: 50px;
-    margin-left: 50px;
-}
+
 #mapa{
-    position: absolute;
+    position: relative;
     width: 60%;
     height: 50%;
     margin-top: 5%;
     margin-left: 50px;
-    
+}
+
+#mapa1{
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    margin-top: 35%;
+    margin-left: 50px;
 }
 
 #formulario-reg{
@@ -285,6 +286,22 @@ img.img_logo{
 #form{
     width: 100%;
     height: 100%;
+}
+
+#agregaComentario{
+    position: relative;
+    margin-right: 60%;
+    margin-top: 6%;
+    float:right;
+}
+
+#comentarios{
+    position: relative;
+    margin-top: -20%;
+    margin-right: 5%;
+    float: right;
+    height: 100%;
+    width: 50%;
 }
 
 /*main{

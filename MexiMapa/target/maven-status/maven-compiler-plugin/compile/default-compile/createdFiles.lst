@@ -5,15 +5,15 @@ controlador/ComentarioBeam.class
 com/mycompany/prueba/UsuarioDAO.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
-controlador/RegistrarUsuario.class
 controlador/TemaConMarcador.class
+controlador/RegistrarUsuario.class
 com/mycompany/prueba/Tema.class
 controlador/Validaciones.class
 com/mycompany/prueba/MarcadorDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
-controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
+controlador/PaginaPrincipal.class
 controlador/VerMarcadores.class
 controlador/AgregaMarcador.class
 com/mycompany/prueba/HibernateUtil.class
