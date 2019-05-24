@@ -146,10 +146,8 @@ public class RegistrarUsuario {
         //método que manda el correo
         mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
         
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getViewRoot().setLocale(new Locale("es-Mx"));
-        
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El registro se realizo de manera exitosa", ""));
+        FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         
         return "/InicioSesion?faces-redirect=true";
         }
