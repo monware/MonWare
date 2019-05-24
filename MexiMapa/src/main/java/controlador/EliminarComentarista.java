@@ -53,7 +53,8 @@ public class EliminarComentarista implements Serializable{
     
         UsuarioDAO udao = new UsuarioDAO();
         ComentarioDAO cdao = new ComentarioDAO();
-        EliminaComentario c= new EliminaComentario();
+
+        EliminaComentario c = new EliminaComentario();
         Usuario u = udao.buscaPorCorreo(this.correo);
         if(u!=null){
             List<Comentario> comentarios = cdao.ObtenComentarioPorUsuario(this.correo);
