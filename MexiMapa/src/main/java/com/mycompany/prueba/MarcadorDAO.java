@@ -139,4 +139,28 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }
         return m;
     }
+     public List<Marcador> ObtenMarcadoresPorTema(Tema tema){
+        List<Marcador> m = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        String ntema = tema.getNombre();
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Marcador m where m.tema.nombre = :ntema";
+            Query query = session.createQuery(hql);
+            query.setParameter("ntema", ntema);
+            m = (List<Marcador>)query.list();
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+
+        }finally{
+            session.close();
+        }
+        return m;
+    }
 }
