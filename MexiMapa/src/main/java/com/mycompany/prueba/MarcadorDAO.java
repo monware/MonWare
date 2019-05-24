@@ -117,7 +117,8 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }
         return m;
     }
-     public List<Marcador> ObtenMarcadoresPorTema(String ntema){
+     
+    public List<Marcador> ObtenMarcadoresPorTema(String ntema){
         List<Marcador> m = null;
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -153,7 +154,19 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
             query.setParameter("ntema", ntema);
             m = (List<Marcador>)query.list();
             tx.commit();
-             
+        }
+        catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+
+        }finally{
+            session.close();
+        }
+        return m;
+     }
+     
      public List<Marcador> creaArregloMarcadores(Usuario u) {
         List<Marcador> list = new ArrayList<Marcador>();
         Marcador[] marcadores = (Marcador[]) u.getMarcadors().toArray();

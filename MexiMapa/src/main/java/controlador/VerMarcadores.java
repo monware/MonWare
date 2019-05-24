@@ -69,8 +69,8 @@ public class VerMarcadores implements Serializable{
         }
         
         
-        }
-    }
+        
+    
     
  
    /**@PostConstruct
