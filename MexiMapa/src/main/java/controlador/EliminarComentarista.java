@@ -45,7 +45,7 @@ public class EliminarComentarista implements Serializable{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-  
+   
     /**
      * 
      */
@@ -64,11 +64,11 @@ public class EliminarComentarista implements Serializable{
             }
         udao.delete(u);
         
-         FacesMessage msg = new FacesMessage("El ususario se ha removido");
+        FacesMessage msg = new FacesMessage("Se ha eliminado el usuario");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
             
-         FacesMessage msg = new FacesMessage("No se encuentra el usuario o algo salió mal");
+        FacesMessage msg = new FacesMessage("No existe el usuario o algo salió mal");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
@@ -76,9 +76,7 @@ public class EliminarComentarista implements Serializable{
        @PostConstruct
     public void listaInformadores() {
         UsuarioDAO uda = new UsuarioDAO();
-        this.listaComentaristas = uda.listaComentaristas();
-        
-        
+        this.listaComentaristas = uda.listaComentaristas();  
     }
 
     public List<Usuario> getListaComentaristas() {
