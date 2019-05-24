@@ -18,7 +18,6 @@ and open the template in the editor.
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
-        <h:outputScript name="js/colores.js"/> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
          
@@ -49,24 +48,20 @@ and open the template in the editor.
  
 	</header><!-- / #main-header -->
         <main>
-                        <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
-                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
-                        <p:gmapInfoWindow id="ventanaInfo">
-                             <p:outputPanel style="text-align: left; display: block; margin: auto">
- 
-                                    <!--<p:graphicImage name="/demo/images/antalya/{infoWindowView.marker.data}" height="150" />-->
-                                    <!--<br />-->
-                                    <h:outputText value="#{verMarcadores.marker.title}" />
-                                    <br/>
-                                    <h:outputText value="#{verMarcadores.marker.data}"/>
-                            </p:outputPanel>
-                        </p:gmapInfoWindow>
-                    </p:gmap>  
-        </main>
-        <aside>
-                 
-                 <h:form id="agrega_comentario">
-                 
+                <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa1" model="#{verMarcadorC.simpleModel}"  draggable="true"  mapTypeControl="false">
+                    <p:ajax event="overlaySelect" listener="#{verMarcadorC.onMarkerSelect}" update="agregaComentario comentarios"/>
+                    <p:gmapInfoWindow id="ventanaInfo">
+                         <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                <h:outputText value="#{verMarcadorC.marker.title}" />
+                                <br/>
+                                <h:outputText value="#{verMarcadorC.marker.data}"/>
+                        </p:outputPanel>
+                    </p:gmapInfoWindow>
+                </p:gmap> 
+            <h:form id="agregaComentario">
+                    <p:messages id="messages" showDetail="true" closable="true" >
+                         <p:autoUpdate />
+                     </p:messages>
                      <p:panelGrid columns="2" id="form_agrecoment" >
                      
                         <h:inputText value="Nombre marcador:" disabled="True"/>
@@ -77,33 +72,42 @@ and open the template in the editor.
                         
                         <h:outputText value="Longitud:" />
                         <h:outputText id="longitud" value="#{verMarcadorC.longitud}"/>
-                     
                      </p:panelGrid>
                      
-                     <p:inputTextarea rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="#{verMarcadorC.select.descripcion}" />
-                     
-                 </h:form>
-                    
-                 <p:commandButton value="Agregar" id="boton_agregar_coment"  action="#{verMarcadorC.agregarComentario()}" update="agrega_comentario muestra_comentarios"/>
+                    <p:inputTextarea rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
+                    <p:commandButton value="Agergar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
+                        <f:actionListener binding="#{comentarioBeam.update()}"/>
+                    </p:commandButton>       
+                </h:form>
                  
-                 <h:form id="muestra_comentarios">
-                     <p:dataTable id="lista_comentarios" value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="150">
-                         <p:column headerText="Descripcion" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                <h:form id="comentarios">
+                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+                        <p:column headerText="id" style="width:55px;height: 50%">
+                             <p:outputLabel value="#{comentario.idcomentario}"/>
+                         </p:column> 
+                        <p:column headerText="Comentario" filterBy="#{comentario.comentario}" filterMatchMode="contains">
                              <p:outputLabel value="#{comentario.comentario}"/>
                          </p:column>
-                     
+                        <p:column headerText="Calificacion" style="width:100px">
+                                <h:outputText value=" " />
+                                <h:outputText id="output" value="#{comentario.calificacion}" />
+                            <!--<p:inputNumber value="#{comentario.calificacion}" decimalPlaces="0"/>-->
+                            <p:commandButton value="Califica" action="#{CalificarComentario.calificacion}" update="output" />
+                        </p:column >
+                            
+                        <p:column headerText="eliminame" style="width:100px">
+                            <p:inputNumber value="#{comentario.idcomentario}" decimalPlaces="0"/>
+                            <p:commandButton value="Elimina" action="#{eliminaComentario.eliminaComentarioComentarista()}" update="output" />
+                        </p:column>
                      </p:dataTable>
-                     
-                 </h:form>
-                 
-                 
-                 
-            </aside>
+                </h:form>
+        </main>
+
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
  
-	
+            
   </h:body>
 </f:view>   
 </html>

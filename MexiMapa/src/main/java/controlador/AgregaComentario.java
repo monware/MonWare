@@ -82,4 +82,14 @@ public class AgregaComentario {
         
     }
     
+    public void agregaComentario(Usuario usuario,Marcador marcador,String comentario,Integer calificacion){
+        Comentario comentar = new Comentario();
+        ComentarioDAO daoComentario = new ComentarioDAO();
+        comentar.setMarcador(marcador);
+        comentar.setUsuario(usuario);
+        comentar.setComentario(comentario);
+        comentar.setCalificacion(calificacion); 
+        daoComentario.save(comentar);
+        
+    }
 }
