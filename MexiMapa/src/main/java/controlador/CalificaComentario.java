@@ -35,18 +35,24 @@ public class CalificaComentario {
         this.idComentario = idComentario;
     }
     
-    public void calificaComentario(){
-        UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
-        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        for(Object coment:usuarioA.getComentarios()){
-            ComentarioDAO cdao = new ComentarioDAO();
-            Comentario comentario = (Comentario) coment;
-            comentario = cdao.find(idComentario);
-            if(comentario != null){
-                comentario.setCalificacion(calificacion);
-                cdao.update(comentario);
-            }
+    public void calificaComentario(int id, int cal){
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario comentario = cdao.find(id);
+        if(comentario != null){
+            int aux = cal +1;
+            comentario.setCalificacion(aux);
+            cdao.update(comentario);
+        }
+    }
+    public void descalificaComentario(int id, int cal){
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario comentario = cdao.find(id);
+        if(comentario != null&& cal > 0){
+            int aux = cal -1;
+            comentario.setCalificacion(aux);
+            cdao.update(comentario);
+        }else{
+            System.out.println("Error Aun no en pantalla");
         }
     }
 }

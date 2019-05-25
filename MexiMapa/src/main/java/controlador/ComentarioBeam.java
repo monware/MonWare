@@ -41,22 +41,9 @@ public class ComentarioBeam {
         ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadorC.select.getIdmarcador());
     }
     
-    public Comentario getComen() {
-        return comen;
-    }
-
-    public void setComen(Comentario comen) {
-        this.comen = comen;
-    }
-    
-    public void onRowEdit(RowEditEvent event) {
-        try{
-            this.comen = (Comentario) event.getObject();
-            ComentarioDAO cDAO = new ComentarioDAO();
-            cDAO.update(this.comen);
-        }catch(Exception e){
-            System.out.println("Error Aun no implementado");
-        }
+    public static void udate(){
+        ComentarioDAO comentarioDAO = new ComentarioDAO();
+        ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadorD.select.getIdmarcador());
     }
     
 }
