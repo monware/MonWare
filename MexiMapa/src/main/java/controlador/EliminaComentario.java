@@ -21,15 +21,34 @@ import com.mycompany.prueba.UsuarioDAO;
 @ManagedBean
 public class EliminaComentario {
     private int idComentario;
+    private String correo;
     
     public int getIdComentario() {
         return idComentario;
     }
+    
 
     public void setIdComentario(int idComentario) {
         this.idComentario = idComentario;
     }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
     //Falta otro para administrador
+    
+    public void eliminaComentarioAdministrador(int id){
+        ComentarioDAO udao = new ComentarioDAO();
+        Comentario u = udao.find(id);
+        if(u!=null){
+            udao.delete(u);
+        }
+    }
     
     public void eliminaComentarioAdministrador(){
         ComentarioDAO udao = new ComentarioDAO();
@@ -40,20 +59,21 @@ public class EliminaComentario {
     }
     
     //Idea: Como el comentarista puede eliminar sus comentarios solo buscamos en su lista de comentarios asociados y elimine el que guste.
-    public void eliminaComentarioComentarista(){
+    public void eliminaComentarioComentarista(int id){
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         for(Object comen:usuarioA.getComentarios()){
-            ComentarioDAO comendao = (ComentarioDAO) comen;
-            Comentario comentario = comendao.find(idComentario);
+            ComentarioDAO comendao = new ComentarioDAO();
+            Comentario comentario = (Comentario) comen;
+            comentario = comendao.find(id);
             if(comentario !=null){
                 comendao.delete(comentario);
             }
         }
     }
     //Idea: Como el Inofrmador puede Eliminar de los Temas los que quiera Obtenemos lo siguiente.
-    public void eliminaComentarioInformador(){
+    public void eliminaComentarioInformador(int id){
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
@@ -64,10 +84,11 @@ public class EliminaComentario {
             Marcador marcador = marcadordao.find(idComentario); //id Marcador
             //if(marcador!= null) si es que sigo con esa idea
             for(Object coment:marcador.getComentarios()){
-                ComentarioDAO comentariodao = (ComentarioDAO)coment;
-                Comentario comentario = comentariodao.find(idComentario);
-                if(comentario != null){
-                    comentariodao.delete(comentario);
+                ComentarioDAO comendao = new ComentarioDAO();
+                Comentario comentario = (Comentario) coment;
+                comentario = comendao.find(id);
+                if(comentario !=null){
+                    comendao.delete(comentario);
                 }
             }
         }
