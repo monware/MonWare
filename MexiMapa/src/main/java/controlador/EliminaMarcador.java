@@ -36,6 +36,7 @@ public class EliminaMarcador{
     private List<SelectItem> listaMarcadores;
       private Marcador marcador;
       private int idMarcador;
+      private String marcador_descripcion;
       
           public EliminaMarcador(){
         marcador = new Marcador();
@@ -56,25 +57,36 @@ public class EliminaMarcador{
     public void setMarcador(Marcador marcador) {
         this.marcador = marcador;
     }
+
+    public String getMarcador_descripcion() {
+        return marcador_descripcion;
+    }
+
+    public void setMarcador_descripcion(String marcador_descripcion) {
+        this.marcador_descripcion = marcador_descripcion;
+    }
+   
     
-    public void eliminaTemaInformador(){
+    public void eliminaMarcadorInformador(){
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-
-                for(Object m: usuarioA.getMarcadors()){
-                    MarcadorDAO marcadordao = (MarcadorDAO) m;
-                    Marcador marcador = marcadordao.find(this.marcador.getDescripcion());
-                    if(marcador.getComentarios() != null){
-                        for(Object c : marcador.getComentarios()){
+        
+        for(Object m:usuarioA.getMarcadors()){
+            MarcadorDAO mdao = new MarcadorDAO();
+            Marcador marcador = (Marcador) m;
+            marcador = mdao.find(this.getMarcador_descripcion());
+            if(marcador !=null){
+                for(Object c : marcador.getComentarios()){
                             ComentarioDAO daoComentario = new ComentarioDAO();
                             Comentario comentario = (Comentario)c;
                             daoComentario.delete(comentario);
-                        }
-                    }
-                    marcadordao.delete(marcador);
+                            }
+                 mdao.delete(marcador);
             }
         }
+        }
+      
     
     
         public List<SelectItem> getListaMarcadores(){
@@ -103,6 +115,6 @@ public class EliminaMarcador{
             mdao.delete(m);
         }
     }
-        
+    
     }
     
