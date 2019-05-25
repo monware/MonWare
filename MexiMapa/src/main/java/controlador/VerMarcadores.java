@@ -71,7 +71,7 @@ public class VerMarcadores implements Serializable{
  
    /**@PostConstruct
     public void verMarcadores(){
-        
+        /**
         simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.findAll();
@@ -80,6 +80,16 @@ public class VerMarcadores implements Serializable{
             Marker marcador = new Marker(cord,m.getDescripcion());
             simpleModel.addOverlay(marcador);
             TemaDAO tdao = new TemaDAO();
+        }*/
+        simpleModel = new DefaultMapModel();
+        MarcadorDAO mdb = new MarcadorDAO();
+        List<Marcador> marcadores = mdb.findAll();
+        for(Marcador m :marcadores){
+            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
+            Marker marcador = new Marker(cord,m.getDescripcion());
+            Marker prueba = new Marker(cord,m.getDatos());
+            simpleModel.addOverlay(marcador);
+            simpleModel.addOverlay(prueba);
         }
     }**/
 
