@@ -67,8 +67,7 @@ public class VerMarcadores implements Serializable{
         }
 
         }
-    
- 
+        
    /**@PostConstruct
     public void verMarcadores(){
         /**
@@ -80,7 +79,7 @@ public class VerMarcadores implements Serializable{
             Marker marcador = new Marker(cord,m.getDescripcion());
             simpleModel.addOverlay(marcador);
             TemaDAO tdao = new TemaDAO();
-        }*/
+        }
         simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.findAll();
@@ -91,8 +90,8 @@ public class VerMarcadores implements Serializable{
             simpleModel.addOverlay(marcador);
             simpleModel.addOverlay(prueba);
         }
-    }**/
-
+    }
+*/
     public List<Tema> listaTemas() {
         TemaDAO tdao = new TemaDAO();
         this.listaTemas = tdao.listaTemas();
@@ -129,4 +128,7 @@ public class VerMarcadores implements Serializable{
     public void setMarcadors(String marcadors) {
         this.marcadors = marcadors;
     }
+    
+    
+    
 }

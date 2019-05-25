@@ -38,15 +38,15 @@
                 
                 <p:panel header="Menú Administrador: Eliminar Marcador" >
                      <p:outputLabel value="Marcador: "/>
-                     <p:selectOneMenu id="Marcador" value="#{eliminaMarcador.descripcion}"> 
+                     <p:selectOneMenu id="Marcador" value="#{eliminaMarcador.marcador_descripcion}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminaMarcador.listaMarcadores}"/>
                         <f:ajax execute="Marcador" render="tSeleccionado"/>
                      </p:selectOneMenu>
                      <hr/>
                          <p:outputLabel value="Marcador Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminaMarcador .descripcion}"/>
-                         <p:commandButton action="#{eliminaMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
+                         <p:outputLabel id="tSeleccionado" value="#{eliminaMarcador.marcador_descripcion}"/>
+                         <p:commandButton action="#{eliminaMarcador.eliminaMarcadorInformador()}" value="Elimina Marcador" ajax="false"/>
                 </p:panel>  
             </h:form>
           
