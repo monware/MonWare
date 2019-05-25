@@ -67,10 +67,6 @@ public class VerMarcadores implements Serializable{
         }
 
         }
-        
-        
-        }
-    }
     
  
    /**@PostConstruct
@@ -133,7 +129,4 @@ public class VerMarcadores implements Serializable{
     public void setMarcadors(String marcadors) {
         this.marcadors = marcadors;
     }
-    
-    
-    
 }

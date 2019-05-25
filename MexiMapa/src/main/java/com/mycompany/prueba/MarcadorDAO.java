@@ -59,7 +59,9 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
     public Marcador find(int id){
         return super.find(Marcador.class, id);
     }
-    
+     public Marcador find(String descripcion){
+        return super.find(Marcador.class, descripcion);
+    }
     /**
      * 
      * @return 
@@ -153,26 +155,7 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
             query.setParameter("ntema", ntema);
             m = (List<Marcador>)query.list();
             tx.commit();
-             
-     public List<Marcador> creaArregloMarcadores(Usuario u) {
-        List<Marcador> list = new ArrayList<Marcador>();
-        Marcador[] marcadores = (Marcador[]) u.getMarcadors().toArray();
-        for(int i = 0 ; i < u.getMarcadors().size() ; i++) {
-            list.add(marcadores[i]);
-        }
-        return list;
-}
-     
-         public List<Marcador> listaMarcadores(Usuario u){
-        List<Marcador> listaMarker = null;
-        Session session = this.sessionFactory.openSession();
-        Transaction tx =null;
-        try{
-            tx = session.beginTransaction();
-            String hql = "from Marcador  m where m.usuario= :u";
-            Query query = session.createQuery(hql);
-            listaMarker= (List<Marcador>)query.list();
-            tx.commit();
+
         }catch(HibernateException e){
             if(tx!=null){
                 tx.rollback();
@@ -182,6 +165,23 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }finally{
             session.close();
         }
-        return listaMarker;
+        return m;
+    }
+     
+             public List<Marcador> listaMarcadores(){
+        List<Marcador> m = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "FROM Marcador";
+        try{
+            m=session.createQuery(hql).list();
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            tx.rollback();
+        }
+     return m;   
     }
      }
