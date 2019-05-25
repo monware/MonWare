@@ -50,7 +50,7 @@ public class EliminaMarcador{
         UsuarioDAO udao = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario u = udao.buscaPorCorreo(us.getCorreo());
-        this.listaMarcadores = mdao.listaMarcadores(u);
+        this.listaMarcadores = mdao.ObtenMarcadoresPorUsuario(us.getCorreo());
     }
 
     public List<Marcador> getListaMarcadores() {
