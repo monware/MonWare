@@ -7,6 +7,7 @@ package controlador;
 
 import com.mycompany.prueba.Marcador;
 import com.mycompany.prueba.MarcadorDAO;
+import com.mycompany.prueba.Mensajes;
 import com.mycompany.prueba.Tema;
 import com.mycompany.prueba.TemaDAO;
 import com.mycompany.prueba.Usuario;
@@ -46,7 +47,9 @@ public class AgregaMarcador implements Serializable {
     private Tema tema;
     private String descripcion;
     private String datos;
-    private LatLng centro;   
+    private LatLng centro; 
+    private String nombreTema;
+    
     
     @PostConstruct
     public void init(){
@@ -63,6 +66,15 @@ public class AgregaMarcador implements Serializable {
     public LatLng getCentro() {
         return centro;
     }
+
+    public String getNombreTema() {
+        return nombreTema;
+    }
+
+    public void setNombreTema(String nombreTema) {
+        this.nombreTema = nombreTema;
+    }
+    
  
     public Marker getMarcador() {
         return marcador;
@@ -123,28 +135,33 @@ public class AgregaMarcador implements Serializable {
     public String agregaMarcador(){
         MarcadorDAO mdb =new MarcadorDAO();
         UsuarioDAO udb = new UsuarioDAO();
+        TemaDAO tdao = new TemaDAO();
         Marcador m = mdb.buscaMarcadorPorLatLng(latitud, longitud);
+        setTema(tdao.find(this.getNombreTema()));
         if(m!= null){
             this.descripcion ="";
-            //Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
+            Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
+            return "";
+        }
+        if(tema==null){
+            this.descripcion ="";
+            Mensajes.fatal("El tema no existe");
             return "";
         }
         m = new Marcador();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informadores");
         Usuario u = udb.buscaPorCorreo(us.getCorreo());
         TemaDAO daoTema = new TemaDAO();
-        Tema tem = daoTema.find(1);
         m.setDescripcion(descripcion);
         m.setLatitud(latitud);
         m.setLongitud(longitud);
         m.setDatos(datos);
-        m.setTema(tem);
-        // this.creaIcono(color,50,50);
-        //System.out.println(color);
-        //m.setIcon("resources/images/"+color+".svg");
+        m.setTema(tema);
         m.setUsuario(u);
         mdb.save(m);
-        this.descripcion ="";
+        //this.descripcion ="";
+        //Mensajes.info("Se guardo el marcador");
+        //return "";
         //Mensajes.info("Se guardo el marcador");
         return "";
     }
