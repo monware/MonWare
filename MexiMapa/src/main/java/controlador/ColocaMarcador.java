@@ -32,7 +32,6 @@ import org.primefaces.model.map.Marker;
 @ManagedBean
 public class ColocaMarcador{
 
-    private int idMarcador;
     private Tema tema;
     private String nombreTema;
     private Usuario usuario;
@@ -85,9 +84,6 @@ public class ColocaMarcador{
         this.nombreTema = nombreTema;
     }
 
-    public void setIdMarcador(int idMarcador){
-	this.idMarcador = idMarcador;
-    }
     public void setTema(Tema tema){
 	this.tema = tema;
     }

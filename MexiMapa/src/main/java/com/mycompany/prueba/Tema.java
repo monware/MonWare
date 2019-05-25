@@ -62,7 +62,7 @@ public class Tema  implements java.io.Serializable {
 
 
     public String toString(){
-        return "Nombre: "+this.getNombre()+"\t"+"Usuario: "+this.getUsuario();
+        return this.getNombre();
     }
 }
 

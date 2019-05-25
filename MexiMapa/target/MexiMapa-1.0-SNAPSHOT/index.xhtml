@@ -21,6 +21,7 @@ and open the template in the editor.
         
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
+        
         <h:outputScript name="js/estilos.js"/> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
@@ -51,16 +52,16 @@ and open the template in the editor.
                 <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
                      <p:outputLabel value="Tema: "/>
-                     <p:selectOneMenu id="informador" value="#{verMarcadores.nombreTema}"> 
+                     <p:selectOneMenu id="tema" value="#{verMarcadores.tema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{verMarcadores.listaTemas()}"/>
-                        <f:ajax execute="Informador" render="iSeleccionado"/>
+                        <f:ajax execute="Tema" render="tSeleccionado" />
                      </p:selectOneMenu>
                      <hr/>  
-                         <p:outputLabel value="Usuario Seleccionado: "/>
-                         <p:outputLabel id="iSeleccionado" value="#{verMarcadores.nombreTema}"/>
+                         <p:outputLabel value="Tema Seleccionado: "/>
+                         <p:outputLabel id="tSeleccionado" value="#{verMarcadores.tema}"/>
                          
-                         <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" ajax="false"/>
+                         <p:commandButton action="#{verMarcadores.verMarcadores}" value="Ver Marcadores" ajax="false"/>
                 </p:panel>  
             </h:form>
 

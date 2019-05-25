@@ -140,7 +140,20 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }
         return m;
     }
-     
+
+     public List<Marcador> ObtenMarcadoresPorTema(Tema tema){
+        List<Marcador> m = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        String ntema = tema.getNombre();
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Marcador m where m.tema.nombre = :ntema";
+            Query query = session.createQuery(hql);
+            query.setParameter("ntema", ntema);
+            m = (List<Marcador>)query.list();
+            tx.commit();
+             
      public List<Marcador> creaArregloMarcadores(Usuario u) {
         List<Marcador> list = new ArrayList<Marcador>();
         Marcador[] marcadores = (Marcador[]) u.getMarcadors().toArray();
@@ -150,21 +163,22 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         return list;
 }
      
-         public List<Integer> listaMarcadores(){
-        List<Integer> listaMarker = null;
+         public List<Marcador> listaMarcadores(Usuario u){
+        List<Marcador> listaMarker = null;
         Session session = this.sessionFactory.openSession();
         Transaction tx =null;
         try{
             tx = session.beginTransaction();
-            String hql = "select idmarcador from Marcador";
+            String hql = "from Marcador  m where m.usuario= :u";
             Query query = session.createQuery(hql);
-            listaMarker = (List<Integer>)query.list();
+            listaMarker= (List<Marcador>)query.list();
             tx.commit();
         }catch(HibernateException e){
             if(tx!=null){
                 tx.rollback();
             }
             e.printStackTrace();
+
         }finally{
             session.close();
         }

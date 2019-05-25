@@ -33,7 +33,7 @@ import javax.inject.Named;
 @Dependent
 public class EliminaMarcador{
     private int idMarcador;    
-    private List<Integer> listaMarcadores;
+    private List<Marcador> listaMarcadores;
 
     public int getIdMarcador(){
 	return idMarcador;
@@ -47,10 +47,13 @@ public class EliminaMarcador{
  @PostConstruct
     public void listaMarcadores() {
         MarcadorDAO mdao = new MarcadorDAO();
-        this.listaMarcadores = mdao.listaMarcadores();
+        UsuarioDAO udao = new UsuarioDAO();
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario u = udao.buscaPorCorreo(us.getCorreo());
+        this.listaMarcadores = mdao.ObtenMarcadoresPorUsuario(us.getCorreo());
     }
 
-    public List<Integer> getListaMarcadores() {
+    public List<Marcador> getListaMarcadores() {
         return listaMarcadores;
     }
     
