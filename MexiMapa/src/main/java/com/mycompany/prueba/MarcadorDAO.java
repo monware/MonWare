@@ -168,7 +168,7 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         return m;
     }
      
-             public List<Marcador> listaMarcadores(){
+    public List<Marcador> listaMarcadores(){
         List<Marcador> m = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
