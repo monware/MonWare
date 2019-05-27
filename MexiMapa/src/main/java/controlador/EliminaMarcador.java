@@ -73,19 +73,19 @@ public class EliminaMarcador{
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         
         for(Object m:usuarioA.getMarcadors()){
-            MarcadorDAO mdao = new MarcadorDAO();
             Marcador marcador = (Marcador) m;
-            marcador = mdao.find(this.getMarcador_descripcion());
-            if(marcador !=null){
+            MarcadorDAO mdao = new MarcadorDAO();
+            marcador = mdao.find(this.marcador.getIdmarcador());
+            if(marcador!=null){
                 for(Object c : marcador.getComentarios()){
-                            ComentarioDAO daoComentario = new ComentarioDAO();
-                            Comentario comentario = (Comentario)c;
-                            daoComentario.delete(comentario);
-                            }
-                 mdao.delete(marcador);
+                           ComentarioDAO comendao = new ComentarioDAO();
+                           Comentario comentario = (Comentario) c;
+                               comendao.delete(comentario);
+                           }
+                mdao.delete(marcador);
             }
         }
-        }
+     }
       
     
     

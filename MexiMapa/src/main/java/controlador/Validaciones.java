@@ -16,13 +16,17 @@ import javax.faces.validator.ValidatorException;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
 import com.mycompany.prueba.TemaDAO;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author yisus
  */
 @ManagedBean
 public class Validaciones {
-    
+ private Pattern pattern;
+    private Matcher matcher;
+    private static final String PASSWORD_PATTERN = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})";
       public void validacionNombreAgregarInformador(FacesContext arg0, UIComponent arg1, Object arg2)
          throws ValidatorException {
            System.out.println("NO");
@@ -69,9 +73,24 @@ public class Validaciones {
             }
             
         }
+  
         public static void error(String error) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", error));
         }
+        
+        
+    public void validatePassword() {
+    pattern = Pattern.compile(PASSWORD_PATTERN);
+ 
+    }
+    
+        public boolean validate(final String password) {
+ 
+        matcher = pattern.matcher(password);
+        return matcher.matches();
+ 
+    }
    }
+
       
 
