@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.util.List;
 import javax.servlet.ServletContext;
 /**
  *
@@ -49,7 +50,7 @@ public class AgregaMarcador implements Serializable {
     private String datos;
     private LatLng centro; 
     private String nombreTema;
-    
+    private List<Tema> listaTemas;
     
     @PostConstruct
     public void init(){
@@ -63,6 +64,11 @@ public class AgregaMarcador implements Serializable {
         this.longitud = marcador.getLatlng().getLng();
     }
     
+    public List<Tema> getListaTemas() {
+        TemaDAO tdao = new TemaDAO();
+        this.listaTemas = tdao.listaTemas();
+        return listaTemas;
+    }
     public LatLng getCentro() {
         return centro;
     }
@@ -138,20 +144,20 @@ public class AgregaMarcador implements Serializable {
         TemaDAO tdao = new TemaDAO();
         Marcador m = mdb.buscaMarcadorPorLatLng(latitud, longitud);
         setTema(tdao.find(this.getNombreTema()));
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario u = udb.buscaPorCorreo(us.getCorreo());
         if(m!= null){
             this.descripcion ="";
             Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
         if(tema==null){
-            this.descripcion ="";
-            Mensajes.fatal("El tema no existe");
-            return "";
+           tema = new Tema();
+           tema.setUsuario(u);
+           tema.setNombre(nombreTema);
+           tdao.save(tema);
         }
         m = new Marcador();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informadores");
-        Usuario u = udb.buscaPorCorreo(us.getCorreo());
-        TemaDAO daoTema = new TemaDAO();
         m.setDescripcion(descripcion);
         m.setLatitud(latitud);
         m.setLongitud(longitud);

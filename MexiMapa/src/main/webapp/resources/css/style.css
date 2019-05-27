@@ -80,7 +80,7 @@ img.img_logo{
 #main-header a {
   color: white;
   top : 0%;
-	}d
+	}
  
 /*
  * Logo
@@ -233,7 +233,7 @@ img.img_logo{
 }
 
 #mapa{
-    position: relative;
+    position: absolute;
     width: 60%;
     height: 50%;
     margin-top: 5%;
@@ -321,5 +321,10 @@ form#comboBox-index {
     margin-left: 67%;
     margin-top: 9%;
 }
+/*Id para formulario correspondiente a la ventana agregaTema.xhtml en la subseccion elimina tema*/
+form#formEliminaTema {
+    margin-top: 50%;
+}
+/*Id correpondiente al mapa que se ve en la vista AgregarTema, n la seccion agregarTema*/
 
 

@@ -43,11 +43,10 @@ public class VerMarcadores implements Serializable{
     private String marcadors;
     List<Tema> listaTemas;
     private Tema tema ;
-    private String nombre_tema;
-            
-   public void VerMarcadores(){
-
-    /**public void verMarcadores(){
+    //private String nombre_tema;
+   
+    //@PostConstruct      
+    public void VerMarcador(){
         simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.findAll();
@@ -55,44 +54,22 @@ public class VerMarcadores implements Serializable{
             LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
             Marker marcador = new Marker(cord,m.getDescripcion());
             simpleModel.addOverlay(marcador);
-        **/
+        
 
-        simpleModel = new DefaultMapModel();
+      /**  simpleModel = new DefaultMapModel();
         MarcadorDAO mdb = new MarcadorDAO();
         List<Marcador> marcadores = mdb.ObtenMarcadoresPorTema(tema);
-        for(Marcador m :marcadores){
-            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
-            Marker marcador = new Marker(cord,m.getDescripcion());
-            simpleModel.addOverlay(marcador);
-        }
-
-        }
-        
-   /**@PostConstruct
-    public void verMarcadores(){
-        /**
-        simpleModel = new DefaultMapModel();
-        MarcadorDAO mdb = new MarcadorDAO();
-        List<Marcador> marcadores = mdb.findAll();
-        for(Marcador m :marcadores){
-            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
-            Marker marcador = new Marker(cord,m.getDescripcion());
-            simpleModel.addOverlay(marcador);
-            TemaDAO tdao = new TemaDAO();
-        }
-        simpleModel = new DefaultMapModel();
-        MarcadorDAO mdb = new MarcadorDAO();
-        List<Marcador> marcadores = mdb.findAll();
         for(Marcador m :marcadores){
             LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
             Marker marcador = new Marker(cord,m.getDescripcion());
             Marker prueba = new Marker(cord,m.getDatos());
             simpleModel.addOverlay(marcador);
             simpleModel.addOverlay(prueba);
+        }*/
         }
-    }
-*/
-    public List<Tema> listaTemas() {
+        }
+    
+public List<Tema> listaTemas() {
         TemaDAO tdao = new TemaDAO();
         this.listaTemas = tdao.listaTemas();
         return this.listaTemas;
@@ -128,7 +105,5 @@ public class VerMarcadores implements Serializable{
     public void setMarcadors(String marcadors) {
         this.marcadors = marcadors;
     }
-
-    
     
 }
