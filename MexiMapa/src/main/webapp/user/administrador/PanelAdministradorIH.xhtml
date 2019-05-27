@@ -127,7 +127,22 @@ and open the template in the editor.
                 </p:panel>  
             </h:form>
       
-    
+    <h:form>
+                <p:panel header="Eliminar Marcador" >
+                     <p:outputLabel value="Marcador: "/>
+                     <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarMarcador.getListaMarcadores}"/>
+                        <f:ajax execute="Marcador" render="iSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>  
+                         <p:outputLabel value="Marcador Seleccionado: "/>
+                         <p:outputLabel id="iSeleccionado" value="#{eliminarMarcador.idMarcador}"/>
+                         
+                         <p:commandButton action="#{eliminarMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
+                </p:panel>  
+            </h:form>
+ 
 </h:body>
         
 	
