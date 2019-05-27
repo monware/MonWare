@@ -59,7 +59,9 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
     public Marcador find(int id){
         return super.find(Marcador.class, id);
     }
-    
+     public Marcador find(String descripcion){
+        return super.find(Marcador.class, descripcion);
+    }
     /**
      * 
      * @return 
@@ -195,6 +197,23 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }finally{
             session.close();
         }
-        return listaMarker;
+        return m;
+    }
+     
+    public List<Marcador> listaMarcadores(){
+        List<Marcador> m = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "FROM Marcador";
+        try{
+            m=session.createQuery(hql).list();
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            tx.rollback();
+        }
+     return m;   
     }
      }
