@@ -6,14 +6,12 @@
 package controlador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import com.mycompany.prueba.Marcador;
@@ -23,6 +21,7 @@ import com.mycompany.prueba.TemaDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -71,6 +70,8 @@ public class eliminarTema implements Serializable{
             daoMarcador.delete(marcador);
             }
             daoTema.delete(tema);
+             FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
+             FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
             System.out.println("No existe el tema");
         } 
@@ -98,6 +99,8 @@ public class eliminarTema implements Serializable{
                     daoMarcador.delete(marcador);
                 }
                 temadao.delete(tema);
+                FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }
     }

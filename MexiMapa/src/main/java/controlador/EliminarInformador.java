@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -86,7 +87,9 @@ public class EliminarInformador implements Serializable{
               
             udao.delete(u);
             listaInformadores.remove(u);
-        }
+             FacesMessage msg = new FacesMessage("El informador"+u.getNombre()+u.getApaterno()+" fue removido con exito.");
+             FacesContext.getCurrentInstance().addMessage(null, msg);
+             }
         }
     
     @PostConstruct
@@ -97,5 +100,5 @@ public class EliminarInformador implements Serializable{
 
     public List<Usuario> getListaInformadores() {
         return listaInformadores;
+      }
     }
-  }
