@@ -34,7 +34,6 @@ import org.primefaces.model.map.Marker;
 @ManagedBean
 @ViewScoped
 @Named(value = "verMarcadores")
-@Dependent
 
 public class VerMarcadores implements Serializable{
     
@@ -42,34 +41,28 @@ public class VerMarcadores implements Serializable{
     private Marker marker;
     private String marcadors;
     List<Tema> listaTemas;
-    private Tema tema ;
+    private String nombreTema ;
+    
     //private String nombre_tema;
    
-    //@PostConstruct      
-    public void VerMarcador(){
+    @PostConstruct      
+    public void init(){
         simpleModel = new DefaultMapModel();
-        MarcadorDAO mdb = new MarcadorDAO();
-        List<Marcador> marcadores = mdb.findAll();
-        for(Marcador m :marcadores){
-            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
-            Marker marcador = new Marker(cord,m.getDescripcion());
-            simpleModel.addOverlay(marcador);
-        
-
-      /**  simpleModel = new DefaultMapModel();
-        MarcadorDAO mdb = new MarcadorDAO();
-        List<Marcador> marcadores = mdb.ObtenMarcadoresPorTema(tema);
-        for(Marcador m :marcadores){
-            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
-            Marker marcador = new Marker(cord,m.getDescripcion());
-            Marker prueba = new Marker(cord,m.getDatos());
-            simpleModel.addOverlay(marcador);
-            simpleModel.addOverlay(prueba);
-        }*/
-        }
-        }
+       
+    }
     
-public List<Tema> listaTemas() {
+    public void verMarcadores(){
+        MarcadorDAO mdao = new MarcadorDAO();
+        List<Marcador> l = mdao.ObtenMarcadoresPorTema(nombreTema);
+        simpleModel = new DefaultMapModel();
+        for(Marcador m :l){
+            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
+            Marker prueba = new Marker(cord,m.getDatos(),m.getDescripcion());
+            //prueba.setIcon("resources/images/");
+            simpleModel.addOverlay(prueba);
+        }
+    }
+    public List<Tema> listaTemas() {
         TemaDAO tdao = new TemaDAO();
         this.listaTemas = tdao.listaTemas();
         return this.listaTemas;
@@ -78,14 +71,16 @@ public List<Tema> listaTemas() {
     public List<Tema> getListaTemas() {
         return listaTemas;
     }
-    
-    public Tema getTema() {
-        return tema;
+
+    public String getNombreTema() {
+        return nombreTema;
     }
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
+    public void setNombreTema(String nombreTema) {
+        this.nombreTema = nombreTema;
     }
+    
+    
     
     public MapModel getSimpleModel() {
         return simpleModel;
