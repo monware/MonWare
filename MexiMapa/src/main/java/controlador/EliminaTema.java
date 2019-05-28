@@ -76,7 +76,7 @@ public class EliminaTema implements Serializable{
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        
+
         for(Object prueba: usuarioA.getTemas()){
             TemaDAO temadao = (TemaDAO) prueba;
             Tema tema = temadao.find(this.tema.getNombre());

@@ -39,7 +39,7 @@ and open the template in the editor.
 <h:body>  
       
     <h:form>
-                <p:panel header="Eliminar Marcador" >
+        <p:panel header="Eliminar Marcador" >
                      <p:outputLabel value="Marcador: "/>
                      <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
@@ -50,14 +50,12 @@ and open the template in the editor.
                          <p:outputLabel value="Marcador Seleccionado: "/>
                          <p:outputLabel id="iSeleccionado" value="#{eliminarMarcador.idMarcador}"/>
                          
-                         <p:commandButton action="#{eliminarMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
+                         <p:commandButton action="#{eliminarMarcador.eliminaMarcadores()}" value="Elimina Marcador" ajax="false"/>
                 </p:panel>  
+
             </h:form>
  <h:form>
-    <p:growl>
-        
-    </p:growl>
- 
+    
     <p:panelMenu   style="width:100%">
         <p:submenu  label="Agregar Informador">
              
@@ -92,6 +90,8 @@ and open the template in the editor.
             </p:menuitem>
         </p:submenu>
         </p:panelMenu>
+
+        <h:form>
         <p:panelMenu style="width:100%">
         <p:submenu label="Elimina Informador">
              
@@ -112,7 +112,8 @@ and open the template in the editor.
             </p:menuitem>
         </p:submenu>
         </p:panelMenu>
-     
+        </h:form>
+        <h:form>
             <p:panelMenu style="width:100%">
               
         <p:submenu label="Elimina Comentarista">
@@ -132,8 +133,14 @@ and open the template in the editor.
                         </p:commandButton>
            </p:menuitem>
         </p:submenu>
+<<<<<<< HEAD
        </p:panelMenu>
      
+=======
+        </p:panelMenu>
+        </h:form>
+    <h:form>
+>>>>>>> de7c2146415a6c4845d4b53904a5d5b0729b5da0
        <p:panelMenu style="width:100%">
               
         <p:submenu label="Eliminar Tema">
@@ -157,8 +164,11 @@ and open the template in the editor.
         </p:submenu>    
         
     </p:panelMenu>
-</h:form>
-    
+    </h:form>
+    <footer id="main-footer">
+		<p> 2019 MonWare</p>
+	</footer> <!-- / #main-footer -->
+ 
 </h:body>
     
     <h:form>
@@ -169,8 +179,5 @@ and open the template in the editor.
    
     </p:dock>  
     </h:form>
-	<footer id="main-footer">
-		<p> 2019 MonWare</p>
-	</footer> <!-- / #main-footer -->
- 
+	
 </html>
