@@ -74,6 +74,7 @@ public List<Tema> listaTemas() {
         this.listaTemas = tdao.listaTemas();
         return this.listaTemas;
     }
+
     public List<Tema> getListaTemas() {
         return listaTemas;
     }
