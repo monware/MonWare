@@ -4,8 +4,8 @@ controlador/TemaConMarcador.class
 controlador/Validaciones.class
 controlador/PaginaPrincipal.class
 controlador/AgregaMarcador.class
-controlador/FilterSessionAdministrador.class
 com/mycompany/prueba/HibernateUtil.class
+controlador/FilterSessionAdministrador.class
 controlador/EliminaComentario.class
 com/mycompany/prueba/Comentario.class
 com/mycompany/prueba/AbstractDAO.class
@@ -27,13 +27,13 @@ controlador/EliminarInformador.class
 controlador/CalificaComentario.class
 controlador/RegistrarUsuario.class
 com/mycompany/prueba/Tema.class
-controlador/EliminarComentarista.class
-controlador/EliminaTema.class
 com/mycompany/prueba/MarcadorDAO.class
+controlador/EliminaTema.class
+controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class
 controlador/VerMarcadores.class
-controlador/FilterSessionComentarista.class
 com/mycompany/prueba/TemaDAO.class
+controlador/FilterSessionComentarista.class
 com/mycompany/prueba/Usuario.class
 controlador/AgregarInformador.class
 controlador/ObtenerComentarios.class

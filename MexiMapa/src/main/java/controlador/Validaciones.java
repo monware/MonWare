@@ -16,6 +16,8 @@ import javax.faces.validator.ValidatorException;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
 import com.mycompany.prueba.TemaDAO;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author yisus
@@ -69,9 +71,12 @@ public class Validaciones {
             }
             
         }
+  
         public static void error(String error) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", error));
         }
+       
    }
+
       
 

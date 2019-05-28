@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -59,7 +60,6 @@ public class ControladorSesion implements Serializable{
                 return "/user/informador/PaginaPrincipalInformadorIH?faces-redirect=true";
             }else{
                 Validaciones.error("Usuario Desconocido"+this.correo);
-
             }
         }
         Validaciones.error("NO hay usuarios con este correo"+this.correo);
@@ -70,6 +70,7 @@ public class ControladorSesion implements Serializable{
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
     }
+    
     public class UserLogged implements Serializable{
         private String nombre;
         private String correo;
