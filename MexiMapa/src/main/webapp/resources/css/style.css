@@ -325,6 +325,17 @@ form#comboBox-index {
 form#formEliminaTema {
     margin-top: 50%;
 }
-/*Id correpondiente al mapa que se ve en la vista AgregarTema, n la seccion agregarTema*/
 
-
+/*Etiqueta para color del fondo del menu*/
+.ui-dock-container-bottom.ui-widget-header {
+    background-color: aqua;
+}
+/*Etiqueta para letras del menú*/
+.ui-widget-header a {
+    color: rebeccapurple;
+}
+/*
+   Animacion para registro*/
+.animated .ui-progressbar-value { 
+        background-image: url("#{resource['demo/images/pbar-ani.gif']}");
+}

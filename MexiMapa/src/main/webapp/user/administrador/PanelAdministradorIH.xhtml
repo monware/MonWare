@@ -17,38 +17,52 @@ and open the template in the editor.
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
+        <h:outputScript name="js/estilos.js"/>
          <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
         <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header -->
+		</a> 
  
 		<nav>
-			<ul>
-                            
-                            <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
-				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
-			</ul>
-                     <h:form id="logout" rendered="#{not empty administrador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+			<h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
                 </h:form>
-		</nav><!-- / nav -->
- 
+                    
+		</nav> 		
 	</header><!-- / #main-header -->
  
 </h:head>
  
 <h:body>  
+      
+    <h:form>
+                <p:panel header="Eliminar Marcador" >
+                     <p:outputLabel value="Marcador: "/>
+                     <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminarMarcador.getListaMarcadores}"/>
+                        <f:ajax execute="Marcador" render="iSeleccionado"/>
+                     </p:selectOneMenu>
+                     <hr/>  
+                         <p:outputLabel value="Marcador Seleccionado: "/>
+                         <p:outputLabel id="iSeleccionado" value="#{eliminarMarcador.idMarcador}"/>
+                         
+                         <p:commandButton action="#{eliminarMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
+                </p:panel>  
+            </h:form>
  <h:form>
-    <p:panel id="panel" header="Menú Administrador: Agregar Informador" >
+    <p:growl>
+        
+    </p:growl>
  
-        <p:focus context="panel"/>
- 
-        <p:messages />
- 
-        <h:panelGrid  columns="3" >
+    <p:panelMenu  style="width:100%">
+        <p:submenu  label="Agregar Informador">
+             
+            <p:menuitem >
+            <h:panelGrid  columns="3" >
             <p:outputLabel for="username" value="Nombre" />
             <p:inputText id="username" value="#{agregarInformador.nombre}" placeholder="Nombre" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
                 <f:validateLength minimum="2" />
@@ -72,16 +86,17 @@ and open the template in the editor.
             </p:inputText>
             <p:message for="email" />
         </h:panelGrid>
-  <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
-            
-    </p:panel>
-
-</h:form>
-
-    
-         <h:form id="formGeneralEI">
-                <p:panel header="Menú Administrador: Eliminar Informador" >
-                     <p:outputLabel value="Informador: "/>
+                <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}">
+            <p:effect type="pulsate" event="click" />
+                        </p:commandButton>
+            </p:menuitem>
+        </p:submenu>
+        </p:panelMenu>
+        <p:panelMenu style="width:100%">
+        <p:submenu label="Elimina Informador">
+             
+            <p:menuitem>
+        <p:outputLabel value="Informador: "/>
                      <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarInformador.listaInformadores}"/>
@@ -91,30 +106,39 @@ and open the template in the editor.
                          <p:outputLabel value="Usuario Seleccionado: "/>
                          <p:outputLabel id="iSeleccionado" value="#{eliminarInformador.correo}"/>
                          
-                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/>
-                </p:panel>  
-            </h:form>
-    
-    <h:form id="formGeneralEC">
-                
-                <p:panel header="Menú Administrador: Eliminar Comentarista" >
-                     <p:outputLabel value="Comentarista: "/>
+                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                        </p:commandButton>
+            </p:menuitem>
+        </p:submenu>
+        </p:panelMenu>
+     
+            <p:panelMenu style="width:100%">
+              
+        <p:submenu label="Elimina Comentarista">
+             
+            <p:menuitem>
+            <p:outputLabel value="Comentarista: "/>
                      <p:selectOneMenu id="comentarista" value="#{eliminarComentarista.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarComentarista.listaComentaristas}"/>
-                        <f:ajax execute="Comentarista" render="tSeleccionado"/>
+                        <f:ajax execute="Comentarista" render="cSeleccionado"/>
                      </p:selectOneMenu>
                      <hr/>
                          <p:outputLabel value="Tema Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminarComentarista.correo}"/>
-                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false"/>
-                </p:panel>  
-            </h:form>
-   
-    <h:form id="formGeneral">
-                
-                <p:panel header="Menú Administrador: Eliminar Tema" >
-                     <p:outputLabel value="Tema: "/>
+                         <p:outputLabel id="cSeleccionado" value="#{eliminarComentarista.correo}"/>
+                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                        </p:commandButton>
+           </p:menuitem>
+        </p:submenu>
+            </p:panelMenu>
+       <p:panelMenu style="width:100%">
+              
+        <p:submenu label="Eliminar Tema">
+            <p:menuitem>
+            
+            <p:outputLabel value="Tema: "/>
                      <p:selectOneMenu id="tema" value="#{eliminarTema.nombre_tema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarTema.listaTemas}"/>
@@ -123,31 +147,26 @@ and open the template in the editor.
                      <hr/>
                          <p:outputLabel value="Tema Seleccionado: "/> 
                          <p:outputLabel id="tSeleccionado" value="#{eliminarTema.nombre_tema}"/>
-                         <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
-                </p:panel>  
-            </h:form>
-      
-    <h:form>
-                <p:panel header="Eliminar Marcador" >
-                     <p:outputLabel value="Marcador: "/>
-                     <p:selectOneMenu id="marcador" value="#{eliminarMarcador.idMarcador}"> 
-                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
-                        <f:selectItems value="#{eliminarMarcador.getListaMarcadores}"/>
-                        <f:ajax execute="Marcador" render="iSeleccionado"/>
-                     </p:selectOneMenu>
-                     <hr/>  
-                         <p:outputLabel value="Marcador Seleccionado: "/>
-                         <p:outputLabel id="iSeleccionado" value="#{eliminarMarcador.idMarcador}"/>
-                         
-                         <p:commandButton action="#{eliminarMarcador.eliminaMarcador()}" value="Elimina Marcador" ajax="false"/>
-                </p:panel>  
-            </h:form>
- 
-</h:body>
+                         <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                        </p:commandButton>
+            </p:menuitem>
+               
+        </p:submenu>    
         
-	
-  
+    </p:panelMenu>
+</h:form>
     
+</h:body>
+    
+    <h:form>
+    <p:dock position="bottom" >
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalAdministradorIH.xhtml"/>
+    <p:menuitem value="Panel de Control" icon="https://img.icons8.com/nolan/64/000000/settings.png" url="PanelAdministradorIH.xhtml"/>
+   
+    </p:dock>  
+    </h:form>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

@@ -12,6 +12,7 @@
           <title>MexiMapa</title>
  <h:outputStylesheet name="css/style.css"/>
  <h:outputStylesheet name="css/visitante.css"/>
+ <h:outputScript name="js/estilos.js"/>
         </h:head>
         <h:body>
             
@@ -22,13 +23,13 @@
                       
 		</a> <!-- / #logo-header -->
    
-		<nav>
+	<!--	<nav>
 			<ul>
 				<li><a href="PaginaPrincipalIH.xhtml">Principal</a></li>
 				<li><a href="Registrarse.xhtml">Registrarse</a></li>
 				<li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
 			</ul>
-		</nav><!-- / nav -->
+		</nav> -->
  
 	</header><!-- / #main-header -->
         
@@ -46,11 +47,19 @@
                         <p:message for="email"/>
                         <p:password class="texto" id="password" value="#{controladorSesion.contrasenia}" placeholder="Contrasenia"  required="true" requiredMessage="Por favor ingresa tu contrasenia"/> <br/>
                         <p:message for="password"/>
-                        <p:commandButton class="texto" action="#{controladorSesion.login()}" value="Login" update="login" />
+                        <p:commandButton class="texto" action="#{controladorSesion.login()}" value="Login" update="login">
+                            <p:effect type="pulsate" event="click" />
+                           </p:commandButton>    
                         
                     </h:form>
            
-          
+          <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="index.xhtml"/>
+    <p:menuitem value="Registrarse" icon="https://img.icons8.com/nolan/64/000000/add-user-male.png" url="Registrarse.xhtml"/>
+    <p:menuitem value="Iniciar Sesion" icon="https://img.icons8.com/nolan/64/000000/login-rounded-right.png" url="InicioSesion.xhtml"/>
+      
+</p:dock>
         </h:body>	    
     </f:view>
 </html>

@@ -32,6 +32,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.servlet.ServletContext;
 /**
  *
@@ -163,12 +164,11 @@ public class AgregaTema implements Serializable {
         m.setDatos(datos);
         m.setTema(tema);
         m.setUsuario(u);
-        mdb.save(m);}
-        else{return "Tema existente";}
-        //this.descripcion ="";
-        //Mensajes.info("Se guardo el marcador");
-        //return "";
-        //Mensajes.info("Se guardo el marcador");
+        mdb.save(m);
+        FacesMessage msg = new FacesMessage("El tema"+ m.getTema() +" hecho por "+ m.getUsuario() +" fue agregado con exito.\n Con la descripcion"+ m.getDescripcion());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+        else{   return "";}
         return "";
     }
 

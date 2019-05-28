@@ -32,6 +32,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.servlet.ServletContext;
 /**
  *
@@ -169,6 +170,9 @@ public class AgregaMarcador implements Serializable {
         //Mensajes.info("Se guardo el marcador");
         //return "";
         //Mensajes.info("Se guardo el marcador");
+        FacesMessage msg = new FacesMessage("El marcador"+ m.getDescripcion() +" hecho por "+ m.getUsuario() +" fue agregado con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         return "";
     }
 

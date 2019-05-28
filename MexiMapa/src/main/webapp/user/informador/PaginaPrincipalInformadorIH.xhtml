@@ -29,7 +29,7 @@ and open the template in the editor.
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header -->
+		</a> <!-- / #logo-header
  
 		<nav>
 			<ul>
@@ -38,10 +38,12 @@ and open the template in the editor.
 				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
                                 <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
 			</ul>
+                </h:form>
+		</nav> -->
+                
                     <h:form id="logout" rendered="#{not empty informador}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
-                </h:form>
-		</nav><!-- / nav -->
+                    </h:form>
                  </header>   
          
          </h:head>
@@ -74,7 +76,16 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap> 
  
-        
+                <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalInformadorIH.xhtml"/>
+    <p:menuitem value="Gestion de Temas" icon="https://img.icons8.com/nolan/64/000000/folder-invoices.png" url="AgregarTema.xhtml"/>
+    <p:menuitem value="Colocar Marcadores" icon="https://img.icons8.com/nolan/64/000000/map-marker.png" url="colocarmarcador.xhtml"/>
+   <p:menuitem value="Eliminar Macadores" icon="https://img.icons8.com/nolan/64/000000/map-editing.png" url="eliminamarcador.xhtml"/>
+   
+    </p:dock>  
+    </h:form>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
