@@ -54,6 +54,7 @@ public class eliminarTema implements Serializable{
     }
     
     public void eliminaTemaAdministrador(){
+        
         TemaDAO daoTema = new TemaDAO();
         Tema tema = daoTema.find(this.getNombre_tema());
         if(tema != null){

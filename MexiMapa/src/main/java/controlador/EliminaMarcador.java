@@ -16,6 +16,7 @@ import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -32,16 +33,12 @@ import javax.inject.Named;
 @ManagedBean
 @ViewScoped
 @Named(value = "eliminarMarcador")
-@Dependent
-public class EliminaMarcador{  
-    private List<SelectItem> listaMarcadores;
+public class EliminaMarcador implements Serializable{  
+      private List<Marcador> listaMarcadores;
       private Marcador marcador;
       private int idMarcador;
-      private String marcador_descripcion;
       
-          public EliminaMarcador(){
-        marcador = new Marcador();
-    }
+     
 
     public int getIdMarcador() {
         return idMarcador;
@@ -58,50 +55,39 @@ public class EliminaMarcador{
     public void setMarcador(Marcador marcador) {
         this.marcador = marcador;
     }
-
-    public String getMarcador_descripcion() {
-        return marcador_descripcion;
-    }
-
-    public void setMarcador_descripcion(String marcador_descripcion) {
-        this.marcador_descripcion = marcador_descripcion;
-    }
    
+    @PostConstruct
+    public void listaMarcadores() {
+        MarcadorDAO tdao = new MarcadorDAO();
+        this.listaMarcadores = tdao.listaMarcadores();
+    }
+    
+    public List<Marcador> getListaMarcador() {
+        return listaMarcadores;
+    }
     
     public void eliminaMarcadorInformador(){
-        UsuarioDAO daoUsuario = new UsuarioDAO();
+         MarcadorDAO daoMarcador = new MarcadorDAO();
+         System.out.println(this.idMarcador);
+         Marcador marcador = daoMarcador.find(this.getIdMarcador());
+         System.out.println(marcador);
+         
+         if(marcador.getComentarios() != null){
+             ComentarioDAO daoComentario = new ComentarioDAO();
+             for(Object c:marcador.getComentarios()){
+                    Comentario comentario = (Comentario)c;
+                    daoComentario.delete(comentario);
+              }
+         }
+         daoMarcador.delete(marcador);
+         this.listaMarcadores.remove(marcador);
+    }
+    
+
+    public List<Marcador> getListaMarcadoresUsuario() {
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
-        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        
-        for(Object prueba: usuarioA.getMarcadors()){
-            MarcadorDAO daoMarcador = new MarcadorDAO();
-            Marcador marcador = (Marcador) prueba;
-            marcador = daoMarcador.find(this.idMarcador);
-            if(marcador != null){
-                for(Object m: marcador.getComentarios()){
-                    ComentarioDAO comendao = new ComentarioDAO();
-                    Comentario comentario = (Comentario) m;
-                    if(comentario !=null){
-                        comendao.delete(comentario);
-                    }
-                }
-                daoMarcador.delete(marcador);
-            }
-        }
-    }
-    
-    
-        public List<SelectItem> getListaMarcadores(){
-        this.listaMarcadores = new ArrayList<SelectItem>();
-        MarcadorDAO tdb = new MarcadorDAO();
-        List<Marcador> p = tdb.listaMarcadores();
-        listaMarcadores.clear();
-        
-        for(Marcador marcadores : p){
-            SelectItem marcadorItem = new SelectItem(marcadores.getDescripcion(), marcadores.getDescripcion()); 
-            this.listaMarcadores.add(marcadorItem);
-    }
-        System.out.println(listaMarcadores);
+        MarcadorDAO mdao = new MarcadorDAO();
+        this.listaMarcadores = mdao.ObtenMarcadoresPorUsuario(us.getCorreo());
         return listaMarcadores;
     }
         
