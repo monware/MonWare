@@ -26,17 +26,21 @@ function alerta()
 	}
 	document.getElementById("ejemplo").innerHTML = mensaje;
 }
-    /**
-    * Array con las imagenes que se iran mostrando en la web
-    */
-  /** 
+    
+    /* Array con las imagenes que se iran mostrando en la web*/
+    
+  
 var index = 0;
 
-    var listaimg = ["https://cdn.pixabay.com/photo/2019/05/15/11/35/artwork-4204822_960_720.png", "https://i2.wp.com/www.andro-life.com/wp-content/uploads/2017/08/Wallpaper-5.png?ssl=1", "https://i.pinimg.com/originals/c4/13/59/c413599bc57f7596d75bea1775b14169.jpg","https://i.pinimg.com/originals/72/dc/33/72dc339da93a143ec1ed0d54143ecfea.jpg"];
+    var listaimg = ["https://st2.depositphotos.com/3608591/11259/v/950/depositphotos_112590448-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg",
+                    "https://st2.depositphotos.com/3608591/11531/v/950/depositphotos_115317346-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg",
+                    "https://st2.depositphotos.com/3608591/11215/v/950/depositphotos_112159022-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg",
+                    "https://st2.depositphotos.com/3608591/11259/v/950/depositphotos_112590250-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg"
+];
 
 $(function() {
   
-    setInterval(changeImage, 3000);
+    setInterval(changeImage, 30000);
   
 });
 
@@ -52,10 +56,9 @@ function changeImage() {
     
     
 }
-var images = ["https://cdn.pixabay.com/photo/2019/05/15/11/35/artwork-4204822_960_720.png",
-              "https://i2.wp.com/www.andro-life.com/wp-content/uploads/2017/08/Wallpaper-5.png?ssl=1", 
-              "https://i.pinimg.com/originals/c4/13/59/c413599bc57f7596d75bea1775b14169.jpg",
-              "https://i.pinimg.com/originals/72/dc/33/72dc339da93a143ec1ed0d54143ecfea.jpg"
+/**
+var images = ["https://wallhere.com/es/wallpaper/1357153",
+             "https://r1.ilikewallpaper.net/iphone-se-wallpapers/download/9793/Circuit-Board-iphone-se-wallpaper-ilikewallpaper_com.jpg"
           ];
 
                     var bdy = document.getElementsByTagName("BODY")[0];

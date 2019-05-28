@@ -27,7 +27,7 @@ and open the template in the editor.
             </script>
         </h:head>
  
-        <h:body style="background-image:dinosaurio.svg)">
+        <h:body>
 
     <header id="main-header">
 		
@@ -36,14 +36,14 @@ and open the template in the editor.
                       
 		</a> <!-- / #logo-header -->
    
-		<nav>
+		<!--<nav>
 			<ul>
 				<li><a href="index.xhtml">Principal</a></li>
 				<li><a href="Registrarse.xhtml">Registrarse</a></li>
                                 <li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
                                 
 			</ul>
-		</nav><!-- / nav -->
+		</nav> -->
                 
                 
                 <!--<img id="fondo" src="resources/media/maleta.jpg"/>-->
@@ -77,7 +77,13 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap> 
  
-        
+<p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="index.xhtml"/>
+    <p:menuitem value="Registrarse" icon="https://img.icons8.com/nolan/64/000000/add-user-male.png" url="Registrarse.xhtml"/>
+    <p:menuitem value="Iniciar Sesion" icon="https://img.icons8.com/nolan/64/000000/login-rounded-right.png" url="InicioSesion.xhtml"/>
+      
+</p:dock>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

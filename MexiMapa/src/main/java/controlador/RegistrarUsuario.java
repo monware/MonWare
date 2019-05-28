@@ -7,6 +7,7 @@ package controlador;
 
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import java.io.Serializable;
 
 import java.util.Locale;
 import java.util.Properties;
@@ -14,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -21,7 +23,8 @@ import javax.faces.context.FacesContext;
  * @author ALEX
  */
 @ManagedBean
-public class RegistrarUsuario {
+@ViewScoped
+public class RegistrarUsuario implements Serializable {
     
     private String nombre;
     private String apaterno;
@@ -29,7 +32,7 @@ public class RegistrarUsuario {
     private String correo;
     private String contrasenia;
     private Integer rol;
-
+    
     public int getRol() {
         return rol;
     }

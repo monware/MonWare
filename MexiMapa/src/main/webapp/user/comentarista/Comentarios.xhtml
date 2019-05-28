@@ -18,6 +18,7 @@ and open the template in the editor.
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
+        <h:outputScript name="js/estilos.js"/>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
          
@@ -31,7 +32,7 @@ and open the template in the editor.
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
                       
-		</a> <!-- / #logo-header -->
+		</a> <!--
    
 		<nav>
 			<ul>
@@ -43,10 +44,9 @@ and open the template in the editor.
                                 
 			</ul>
                     
-                      <h:form id="logout" rendered="#{not empty comentarista}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                     
                 </h:form>
-		</nav><!-- / nav -->
+		</nav> -->
  
 	</header><!-- / #main-header -->
         <main>
@@ -101,8 +101,21 @@ and open the template in the editor.
                         </p:column>
                      </p:dataTable>
                 </h:form>
+      <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
+    <p:menuitem value="Editar Datos" icon="https://img.icons8.com/nolan/64/000000/services.png" url="EditarDatosComentarista.xhtml"/>
+    <p:menuitem value="Gestion de Comentarios" icon="https://img.icons8.com/nolan/64/000000/marker.png" url="Comentarios.xhtml"/>
+    <p:menuitem value="Elimina Cuenta" icon="https://img.icons8.com/nolan/64/000000/high-priority.png" url="eliminacuenta.xhtml"/>
+      
+    </p:dock>  
+    </h:form>
         </main>
 
+  
+    
+        
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import javax.faces.application.FacesMessage;
 /**
  *
  * @author jorge
@@ -42,6 +43,10 @@ public class CalificaComentario {
             int aux = cal +1;
             comentario.setCalificacion(aux);
             cdao.update(comentario);
+            
+        FacesMessage msg = new FacesMessage("El comentario"+comentario.getComentario()+"Fue añadido con exito, corresponde al tema"+comentario.getMarcador().getTema());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         }
     }
     public void descalificaComentario(int id, int cal){

@@ -12,6 +12,7 @@ import com.mycompany.prueba.Marcador;
 import com.mycompany.prueba.MarcadorDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
+import javax.faces.application.FacesMessage;
 /**
  *
  * @author jorge
@@ -79,6 +80,9 @@ public class AgregaComentario {
         comentar.setComentario(comentario);
         comentar.setCalificacion(calificacion);
         daoComentario.save(comentar);
+        FacesMessage msg = new FacesMessage("El comentario"+comentar.getIdcomentario() +" hecho por "+ comentar.getUsuario()+" fue agregado con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         
     }
     

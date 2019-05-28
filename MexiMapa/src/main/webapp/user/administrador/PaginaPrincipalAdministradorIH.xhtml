@@ -18,7 +18,7 @@ and open the template in the editor.
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
-        <h:outputScript name="js/colores.js"/> 
+        <h:outputScript name="js/estilos.js"/>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
          
@@ -34,10 +34,6 @@ and open the template in the editor.
 		</a> <!-- / #logo-header -->
    
 		<nav>
-			<ul>
-                            <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
-				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
-			</ul>
                     
                         <h:form id="logout" rendered="#{not empty administrador}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
@@ -74,6 +70,14 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap> 
  
+            <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
+    <p:menuitem value="Panel de Control" icon="https://img.icons8.com/nolan/64/000000/settings.png" url="PanelAdministradorIH.xhtml"/>
+   
+    </p:dock>  
+    </h:form>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->
