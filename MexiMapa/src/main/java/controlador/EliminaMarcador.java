@@ -73,27 +73,22 @@ public class EliminaMarcador{
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         
-        for(Object m:usuarioA.getMarcadors()){
-            MarcadorDAO mdao = new MarcadorDAO();
-            Marcador marcador = (Marcador) m;
-            marcador = mdao.find(this.getIdMarcador());
-            if(marcador!=null){
-                if(marcador.getComentarios() != null){
-                 for(Object c:marcador.getComentarios()){
-                  ComentarioDAO daoComentario = new ComentarioDAO();
-                  Comentario comentario = (Comentario)c;
-                  daoComentario.delete(comentario);
-                 }
+        for(Object prueba: usuarioA.getMarcadors()){
+            MarcadorDAO daoMarcador = new MarcadorDAO();
+            Marcador marcador = (Marcador) prueba;
+            marcador = daoMarcador.find(this.idMarcador);
+            if(marcador != null){
+                for(Object m: marcador.getComentarios()){
+                    ComentarioDAO comendao = new ComentarioDAO();
+                    Comentario comentario = (Comentario) m;
+                    if(comentario !=null){
+                        comendao.delete(comentario);
+                    }
                 }
-                mdao.delete(marcador);
-                FacesMessage msg = new FacesMessage("El Marcador "+marcador.getDescripcion()+" fue removido con exito.");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-        }else{
-            System.out.println("No existe el marcador");
-        } 
+                daoMarcador.delete(marcador);
+            }
         }
-     }
-      
+    }
     
     
         public List<SelectItem> getListaMarcadores(){
