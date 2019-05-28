@@ -52,44 +52,50 @@ and open the template in the editor.
                          
                          <p:commandButton action="#{eliminarMarcador.eliminaMarcadores()}" value="Elimina Marcador" ajax="false"/>
                 </p:panel>  
-    </h:form>
+
+            </h:form>
+ <h:form>
     
-    <h:form>
-                
-                <h:panelGrid  columns="3" >
-                    <p:outputLabel for="username" value="Nombre" />
-                    <p:inputText id="username" value="#{agregarInformador.nombre}" placeholder="Nombre" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
-                        <f:validateLength minimum="2" />
-                    </p:inputText>
-                    <p:message for="username" />
+    <p:panelMenu   style="width:100%">
+        <p:submenu  label="Agregar Informador">
+             
+            <p:menuitem >
+            <h:panelGrid  columns="3" >
+            <p:outputLabel for="username" value="Nombre" />
+            <p:inputText id="username" value="#{agregarInformador.nombre}" placeholder="Nombre" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="username" />
+            
+            <p:outputLabel for="apellidoP" value="Apellido Paterno" />
+            <p:inputText id="apellidoP" value="#{agregarInformador.apaterno}" placeholder="Apellido Paterno" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellidoP" />
+ 
+            <p:outputLabel for="apellidoM" value="Apellido Materno" />
+            <p:inputText id="apellidoM" value="#{agregarInformador.amaterno}" placeholder="Apellidos Materno" required="true" label="Apellido">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="apellidoM" />
+ 
+            <p:outputLabel for="email" value="Email" />
+            <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
+            </p:inputText>
+            <p:message for="email" />
+        </h:panelGrid>
+                <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}">
+            <p:effect type="pulsate" event="click" />
+                        </p:commandButton>
+            </p:menuitem>
+        </p:submenu>
+        </p:panelMenu>
 
-                    <p:outputLabel for="apellidoP" value="Apellido Paterno" />
-                    <p:inputText id="apellidoP" value="#{agregarInformador.apaterno}" placeholder="Apellido Paterno" required="true" label="Apellido">
-                        <f:validateLength minimum="2" />
-                    </p:inputText>
-                    <p:message for="apellidoP" />
-
-                    <p:outputLabel for="apellidoM" value="Apellido Materno" />
-                    <p:inputText id="apellidoM" value="#{agregarInformador.amaterno}" placeholder="Apellidos Materno" required="true" label="Apellido">
-                        <f:validateLength minimum="2" />
-                    </p:inputText>
-                    <p:message for="apellidoM" />
-
-                    <p:outputLabel for="email" value="Email" />
-                    <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
-                    </p:inputText>
-                    <p:message for="email" />
-                    <p:commandButton id="submitButton" value="Agregar Informador"  action="#{agregarInformador.agregarInformador()}">
-                        <p:effect type="pulsate" event="click" />
-                    </p:commandButton>
-                </h:panelGrid>
-                
-        </h:form>
         <h:form>
         <p:panelMenu style="width:100%">
         <p:submenu label="Elimina Informador">
              
-            <p:menuitem>
+        <p:menuitem >
         <p:outputLabel value="Informador: "/>
                      <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
@@ -127,12 +133,18 @@ and open the template in the editor.
                         </p:commandButton>
            </p:menuitem>
         </p:submenu>
+<<<<<<< HEAD
+       </p:panelMenu>
+     
+=======
         </p:panelMenu>
         </h:form>
     <h:form>
+>>>>>>> de7c2146415a6c4845d4b53904a5d5b0729b5da0
        <p:panelMenu style="width:100%">
               
         <p:submenu label="Eliminar Tema">
+            
             <p:menuitem>
             
             <p:outputLabel value="Tema: "/>
