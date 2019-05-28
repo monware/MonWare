@@ -197,7 +197,7 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         }finally{
             session.close();
         }
-        return m;
+        return listaMarker;
     }
      
     public List<Marcador> listaMarcadores(){

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
@@ -73,17 +74,23 @@ public class EliminaMarcador{
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         
         for(Object m:usuarioA.getMarcadors()){
-            Marcador marcador = (Marcador) m;
             MarcadorDAO mdao = new MarcadorDAO();
-            marcador = mdao.find(this.marcador.getIdmarcador());
+            Marcador marcador = (Marcador) m;
+            marcador = mdao.find(this.getIdMarcador());
             if(marcador!=null){
-                for(Object c : marcador.getComentarios()){
-                           ComentarioDAO comendao = new ComentarioDAO();
-                           Comentario comentario = (Comentario) c;
-                               comendao.delete(comentario);
-                           }
+                if(marcador.getComentarios() != null){
+                 for(Object c:marcador.getComentarios()){
+                  ComentarioDAO daoComentario = new ComentarioDAO();
+                  Comentario comentario = (Comentario)c;
+                  daoComentario.delete(comentario);
+                 }
+                }
                 mdao.delete(marcador);
-            }
+                FacesMessage msg = new FacesMessage("El Marcador "+marcador.getDescripcion()+" fue removido con exito.");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+        }else{
+            System.out.println("No existe el marcador");
+        } 
         }
      }
       
@@ -96,25 +103,29 @@ public class EliminaMarcador{
         listaMarcadores.clear();
         
         for(Marcador marcadores : p){
-            SelectItem temaItem = new SelectItem(marcadores.getDescripcion(), marcadores.getDescripcion()); 
-            this.listaMarcadores.add(temaItem);
+            SelectItem marcadorItem = new SelectItem(marcadores.getDescripcion(), marcadores.getDescripcion()); 
+            this.listaMarcadores.add(marcadorItem);
     }
         System.out.println(listaMarcadores);
         return listaMarcadores;
     }
+        
     public void eliminaMarcadorAdministrador(){
-         
-        MarcadorDAO mdao = new MarcadorDAO();
-        Marcador m = mdao.find(idMarcador);
-        if(m!=null){
-            for(Object c : m.getComentarios()){
-                ComentarioDAO daoComentario = new ComentarioDAO();
-                Comentario comentario = (Comentario)c;
-                daoComentario.delete(comentario);
-            }            
-            mdao.delete(m);
-        }
+        MarcadorDAO daoMarcador = new MarcadorDAO();
+        Marcador marcador = daoMarcador.find(this.getIdMarcador());
+            if(marcador!= null){
+                if(marcador.getComentarios() != null){
+                 for(Object c:marcador.getComentarios()){
+                  ComentarioDAO daoComentario = new ComentarioDAO();
+                  Comentario comentario = (Comentario)c;
+                  daoComentario.delete(comentario);
+                 }
+                }
+                daoMarcador.delete(marcador);
+                FacesMessage msg = new FacesMessage("El Marcador "+marcador.getDescripcion()+" fue removido con exito.");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }else{
+                System.out.println("No existe el tema");  
+            }
     }
-    
-    }
-    
+}
