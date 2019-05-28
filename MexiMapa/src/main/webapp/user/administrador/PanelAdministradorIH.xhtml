@@ -58,7 +58,7 @@ and open the template in the editor.
         
     </p:growl>
  
-    <p:panelMenu  style="width:100%">
+    <p:panelMenu   style="width:100%">
         <p:submenu  label="Agregar Informador">
              
             <p:menuitem >
@@ -95,7 +95,7 @@ and open the template in the editor.
         <p:panelMenu style="width:100%">
         <p:submenu label="Elimina Informador">
              
-            <p:menuitem>
+        <p:menuitem >
         <p:outputLabel value="Informador: "/>
                      <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
@@ -132,10 +132,12 @@ and open the template in the editor.
                         </p:commandButton>
            </p:menuitem>
         </p:submenu>
-            </p:panelMenu>
+       </p:panelMenu>
+     
        <p:panelMenu style="width:100%">
               
         <p:submenu label="Eliminar Tema">
+            
             <p:menuitem>
             
             <p:outputLabel value="Tema: "/>
