@@ -49,6 +49,7 @@ h2{
     font-weight: 300;
     color: black;
     font-family: colibri;
+    background-color: #6495ed8c;
 }
  
 p {
@@ -115,14 +116,6 @@ nav {
 	float: right;
 }
 
-.apply {
-    font-size: 16px;
-    background:  #333;
-    color: white;
-    border-bottom-color:  #333;
-    font-family: calibri;
-    }
-     
     
 nav ul {	
     margin: 0;
@@ -332,17 +325,18 @@ form#formEliminaTema {
 }
 /*Etiqueta para letras del menú*/
 .ui-widget-header a {
-    color: rebeccapurple;
+    color:#333;
 }
 /*Estilo para los paneles*/
 .ui-panel {
     padding: 0.2em;
     background-color: transparent;
+    border-color: transparent;
 }
 /*Color de las letras del titulo para paneles*/
 .ui-panel .ui-panel-titlebar {
     padding: .5em 1em .3em;
-    background-color: cornflowerblue;
+    background-color: #6495edd9;
 }
 
 /*Estilos para mensajes de error*/
@@ -366,3 +360,32 @@ form#formEliminaTema {
     padding-left: 29%;
     padding-right: 28%;
 }
+
+/*Ocultando mensajes molestos*/
+.ui-messages-warn, .ui-message-warn {
+    position: absolute;
+    visibility: hidden;
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+/*Cambiando letras del titulo del panel*/
+.ui-panel .ui-panel-title {
+    margin: .1em 16px .2em 0;
+    color: black;
+}
+
+/*Estilos del boton de ls paneles */
+.ui-button-text-only .ui-button-text {
+    padding: .3em 1em;
+    color: black;
+}
+
+.apply {
+    font-size: 16px;
+    background: ghostwhite;
+    color: white;
+    border-bottom-color:  #333;
+    font-family: calibri;
+    }
+     

@@ -75,9 +75,10 @@ and open the template in the editor.
                         <h:outputText value="Longitud:" />
                         <h:outputText id="longitud" value="#{verMarcadorC.longitud}"/>
                      </p:panelGrid>
-                     
+       
                     <p:inputTextarea id="prueba"rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
                     <p:commandButton  value="Agergar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios Agregar prueba" style="margin-top: -3%; margin-left: 6%">
+                      
                         <f:actionListener binding="#{comentarioBeam.update()}"/>
                     </p:commandButton>       
                 </h:form>
