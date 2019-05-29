@@ -334,8 +334,35 @@ form#formEliminaTema {
 .ui-widget-header a {
     color: rebeccapurple;
 }
-/*
-   Animacion para registro*/
-.animated .ui-progressbar-value { 
-        background-image: url("#{resource['demo/images/pbar-ani.gif']}");
+/*Estilo para los paneles*/
+.ui-panel {
+    padding: 0.2em;
+    background-color: transparent;
+}
+/*Color de las letras del titulo para paneles*/
+.ui-panel .ui-panel-titlebar {
+    padding: .5em 1em .3em;
+    background-color: cornflowerblue;
+}
+
+/*Estilos para mensajes de error*/
+.ui-messages-error, .ui-message-error {
+    color: white;
+    background-color: #da0000c9;
+    border-color: #eed3d7;
+}
+/*Estilos para mesajes de informacion*/
+.ui-messages-info, .ui-message-info {
+    color: darkblue;
+    background-color: #00fdf0a6;
+    border-color: #bce8f1;
+}
+
+/*Estilo para boton de Registrarse en regresarte-xhtml*/
+
+#registroBoton {
+    background-color: #a6dfff;
+    color: black;
+    padding-left: 29%;
+    padding-right: 28%;
 }

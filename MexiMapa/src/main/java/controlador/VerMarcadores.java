@@ -48,7 +48,16 @@ public class VerMarcadores implements Serializable{
     @PostConstruct      
     public void init(){
         simpleModel = new DefaultMapModel();
+        MarcadorDAO mdao = new MarcadorDAO();
+        List<Marcador> l = mdao.listaMarcadores();
+        simpleModel = new DefaultMapModel();
+        for(Marcador m :l){
+            LatLng cord = new LatLng(m.getLatitud(),m.getLongitud());
+            Marker prueba = new Marker(cord,m.getDatos(),m.getDescripcion());
+            //prueba.setIcon("resources/images/");
+            simpleModel.addOverlay(prueba);
        
+    }
     }
     
     public void verMarcadores(){
