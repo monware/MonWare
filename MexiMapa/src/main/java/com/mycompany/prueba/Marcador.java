@@ -97,7 +97,7 @@ public class Marcador  implements java.io.Serializable {
         this.comentarios = comentarios;
     }
  public String toString(){
-     return this.descripcion;
+     return this.descripcion+this.tema;
     }
 
 

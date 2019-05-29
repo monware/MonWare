@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import com.mycompany.prueba.UsuarioDAO;
 import com.mycompany.prueba.Usuario;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -87,6 +88,10 @@ public class EditaDatos{
                 u.setContrasenia(contrasenia); 
                 }
             udb.update(u);
+            FacesMessage msg = new FacesMessage("Tus datos han sido actualizados");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+       
+            
         }
 
 }
