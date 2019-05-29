@@ -46,5 +46,10 @@ public class ComentarioBeam {
         ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadorD.select.getIdmarcador());
     }
     
+    public static void u(){
+        ComentarioDAO comentarioDAO = new ComentarioDAO();
+        ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadores.select.getIdmarcador());
+    }
+    
 }
 

@@ -49,6 +49,7 @@ and open the template in the editor.
                 <p:panel header="Filtrar por Tema" >
                  
                      <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
+
                         <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
                         <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
                         <f:ajax execute="Tema" render="tSeleccionado" />
