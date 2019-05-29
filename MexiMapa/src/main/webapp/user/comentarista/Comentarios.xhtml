@@ -75,9 +75,10 @@ and open the template in the editor.
                         <h:outputText value="Longitud:" />
                         <h:outputText id="longitud" value="#{verMarcadorC.longitud}"/>
                      </p:panelGrid>
-                     
-                    <p:inputTextarea rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
-                    <p:commandButton value="Agregar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
+       
+                    <p:inputTextarea id="prueba"rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
+                    <p:commandButton  value="Agergar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios Agregar prueba" style="margin-top: -3%; margin-left: 6%">
+                      
                         <f:actionListener binding="#{comentarioBeam.update()}"/>
                     </p:commandButton>       
                 </h:form>
@@ -92,8 +93,12 @@ and open the template in the editor.
                            
                                 <h:outputText id="output" value="#{comentario.calificacion}"/>
                                 <br/>
-                                <p:commandButton value="like" action="#{calificaComentario.calificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios" />
-                                <p:commandButton value="dislike" action="#{calificaComentario.descalificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios" />
+                                <p:commandButton value="like" action="#{calificaComentario.calificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios" >
+                                    <f:actionListener binding="#{comentarioBeam.update()}"/>
+                                </p:commandButton> 
+                                <p:commandButton value="dislike" action="#{calificaComentario.descalificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios ">
+                                    <f:actionListener binding="#{comentarioBeam.update()}"/>
+                                </p:commandButton> 
                         </p:column >
                             
                         <p:column headerText="eliminame" style="width:100px">
