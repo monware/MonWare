@@ -21,19 +21,7 @@
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header 
- 
-		<nav>
-			<ul>
-                            
-                            <li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
-				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
-                                <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
-			</ul>
-                    
-                </h:form>
-		</nav> -->
-                <nav>
+		</a>                 <nav>
                 <h:form id="logout" rendered="#{not empty informador}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
                     </h:form>
@@ -48,23 +36,30 @@
                    
                     
                     <h2>Agrega un marcador</h2> 
-                    <p:separator/>
+                    
                     <h:form id="form" >
                         
                         <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                         </p:messages>
-                        
+                        <br/>
                         
                         <p:selectOneMenu id="tema" value="#{agregaMarcador.nombreTema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{agregaMarcador.listaTemas}"/>
                         <f:ajax execute="tema" render="tSeleccionado"/>
                      </p:selectOneMenu>
-                        <p:inputNumber   decimalPlaces="6" id="longitud" value="#{agregaMarcador.longitud}" disabled="true"/>
-                        <p:inputNumber   id="latitud" decimalPlaces="6" value="#{agregaMarcador.latitud}" disabled="true"/>
+                        <br/>
+                        <br/>
+                        <p:inputNumber   decimalPlaces="6" id="longitud" value="#{agregaMarcador.longitud}" disabled="true" style="background-color: white "/>
+                        <p:inputNumber   id="latitud" decimalPlaces="6" value="#{agregaMarcador.latitud}" disabled="true" style="background-color: white"/>
+                        <br/>
+                        <br/>
                         <p:inputTextarea class="texto" id="descripcion" placeholder="Descripcion" value="${agregaMarcador.descripcion}"  required="true"  requiredMessage="Por favor agrega una descripcion"/>
+                        <br/>
                         <p:inputTextarea class="texto" id="dato" placeholder="Datos" value="${agregaMarcador.datos}"  required="true"  requiredMessage="Por favor agrega sus datos"/>
+                        <br/>
+                        <br/>
                         <p:commandButton styleClass="boton"  id="agregaMarcador" value="Agrega Marcador" action="#{agregaMarcador.agregaMarcador()}">
                         <p:effect type="pulsate" event="click" />
                         </p:commandButton>     

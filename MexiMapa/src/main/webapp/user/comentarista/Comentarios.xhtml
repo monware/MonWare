@@ -77,7 +77,7 @@ and open the template in the editor.
                      </p:panelGrid>
                      
                     <p:inputTextarea rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
-                    <p:commandButton value="Agergar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
+                    <p:commandButton value="Agregar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
                         <f:actionListener binding="#{comentarioBeam.update()}"/>
                     </p:commandButton>       
                 </h:form>

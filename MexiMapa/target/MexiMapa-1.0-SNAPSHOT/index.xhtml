@@ -51,14 +51,14 @@ and open the template in the editor.
 	</header><!-- / #main-header -->
                 <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
-                     <p:outputLabel value="Tema: "/>
+                 
                      <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
-                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
                         <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
                         <f:ajax execute="Tema" render="tSeleccionado" />
                      </p:selectOneMenu>
-                     <hr/>  
-                         
+                    <br/>
+                    <br/>     
                      <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
                 </p:panel>  
             </h:form>
