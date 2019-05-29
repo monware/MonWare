@@ -96,7 +96,9 @@ public class Marcador  implements java.io.Serializable {
     public void setComentarios(Set comentarios) {
         this.comentarios = comentarios;
     }
-
+ public String toString(){
+     return this.descripcion;
+    }
 
 
 
