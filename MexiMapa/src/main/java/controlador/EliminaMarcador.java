@@ -81,6 +81,8 @@ public class EliminaMarcador implements Serializable{
          }
          daoMarcador.delete(marcador);
          this.listaMarcadores.remove(marcador);
+         FacesMessage msg = new FacesMessage("El marcador"+ marcador +" fue removido con exito.");
+         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
 
