@@ -15,11 +15,7 @@
             <h:outputScript name="js/estilos.js"/>
             <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
-             <style type="text/css">
-    .animated .ui-progressbar-value { 
-        background-image: url("#{resource['demo/images/pbar-ani.gif']}"); 
-    }
-</style>
+            
             
         </h:head>
         <h:body>
@@ -49,9 +45,9 @@
                 
                
                 <h:form  rendered="#{empty user}" id="formulario-reg">
-                        <p:messages id="messages" showDetail="true" closable="true">
-                            <p:autoUpdate />
-                        </p:messages>
+                    <p:messages id="messages" showDetail="true" closable="true" style="width: 100%"/>
+                           
+                      
                     <br><p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Es un campo obligatorio"/></br>                            
                          
                     <br><p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu apellido" requiredMessage="Es un campo obligatorio"/></br>
@@ -64,7 +60,7 @@
                        
                     <br><p:password  id="contrasenia" value="#{registrarUsuario.contrasenia}" placeholder="Contrasenia"  required="true" validatorMessage="Introduce contrasenia"/></br> 
                     
-                       <br><p:commandButton action="#{registrarUsuario.agregaUsuario()}" value="Registrame" ajax="false" >
+                       <br><p:commandButton action="#{registrarUsuario.agregaUsuario()}" value="Registrame" ajax="false" id="registroBoton" >
                         <p:effect type="pulsate" event="click" />
                            </p:commandButton></br>     
     
