@@ -62,6 +62,23 @@ public class VerMarcadores implements Serializable{
             simpleModel.addOverlay(prueba);
         }
     }
+    public void verMarcadoresP(){
+        MarcadorDAO mdao = new MarcadorDAO();
+        TemaDAO tdao = new TemaDAO();
+        List<Tema> lis = tdao.findAll();
+        List<Marcador> l = mdao.ObtenMarcadoresPorTema(nombreTema);
+        for(Tema t : lis){
+            for(Object m: t.getMarcadors()){
+                Marcador marcador = (Marcador) m;
+                LatLng cord = new LatLng(marcador.getLatitud(),marcador.getLongitud());
+                Marker prueba = new Marker(cord,marcador.getDatos(),marcador.getDescripcion());
+                prueba.setIcon(t.getColor());
+                simpleModel.addOverlay(prueba);
+            }
+            
+        }
+    }
+    
     public List<Tema> listaTemas() {
         TemaDAO tdao = new TemaDAO();
         this.listaTemas = tdao.listaTemas();
