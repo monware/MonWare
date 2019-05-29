@@ -51,6 +51,7 @@ public class AgregaTema implements Serializable {
     private String datos;
     private LatLng centro; 
     private String nombreTema;
+    private String color;
     private List<Tema> listaTemas;
     
     @PostConstruct
@@ -136,6 +137,16 @@ public class AgregaTema implements Serializable {
     public void setDatos(String datos) {
         this.datos = datos;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    
     
     
     public String agregaMarcador(){
@@ -155,6 +166,7 @@ public class AgregaTema implements Serializable {
            tema = new Tema();
            tema.setUsuario(u);
            tema.setNombre(nombreTema);
+           tema.setColor(color);
            tdao.save(tema);
    
         m = new Marcador();

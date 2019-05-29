@@ -34,21 +34,9 @@ and open the template in the editor.
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
                       
-		</a> <!-- / #logo-header -->
-   
-		<!--<nav>
-			<ul>
-				<li><a href="index.xhtml">Principal</a></li>
-				<li><a href="Registrarse.xhtml">Registrarse</a></li>
-                                <li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
-                                
-			</ul>
-		</nav> -->
-                
-                
-                <!--<img id="fondo" src="resources/media/maleta.jpg"/>-->
+		</a>
 
-	</header><!-- / #main-header -->
+	</header>
                 <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
                      <p:outputLabel value="Tema: "/>
@@ -63,8 +51,8 @@ and open the template in the editor.
                 </p:panel>  
             </h:form>
 
-                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
-                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/><!--update="muestra_comentarios"-->
                         <p:gmapInfoWindow id="ventanaInfo">
                              <p:outputPanel style="text-align: left; display: block; margin: auto">
                                  
@@ -73,7 +61,14 @@ and open the template in the editor.
                                     <h:outputText value="#{verMarcadores.marker.data}"/>
                             </p:outputPanel>
                         </p:gmapInfoWindow>
-                    </p:gmap> 
+                    </p:gmap>
+            <h:form id="muestra_comentarios">
+                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+                         <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                             <p:outputLabel value="#{comentario.comentario}"/>
+                         </p:column>
+                     </p:dataTable>
+            </h:form>
  
 <p:dock position="bottom">
 
@@ -84,7 +79,7 @@ and open the template in the editor.
 </p:dock>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
-	</footer> <!-- / #main-footer -->
+	</footer>
  
 	
   </h:body>
