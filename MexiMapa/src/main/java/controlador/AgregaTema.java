@@ -180,7 +180,7 @@ public class AgregaTema implements Serializable {
         FacesMessage msg = new FacesMessage("El tema"+ m.getTema() +" hecho por "+ m.getUsuario() +" fue agregado con exito.\n Con la descripcion"+ m.getDescripcion());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        else{   return "";}
+        else{   Mensajes.fatal("Ya existe el tema \n" +tema+" \n Intenta con otro nombre");}
         return "";
     }
 

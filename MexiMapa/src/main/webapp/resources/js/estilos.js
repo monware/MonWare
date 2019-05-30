@@ -30,7 +30,7 @@ function alerta()
     /* Array con las imagenes que se iran mostrando en la web*/
     
   
-var index = 0;
+var index = 1;
 
     var listaimg = ["https://st2.depositphotos.com/3608591/11259/v/950/depositphotos_112590448-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg",
                     "https://st2.depositphotos.com/3608591/11531/v/950/depositphotos_115317346-stock-illustration-abstract-polygonal-techno-background-futuristic.jpg",
@@ -39,7 +39,8 @@ var index = 0;
 ];
 
 $(function() {
-  
+    $('body').css("background-image",'url(' + listaimg[1] + ')');
+   
     setInterval(changeImage, 30000);
   
 });

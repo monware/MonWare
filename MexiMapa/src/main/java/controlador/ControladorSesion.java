@@ -61,8 +61,11 @@ public class ControladorSesion implements Serializable{
             }else{
                 Validaciones.error("Usuario Desconocido"+this.correo);
             }
-        }
-        Validaciones.error("NO hay usuarios con este correo"+this.correo);
+        }else{
+          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en los datos!\t No existe un usuario con ese correo y/o contraseña, verifica","Error"));
+   }     //  Validaciones.error("NO hay usuarios con este correo"+this.correo);
+        //FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
         return "";
     }
     

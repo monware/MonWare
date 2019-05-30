@@ -12,42 +12,36 @@
  <h:outputStylesheet name="css/style.css"/>
  <h:outputScript name="js/estilos.js"/>
  
-<header id="main-header">
+        </h:head>
+        <h:body>
+            
+    <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
                       
-		</a> <!-- 
+		</a> <!-- / #logo-header -->
    
 		<nav>
-			<ul>
-				<li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
-				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
-                                <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
-                                <li><a href="eliminamarcador.xhtml">Eliminar Marcador</a></li>
-			</ul>
                     
-                    
-                </h:form>
-		</nav><!-->
-                    <h:form id="logout" rendered="#{not empty informador}">
+                        <h:form id="logout" rendered="#{not empty informador}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
-                    </h:form>
+                </h:form>
+		</nav><!-- / nav -->
+ 
 	</header><!-- / #main-header -->
-        </h:head>
-        <h:body>
+        
                      <h:form id="formGeneral">
                 
                 <p:panel header=" Eliminar Marcador" >
-                     <p:outputLabel value="Marcador: "/>
+                   
                      <p:selectOneMenu id="Marcador" value="#{eliminaMarcador.idMarcador}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminaMarcador.listaMarcadoresUsuario}" var="marcador" itemValue="#{marcador.idmarcador}"/>
                         <f:ajax execute="Marcador" render="tSeleccionado"/>
                      </p:selectOneMenu>
-                     <hr/>
-                         <p:outputLabel value="Marcador Seleccionado: "/> 
-                         <!--<p:outputLabel id="tSeleccionado" value="{eliminaMarcador.marcador}"/>-->
+                     <br/>
+                     <br/>
                          <p:commandButton action="#{eliminaMarcador.eliminaMarcadorInformador()}" value="Elimina Marcador" update="formGeneral" />
                 </p:panel>  
             </h:form>

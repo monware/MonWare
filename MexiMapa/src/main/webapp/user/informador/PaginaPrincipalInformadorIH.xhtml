@@ -25,40 +25,37 @@ and open the template in the editor.
         <h:outputScript name="js/estilos.js"/> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
-  <header id="main-header">
+  
+         </h:head>
+ <h:body>
+     
+    <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header
- 
+                      
+		</a> <!-- / #logo-header -->
+   
 		<nav>
-			<ul>
-                            
-                            <li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
-				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
-                                <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
-                                <li><a href="eliminamarcador.xhtml">Eliminar Marcador</a></li>
-			</ul>
+                    
+                        <h:form id="logout" rendered="#{not empty informador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
                 </h:form>
-		</nav> -->
-                
-                    <h:form id="logout" rendered="#{not empty informador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
-                    </h:form>
-                 </header>   
-         
-         </h:head>
- <h:body>
-                <h:form id="formGeneralEI">
+		</nav><!-- / nav -->
+ 
+	</header><!-- / #main-header -->
+        
+                 <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
-                     <p:outputLabel value="Tema: "/>
+                 
                      <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
-                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+
+                        <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
                         <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
                         <f:ajax execute="Tema" render="tSeleccionado" />
                      </p:selectOneMenu>
-                     <hr/>  
-                         
+                    <br/>
+                    <br/>     
                      <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
                 </p:panel>  
             </h:form>
@@ -84,7 +81,7 @@ and open the template in the editor.
                          </p:column>
                      </p:dataTable>
             </h:form>
- 
+
                 <h:form>
     <p:dock position="bottom">
 
