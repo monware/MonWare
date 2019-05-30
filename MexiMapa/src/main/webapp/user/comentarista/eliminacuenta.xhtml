@@ -35,17 +35,27 @@
 	</header><!-- / #main-header -->
         <h:body>
           <header>
-            <h1>
-              Elimina tu cuenta
-            </h1>
-              </header>
-            <h1>¡Hola!:</h1>
-            
             <h2>
-              Estás aquí para eliminar tu cuenta. Si crees que no volverás a usar tu cuenta en MexiMapa da click en Aceptar, en otro caso da click en
-              Cancelar.            
+              Elimina tu cuenta
+            </h2>
+                <br/>
+              </header>
+            
+            <h3>
+                ¡CUIDADO!
+                <br/>
+                <br/>
+              Estás aquí para eliminar tu cuenta.
+              <br/>
+              <br/>
+              Si crees que no volverás a usar tu cuenta en MexiMapa da click en Aceptar, en otro caso da click en
+              Cancelar.   
+              <br/>
+              <br/>
               Ten en cuenta que al eliminar tu cuenta, se eliminarán todos los datos relacionados a ella (comentarios y calificaciones).
-            </h2>            
+            </h3>        
+            
+            <br/>
             <h:form>
               <p:commandButton action="#{eliminaCuenta.eliminaCuenta()}" value="Aceptar" ajax="false"  styleClass="apply" style="position:absolute; left: 40%">
                   <p:effect type="explode" event="click" />

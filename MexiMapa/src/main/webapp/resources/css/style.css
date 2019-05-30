@@ -51,6 +51,23 @@ h2{
     font-family: colibri;
     background-color: #6495ed8c;
 }
+
+/* Mensaje de información */
+h3{
+background: whitesmoke;
+background-position: 55px 25%;
+color: black;
+font-family: colibri;
+font-size: 25px;
+text-align: center;
+padding: 18px 50px 55px 15px;
+border-top: 5px double black;
+border-bottom: 5px double black;
+border-radius: 35px 0px 35px 0px;
+-moz-border-radius: 35px 0px 35px 0px;
+-webkit-border-radius: 35px 0px 35px 0px;
+}
+
  
 p {
 	margin: 0 0 1.5em 0;
