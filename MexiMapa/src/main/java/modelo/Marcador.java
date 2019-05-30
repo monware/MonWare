@@ -98,7 +98,7 @@ public class Marcador  implements java.io.Serializable {
     }
     
     public String toString(){
-     return this.descripcion+this.tema;
+     return this.descripcion+" "+this.tema;
     }
 }
 

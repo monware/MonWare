@@ -27,8 +27,9 @@ and open the template in the editor.
     <header id="main-header">
        
 		
-		<a id="logo-header" href="#">
-			<span class="site-name">MexiMapa</span>
+		<a id="logo-header">
+		
+                <span class="site-name">MexiMapa</span>
                       
 		</a>
    
@@ -72,7 +73,14 @@ and open the template in the editor.
                              <p:outputLabel value="#{comentario.comentario}"/>
                          </p:column>
                         <p:column headerText="Calificacion">
-                             <p:outputLabel value="#{comentario.calificacion}"/>
+                             <h:outputText id="output" value="#{comentario.calificacion}"/>
+                                <br/>
+                             <p:commandButton value="like" action="#{calificaComentario.calificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output" >
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
+                                </p:commandButton> 
+                                <p:commandButton value="dislike" action="#{calificaComentario.descalificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output">
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
+                                </p:commandButton>
                          </p:column>
                      </p:dataTable>
             </h:form>

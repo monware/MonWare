@@ -320,6 +320,14 @@ img.img_logo{
     height: 100%;
     width: 50%;
 }
+#comentarios{
+    position: relative;
+    margin-top: -20%;
+    margin-right: 5%;
+    float: right;
+    height: 100%;
+    width: 50%;
+}
 
 /*main{
     width: 100%;
