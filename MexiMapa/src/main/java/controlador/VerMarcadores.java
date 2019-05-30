@@ -25,6 +25,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
+import modelo.ComentarioDAO;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -46,6 +47,7 @@ public class VerMarcadores implements Serializable{
     private Marker marker;
     private String marcadors;
     List<Tema> listaTemas;
+    List<Comentario> listaComentario;
     private Double latitud;
     private Double longitud;
     private String nombreTema ;
@@ -111,6 +113,12 @@ public class VerMarcadores implements Serializable{
         TemaDAO tdao = new TemaDAO();
         this.listaTemas = tdao.listaTemas();
         return this.listaTemas;
+    }
+    
+    public List<Comentario> listaComentarios() {
+        ComentarioDAO cdao = new ComentarioDAO();
+        this.listaComentario = cdao.listaComentario();
+        return this.listaComentario;
     }
 
     public List<Tema> getListaTemas() {
@@ -214,9 +222,8 @@ public class VerMarcadores implements Serializable{
         s+="</g>\n"+"</svg>";
         
         try {
-             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
             String destino = (servletContext.getRealPath("/"))+"resources/media/";
-            System.out.println(destino);
             FileOutputStream fileOut = new FileOutputStream(new File(destino + color+".svg"));
             OutputStreamWriter osOut = new OutputStreamWriter(fileOut);
             BufferedWriter out = new BufferedWriter(osOut);
@@ -254,6 +261,18 @@ public class VerMarcadores implements Serializable{
         Marcador ma = marcadorDAO.buscaMarcadorPorLatLng(latitud,longitud);
         AgregaComentario com = new AgregaComentario();
         com.agregaComentario(usuarioA,ma,comentario,0);
+        ComentarioBeam.u();
+    }
+    
+    public void editarComentario(int id){
+        ControladorSesion.UserLogged us = (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        Comentario comen = new Comentario();
+        MarcadorDAO marcadorDAO = new MarcadorDAO();
+        Marcador ma = marcadorDAO.buscaMarcadorPorLatLng(latitud,longitud);
+        EditaComentario com = new EditaComentario();
+        //com.editaComentario(id,comentario);
         ComentarioBeam.u();
     }
     

@@ -1,6 +1,6 @@
-modelo/Mensajes.class
 controlador/ComentarioBeam.class
 controlador/EliminarInformador.class
+controlador/Mensajes.class
 controlador/CalificaComentario.class
 controlador/RegistrarUsuario.class
 controlador/TemaConMarcador.class

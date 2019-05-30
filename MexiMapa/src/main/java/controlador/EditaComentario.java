@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import javax.faces.application.FacesMessage;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
@@ -41,10 +42,17 @@ public class EditaComentario {
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
         for(Object ecomen:usuarioA.getComentarios()){
-            ComentarioDAO comentariodao = (ComentarioDAO) ecomen;
-            Comentario comentario1 =comentariodao.find(idComentario);
-            if(comentario1 != null){
-                comentario1.setComentario(comentario);
+            Comentario comentarios = (Comentario) ecomen;
+            ComentarioDAO comentariodao = new ComentarioDAO();
+            comentariodao.find(idComentario);
+            if(comentariodao != null){
+                comentarios.setComentario(comentario);
+                comentariodao.update(comentarios);
+                FacesMessage msg = new FacesMessage("El Comentario se modifico correctamente");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }else{
+                FacesMessage msg = new FacesMessage("hubó un pequeño error avisa a los administradores");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }
     }

@@ -7,7 +7,6 @@ package controlador;
 
 import modelo.Marcador;
 import modelo.MarcadorDAO;
-import modelo.Mensajes;
 import modelo.Tema;
 import modelo.TemaDAO;
 import modelo.Usuario;
