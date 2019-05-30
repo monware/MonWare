@@ -15,23 +15,15 @@ import java.util.List;
  * @author Jorge
  */
 public abstract class AbstractDAO<T> {
-    
-    /**
-     * 
-     */
+
     protected SessionFactory sessionFactory;
     
-    /**
-     * 
-     */
+
     public AbstractDAO(){
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
-    /**
-     * 
-     * @param obj 
-     */
+
     protected void save(T obj){
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -50,10 +42,7 @@ public abstract class AbstractDAO<T> {
     
     }
     
-    /**
-     * 
-     * @param obj 
-     */
+
     protected void update(T obj){
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -71,10 +60,7 @@ public abstract class AbstractDAO<T> {
         }
     }
     
-    /**
-     * 
-     * @param obj 
-     */
+
     protected void delete(T obj){
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -92,12 +78,6 @@ public abstract class AbstractDAO<T> {
         }
     }
  
-     /**
-     * 
-     * @param clazz
-     * @param id
-     * @return 
-     */
     protected T find(Class clazz, int id){
         T obj =null;
         Session session = this.sessionFactory.openSession();
@@ -118,12 +98,8 @@ public abstract class AbstractDAO<T> {
         return obj;
         
     }
-    /**
-     *
-     * @param clazz
-     * @param id
-     * @return
-     */
+
+    
     protected T find(Class clazz, String id){
 
         T obj =null;
@@ -146,11 +122,6 @@ public abstract class AbstractDAO<T> {
         
     }
 
-    /**
-     * 
-     * @param clazz
-     * @return 
-     */
     protected List<T> findAll(Class clazz){
         List<T> obj =null;
         Session session = this.sessionFactory.openSession();
@@ -172,7 +143,5 @@ public abstract class AbstractDAO<T> {
         }
         return obj;
     }
-    
-    
-    
+
 }

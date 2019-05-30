@@ -32,7 +32,7 @@ import javax.faces.application.FacesMessage;
 @ManagedBean
 @ViewScoped
 
-public class eliminarTema implements Serializable{
+public class EliminarTema implements Serializable{
     private List<Tema> listaTemas;
     private String nombre_tema;
 

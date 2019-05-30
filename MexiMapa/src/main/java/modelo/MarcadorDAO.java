@@ -16,56 +16,36 @@ import org.hibernate.Transaction;
  * @author jorge
  */
 public class MarcadorDAO extends AbstractDAO<Marcador>{
-    /**
-     * 
-     */
+    
     public MarcadorDAO(){
         super();
     }
     
-    
-    /**
-     * 
-     * @param marcador 
-     */
     @Override
     public void save(Marcador marcador){
         super.save(marcador);
     }
     
-    /**
-     * 
-     * @param marcador 
-     */
     @Override
     public void update(Marcador marcador){
         super.save(marcador);
     }
     
-    /**
-     * 
-     * @param marcador 
-     */
+
     @Override
     public void delete(Marcador marcador){
         super.delete(marcador);
     }
        
-    /**
-     * 
-     * @param id
-     * @return 
-     */
+
     public Marcador find(int id){
         return super.find(Marcador.class, id);
     }
+    
      public Marcador find(String descripcion){
         return super.find(Marcador.class, descripcion);
     }
-    /**
-     * 
-     * @return 
-     */
+     
     public List<Marcador> findAll(){
         return super.findAll(Marcador.class);
     }

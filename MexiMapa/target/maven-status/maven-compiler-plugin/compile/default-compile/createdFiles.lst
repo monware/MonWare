@@ -9,7 +9,7 @@ modelo/Usuario.class
 controlador/RegistrarUsuario.clas
 controlador/Validaciones.class
 modelo/TemaDAO.class
-controlador/EliminaTema.class
+controlador/EliminarTema.class
 controlador/EliminarComentarista.class
 controlador/PaginaPrincipal.class
 controlador/EliminaMarcador.class
@@ -33,7 +33,6 @@ controlador/AgregaComentario.class
 modelo/MarcadorDAO.class
 controlador/EditaDatos.class
 modelo/AbstractDAO.class
-controlador/eliminarTema.class
 controlador/EditaComentario.class
 controlador/FilterSessionInformador.class
 com/mycompany/prueba/Mensajes.class
