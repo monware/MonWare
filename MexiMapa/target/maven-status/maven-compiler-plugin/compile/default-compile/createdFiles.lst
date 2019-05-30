@@ -2,12 +2,17 @@ modelo/Mensajes.class
 controlador/ComentarioBeam.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
-modelo/Usuario.class
 controlador/RegistrarUsuario.class
+controlador/TemaConMarcador.class
+com/mycompany/prueba/Tema.class
+modelo/Usuario.class
+controlador/RegistrarUsuario.clas
 controlador/Validaciones.class
 modelo/TemaDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
+controlador/PaginaPrincipal.class
+controlador/EliminaMarcador.class
 controlador/EliminaMarcador.class
 modelo/Tema.class
 controlador/VerMarcadores.class
@@ -31,6 +36,8 @@ modelo/AbstractDAO.class
 controlador/eliminarTema.class
 controlador/EditaComentario.class
 controlador/FilterSessionInformador.class
+com/mycompany/prueba/Mensajes.class
+controlador/VerMarcadorD.class
 modelo/ComentarioDAO.class
 controlador/AgregarInformador$1.class
 controlador/AgregaTema.class
