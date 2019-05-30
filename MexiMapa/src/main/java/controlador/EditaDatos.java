@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 package controlador;
-import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.UsuarioDAO;
-import com.mycompany.prueba.Usuario;
+import modelo.UsuarioDAO;
+import modelo.Usuario;
 import javax.faces.application.FacesMessage;
 
 /**
@@ -76,23 +74,19 @@ public class EditaDatos{
         if(u!=null){ 
             if (nombre != ""){          
             u.setNombre(nombre);
-        }
+            }
             if(apaterno!=""){
-            u.setApaterno(apaterno);
+                u.setApaterno(apaterno);
             }
             if(amaterno!=""){
-            u.setAmaterno(amaterno);
+                u.setAmaterno(amaterno);
             }
-            //u.setCorreo(correo);
             if(contrasenia != ""){
                 u.setContrasenia(contrasenia); 
-                }
+            }
             udb.update(u);
             FacesMessage msg = new FacesMessage("Tus datos han sido actualizados");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-       
-            
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-
-}
+    }
 }

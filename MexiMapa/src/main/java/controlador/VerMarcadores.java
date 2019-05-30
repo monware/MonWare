@@ -5,29 +5,26 @@
  */
 package controlador;
 
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Comentario;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Tema;
+import modelo.TemaDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
-import java.security.Principal;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
-import org.primefaces.PrimeFaces;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -36,8 +33,9 @@ import org.primefaces.model.map.Marker;
 
 /**
  *
- * @author jonathan
+ * @author jorge
  */
+
 @ManagedBean
 @ViewScoped
 @Named(value = "verMarcadores")
@@ -87,7 +85,7 @@ public class VerMarcadores implements Serializable{
        
         }
     }
-    //@PostConstruct
+    
     public void verMarcadores(){
         MarcadorDAO mdao = new MarcadorDAO();
         List<Marcador> l = mdao.ObtenMarcadoresPorTema(nombreTema);
@@ -180,11 +178,6 @@ public class VerMarcadores implements Serializable{
         this.descripcion = descripcion;
     }
     
-    
-    
-    //public void onMarkerSelect(OverlaySelectEvent event) {
-      // marker =(Marker) event.getOverlay();
-    //}
     public void onMarkerSelect(OverlaySelectEvent event) {
        marker =(Marker) event.getOverlay();
        this.latitud = marker.getLatlng().getLat();
@@ -231,7 +224,6 @@ public class VerMarcadores implements Serializable{
             out.close();
         } catch (IOException ioe) {
             System.out.println("No pude guardar en el archivo" );
-//            System.exit(1);
         }
 
 

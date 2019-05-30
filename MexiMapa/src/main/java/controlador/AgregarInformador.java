@@ -6,8 +6,8 @@
 package controlador;
 
 //import com.mycompany.prueba.Rol;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;

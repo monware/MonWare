@@ -7,13 +7,11 @@ package controlador;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.event.RowEditEvent;
 /**
  *
  * @author jorge
@@ -35,17 +33,6 @@ public class ComentarioBeam {
     public static void setLista(List<Comentario> lista) {
       ComentarioBeam.lista = lista;
     }
-    
-    public static void update(){
-        ComentarioDAO comentarioDAO = new ComentarioDAO();
-        ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadorC.select.getIdmarcador());
-    }
-    
-    public static void udate(){
-        ComentarioDAO comentarioDAO = new ComentarioDAO();
-        ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadorD.select.getIdmarcador());
-    }
-    
     public static void u(){
         ComentarioDAO comentarioDAO = new ComentarioDAO();
         ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadores.select.getIdmarcador());

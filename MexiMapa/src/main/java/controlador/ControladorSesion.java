@@ -8,9 +8,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
-import java.util.List;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import javax.faces.application.FacesMessage;
 
 /**
@@ -45,27 +44,23 @@ public class ControladorSesion implements Serializable{
         Usuario user = udb.buscaPorCorreoContrasenia(correo, contrasenia);
         FacesContext context = FacesContext.getCurrentInstance();
         if(user !=null){
-            //UserLogged u = new UserLogged(user.getNombre(),user.getCorreo(), user.getRol());
             UserLogged u;
             u = new UserLogged(user.getNombre(),user.getCorreo(),user.getRol());
-            
             if(user.getRol()== 1){
-                 context.getExternalContext().getSessionMap().put("administrador", u);
+                context.getExternalContext().getSessionMap().put("administrador", u);
                 return "/user/administrador/PaginaPrincipalAdministradorIH?faces-redirect=true";
             }else if(user.getRol()== 2){
-                 context.getExternalContext().getSessionMap().put("comentarista", u);
+                context.getExternalContext().getSessionMap().put("comentarista", u);
                 return "/user/comentarista/PaginaPrincipalComentaristaIH?faces-redirect=true";
             }else if(user.getRol()== 3){
-                 context.getExternalContext().getSessionMap().put("informador", u);
+                context.getExternalContext().getSessionMap().put("informador", u);
                 return "/user/informador/PaginaPrincipalInformadorIH?faces-redirect=true";
             }else{
                 Validaciones.error("Usuario Desconocido"+this.correo);
             }
         }else{
           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en los datos!\t No existe un usuario con ese correo y/o contraseña, verifica","Error"));
-   }     //  Validaciones.error("NO hay usuarios con este correo"+this.correo);
-        //FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
         return "";
     }
     

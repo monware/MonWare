@@ -5,11 +5,9 @@
  */
 package controlador;
 
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.Serializable;
-
-import java.util.Locale;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;
 import javax.mail.*;
@@ -22,6 +20,7 @@ import javax.faces.context.FacesContext;
  *
  * @author ALEX
  */
+
 @ManagedBean
 @ViewScoped
 public class RegistrarUsuario implements Serializable {
@@ -41,90 +40,57 @@ public class RegistrarUsuario implements Serializable {
         this.rol = rol;
     }
 
-    /**
-     * 
-     * 
-     * @return 
-     */
+
     public String getApaterno() {
         return apaterno;
     }
 
-    /**
-     * 
-     * @param apaterno 
-     */
+
     public void setApaterno(String apaterno) {
         this.apaterno = apaterno;
     }
 
-    /**
-     * 
-     * @return 
-     */
+
     public String getAmaterno() {
         return amaterno;
     }
 
-    /**
-     * 
-     * @param amaterno 
-     */
+
     public void setAmaterno(String amaterno) {
         this.amaterno = amaterno;
     }
 
-    /**
-     * 
-     * @return 
-     */
+
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * 
-     * @param nombre 
-     */
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * 
-     * @return 
-     */
+
     public String getCorreo() {
         return correo;
     }
 
-    /**
-     * 
-     * @param correo 
-     */
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    /**
-     * 
-     * @return 
-     */
+
     public String getContrasenia() {
         return contrasenia;
     }
 
-    /**
-     * 
-     * @param contrasenia 
-     */
+
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
     
-    /**
-     * 
-     */
+
     public String agregaUsuario(){
         Usuario u = new Usuario();
         u.setNombre(nombre);
@@ -139,47 +105,24 @@ public class RegistrarUsuario implements Serializable {
         if(x!=null){
         return "/Error?faces-redirect=true";
         }else{
-        
-            udb.save(u);
-        
-        //correo a donde se mandará la confirmación 
-        String receptor = u.getCorreo();
-        //cuerpo del correo
-        String mensaje = "Se ha completado tu registro\n";
-        //método que manda el correo
-        mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
-        
-        FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        
+            udb.save(u);        
+            String receptor = u.getCorreo();
+            String mensaje = "Se ha completado tu registro\n";        
+            mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");        
+            FacesMessage msg = new FacesMessage("El usuario fue añadido con exito.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         return "/InicioSesion?faces-redirect=true";
         }
 
     }
     
-
-    /**
-     * 
-     * @param a el destinatario del correo
-     * @param asunto el asunto del correo
-     * @param msg el cuerpo del correo
-     * @param usr el correo emisor del mensaje
-     * @return true si envía el correo, false en otro caso
-     */
-    //va así para evitar problemas
     private boolean mandaCorreo(String a, String asunto, String msg, final String usr) {
         boolean enviado = true;
-        // Get system properties
         Properties properties = new Properties();
-
-        // Setup mail server
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-
-        // Get the default Session object.
-        
         Session session;
         session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override
