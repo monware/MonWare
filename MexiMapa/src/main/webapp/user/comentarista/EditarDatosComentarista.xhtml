@@ -13,12 +13,23 @@
             <h:outputScript name="js/estilos.js"/>
         </h:head>
  <h:body>
-     <header id="main-header">
+     
+    <header id="main-header">
+       
 		
-		<a id="logo-header" href="#">
-                    <span class="site-name">MexiMapa</span>
+		<a id="logo-header">
+			<span class="site-name">MexiMapa</span>
+                      
 		</a>
-     </header>
+   
+		<nav>
+                    
+                      <h:form id="logout" rendered="#{not empty comentarista}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                </h:form>
+		</nav>
+ 
+	</header>
     <p:messages/>
           <header>
             <h2>

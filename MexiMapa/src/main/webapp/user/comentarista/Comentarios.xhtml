@@ -25,15 +25,22 @@ and open the template in the editor.
 <h:body>
 
     <header id="main-header">
-
-
-		<a id="logo-header" href="#">
+       
+		
+		<a id="logo-header">
 			<span class="site-name">MexiMapa</span>
-
-		</a> 
-
+                      
+		</a>
+   
+		<nav>
+                    
+                      <h:form id="logout" rendered="#{not empty comentarista}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+                </h:form>
+		</nav>
+ 
 	</header>
-        <main>
+    <main>
                 <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapac" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
                         <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}" update="agregaComentario comentarios"/><!--update="muestra_comentarios"-->
                         <p:gmapInfoWindow id="ventanaInfo">
@@ -51,7 +58,7 @@ and open the template in the editor.
                      </p:messages>
                      <p:panelGrid columns="2" id="form_agrecoment" >
 
-                        <h:inputText value="Nombre marcador:" disabled="True"/>
+                        <h:inputText value="Nombre comentario:" disabled="True"/>
                         <h:inputText id="nombre" value="#{verMarcadores.select.descripcion}" disabled="True" maxlength="60"/>
 
                         <h:outputText value="Latitud:" />
@@ -62,7 +69,7 @@ and open the template in the editor.
                      </p:panelGrid>
 
                     <p:inputTextarea rows="5" value="#{verMarcadores.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
-                    <p:commandButton  value="Agergar" action="#{verMarcadores.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
+                    <p:commandButton  value="Agregar" action="#{verMarcadores.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
                         <f:actionListener binding="#{comentarioBeam.u()}"/>
 
                     </p:commandButton>       
@@ -92,14 +99,16 @@ and open the template in the editor.
                      </p:dataTable>
                 </h:form>
             <h:form>
-    <p:dock position="bottom">
+                    <p:dock position="bottom">
 
     <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
     <p:menuitem value="Editar Datos" icon="https://img.icons8.com/nolan/64/000000/services.png" url="EditarDatosComentarista.xhtml"/>
     <p:menuitem value="Gestion de Comentarios" icon="https://img.icons8.com/nolan/64/000000/marker.png" url="Comentarios.xhtml"/>
+    <p:menuitem value="Edita tus comentarios" icon="https://img.icons8.com/nolan/64/000000/pokeball.png" url="editaComentario.xhtml"/>
     <p:menuitem value="Elimina Cuenta" icon="https://img.icons8.com/nolan/64/000000/high-priority.png" url="eliminacuenta.xhtml"/>
-
+    
     </p:dock>  
+
     </h:form>
         </main>
 

@@ -14,7 +14,7 @@ and open the template in the editor.
 <f:view>
     <h:head>
 	
-	<title>Pagina Principal</title>
+	<title>EditarComentarios</title>
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
@@ -29,46 +29,22 @@ and open the template in the editor.
     <header id="main-header">
        
 		
-		<a id="logo-header" href="#">
+		<a id="logo-header">
 			<span class="site-name">MexiMapa</span>
                       
 		</a> <!-- / #logo-header -->
    
 		<nav>
-			<!--<ul>
-				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
-				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
-                                <li><a href="Comentarios.xhtml">Gestionar Comentarios</a></li>
-                                <li><a href="eliminacuenta.xhtml">Eliminar Cuenta</a></li>
-                                
-			</ul>-->
-                    
                       <h:form id="logout" rendered="#{not empty comentarista}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
                 </h:form>
 		</nav><!-- / nav -->
  
-	</header><!-- / #main-header -->
-        
-            <!--
-            <h:form id="formGeneralEI">
-                <p:panel header="Filtrar por Tema" >
-                     <p:outputLabel value="Tema: "/>
-                     <p:selectOneMenu id="tema" value="#{verMarcadores.comentario}"> 
-                        <f:selectItem itemLabel="" itemValue=""/>
-                        <f:selectItems value="#{verMarcadores.listaComentarios()}" var="Comentario" itemValue="#{comentario.comentario}"/>
-                        <f:ajax execute="Comentario" render="tSeleccionado" />
-                     </p:selectOneMenu>
-                     <hr/>  
-                         
-                     <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
-                </p:panel>  
-            </h:form>
-            -->
+	</header>
             <section >
                    
                     
-                    <h2>Agrega un marcador</h2> 
+                    <h2>Edita tus Comentarios</h2> 
                     
                     <h:form id="form" >
                         

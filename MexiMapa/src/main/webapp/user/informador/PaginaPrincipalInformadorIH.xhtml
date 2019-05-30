@@ -31,7 +31,7 @@ and open the template in the editor.
      
     <header id="main-header">
 		
-		<a id="logo-header" href="#">
+		<a id="logo-header">
 			<span class="site-name">MexiMapa</span>
                       
 		</a> <!-- / #logo-header -->
@@ -72,15 +72,18 @@ and open the template in the editor.
                         </p:gmapInfoWindow>
                     </p:gmap>
             <h:form id="muestra_comentarios">
-                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
-                         <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
-                             <p:outputLabel value="#{comentario.comentario}"/>
-                         </p:column>
-                        <p:column headerText="Calificacion">
-                             <p:outputLabel value="#{comentario.calificacion}"/>
-                         </p:column>
-                     </p:dataTable>
-            </h:form>
+        <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+            <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                <p:outputLabel value="#{comentario.comentario}"/>
+            </p:column>
+            <p:column headerText="Calificacion">
+                <p:outputLabel value="#{comentario.calificacion}"/>
+            </p:column>
+            <p:column headerText="eliminame" style="width:100px">
+                <p:commandButton value="Elimina" action="#{eliminaComentario.eliminaComentarioInformador(comentario.idcomentario)}" update="comentarios"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
 
                 <h:form>
     <p:dock position="bottom">

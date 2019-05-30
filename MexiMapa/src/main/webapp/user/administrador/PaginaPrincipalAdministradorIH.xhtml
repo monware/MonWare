@@ -28,7 +28,7 @@ and open the template in the editor.
 
     <header id="main-header">
 		
-		<a id="logo-header" href="#">
+		<a id="logo-header">
                     <span class="site-name">MexiMapa</span>      
 		</a> 
    
@@ -72,7 +72,9 @@ and open the template in the editor.
             <p:column headerText="Calificacion">
                 <p:outputLabel value="#{comentario.calificacion}"/>
             </p:column>
-            
+            <p:column headerText="eliminame" style="width:100px">
+                <p:commandButton value="Elimina" action="#{eliminaComentario.eliminaComentarioAdministrador(comentario.idcomentario)}" update="comentarios"/>
+            </p:column>
         </p:dataTable>
     </h:form>
  
@@ -80,6 +82,8 @@ and open the template in the editor.
         <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
         <p:menuitem value="Gestion de Comentarios" icon="https://img.icons8.com/nolan/64/000000/marker.png" url="Comentarios.xhtml"/>
         <p:menuitem value="Panel de Control" icon="https://img.icons8.com/nolan/64/000000/settings.png" url="PanelAdministradorIH.xhtml"/>
+      
+   
     </p:dock>  
    
 	<footer id="main-footer">

@@ -78,7 +78,7 @@ public class EliminarInformador implements Serializable{
             }
         }
         udao.delete(u);
-        listaInformadores.remove(u);
+        this.listaInformadores.remove(u);
         FacesMessage msg = new FacesMessage("El informador"+u.getNombre()+u.getApaterno()+" fue removido con exito.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }
