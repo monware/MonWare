@@ -49,6 +49,6 @@ public class EliminaCuenta{
     }
     
     public String cancelar(){ 
-        return "/index?faces-redirect=true";
+        return "/user/comentarista/PaginaPrincipalComentaristaIH?faces-redirect=true";
     }       
 }
