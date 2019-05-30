@@ -6,7 +6,6 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Marcador.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/MarcadorDAO.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/FilterSessionInformador.java
-/home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Mensajes.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/eliminarTema.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ComentarioBeam.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/RegistrarUsuario.java
@@ -30,5 +29,6 @@
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EliminaTema.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/EditaComentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/ControladorSesion.java
+/home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/Mensajes.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/modelo/Comentario.java
 /home/jorge/Escritorio/Ing de Software/Proyecto/MonWare/MexiMapa/src/main/java/controlador/AgregaComentario.java

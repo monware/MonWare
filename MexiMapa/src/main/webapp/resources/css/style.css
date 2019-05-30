@@ -241,6 +241,14 @@ img.img_logo{
     margin-left: 50px;
 }
 
+#mapac{
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    margin-top: 5%;
+    margin-left: 50px;
+}
+
 #formulario-reg{
     padding-left:37%;
     padding-top: 3%;
@@ -283,7 +291,7 @@ img.img_logo{
 #agregaComentario{
     position: relative;
     margin-right: 60%;
-    margin-top: 6%;
+    margin-top: 40%;
     float:right;
 }
 

@@ -74,7 +74,11 @@ public class Comentario  implements java.io.Serializable {
     
 
     public void setCalificacion(Integer calificacion) {
-    this.calificacion = calificacion;
+        this.calificacion = calificacion;
+    }
+    
+    public String toString(){
+     return this.comentario;
     }
 
 
