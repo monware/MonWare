@@ -48,10 +48,12 @@ public class VerMarcadores implements Serializable{
     private Marker marker;
     private String marcadors;
     List<Tema> listaTemas;
-    public static Marcador select;
     private Double latitud;
     private Double longitud;
     private String nombreTema ;
+    private String comentario;
+    private String descripcion;
+    public static Marcador select;
     private List<Comentario> listacom;
 
    
@@ -125,14 +127,6 @@ public class VerMarcadores implements Serializable{
         this.nombreTema = nombreTema;
     }
 
-    public static Marcador getSelect() {
-        return select;
-    }
-
-    public static void setSelect(Marcador select) {
-        VerMarcadores.select = select;
-    }
-
     public Double getLatitud() {
         return latitud;
     }
@@ -156,12 +150,37 @@ public class VerMarcadores implements Serializable{
     public void setListacom(List<Comentario> listacom) {
         this.listacom = listacom;
     }
-    
+
+    public Marcador getSelect() {
+        return select;
+    }
+
+    public static void setSelect(Marcador select) {
+        VerMarcadores.select = select;
+    }
     
     
     public MapModel getSimpleModel() {
         return simpleModel;
     }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    
     
     //public void onMarkerSelect(OverlaySelectEvent event) {
       // marker =(Marker) event.getOverlay();
@@ -232,6 +251,18 @@ public class VerMarcadores implements Serializable{
           p+=puntos[i]+","+puntos[i+1]+" ";
         }
         return "<polygon points=\""+p+"\" \n style=\" fill:" +color+";stroke:black;stroke-width:1;\" /> \n";
+    }
+    
+    public void agregarComentario(){
+        ControladorSesion.UserLogged us = (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
+        Comentario comen = new Comentario();
+        MarcadorDAO marcadorDAO = new MarcadorDAO();
+        Marcador ma = marcadorDAO.buscaMarcadorPorLatLng(latitud,longitud);
+        AgregaComentario com = new AgregaComentario();
+        com.agregaComentario(usuarioA,ma,comentario,0);
+        ComentarioBeam.u();
     }
     
 }

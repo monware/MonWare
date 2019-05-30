@@ -44,20 +44,21 @@ and open the template in the editor.
         
                    <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
-                 
+
+                     <p:outputLabel value="Tema: "/>
                      <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
-                        <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
                         <f:ajax execute="Tema" render="tSeleccionado" />
                      </p:selectOneMenu>
-                    <br/>
-                    <br/>     
+                     <hr/>  
+
                      <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
                 </p:panel>  
             </h:form>
 
-                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
-                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}" update="muestra_comentarios"/><!--update="muestra_comentarios"-->
                         <p:gmapInfoWindow id="ventanaInfo">
                              <p:outputPanel style="text-align: left; display: block; margin: auto">
                                  
@@ -66,7 +67,17 @@ and open the template in the editor.
                                     <h:outputText value="#{verMarcadores.marker.data}"/>
                             </p:outputPanel>
                         </p:gmapInfoWindow>
-                    </p:gmap> 
+                    </p:gmap>
+            <h:form id="muestra_comentarios">
+                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+                         <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                             <p:outputLabel value="#{comentario.comentario}"/>
+                         </p:column>
+                        <p:column headerText="Calificacion">
+                             <p:outputLabel value="#{comentario.calificacion}"/>
+                         </p:column>
+                     </p:dataTable>
+            </h:form>
  
     <p:dock position="bottom">
 

@@ -50,15 +50,16 @@ and open the template in the editor.
  
 	</header><!-- / #main-header -->
         <main>
-                <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa1" model="#{verMarcadorC.simpleModel}"  draggable="true"  mapTypeControl="false">
-                    <p:ajax event="overlaySelect" listener="#{verMarcadorC.onMarkerSelect}" update="agregaComentario comentarios"/>
-                    <p:gmapInfoWindow id="ventanaInfo">
-                         <p:outputPanel style="text-align: left; display: block; margin: auto">
-                                <h:outputText value="#{verMarcadorC.marker.title}" />
-                                <br/>
-                                <h:outputText value="#{verMarcadorC.marker.data}"/>
-                        </p:outputPanel>
-                    </p:gmapInfoWindow>
+                <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}" update="agregaComentario comentarios"/><!--update="muestra_comentarios"-->
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                 
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
                 </p:gmap> 
             <h:form id="agregaComentario">
                     <p:messages id="messages" showDetail="true" closable="true" >
@@ -67,19 +68,19 @@ and open the template in the editor.
                      <p:panelGrid columns="2" id="form_agrecoment" >
                      
                         <h:inputText value="Nombre marcador:" disabled="True"/>
-                        <h:inputText id="nombre" value="#{verMarcadorC.select.descripcion}" disabled="True" maxlength="60"/>
+                        <h:inputText id="nombre" value="#{verMarcadores.select.descripcion}" disabled="True" maxlength="60"/>
                      
                         <h:outputText value="Latitud:" />
-                        <h:outputText id="latitud" value="#{verMarcadorC.latitud}"/> 
+                        <h:outputText id="latitud" value="#{verMarcadores.latitud}"/> 
                         
                         <h:outputText value="Longitud:" />
-                        <h:outputText id="longitud" value="#{verMarcadorC.longitud}"/>
+                        <h:outputText id="longitud" value="#{verMarcadores.longitud}"/>
                      </p:panelGrid>
-       
-                    <p:inputTextarea id="prueba"rows="5" value="#{verMarcadorC.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
-                    <p:commandButton  value="Agergar" action="#{verMarcadorC.agregarComentario()}" update="agregaComentario comentarios Agregar prueba" style="margin-top: -3%; margin-left: 6%">
-                      
-                        <f:actionListener binding="#{comentarioBeam.update()}"/>
+                     
+                    <p:inputTextarea rows="5" value="#{verMarcadores.comentario}" cols="30" maxlength="200" autoResize="false" placeholder="Comentario..." style="margin-top: 3%" />
+                    <p:commandButton  value="Agergar" action="#{verMarcadores.agregarComentario()}" update="agregaComentario comentarios" style="margin-top: -3%; margin-left: 6%">
+                        <f:actionListener binding="#{comentarioBeam.u()}"/>
+
                     </p:commandButton>       
                 </h:form>
                  
@@ -94,10 +95,10 @@ and open the template in the editor.
                                 <h:outputText id="output" value="#{comentario.calificacion}"/>
                                 <br/>
                                 <p:commandButton value="like" action="#{calificaComentario.calificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios" >
-                                    <f:actionListener binding="#{comentarioBeam.update()}"/>
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
                                 </p:commandButton> 
                                 <p:commandButton value="dislike" action="#{calificaComentario.descalificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output comentarios ">
-                                    <f:actionListener binding="#{comentarioBeam.update()}"/>
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
                                 </p:commandButton> 
                         </p:column >
                             
@@ -106,7 +107,7 @@ and open the template in the editor.
                         </p:column>
                      </p:dataTable>
                 </h:form>
-      <h:form>
+            <h:form>
     <p:dock position="bottom">
 
     <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
