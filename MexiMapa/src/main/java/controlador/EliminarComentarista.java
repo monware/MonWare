@@ -56,6 +56,7 @@ public class EliminarComentarista implements Serializable{
                 c.eliminaComentarioAdministrador();
             }
         udao.delete(u);
+        this.listaComentaristas.remove(u);
         FacesMessage msg = new FacesMessage("Se ha eliminado el usuario");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{

@@ -22,7 +22,7 @@ and open the template in the editor.
             </script>
         <header id="main-header">
 		
-		<a id="logo-header" href="#">
+		<a id="logo-header">
 			<span class="site-name">MexiMapa</span>
 		</a> 
  
@@ -94,7 +94,7 @@ and open the template in the editor.
 
     <h:form id="funcionEliminarComentarista">
     <p:panel id="panel" header="Menú Administrador: Eliminar Comentarista" >
-        <p:messages />
+        
                      <p:selectOneMenu id="comentarista" value="#{eliminarComentarista.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarComentarista.listaComentaristas}"/>
@@ -133,7 +133,8 @@ and open the template in the editor.
 
     <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalAdministradorIH.xhtml"/>
     <p:menuitem value="Panel de Control" icon="https://img.icons8.com/nolan/64/000000/settings.png" url="PanelAdministradorIH.xhtml"/>
-   
+    <p:menuitem value="Edita tus comentarios" icon="https://img.icons8.com/nolan/64/000000/pokeball.png" url="Comentarios.xhtml"/>
+
     </p:dock>  
     </h:form>
 	 <h:form id="formGeneral">

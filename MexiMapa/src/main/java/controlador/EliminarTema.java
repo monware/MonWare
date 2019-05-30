@@ -18,7 +18,6 @@ import modelo.Marcador;
 import modelo.MarcadorDAO;
 import modelo.Tema;
 import modelo.TemaDAO;
-import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -71,6 +70,7 @@ public class EliminarTema implements Serializable{
             daoMarcador.delete(marcador);
             }
             daoTema.delete(tema);
+            this.listaTemas.remove(tema);
              FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
              FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
@@ -78,33 +78,6 @@ public class EliminarTema implements Serializable{
         } 
     }
     
-    public void eliminaTemaInformador(){
-        UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
-        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        
-        for(Object prueba: usuarioA.getTemas()){
-            TemaDAO temadao = (TemaDAO) prueba;
-            Tema tema = temadao.find(this.getNombre_tema());
-            if(tema != null){
-                for(Object m: tema.getMarcadors()){
-                    MarcadorDAO daoMarcador = new MarcadorDAO();
-                    Marcador marcador = (Marcador) m;
-                    if(marcador.getComentarios() != null){
-                        for(Object c : marcador.getComentarios()){
-                            ComentarioDAO daoComentario = new ComentarioDAO();
-                            Comentario comentario = (Comentario)c;
-                            daoComentario.delete(comentario);
-                        }
-                    }
-                    daoMarcador.delete(marcador);
-                }
-                temadao.delete(tema);
-                FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-            }
-        }
-    }
 
     
     public List<Tema> getListaTemasUsuario() {
