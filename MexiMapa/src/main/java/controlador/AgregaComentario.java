@@ -9,9 +9,7 @@ import com.mycompany.prueba.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
 import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
 import javax.faces.application.FacesMessage;
 /**
  *

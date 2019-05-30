@@ -8,8 +8,6 @@ import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
 import javax.faces.application.FacesMessage;
 /**
  *
@@ -43,11 +41,11 @@ public class CalificaComentario {
             int aux = cal +1;
             comentario.setCalificacion(aux);
             cdao.update(comentario);
-            
-        FacesMessage msg = new FacesMessage("El comentario"+comentario.getComentario()+"Fue añadido con exito, corresponde al tema"+comentario.getMarcador().getTema());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        
+            FacesMessage msg = new FacesMessage("El comentario "+comentario.getComentario()+" Se calificó correctamente, corresponde al tema "+comentario.getMarcador().getTema());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+        FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     public void descalificaComentario(int id, int cal){
         ComentarioDAO cdao = new ComentarioDAO();
@@ -56,8 +54,11 @@ public class CalificaComentario {
             int aux = cal -1;
             comentario.setCalificacion(aux);
             cdao.update(comentario);
+            FacesMessage msg = new FacesMessage("Al comentario "+comentario.getComentario()+" Se le descalificó correctamente, corresponde al tema "+comentario.getMarcador().getTema());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
-            System.out.println("Error Aun no en pantalla");
+            FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 }

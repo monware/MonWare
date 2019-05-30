@@ -17,6 +17,7 @@ import com.mycompany.prueba.UsuarioDAO;
 @ManagedBean
 public class EditaComentario {
     private int idComentario;
+    private String comentario;
 
     public int getIdComentario() {
         return idComentario;
@@ -33,10 +34,7 @@ public class EditaComentario {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    private String comentario;
     
-
-
     public void editaComentario(){
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");

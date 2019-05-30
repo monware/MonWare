@@ -1,11 +1,9 @@
-controlador/VerMarcadorC.class
 com/mycompany/prueba/ComentarioDAO.class
 com/mycompany/prueba/Marcador.class
 controlador/ComentarioBeam.class
 com/mycompany/prueba/UsuarioDAO.class
 controlador/EliminarInformador.class
 controlador/CalificaComentario.class
-controlador/TemaConMarcador.class
 controlador/RegistrarUsuario.class
 com/mycompany/prueba/Tema.class
 controlador/Validaciones.class
@@ -13,7 +11,6 @@ com/mycompany/prueba/MarcadorDAO.class
 controlador/EliminaTema.class
 controlador/EliminarComentarista.class
 controlador/EliminaMarcador.class
-controlador/PaginaPrincipal.class
 controlador/VerMarcadores.class
 controlador/AgregaMarcador.class
 com/mycompany/prueba/HibernateUtil.class
@@ -30,7 +27,6 @@ controlador/AgregarInformador.class
 controlador/RegistrarUsuario$1.class
 controlador/ControladorSesion$UserLogged.class
 controlador/AgregaComentario.class
-controlador/ObtenerComentarios.class
 controlador/EditaDatos.class
 controlador/eliminarTema.class
 controlador/EditaComentario.class
@@ -38,5 +34,4 @@ controlador/FilterSessionInformador.class
 com/mycompany/prueba/Mensajes.class
 controlador/AgregarInformador$1.class
 controlador/AgregaTema.class
-controlador/VerMarcadorD.class
 controlador/EliminaCuenta.class
