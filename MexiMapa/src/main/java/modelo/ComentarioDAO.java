@@ -20,69 +20,29 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
         super();
     }
     
-    /**
-     * 
-     * @param usuario 
-     */
     @Override
     public void save(Comentario comentario){
         super.save(comentario);
     }
     
-    /**
-     * 
-     * @param comentario
-     */
+
     @Override
     public  void update(Comentario comentario){
         super.update(comentario);
     }
     
-    /**
-     * 
-     * @param comentario
-     */
+
     @Override
     public void delete(Comentario comentario){
         super.delete(comentario);
     }
     
-    /**
-     * 
-     * @param id
-     * @return 
-     */
+
     public Comentario find(int id){
         return super.find(Comentario.class, id);
     }
-    
-    public Comentario findP(int id){
-        Comentario obj =null;
-        Session session = this.sessionFactory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            String hql = "from Comentario c where max(c.calificacion)";
-            Query query = session.createQuery(hql);
-            query.setParameter("id", id);
-            //obj = (Comentario) query.;
-            tx.commit();
-            
-        }catch(HibernateException e){
-            if(tx!=null){
-                tx.rollback();
-            }
-        }finally{
-            session.close();
-        
-        }
-        return obj;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
+
+
     public List<Comentario> findAll(){
         return super.findAll(Comentario.class);
     
@@ -130,5 +90,22 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
             session.close();
         }
         return listacom;
+    }
+    
+    public List<Comentario> listaComentario(){
+        List<Comentario> m = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "FROM Comentario";
+        try{
+            m=session.createQuery(hql).list();
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            tx.rollback();
+        }
+     return m;   
     }
 }

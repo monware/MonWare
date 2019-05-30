@@ -18,34 +18,31 @@
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header -->
- 
-		<!--<nav>
-			<ul>
-                            <li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
-                            <li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
-                            <li><a href="Comentarios.xhtml">Gestionar Comentarios</a></li>
-                            <li><a href="eliminacuenta.xhtml">Eliminar Cuenta</a></li>
-			
-			</ul>
-                     
-                </h:form>
-		</nav> -->
- 
-	</header><!-- / #main-header -->
+		</a>
+	</header>
         <h:body>
           <header>
-            <h1>
-              Elimina tu cuenta
-            </h1>
-              </header>
-            <h1>¡Hola!:</h1>
-            
             <h2>
-              Estás aquí para eliminar tu cuenta. Si crees que no volverás a usar tu cuenta en MexiMapa da click en Aceptar, en otro caso da click en
-              Cancelar.            
+              Elimina tu cuenta
+            </h2>
+                <br/>
+              </header>
+            
+            <h3>
+                ¡CUIDADO!
+                <br/>
+                <br/>
+              Estás aquí para eliminar tu cuenta.
+              <br/>
+              <br/>
+              Si crees que no volverás a usar tu cuenta en MexiMapa da click en Aceptar, en otro caso da click en
+              Cancelar.   
+              <br/>
+              <br/>
               Ten en cuenta que al eliminar tu cuenta, se eliminarán todos los datos relacionados a ella (comentarios y calificaciones).
-            </h2>            
+            </h3>        
+            
+            <br/>
             <h:form>
               <p:commandButton action="#{eliminaCuenta.eliminaCuenta()}" value="Aceptar" ajax="false"  styleClass="apply" style="position:absolute; left: 40%">
                   <p:effect type="explode" event="click" />
@@ -61,6 +58,7 @@
     <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
     <p:menuitem value="Editar Datos" icon="https://img.icons8.com/nolan/64/000000/services.png" url="EditarDatosComentarista.xhtml"/>
     <p:menuitem value="Gestion de Comentarios" icon="https://img.icons8.com/nolan/64/000000/marker.png" url="Comentarios.xhtml"/>
+    <p:menuitem value="Edita tus comentarios" icon="https://img.icons8.com/nolan/64/000000/pokeball.png" url="editaComentario.xhtml"/>
     <p:menuitem value="Elimina Cuenta" icon="https://img.icons8.com/nolan/64/000000/high-priority.png" url="eliminacuenta.xhtml"/>
       
     </p:dock>  

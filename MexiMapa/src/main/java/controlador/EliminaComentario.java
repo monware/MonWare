@@ -45,6 +45,8 @@ public class EliminaComentario {
         Comentario u = udao.find(id);
         if(u!=null){
             udao.delete(u);
+            FacesMessage msg = new FacesMessage("El comentario se elimino correctamente Admi");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
@@ -53,7 +55,7 @@ public class EliminaComentario {
         Comentario u = udao.find(idComentario);
         if(u!=null){
             udao.delete(u);
-            FacesMessage msg = new FacesMessage("El comentario se elimino correctamente, que corresponde al tema Admi");
+            FacesMessage msg = new FacesMessage("El comentario se elimino correctamente Admi");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
@@ -69,6 +71,9 @@ public class EliminaComentario {
             if(comentario !=null){
                 comendao.delete(comentario);
                 FacesMessage msg = new FacesMessage("El comentario "+comentario.getComentario()+" Se elimino correctamente, que corresponde al tema "+comentario.getMarcador().getTema());
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }else{
+                FacesMessage msg = new FacesMessage("No es tu comentario");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }

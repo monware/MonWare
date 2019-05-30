@@ -43,9 +43,10 @@ public class CalificaComentario {
             cdao.update(comentario);
             FacesMessage msg = new FacesMessage("El comentario "+comentario.getComentario()+" Se calificó correctamente, corresponde al tema "+comentario.getMarcador().getTema());
             FacesContext.getCurrentInstance().addMessage(null, msg);
+        }else{
+            FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     public void descalificaComentario(int id, int cal){
         ComentarioDAO cdao = new ComentarioDAO();

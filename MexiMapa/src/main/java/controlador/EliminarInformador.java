@@ -49,7 +49,7 @@ public class EliminarInformador implements Serializable{
         UsuarioDAO udao = new UsuarioDAO();
         Usuario u = udao.buscaPorCorreo(this.correo);
         TemaDAO tdao = new TemaDAO();
-        eliminarTema t = new eliminarTema();
+        EliminarTema t = new EliminarTema();
         ComentarioDAO cdao = new ComentarioDAO();
         EliminaComentario c = new EliminaComentario();
         MarcadorDAO mdao = new MarcadorDAO();

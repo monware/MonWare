@@ -7,33 +7,23 @@ package controlador;
 
 import modelo.Marcador;
 import modelo.MarcadorDAO;
-import modelo.Mensajes;
 import modelo.Tema;
 import modelo.TemaDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
-import java.io.BufferedWriter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
 import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.servlet.ServletContext;
 /**
  *
  * @author jorge
@@ -60,7 +50,6 @@ public class AgregaTema implements Serializable {
         simpleModel = new DefaultMapModel();
         marcador = new Marker(centro,"Arrastrame");
         marcador.setDraggable(true);
-//      marcador.setClickable(true);
         simpleModel.addOverlay(marcador);
         this.latitud = marcador.getLatlng().getLat();
         this.longitud = marcador.getLatlng().getLng();
@@ -145,9 +134,6 @@ public class AgregaTema implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
-    
-    
-    
     
     public String agregaMarcador(){
         MarcadorDAO mdb =new MarcadorDAO();

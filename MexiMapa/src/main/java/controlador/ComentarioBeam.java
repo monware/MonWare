@@ -7,11 +7,14 @@ package controlador;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import modelo.Comentario;
 import modelo.ComentarioDAO;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.RowEditEvent;
 /**
  *
  * @author jorge
@@ -29,6 +32,15 @@ public class ComentarioBeam {
     public List<Comentario> getLista() {
         return lista;
     }
+
+    public Comentario getComen() {
+        return comen;
+    }
+
+    public void setComen(Comentario comen) {
+        this.comen = comen;
+    }
+    
     
     public static void setLista(List<Comentario> lista) {
       ComentarioBeam.lista = lista;
@@ -36,6 +48,19 @@ public class ComentarioBeam {
     public static void u(){
         ComentarioDAO comentarioDAO = new ComentarioDAO();
         ComentarioBeam.lista = comentarioDAO.buscaPorMarcador(VerMarcadores.select.getIdmarcador());
+    }
+    
+    public void Edita(RowEditEvent event) {
+        try{
+            this.comen = (Comentario) event.getObject();
+            ComentarioDAO cDAO = new ComentarioDAO();
+            cDAO.update(this.comen);
+            FacesMessage msg = new FacesMessage("Se modifico correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }catch(Exception e){
+            FacesMessage msg = new FacesMessage("Erro desconocido mandar mensaje a los administradores");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
     
 }
