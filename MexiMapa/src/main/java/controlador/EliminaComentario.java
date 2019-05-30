@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import javax.faces.application.FacesMessage;
 
 /**

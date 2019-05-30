@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.application.FacesMessage;

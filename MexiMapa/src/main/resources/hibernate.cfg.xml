@@ -50,9 +50,9 @@ Contributor(s):
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
-    <mapping resource="com/mycompany/prueba/Comentario.hbm.xml"/>
-    <mapping resource="com/mycompany/prueba/Usuario.hbm.xml"/>
-    <mapping resource="com/mycompany/prueba/Marcador.hbm.xml"/>
-    <mapping resource="com/mycompany/prueba/Tema.hbm.xml"/>
+    <mapping resource="modelo/Comentario.hbm.xml"/>
+    <mapping resource="modelo/Usuario.hbm.xml"/>
+    <mapping resource="modelo/Marcador.hbm.xml"/>
+    <mapping resource="modelo/Tema.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

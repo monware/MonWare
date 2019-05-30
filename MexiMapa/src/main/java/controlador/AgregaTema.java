@@ -5,13 +5,13 @@
 package controlador;
 
 
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Mensajes;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Mensajes;
+import modelo.Tema;
+import modelo.TemaDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.BufferedWriter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

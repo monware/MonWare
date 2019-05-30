@@ -7,10 +7,10 @@ package controlador;
 
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.Serializable;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;

@@ -5,15 +5,15 @@
  */
 package controlador;
 
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Tema;
+import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
