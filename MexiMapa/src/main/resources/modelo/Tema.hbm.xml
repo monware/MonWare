@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7/05/2019 01:45:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Tema" optimistic-lock="version" schema="public" table="tema">
+    <id name="nombre" type="string">
+      <column name="nombre"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="modelo.Usuario" fetch="select" name="usuario">
+      <column name="idusuario" not-null="true"/>
+    </many-to-one>
+    <property name="color" type="string">
+      <column name="color" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="marcadors" table="marcador">
+      <key>
+        <column name="nombre" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Marcador"/>
+    </set>
+  </class>
+</hibernate-mapping>

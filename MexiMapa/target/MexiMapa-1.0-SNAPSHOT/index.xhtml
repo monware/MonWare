@@ -21,51 +21,38 @@ and open the template in the editor.
         
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
+        
         <h:outputScript name="js/estilos.js"/> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
         </h:head>
  
-        <h:body style="background-image:dinosaurio.svg)">
+        <h:body>
 
     <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
                       
-		</a> <!-- / #logo-header -->
-   
-		<nav>
-			<ul>
-				<li><a href="index.xhtml">Principal</a></li>
-				<li><a href="Registrarse.xhtml">Registrarse</a></li>
-                                <li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
-                                
-			</ul>
-		</nav><!-- / nav -->
-                
-                
-                <!--<img id="fondo" src="resources/media/maleta.jpg"/>-->
+		</a>
 
-	</header><!-- / #main-header -->
+	</header>
                 <h:form id="formGeneralEI">
                 <p:panel header="Filtrar por Tema" >
-                     <p:outputLabel value="Tema: "/>
-                     <p:selectOneMenu id="informador" value="#{verMarcadores.nombreTema}"> 
-                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
-                        <f:selectItems value="#{verMarcadores.listaTemas()}"/>
-                        <f:ajax execute="Informador" render="iSeleccionado"/>
+                 
+                     <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
+                        <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
+                        <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
+                        <f:ajax execute="Tema" render="tSeleccionado" />
                      </p:selectOneMenu>
-                     <hr/>  
-                         <p:outputLabel value="Usuario Seleccionado: "/>
-                         <p:outputLabel id="iSeleccionado" value="#{verMarcadores.nombreTema}"/>
-                         
-                         <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" ajax="false"/>
+                    <br/>
+                    <br/>     
+                     <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
                 </p:panel>  
             </h:form>
 
-                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="false"  mapTypeControl="false">
-                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}"/>
+                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}" update="muestra_comentarios"/><!--update="muestra_comentarios"-->
                         <p:gmapInfoWindow id="ventanaInfo">
                              <p:outputPanel style="text-align: left; display: block; margin: auto">
                                  
@@ -74,12 +61,35 @@ and open the template in the editor.
                                     <h:outputText value="#{verMarcadores.marker.data}"/>
                             </p:outputPanel>
                         </p:gmapInfoWindow>
-                    </p:gmap> 
+                    </p:gmap>
+            <h:form id="muestra_comentarios">
+                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+                         <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                             <p:outputLabel value="#{comentario.comentario}"/>
+                         </p:column>
+                        <p:column headerText="Calificacion">
+                             <h:outputText id="output" value="#{comentario.calificacion}"/>
+                                <br/>
+                             <p:commandButton value="like" action="#{calificaComentario.calificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output" >
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
+                                </p:commandButton> 
+                                <p:commandButton value="dislike" action="#{calificaComentario.descalificaComentario(comentario.idcomentario, comentario.calificacion)}" update="output">
+                                    <f:actionListener binding="#{comentarioBeam.u()}"/>
+                                </p:commandButton>
+                         </p:column>
+                     </p:dataTable>
+            </h:form>
  
-        
+<p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="index.xhtml"/>
+    <p:menuitem value="Registrarse" icon="https://img.icons8.com/nolan/64/000000/add-user-male.png" url="Registrarse.xhtml"/>
+    <p:menuitem value="Iniciar Sesion" icon="https://img.icons8.com/nolan/64/000000/login-rounded-right.png" url="InicioSesion.xhtml"/>
+      
+</p:dock>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
-	</footer> <!-- / #main-footer -->
+	</footer>
  
 	
   </h:body>

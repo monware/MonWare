@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7/05/2019 01:45:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Comentario" optimistic-lock="version" schema="public" table="comentario">
+    <id name="idcomentario" type="int">
+      <column name="idcomentario"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="modelo.Marcador" fetch="select" name="marcador">
+      <column name="idmarcador" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="modelo.Usuario" fetch="select" name="usuario">
+      <column name="idusuario" not-null="true"/>
+    </many-to-one>
+    <property name="comentario" type="string">
+      <column name="comentario"/>
+    </property>
+    <property name="calificacion" type="java.lang.Integer">
+      <column name="calificacion"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -12,6 +12,7 @@
    
             <h:outputStylesheet name="css/style.css"/>
             <h:outputStylesheet name="css/visitante.css"/>
+            <h:outputScript name="js/estilos.js"/>
         </h:head>
  <h:body>
      <header id="main-header">
@@ -19,24 +20,24 @@
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
                       
-		</a> <!-- / #logo-header -->
+		</a> <!-- / #logo-header 
    
 		<nav>
 			<ul>
 				<li><a href="PaginaPrincipalComentaristaIH.xhtml">Principal</a></li>
 				<li><a href="EditarDatosComentarista.xhtml">Editar Datos</a></li>
+                                <li><a href="Comentarios.xhtml">Gestionar Comentarios</a></li>
+                                <li><a href="eliminacuenta.xhtml">Eliminar Cuenta</a></li>
 			</ul>
-                     <h:form id="logout" rendered="#{not empty comentarista}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
                 </h:form>
-		</nav><!-- / nav -->
+		</nav>-->
  
 	</header><!-- / #main-header -->
-    
+    <p:messages/>
           <header>
-            <h1>
+            <h2>
              Editar tus datos
-            </h1>
+            </h2>
               </header>        
                         <h:form id="editar">
                             <p:inputText id="nombre" value="#{editaDatos.nombre}" placeholder="Nombre(s)"/> <br/>
@@ -44,11 +45,26 @@
                             <p:inputText id="amaterno" value="#{editaDatos.amaterno}" placeholder="Apellido Materno"/> <br/>
                             
                             <p:inputText id="contrasenia" value="#{editaDatos.contrasenia}" placeholder="Contraseña nueva"/> <br/>                           
-                            <p:commandButton action="#{editaDatos.editaDatos()}" value="Aceptar" ajax="false" styleClass="apply"/>
+                            <p:commandButton action="#{editaDatos.editaDatos()}" value="Aceptar" ajax="false" styleClass="apply">
+                            <p:effect type="pulsate" event="click" />
+                            </p:commandButton> 
                         </h:form>
-          
+    
+        
+        <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalComentaristaIH.xhtml"/>
+    <p:menuitem value="Editar Datos" icon="https://img.icons8.com/nolan/64/000000/services.png" url="EditarDatosComentarista.xhtml"/>
+    <p:menuitem value="Gestion de Comentarios" icon="https://img.icons8.com/nolan/64/000000/marker.png" url="Comentarios.xhtml"/>
+    <p:menuitem value="Elimina Cuenta" icon="https://img.icons8.com/nolan/64/000000/high-priority.png" url="eliminacuenta.xhtml"/>
+      
+    </p:dock>  
+    </h:form>
         </h:body>	    
     </f:view>
+    
+    
 </html>
 
 

@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import javax.faces.application.FacesMessage;
 /**
  *
  * @author jorge
@@ -35,18 +34,31 @@ public class CalificaComentario {
         this.idComentario = idComentario;
     }
     
-    public void calificaComentario(){
-        UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
-        Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        for(Object coment:usuarioA.getComentarios()){
-            ComentarioDAO cdao = new ComentarioDAO();
-            Comentario comentario = (Comentario) coment;
-            comentario = cdao.find(idComentario);
-            if(comentario != null){
-                comentario.setCalificacion(calificacion);
-                cdao.update(comentario);
-            }
+    public void calificaComentario(int id, int cal){
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario comentario = cdao.find(id);
+        if(comentario != null){
+            int aux = cal +1;
+            comentario.setCalificacion(aux);
+            cdao.update(comentario);
+            FacesMessage msg = new FacesMessage("El comentario "+comentario.getComentario()+" Se calificó correctamente, corresponde al tema "+comentario.getMarcador().getTema());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+        FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    public void descalificaComentario(int id, int cal){
+        ComentarioDAO cdao = new ComentarioDAO();
+        Comentario comentario = cdao.find(id);
+        if(comentario != null&& cal > 0){
+            int aux = cal -1;
+            comentario.setCalificacion(aux);
+            cdao.update(comentario);
+            FacesMessage msg = new FacesMessage("Al comentario "+comentario.getComentario()+" Se le descalificó correctamente, corresponde al tema "+comentario.getMarcador().getTema());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }else{
+            FacesMessage msg = new FacesMessage("Lo siento un error inesperado contacta con los desarrolladores para mas inf");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 }

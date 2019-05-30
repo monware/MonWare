@@ -17,122 +17,140 @@ and open the template in the editor.
  
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
-         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_CV-ykq13siKc1d-UiPH4vmp0RjlNroA">
+        <h:outputScript name="js/estilos.js"/>
+         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
         <header id="main-header">
 		
 		<a id="logo-header" href="#">
 			<span class="site-name">MexiMapa</span>
-		</a> <!-- / #logo-header -->
+		</a> 
  
 		<nav>
-			<ul>
-                            
-                            <li><a href="PaginaPrincipalAdministradorIH.xhtml">Principal</a></li>
-				<li><a href="PanelAdministradorIH.xhtml">Panel de Control</a></li>
-			</ul>
-                     <h:form id="logout" rendered="#{not empty administrador}">
-                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión" styleClass="apply"/>
+			<h:form id="logout" rendered="#{not empty administrador}">
+                    <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
                 </h:form>
-		</nav><!-- / nav -->
- 
+                    
+		</nav> 		
 	</header><!-- / #main-header -->
  
 </h:head>
- 
 <h:body>  
  <h:form>
-    <p:panel id="panel" header="Menú Administrador: Agregar Informador" >
- 
-        <p:focus context="panel"/>
+     <p:panel  id="panel" header="Menú Administrador: Agregar Informador">
+  
+        <p:focus  context="panel"/>
  
         <p:messages />
  
-        <h:panelGrid  columns="3" >
-            <p:outputLabel for="username" value="Nombre" />
+        
+       <h:panelGrid  columns="3" >
+            <p:outputLabel for="username" value=""/>
             <p:inputText id="username" value="#{agregarInformador.nombre}" placeholder="Nombre" label="Firstname" required="true" validator="#{validaciones.validacionNombreAgregarInformador}">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="username" />
-            
-            <p:outputLabel for="apellidoP" value="Apellido Paterno" />
+            <br/>
+            <p:outputLabel for="apellidoP" value="" />
             <p:inputText id="apellidoP" value="#{agregarInformador.apaterno}" placeholder="Apellido Paterno" required="true" label="Apellido">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="apellidoP" />
- 
-            <p:outputLabel for="apellidoM" value="Apellido Materno" />
+            <br/>
+            <p:outputLabel for="apellidoM" value="" />
             <p:inputText id="apellidoM" value="#{agregarInformador.amaterno}" placeholder="Apellidos Materno" required="true" label="Apellido">
                 <f:validateLength minimum="2" />
             </p:inputText>
-            <p:message for="apellidoM" />
- 
-            <p:outputLabel for="email" value="Email" />
+            <br/>
+            <p:outputLabel for="email" value="" />
             <p:inputText id="email" value="#{agregarInformador.correo}" placeholder="Correo Informador" required="true" label="email" validator="#{validaciones.validacionEmailAgregarInformador}">
             </p:inputText>
-            <p:message for="email" />
         </h:panelGrid>
-  <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}"/>
-            
+        <br/>
+          <br/>
+                   
+                <p:commandButton id="submitButton" value="Agregar Informador" update="@parent" action="#{agregarInformador.agregarInformador()}">
+            <p:effect type="pulsate" event="click" />
+               </p:commandButton>
     </p:panel>
-
 </h:form>
 
-    
-         <h:form id="formGeneralEI">
-                <p:panel header="Menú Administrador: Eliminar Informador" >
-                     <p:outputLabel value="Informador: "/>
+ <h:form>
+    <p:panel id="panel" header="Menú Administrador: Eliminar Informador" >
+ 
+        <p:focus context="panel"/>
+ 
                      <p:selectOneMenu id="informador" value="#{eliminarInformador.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarInformador.listaInformadores}"/>
                         <f:ajax execute="Informador" render="iSeleccionado"/>
                      </p:selectOneMenu>
-                     <hr/>  
-                         <p:outputLabel value="Usuario Seleccionado: "/>
-                         <p:outputLabel id="iSeleccionado" value="#{eliminarInformador.correo}"/>
-                         
-                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false"/>
-                </p:panel>  
-            </h:form>
-    
-    <h:form id="formGeneralEC">
-                
-                <p:panel header="Menú Administrador: Eliminar Comentarista" >
-                     <p:outputLabel value="Comentarista: "/>
+                     <br/>
+                     <br/>
+                         <p:commandButton action="#{eliminarInformador.eliminaInformador()}" value="Elimina Informador" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                        </p:commandButton>        
+    </p:panel>
+
+</h:form>
+
+    <h:form id="funcionEliminarComentarista">
+    <p:panel id="panel" header="Menú Administrador: Eliminar Comentarista" >
+        <p:messages />
                      <p:selectOneMenu id="comentarista" value="#{eliminarComentarista.correo}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarComentarista.listaComentaristas}"/>
-                        <f:ajax execute="Comentarista" render="tSeleccionado"/>
+                        <f:ajax execute="Comentarista" render="cSeleccionado"/>
                      </p:selectOneMenu>
-                     <hr/>
-                         <p:outputLabel value="Tema Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminarComentarista.correo}"/>
-                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false"/>
-                </p:panel>  
-            </h:form>
-   
-    <h:form id="formGeneral">
-                
-                <p:panel header="Menú Administrador: Eliminar Tema" >
-                     <p:outputLabel value="Tema: "/>
+                     <br/>
+                       <br/>
+                   
+                         <p:commandButton action="#{eliminarComentarista.eliminaComentarista()}" value="Elimina Comentarista" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                        </p:commandButton>        
+    
+    </p:panel>           
+    </h:form>
+             
+    
+            <h:form>
+                 <p:panel id="panel" header="Menú Administrador: Eliminar Tema" >
                      <p:selectOneMenu id="tema" value="#{eliminarTema.nombre_tema}"> 
                         <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
                         <f:selectItems value="#{eliminarTema.listaTemas}"/>
                         <f:ajax execute="tema" render="tSeleccionado"/>
                      </p:selectOneMenu>
-                     <hr/>
-                         <p:outputLabel value="Tema Seleccionado: "/> 
-                         <p:outputLabel id="tSeleccionado" value="#{eliminarTema.nombre_tema}"/>
-                         <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false"/>
+                       <br/>
+                     <br/>
+                     <p:commandButton action="#{eliminarTema.eliminaTemaAdministrador()}" value="Elimina Tema" ajax="false">
+                             <p:effect type="pulsate" event="click" />
+                     </p:commandButton>    
+                 </p:panel>  
+            </h:form>
+    
+    
+         
+             <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalAdministradorIH.xhtml"/>
+    <p:menuitem value="Panel de Control" icon="https://img.icons8.com/nolan/64/000000/settings.png" url="PanelAdministradorIH.xhtml"/>
+   
+    </p:dock>  
+    </h:form>
+	 <h:form id="formGeneral">
+                
+                <p:panel header=" Eliminar Marcador" >
+                     <p:selectOneMenu id="Marcador" value="#{eliminaMarcador.idMarcador}"> 
+                        <f:selectItem itemLabel="-- Seleccione --" itemValue=""/>
+                        <f:selectItems value="#{eliminaMarcador.listaMarcador}" var="marcador" itemValue="#{marcador.idmarcador}"/>
+                        <f:ajax execute="Marcador" render="tSeleccionado"/>
+                     </p:selectOneMenu>
+                     <br/>
+                     <br/>
+                         <!--<p:outputLabel id="tSeleccionado" value="{eliminaMarcador.marcador}"/>-->
+                         <p:commandButton action="#{eliminaMarcador.eliminaMarcadorAdministrador()}" value="Elimina Marcador" update="formGeneral" />
                 </p:panel>  
             </h:form>
-      
-    
 </h:body>
-        
-	
-  
-    
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 /**
  *
  * @author jorge
@@ -17,6 +18,7 @@ import com.mycompany.prueba.UsuarioDAO;
 @ManagedBean
 public class EditaComentario {
     private int idComentario;
+    private String comentario;
 
     public int getIdComentario() {
         return idComentario;
@@ -33,10 +35,7 @@ public class EditaComentario {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    private String comentario;
     
-
-
     public void editaComentario(){
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");

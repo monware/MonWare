@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author jorge
  */
+
 @WebFilter("/user/informador/*")
 public class FilterSessionInformador implements Filter{
     @Override
@@ -33,7 +34,7 @@ public class FilterSessionInformador implements Filter{
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(true);
-         if (session.getAttribute("informador") == null) {
+        if (session.getAttribute("informador") == null) {
             res.sendRedirect(req.getContextPath() + "/index.xhtml"); // Si no se encuentra el usuario redire al index.
         }
         else {

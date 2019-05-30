@@ -12,9 +12,11 @@
             <title>Registrar</title>
             <h:outputStylesheet name="css/style.css"/>
             <h:outputStylesheet name="css/visitante.css"/>
+            <h:outputScript name="js/estilos.js"/>
             <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
-             
+            
+            
         </h:head>
         <h:body>
             <header id="main-header">
@@ -24,13 +26,13 @@
                       
 		</a> <!-- / #logo-header -->
    
-		<nav>
+		<!--<nav>
 			<ul>
 				<li><a href="PaginaPrincipalIH.xhtml">Principal</a></li>
 				<li><a href="Registrarse.xhtml">Registrarse</a></li>
 				<li><a href="InicioSesion.xhtml">Iniciar Sesion</a></li>
 			</ul>
-		</nav><!-- / nav -->
+		</nav>-->
  
 	</header><!-- / #main-header -->
     
@@ -43,9 +45,9 @@
                 
                
                 <h:form  rendered="#{empty user}" id="formulario-reg">
-                        <p:messages id="messages" showDetail="true" closable="true">
-                            <p:autoUpdate />
-                        </p:messages>
+                    <p:messages id="messages" showDetail="true" closable="true" style="width: 100%"/>
+                           
+                      
                     <br><p:inputText  id="nombre" value="#{registrarUsuario.nombre}" required="true" placeholder="Nombre"  validatorMessage="Por favor ingresa tu nombre" requiredMessage="Es un campo obligatorio"/></br>                            
                          
                     <br><p:inputText  id="apaterno" value="#{registrarUsuario.apaterno}" required="true" placeholder="paterno"  validatorMessage="Por favor ingresa tu apellido" requiredMessage="Es un campo obligatorio"/></br>
@@ -57,18 +59,27 @@
                         </p:inputText></br> 
                        
                     <br><p:password  id="contrasenia" value="#{registrarUsuario.contrasenia}" placeholder="Contrasenia"  required="true" validatorMessage="Introduce contrasenia"/></br> 
-                    <br><p:commandButton action="#{registrarUsuario.agregaUsuario()}" value="Registrame" ajax="false"/></br> 
-                    </h:form>
-            </main>      
+                    
+                       <br><p:commandButton action="#{registrarUsuario.agregaUsuario()}" value="Registrame" ajax="false" id="registroBoton" >
+                        <p:effect type="pulsate" event="click" />
+                           </p:commandButton></br>     
+    
+                </h:form>
                 
-            <footer>
-                <h3>
-                   MonWare 
-                </h3>
-            </footer>   
-            
+            </main>      
+    <h:form>
+     <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="index.xhtml"/>
+    <p:menuitem value="Registrarse" icon="https://img.icons8.com/nolan/64/000000/add-user-male.png" url="Registrarse.xhtml"/>
+    <p:menuitem value="Iniciar Sesion" icon="https://img.icons8.com/nolan/64/000000/login-rounded-right.png" url="InicioSesion.xhtml"/>
+      
+    </p:dock>  
+    </h:form>
         </h:body>
+        
     </f:view>
+    
 </html>
 
 

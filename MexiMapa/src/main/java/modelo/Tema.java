@@ -1,4 +1,4 @@
-package com.mycompany.prueba;
+package modelo;
 // Generated 7/05/2019 01:45:17 PM by Hibernate Tools 4.3.1
 
 
@@ -62,7 +62,7 @@ public class Tema  implements java.io.Serializable {
 
 
     public String toString(){
-        return "Nombre: "+this.getNombre()+"\t"+"Usuario: "+this.getUsuario();
+        return this.getNombre();
     }
 }
 

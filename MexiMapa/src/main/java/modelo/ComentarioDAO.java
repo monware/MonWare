@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.prueba;
+package modelo;
 
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -54,6 +54,29 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
      */
     public Comentario find(int id){
         return super.find(Comentario.class, id);
+    }
+    
+    public Comentario findP(int id){
+        Comentario obj =null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Comentario c where max(c.calificacion)";
+            Query query = session.createQuery(hql);
+            query.setParameter("id", id);
+            //obj = (Comentario) query.;
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+        }finally{
+            session.close();
+        
+        }
+        return obj;
     }
     
     /**

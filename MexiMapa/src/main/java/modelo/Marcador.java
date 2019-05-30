@@ -1,4 +1,4 @@
-package com.mycompany.prueba;
+    package modelo;
 // Generated 7/05/2019 01:45:17 PM by Hibernate Tools 4.3.1
 
 
@@ -96,7 +96,9 @@ public class Marcador  implements java.io.Serializable {
     public void setComentarios(Set comentarios) {
         this.comentarios = comentarios;
     }
-
+ public String toString(){
+     return this.descripcion+this.tema;
+    }
 
 
 

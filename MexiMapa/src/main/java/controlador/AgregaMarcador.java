@@ -5,12 +5,13 @@
 package controlador;
 
 
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Mensajes;
+import modelo.Tema;
+import modelo.TemaDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.BufferedWriter;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +31,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.servlet.ServletContext;
 /**
  *
@@ -46,7 +49,10 @@ public class AgregaMarcador implements Serializable {
     private Tema tema;
     private String descripcion;
     private String datos;
-    private LatLng centro;   
+    private LatLng centro; 
+    private String nombreTema;
+    private List<Tema> listaTemas;
+    private String color;
     
     @PostConstruct
     public void init(){
@@ -60,9 +66,23 @@ public class AgregaMarcador implements Serializable {
         this.longitud = marcador.getLatlng().getLng();
     }
     
+    public List<Tema> getListaTemas() {
+        TemaDAO tdao = new TemaDAO();
+        this.listaTemas = tdao.listaTemas();
+        return listaTemas;
+    }
     public LatLng getCentro() {
         return centro;
     }
+
+    public String getNombreTema() {
+        return nombreTema;
+    }
+
+    public void setNombreTema(String nombreTema) {
+        this.nombreTema = nombreTema;
+    }
+    
  
     public Marker getMarcador() {
         return marcador;
@@ -123,29 +143,27 @@ public class AgregaMarcador implements Serializable {
     public String agregaMarcador(){
         MarcadorDAO mdb =new MarcadorDAO();
         UsuarioDAO udb = new UsuarioDAO();
+        TemaDAO tdao = new TemaDAO();
         Marcador m = mdb.buscaMarcadorPorLatLng(latitud, longitud);
+        setTema(tdao.find(this.getNombreTema()));
+        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
+        Usuario u = udb.buscaPorCorreo(us.getCorreo());
         if(m!= null){
             this.descripcion ="";
-            //Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
+            Mensajes.fatal("Ya existe un marcador con estas cordenadas \n" +"Lat: "+this.latitud +" Lng: "+this.longitud);
             return "";
         }
         m = new Marcador();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informadores");
-        Usuario u = udb.buscaPorCorreo(us.getCorreo());
-        TemaDAO daoTema = new TemaDAO();
-        Tema tem = daoTema.find(1);
         m.setDescripcion(descripcion);
         m.setLatitud(latitud);
         m.setLongitud(longitud);
         m.setDatos(datos);
-        m.setTema(tem);
-        // this.creaIcono(color,50,50);
-        //System.out.println(color);
-        //m.setIcon("resources/images/"+color+".svg");
+        m.setTema(tema);
         m.setUsuario(u);
         mdb.save(m);
-        this.descripcion ="";
-        //Mensajes.info("Se guardo el marcador");
+        FacesMessage msg = new FacesMessage("El marcador"+ m.getDescripcion() +" hecho por "+ m.getUsuario() +" fue agregado con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         return "";
     }
 
@@ -156,6 +174,5 @@ public class AgregaMarcador implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
     
 }

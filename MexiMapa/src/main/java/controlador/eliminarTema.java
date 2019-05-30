@@ -6,23 +6,22 @@
 package controlador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Tema;
+import modelo.TemaDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -55,6 +54,7 @@ public class eliminarTema implements Serializable{
     }
     
     public void eliminaTemaAdministrador(){
+        
         TemaDAO daoTema = new TemaDAO();
         Tema tema = daoTema.find(this.getNombre_tema());
         if(tema != null){
@@ -71,6 +71,8 @@ public class eliminarTema implements Serializable{
             daoMarcador.delete(marcador);
             }
             daoTema.delete(tema);
+             FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
+             FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
             System.out.println("No existe el tema");
         } 
@@ -98,6 +100,8 @@ public class eliminarTema implements Serializable{
                     daoMarcador.delete(marcador);
                 }
                 temadao.delete(tema);
+                FacesMessage msg = new FacesMessage("El tema "+tema.getNombre()+" fue removido con exito.");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }
     }

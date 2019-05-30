@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Tema;
-import com.mycompany.prueba.TemaDAO;
+import modelo.Tema;
+import modelo.TemaDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +76,7 @@ public class EliminaTema implements Serializable{
         UsuarioDAO daoUsuario = new UsuarioDAO();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("informador");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
-        
+
         for(Object prueba: usuarioA.getTemas()){
             TemaDAO temadao = (TemaDAO) prueba;
             Tema tema = temadao.find(this.tema.getNombre());

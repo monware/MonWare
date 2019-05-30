@@ -4,27 +4,31 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets"
      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-<f:view>
+
+    
+
+    <f:view>
     <h:head>
 	
 	<title>Pagina Principal</title>
- 
+        
         <h:outputStylesheet name="css/style.css"/>
         <h:outputStylesheet name="css/visitante.css"/>
+        
+        <h:outputScript name="js/estilos.js"/> 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
             </script>
-         
-    </h:head>
- 
-<h:body>
-
+  
+         </h:head>
+ <h:body>
+     
     <header id="main-header">
 		
 		<a id="logo-header" href="#">
@@ -33,46 +37,61 @@ and open the template in the editor.
 		</a> <!-- / #logo-header -->
    
 		<nav>
-			<ul>
-				<li><a href="PaginaPrincipalInformadorIH.xhtml">Principal</a></li>
-				<li><a href="AgregarTema.xhtml">Gestion de Temas</a></li>
-                                                                        <li><a href="colocarmarcador.xhtml">Colocar Marcador</a></li>
-                                                                        <li><a href="eliminamarcador.xhtml">Eliminar Marcador</a></li>
-			</ul>
                     
-                    <h:form id="logout" rendered="#{not empty informador}">
+                        <h:form id="logout" rendered="#{not empty informador}">
                     <p:commandButton action="#{controladorSesion.logout()}" value="Cerrar sesión"  styleClass="apply"/>
                 </h:form>
 		</nav><!-- / nav -->
  
 	</header><!-- / #main-header -->
-        <main>
-                <section >
-                   
-                    
-                    <h2>Agrega un marcador</h2> 
-                    <p:separator/>
-                    <h:form id="form" >
-                        
-                        <p:messages id="messages" showDetail="true" closable="true">
-                            <p:autoUpdate />
-                        </p:messages>
-                        
-                        <p:inputNumber   decimalPlaces="6" id="longitud" value="#{agregaMarcador.longitud}" disabled="true"/>
-                        <p:inputNumber   id="latitud" decimalPlaces="6" value="#{agregaMarcador.latitud}" disabled="true"/>
-                        <p:inputTextarea class="texto" id="descripcion" placeholder="Descripcion" value="${agregaMarcador.descripcion}"  required="true"  requiredMessage="Por favor agrega una descripcion"/>
-                        <p:inputTextarea class="texto" id="dato" placeholder="Datos" value="${agregaMarcador.datos}"  required="true"  requiredMessage="Por favor agrega sus datos"/>
-                        <p:commandButton styleClass="boton"  id="agregaMarcador" value="Agrega Marcador" action="#{agregaMarcador.agregaMarcador()}"/>
-                        
-                    </h:form>
-                </section>
-                
-                <p:gmap    mapTypeControl="false" center="#{agregaMarcador.centro.lat},#{agregaMarcador.centro.lng}" zoom="5" type="roadmap" id="mapa" model="#{agregaMarcador.simpleModel}">
-                    <p:ajax event="markerDrag" listener="#{agregaMarcador.onMarkerDrag}" update="form:longitud form:latitud"/>
-                    <p:ajax event="pointSelect" listener="#{agregaMarcador.onPointSelect}" update="form:longitud form:latitud mapa"/>
-                </p:gmap>
-            </main>
         
+                 <h:form id="formGeneralEI">
+                <p:panel header="Filtrar por Tema" >
+                 
+                     <p:selectOneMenu id="tema" value="#{verMarcadores.nombreTema}"> 
+
+                        <f:selectItem itemLabel="-- Seleccione Tema --" itemValue=""/>
+                        <f:selectItems value="#{verMarcadores.listaTemas()}" var="tema" itemValue="#{tema.nombre}"/>
+                        <f:ajax execute="Tema" render="tSeleccionado" />
+                     </p:selectOneMenu>
+                    <br/>
+                    <br/>     
+                     <p:commandButton action="#{verMarcadores.verMarcadores()}" value="Ver Marcadores" update="mapa"/>
+                </p:panel>  
+            </h:form>
+
+                    <p:gmap center="23.382390, -102.291477" zoom="5" type="roadmap" id="mapa" model="#{verMarcadores.simpleModel}"  draggable="true"  mapTypeControl="false">
+                        <p:ajax event="overlaySelect" listener="#{verMarcadores.onMarkerSelect}" update="muestra_comentarios"/><!--update="muestra_comentarios"-->
+                        <p:gmapInfoWindow id="ventanaInfo">
+                             <p:outputPanel style="text-align: left; display: block; margin: auto">
+                                 
+                                    <h:outputText value="#{verMarcadores.marker.title}" />
+                                    <br/>
+                                    <h:outputText value="#{verMarcadores.marker.data}"/>
+                            </p:outputPanel>
+                        </p:gmapInfoWindow>
+                    </p:gmap>
+            <h:form id="muestra_comentarios">
+                    <p:dataTable value="#{comentarioBeam.lista}" var="comentario" scrollable="true" scrollHeight="140">
+                         <p:column headerText="Comentarios" filterBy="#{comentario.comentario}" filterMatchMode="contains">
+                             <p:outputLabel value="#{comentario.comentario}"/>
+                         </p:column>
+                        <p:column headerText="Calificacion">
+                             <p:outputLabel value="#{comentario.calificacion}"/>
+                         </p:column>
+                     </p:dataTable>
+            </h:form>
+
+                <h:form>
+    <p:dock position="bottom">
+
+    <p:menuitem value="Home"  icon="https://img.icons8.com/nolan/64/000000/home.png" url="PaginaPrincipalInformadorIH.xhtml"/>
+    <p:menuitem value="Gestion de Temas" icon="https://img.icons8.com/nolan/64/000000/folder-invoices.png" url="AgregarTema.xhtml"/>
+    <p:menuitem value="Colocar Marcadores" icon="https://img.icons8.com/nolan/64/000000/map-marker.png" url="colocarmarcador.xhtml"/>
+   <p:menuitem value="Eliminar Macadores" icon="https://img.icons8.com/nolan/64/000000/map-editing.png" url="eliminamarcador.xhtml"/>
+   
+    </p:dock>  
+    </h:form>
 	<footer id="main-footer">
 		<p> 2019 MonWare</p>
 	</footer> <!-- / #main-footer -->

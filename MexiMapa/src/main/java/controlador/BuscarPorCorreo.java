@@ -6,11 +6,9 @@
 package controlador;
 
 
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
-import java.util.List;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -23,13 +21,11 @@ import javax.faces.bean.SessionScoped;
 public class BuscarPorCorreo {
     private String correo;
     private String contrasenia;
-
     private Usuario resultado;
 
     public Usuario getResultado() {
         return resultado;
     }
-
 
     public String getCorreo() {
         return correo;
@@ -47,8 +43,6 @@ public class BuscarPorCorreo {
         this.contrasenia = contrasenia;
     }
     
-
-
     public Usuario buscaPorCorreo(){
         if(correo.equals("") && contrasenia.equals(""))
             return null;
