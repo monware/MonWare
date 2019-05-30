@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import javax.faces.bean.ViewScoped;
 /**
  *

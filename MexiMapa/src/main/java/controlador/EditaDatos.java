@@ -7,8 +7,8 @@ package controlador;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.UsuarioDAO;
-import com.mycompany.prueba.Usuario;
+import modelo.UsuarioDAO;
+import modelo.Usuario;
 import javax.faces.application.FacesMessage;
 
 /**

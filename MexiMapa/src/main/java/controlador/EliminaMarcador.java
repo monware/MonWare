@@ -8,12 +8,12 @@
  */
 
 package controlador;
-import com.mycompany.prueba.Marcador;
-import com.mycompany.prueba.MarcadorDAO;
+import modelo.Marcador;
+import modelo.MarcadorDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

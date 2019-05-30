@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package controlador;
-import com.mycompany.prueba.Comentario;
-import com.mycompany.prueba.ComentarioDAO;
-import com.mycompany.prueba.Usuario;
-import com.mycompany.prueba.UsuarioDAO;
+import modelo.Comentario;
+import modelo.ComentarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

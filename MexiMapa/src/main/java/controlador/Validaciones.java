@@ -10,8 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import com.mycompany.prueba.UsuarioDAO;
-import com.mycompany.prueba.TemaDAO;
+import modelo.UsuarioDAO;
+import modelo.TemaDAO;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**

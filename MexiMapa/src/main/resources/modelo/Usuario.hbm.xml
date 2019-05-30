@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 7/05/2019 01:45:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Usuario" optimistic-lock="version" schema="public" table="usuario">
+    <id name="idusuario" type="int">
+      <column name="idusuario"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombre" type="string">
+      <column name="nombre" not-null="true"/>
+    </property>
+    <property name="apaterno" type="string">
+      <column name="apaterno"/>
+    </property>
+    <property name="amaterno" type="string">
+      <column name="amaterno"/>
+    </property>
+    <property name="contrasenia" type="string">
+      <column name="contrasenia" not-null="true"/>
+    </property>
+    <property name="correo" type="string">
+      <column name="correo" not-null="true" unique="true"/>
+    </property>
+    <property name="rol" type="java.lang.Integer">
+      <column name="rol"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="comentarios" table="comentario">
+      <key>
+        <column name="idusuario" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Comentario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="marcadors" table="marcador">
+      <key>
+        <column name="idusuario" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Marcador"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="temas" table="tema">
+      <key>
+        <column name="idusuario" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Tema"/>
+    </set>
+  </class>
+</hibernate-mapping>
