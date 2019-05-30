@@ -65,27 +65,6 @@ public class AgregaComentario {
         this.calificacion = calificacion;
     }
     
-    public void agregaComentario(){
-        Comentario comentar = new Comentario();
-        ComentarioDAO daoComentario = new ComentarioDAO();
-        Marcador marcador = new Marcador();
-        MarcadorDAO daoMarcador = new MarcadorDAO();
-        marcador = daoMarcador.find(1);
-        Usuario usuario = new Usuario();
-        UsuarioDAO daoUsuario = new UsuarioDAO();
-        ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
-        usuario = daoUsuario.buscaPorCorreo(us.getCorreo());
-        comentar.setMarcador(marcador);
-        comentar.setUsuario(usuario);
-        comentar.setComentario(comentario);
-        comentar.setCalificacion(calificacion);
-        daoComentario.save(comentar);
-        FacesMessage msg = new FacesMessage("El comentario"+comentar.getIdcomentario() +" hecho por "+ comentar.getUsuario()+" fue agregado con exito.");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        
-        
-    }
-    
     public void agregaComentario(Usuario usuario,Marcador marcador,String comentario,Integer calificacion){
         Comentario comentar = new Comentario();
         ComentarioDAO daoComentario = new ComentarioDAO();
@@ -94,6 +73,8 @@ public class AgregaComentario {
         comentar.setComentario(comentario);
         comentar.setCalificacion(calificacion); 
         daoComentario.save(comentar);
+        FacesMessage msg = new FacesMessage("El comentario"+comentar.getIdcomentario() +" hecho por "+ comentar.getUsuario()+" fue agregado con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         
     }
 }

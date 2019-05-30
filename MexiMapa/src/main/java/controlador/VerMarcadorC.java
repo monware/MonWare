@@ -171,11 +171,7 @@ public class VerMarcadorC implements Serializable{
         MarcadorDAO marcadorDAO = new MarcadorDAO();
         Marcador ma = marcadorDAO.buscaMarcadorPorLatLng(latitud,longitud);
         AgregaComentario com = new AgregaComentario();
-        com.agregaComentario(usuarioA,ma,comentario,calificacion);
+        com.agregaComentario(usuarioA,ma,comentario,0);
         ComentarioBeam.update();
-    }
-    
-    public void incrementaCalificacion(){
-        calificacion++;
     }
 }
