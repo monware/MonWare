@@ -12,13 +12,11 @@ import com.mycompany.prueba.UsuarioDAO;
 import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
 import javax.faces.context.FacesContext;
 
 /**
@@ -45,35 +43,28 @@ public class EliminarComentarista implements Serializable{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-   
-    /**
-     * 
-     */
+
     public void eliminaComentarista(){
-    
         UsuarioDAO udao = new UsuarioDAO();
         ComentarioDAO cdao = new ComentarioDAO();
-
         EliminaComentario c = new EliminaComentario();
         Usuario u = udao.buscaPorCorreo(this.correo);
         if(u!=null){
             List<Comentario> comentarios = cdao.ObtenComentarioPorUsuario(this.correo);
-            for(Comentario comentario : comentarios){
+            for(Comentario comentario : comentarios){                
                 c.setIdComentario(comentario.getIdcomentario());
                 c.eliminaComentarioAdministrador();
             }
         udao.delete(u);
-        
         FacesMessage msg = new FacesMessage("Se ha eliminado el usuario");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }else{
-            
-        FacesMessage msg = new FacesMessage("No existe el usuario o algo salió mal");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesMessage msg = new FacesMessage("No existe el usuario o algo salió mal");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
-       @PostConstruct
+    @PostConstruct
     public void listaInformadores() {
         UsuarioDAO uda = new UsuarioDAO();
         this.listaComentaristas = uda.listaComentaristas();  

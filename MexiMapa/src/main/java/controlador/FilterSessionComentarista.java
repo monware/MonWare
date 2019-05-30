@@ -16,10 +16,12 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author jorge
  */
+
 @WebFilter("/user/comentarista/*")
 public class FilterSessionComentarista implements Filter{
     @Override
@@ -32,7 +34,7 @@ public class FilterSessionComentarista implements Filter{
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(true);
-         if (session.getAttribute("comentarista") == null) {
+        if (session.getAttribute("comentarista") == null) {
             res.sendRedirect(req.getContextPath() + "/index.xhtml"); // Si no se encuentra el usuario redire al index.
         }
         else {

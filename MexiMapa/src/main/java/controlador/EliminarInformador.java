@@ -15,7 +15,6 @@ import javax.faces.bean.ManagedBean;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
@@ -23,10 +22,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-/**
- *
- * @author jorge
- */
 
 /**
  *
@@ -59,38 +54,35 @@ public class EliminarInformador implements Serializable{
         EliminaComentario c = new EliminaComentario();
         MarcadorDAO mdao = new MarcadorDAO();
         EliminaMarcador m = new EliminaMarcador();
-        
         if(u!=null){
-              List<Tema> temasInformador = tdao.ObtenTemasPorUsuario(u.getCorreo());
-              if(!temasInformador.isEmpty()){
-              for(Tema tema : temasInformador){
-                t.setNombre_tema(tema.getNombre());
-                t.eliminaTemaAdministrador(); 
+            List<Tema> temasInformador = tdao.ObtenTemasPorUsuario(u.getCorreo());
+            if(!temasInformador.isEmpty()){
+                for(Tema tema : temasInformador){
+                    t.setNombre_tema(tema.getNombre());
+                    t.eliminaTemaAdministrador(); 
                 }
-              }
-              
-              List<Marcador> marcadoresInformador = mdao.ObtenMarcadoresPorUsuario(u.getCorreo());
-              if(!marcadoresInformador.isEmpty()){
-              for(Marcador marc : marcadoresInformador){
+            }
+        List<Marcador> marcadoresInformador = mdao.ObtenMarcadoresPorUsuario(u.getCorreo());
+        
+        if(!marcadoresInformador.isEmpty()){
+            for(Marcador marc : marcadoresInformador){
                 m.setIdMarcador(marc.getIdmarcador());
                 m.eliminaMarcadorAdministrador();
-                }
-              }
-              
-              List<Comentario> comentariosInformador = cdao.ObtenComentarioPorUsuario(u.getCorreo());
-              if(!comentariosInformador.isEmpty()){
-              for(Comentario comen : comentariosInformador){
+            }
+        }
+        List<Comentario> comentariosInformador = cdao.ObtenComentarioPorUsuario(u.getCorreo());
+        if(!comentariosInformador.isEmpty()){
+            for(Comentario comen : comentariosInformador){
                 c.setIdComentario(comen.getIdcomentario());
                 c.eliminaComentarioAdministrador();
-                }
-              }
-              
-            udao.delete(u);
-            listaInformadores.remove(u);
-             FacesMessage msg = new FacesMessage("El informador"+u.getNombre()+u.getApaterno()+" fue removido con exito.");
-             FacesContext.getCurrentInstance().addMessage(null, msg);
-             }
+            }
         }
+        udao.delete(u);
+        listaInformadores.remove(u);
+        FacesMessage msg = new FacesMessage("El informador"+u.getNombre()+u.getApaterno()+" fue removido con exito.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
     
     @PostConstruct
     public void listaInformadores() {
@@ -100,5 +92,5 @@ public class EliminarInformador implements Serializable{
 
     public List<Usuario> getListaInformadores() {
         return listaInformadores;
-      }
     }
+}

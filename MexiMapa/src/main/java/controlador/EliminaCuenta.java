@@ -8,7 +8,6 @@ import com.mycompany.prueba.Comentario;
 import com.mycompany.prueba.ComentarioDAO;
 import com.mycompany.prueba.Usuario;
 import com.mycompany.prueba.UsuarioDAO;
-import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -32,9 +31,9 @@ public class EliminaCuenta{
         this.idusuario = idusuario;
     }
     
-    public String eliminaCuenta(){     
-         UsuarioDAO daoUsuario = new UsuarioDAO();
-         ComentarioDAO cdao = new ComentarioDAO();
+    public String eliminaCuenta(){
+        UsuarioDAO daoUsuario = new UsuarioDAO();
+        ComentarioDAO cdao = new ComentarioDAO();
         EliminaComentario c= new EliminaComentario();
         ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("comentarista");
         Usuario usuarioA = daoUsuario.buscaPorCorreo(us.getCorreo());
