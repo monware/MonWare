@@ -5,10 +5,8 @@
  */
 package controlador;
 
-//import com.mycompany.prueba.Rol;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
@@ -28,7 +26,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author jonathan
+ * @author ALEX
  */
 @ManagedBean
 @RequestScoped
@@ -126,26 +124,8 @@ public class AgregarInformador {
     public void setComentarios(Set comentarios) {
         this.comentarios = comentarios;
     }
-   
-    
-    /*public void separaApellido(String apellido){
-       String[] apellidos = apellido.split(" ");
-       if(apellidos[0]== null){
-           setApaterno("-");
-       }
-       else{
-           setApaterno(apellidos[0]);
-       }
-       if(apellidos[1]== null){
-           setApaterno("-");
-       }
-       else{       
-       setAmaterno(apellidos[1]);
-       }
-    }*/
     
     public void agregarInformador(){
-        //separaApellido(apellido);
         Usuario u = new Usuario();
         u.setNombre(nombre);
         u.setCorreo(correo);
@@ -153,14 +133,10 @@ public class AgregarInformador {
         u.setAmaterno(amaterno);
         u.setContrasenia(generaContrasenia(10));  
         u.setRol(3);
-            
         UsuarioDAO udb = new UsuarioDAO();
         udb.save(u);
-        //correo a donde se mandará la confrimación 
         String receptor = u.getCorreo();
-        //cuerpo del correo
         String mensaje = "Felicidades, nuevo informador, se ha completado tu registro a MexiMapa\n su password es:\n" + u.getContrasenia();
-        //método que manda el correo
         mandaCorreo(receptor,"Confirmacion correo", mensaje,"monwareorg@gmail.com");
         
         
@@ -174,28 +150,14 @@ public class AgregarInformador {
       return contrasenia.substring(0,i);
     }
 
-   /**
-     * 
-     * @param a el destinatario del correo
-     * @param asunto el asunto del correo
-     * @param msg el cuerpo del correo
-     * @param usr el correo emisor del mensaje
-     * @return true si envía el correo, false en otro caso
-     */
-    //va así para evitar problemas
     private boolean mandaCorreo(String a, String asunto, String msg, final String usr) {
         boolean enviado = true;
-        // Get system properties
         Properties properties = new Properties();
-
-        // Setup mail server
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        // Get the default Session object.
-        
         Session session;
         session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override

@@ -20,47 +20,29 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
         super();
     }
     
-    /**
-     * 
-     * @param usuario 
-     */
     @Override
     public void save(Comentario comentario){
         super.save(comentario);
     }
     
-    /**
-     * 
-     * @param comentario
-     */
+
     @Override
     public  void update(Comentario comentario){
         super.update(comentario);
     }
     
-    /**
-     * 
-     * @param comentario
-     */
+
     @Override
     public void delete(Comentario comentario){
         super.delete(comentario);
     }
     
-    /**
-     * 
-     * @param id
-     * @return 
-     */
+
     public Comentario find(int id){
         return super.find(Comentario.class, id);
     }
 
-    
-    /**
-     * 
-     * @return 
-     */
+
     public List<Comentario> findAll(){
         return super.findAll(Comentario.class);
     

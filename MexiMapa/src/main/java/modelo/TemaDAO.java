@@ -22,38 +22,24 @@ public class TemaDAO extends AbstractDAO<Tema>{
     }
     
     
-    /**
-     * 
-     * @param  
-     */
     @Override
     public void save(Tema tema){
         super.save(tema);
     }
     
-    /**
-     * 
-     * @param marcador 
-     */
+
     @Override
     public void update(Tema tema){
         super.save(tema);
     }
     
-    /**
-     * 
-     * @param marcador 
-     */
+
     @Override
     public void delete(Tema tema){
         super.delete(tema);
     }
        
-    /**
-     * 
-     * @param id
-     * @return 
-     */
+
     public Tema find(int id){
         return super.find(Tema.class, id);
     }
@@ -63,10 +49,7 @@ public class TemaDAO extends AbstractDAO<Tema>{
         return super.find(Tema.class, id);
     }
     
-    /**
-     * 
-     * @return 
-     */
+
     public List<Tema> findAll(){
         return super.findAll(Tema.class);
     }
@@ -88,12 +71,7 @@ public class TemaDAO extends AbstractDAO<Tema>{
         }
      return m;   
     }
-    /**
-     * 
-     * @param correo
-     * @return 
-     */
-    
+
     public List<Tema> ObtenTemasPorUsuario(String correo){
         List<Tema> m = null;
         Session session = this.sessionFactory.openSession();

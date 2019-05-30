@@ -17,7 +17,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-//@RequestScoped
+
 public class BuscarPorCorreo {
     private String correo;
     private String contrasenia;
